@@ -1,15 +1,7 @@
-Everything before the line containing only '---' will not be parsed
-
 ---
- name: The Name of the Demo
- description: Some description, please keep it in one line
- authors:
-   - John Doe
-   - Jan Wisniewski
- resources:
-   - http://some.url.com/some/file.js
-   - http://other.url.com/other_filename.css
- normalize_css: no
-...
-
-Everything after the line containing only '...' will not be parsed
+name: CSS Toggle Switches - Radio
+description: Accessible, CSS-only toggle switch using input type=radio
+authors:
+  - Ionut Colceriu
+resources:  
+normalize_css: no
