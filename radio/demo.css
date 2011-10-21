@@ -1,0 +1,146 @@
+/* General styles - Not needed by the switch */
+body {
+	background-color: #41464f;
+	
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	color: #fff;
+	
+	text-shadow: 1px 1px 1px #191b1e;
+}
+
+/* Switch */
+.switch {
+	position: relative;
+	border: 0;
+	padding: 0;
+	margin: 0 0 2em 0;	
+	
+	width: 300px;
+}
+
+.switch legend {
+	float: left;
+	width: 40%;
+	padding: 7px 10% 3px 0;	
+	
+	text-align: right;
+}
+
+.switch input {
+	position: absolute;
+	top: -9999px;
+}
+
+.switch legend:after {
+	content: '';
+	
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 0;
+	
+	width: 50%;
+	height: 100%;
+	
+	padding: 2px;
+	background-color: #2d3035;
+	
+	border-radius: 3px;	
+	
+	box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0px rgba(255, 255, 255, 0.2);
+}
+
+.switch label {
+	position: relative;
+	z-index: 2;
+	
+	float: left;
+	width: 25%;
+	margin-top: 2px;
+		
+	padding: 5px 0 3px 0;
+	text-align: center;
+	
+	color: #64676b;
+	text-shadow: 0 1px 0 #000;
+}
+
+
+.switch input:checked + label {
+	color: #2d592a;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.switch input:focus + label {
+	outline: 1px dotted #fff;
+}
+
+.switch .switch-button {
+	clear: both;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 1;
+	
+	width: 25%;
+	height: 100%;
+	
+	margin: 2px;
+	
+	background-color: #70c66b;
+	
+	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+	background-image:    -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+	background-image:     -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+	background-image:      -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+	background-image:         linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+	
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+	
+	border-radius: 3px;
+	
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.switch input:last-of-type:checked ~ .switch-button {
+	left: 75%;
+}
+
+/* Treo Switch */
+.switch.switch-treo label {
+	width: 16.6%;
+}
+
+.switch.switch-treo .switch-button {
+	width: 16.6%;
+}
+
+.switch.switch-treo input:checked:nth-of-type(2) ~ .switch-button {	
+	left: 66.6%;
+}
+
+.switch.switch-treo input:checked:last-of-type ~ .switch-button {
+	left: 83.26%;
+}
+
+/* Switch Themes/Colors */
+.switch.blue input:checked + label {
+	color: #15475d;
+}
+
+.switch.blue .switch-button {
+	background-color: #38a3d4;
+}
+
+.switch.yellow .switch-button {
+	background-color: #ccc165;
+}
+
+.switch.yellow input:checked + label {
+	color: #494525;
+}
