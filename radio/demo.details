@@ -10,6 +10,6 @@ Everything before the line containing only '---' will not be parsed
    - http://some.url.com/some/file.js
    - http://other.url.com/other_filename.css
  normalize_css: no
- ...
+...
 
 Everything after the line containing only '...' will not be parsed
