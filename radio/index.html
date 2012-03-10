@@ -57,44 +57,8 @@
 		<span class="switch-button"></span>
 	</fieldset>
 	
-	<script>
-	var touchSupport = ('ontouchstart' in window);
-
-	Object.prototype.previousObject = function() {
-		var p = this;
-		do p = p.previousSibling;
-		while (p && p.nodeType != 1);
-		return p;
-	}
-
-	function checkRadio(e) {	
-		e.target.previousObject().checked = true;
-	};
-
-	function forceReflow(e) {
-		if(e.target.previousObject().checked) {
-			document.body.className = document.body.className;
-		} else {
-			setTimeout(function() { forceReflow(e) }, 100);
-		};	
-	};
-
-	var labels = document.querySelectorAll('.switch label');
-
-	if(touchSupport) {
-		// Mobile Webkit(Android, iOS, BB, WebOS, etc.), and others with Touch support
-		for( var i = 0; i < labels.length; i++ ) {
-			labels[i].ontouchstart = forceReflow;
-		};
-		
-	} else {
-		// Non-touch browsers, mostly for Opera Mini
-		for( var i = 0; i < labels.length; i++ ) {
-			labels[i].onclick = checkRadio;
-		};
-		
-	};
-	</script>
+	
+	<script src="../js/fixmobile.js"></script>
 	
 </body>
 </html>

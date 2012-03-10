@@ -30,7 +30,7 @@ body {
 
 .switch input {
 	position: absolute;
-	top: -9999px;
+	opacity: 0;
 }
 
 .switch legend:after {

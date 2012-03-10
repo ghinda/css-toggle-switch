@@ -8,3 +8,4 @@ Look is based on [Orman Clark's](http://www.premiumpixels.com/) toggle switches:
 * [On/Off Switches and Toggles](http://www.premiumpixels.com/freebies/onoff-switches-and-toggles-psd/)
 
 http://ghinda.net/css-toggle-switches/
+http://ghinda.net/css-toggle-switches-mobile/

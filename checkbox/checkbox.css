@@ -34,11 +34,11 @@ body {
 }
 
 /* Don't hide the input from screen-readers and keyboard access
- * Just position it offscreen
  */
 .toggle input {
     position: absolute;
-	top: -9999px;
+	opacity: 0;
+	z-index: 5;
 }
 
 /* Outline the toggle when the input is focused */

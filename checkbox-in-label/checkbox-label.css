@@ -25,7 +25,7 @@ body {
 
 .toggle input {
     position: absolute;
-	top: -9999px;
+	opacity: 0;
 }
 
 .toggle input:focus + span {
