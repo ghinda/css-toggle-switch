@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS Toggle Switches</title>
+	<meta name="description" content="">
+	<style>
+	
+		/* General styles */
+		body {
+			max-width: 500px;
+			margin: 10px auto;
+			background-color: #41464f;
+			
+			font-family: sans-serif;
+			font-size: 100%;
+			color: #fff;
+		}
+		
+		a { color: #38A3D4; }
+		a:hover { text-decoration: none; }
+		
+		a img { border: 0; }
+		
+		section { padding-bottom: 5%; }
+		
+		h1 { font-size: 180%; }
+		
+		h2 { color: #BEC8DA; }
+		
+		h3 { color: #8C9CB9; }
+		
+		code { color: #B5E1F5 }
+		
+		footer {
+			text-align: center;
+			font-size: 80%;
+		}
+		
+		/* github ribbon */
+		.ribbon {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+		/* examples */
+		
+		.example {
+			padding: 3%;
+			margin: 0 -3%;
+			background-color: #32373F;
+			
+			border-radius: 2px;
+		}
+		
+		.example pre.prettyprint {
+			width: 100%;
+			padding: 0;
+			margin: 0 auto 2em auto;
+			border: 0;
+			background: none;
+		}
+		
+		
+		/* Default form styles */
+		fieldset {
+			margin: 0 0 2em 0;	
+			border: 0;
+		}
+
+		fieldset legend {
+			color: #fff;
+		}
+	
+	</style>
+	<link rel="stylesheet" href="toggle-switch.css">
+	
+	<!-- prettyify -->
+    <link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css">
+    <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+
+	<a class="ribbon" href="https://github.com/ghinda/css-toggle-switch" target="_blank">
+		<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+	</a>
+
+	<section>
+		<h1>CSS Toggle Switches</h1>
+
+		<p>Accessible, CSS-only, toggle switches with mobile support, using standard form elements. </p>
+		
+		<p>You can read more about the development process: </p>
+		
+		<ul>
+			<li><a href="http://ghinda.net/css-toggle-switches/">CSS Toggle Switches</a></li>
+			<li><a href="http://ghinda.net/css-toggle-switches-mobile/">Mobile support for the CSS toggle switches</a></li>
+		</ul>
+		
+	</section>
+
+	<section>
+		
+		<h2>Checkbox</h2>
+		
+		<p>For "On/Off" states, checkboxes are best used. </p>
+		
+		<div class="example">
+			
+<pre class="prettyprint"><code>&lt;fieldset class=&quot;toggle&quot;&gt;
+	&lt;input id=&quot;view&quot; type=&quot;checkbox&quot; checked /&gt;
+	&lt;label for=&quot;view&quot;&gt;Wireless:&lt;/label&gt;
+	&lt;span class=&quot;toggle-button&quot;&gt;&lt;/span&gt;
+&lt;/fieldset&gt;
+</code></pre>
+
+			<fieldset class="toggle">
+				<input id="view" type="checkbox" checked />
+				<label for="view">Wireless:</label>
+				<span class="toggle-button"></span>
+			</fieldset>
+		
+		</div>
+		
+	</section>
+	
+	
+	<section>
+		<h2>Radio</h2>
+		<p>If you need to different states that are more specific than "On/Off", or more than two of them, the best approach is to use radio buttons. </p>
+		
+		<div class="example">
+			
+<pre class="prettyprint"><code>&lt;fieldset class=&quot;switch&quot;&gt;
+	&lt;legend&gt;View: &lt;/legend&gt;
+	
+	&lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
+	&lt;label for=&quot;week&quot;&gt;Week&lt;/label&gt;
+
+	&lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+	&lt;label for=&quot;month&quot;&gt;Month&lt;/label&gt;
+	
+	&lt;span class=&quot;switch-button&quot;&gt;&lt;/span&gt;
+&lt;/fieldset&gt;
+</code></pre>
+
+			<fieldset class="switch">
+				<legend>View: </legend>
+				
+				<input id="week" name="view" type="radio" checked>
+				<label for="week">Week</label>
+
+				<input id="month" name="view" type="radio">	
+				<label for="month">Month</label>
+				
+				<span class="switch-button"></span>
+			</fieldset>
+		
+		</div>
+
+		<h3>Color schemes</h3>
+		<p>The radio button styles include two additional color schemes, <code>blue</code> and <code>yellow</code>, which can be added as additional classes to the fieldset. </p>
+		
+		<div class="example">
+			
+<pre class="prettyprint"><code>&lt;fieldset class=&quot;switch blue&quot;&gt;
+	&lt;legend&gt;View: &lt;/legend&gt;
+	
+	&lt;input id=&quot;week2&quot; name=&quot;view2&quot; type=&quot;radio&quot; checked&gt;		
+	&lt;label for=&quot;week2&quot;&gt;Week&lt;/label&gt;
+
+	&lt;input id=&quot;month2&quot; name=&quot;view2&quot; type=&quot;radio&quot;&gt;	
+	&lt;label for=&quot;month2&quot;&gt;Month&lt;/label&gt;
+	
+	&lt;span class=&quot;switch-button&quot;&gt;&lt;/span&gt;
+&lt;/fieldset&gt;
+</code></pre>
+
+			<fieldset class="switch blue">
+				<legend>View: </legend>
+				
+				<input id="week2" name="view2" type="radio" checked>		
+				<label for="week2">Week</label>
+
+				<input id="month2" name="view2" type="radio">	
+				<label for="month2">Month</label>
+				
+				<span class="switch-button"></span>
+			</fieldset>
+
+			<fieldset class="switch yellow">
+				<legend>View: </legend>
+				
+				<input id="week3" name="view3" type="radio" checked>		
+				<label for="week3">Week</label>
+
+				<input id="month3" name="view3" type="radio">	
+				<label for="month3">Month</label>
+				
+				<span class="switch-button"></span>
+			</fieldset>
+		
+		</div>
+		
+		<h3>Multiple states</h3>
+		<p>The radio button styles also include an additional layout, for tri-state switches, by adding an additional <code>switch-treo</code> class to the fieldset. </p>
+		<p>You can create your own styles for switches with multiple states, by following the <code>.switch-treo</code> example, in the CSS file. </p>
+		
+		<div class="example">
+				
+<pre class="prettyprint"><code>&lt;fieldset class=&quot;switch switch-treo&quot;&gt;
+	&lt;legend&gt;View: &lt;/legend&gt;
+	
+	&lt;input id=&quot;week4&quot; name=&quot;view4&quot; type=&quot;radio&quot; checked&gt;		
+	&lt;label for=&quot;week4&quot;&gt;Week&lt;/label&gt;
+
+	&lt;input id=&quot;month4&quot; name=&quot;view4&quot; type=&quot;radio&quot;&gt;
+	&lt;label for=&quot;month4&quot;&gt;Month&lt;/label&gt;
+	
+	&lt;input id=&quot;year4&quot; name=&quot;view4&quot; type=&quot;radio&quot;&gt;
+	&lt;label for=&quot;year4&quot;&gt;Year&lt;/label&gt;
+	
+	&lt;span class=&quot;switch-button&quot;&gt;&lt;/span&gt;
+&lt;/fieldset&gt;
+</code></pre>
+
+			<fieldset class="switch switch-treo">
+				<legend>View: </legend>
+				
+				<input id="week4" name="view4" type="radio" checked>		
+				<label for="week4">Week</label>
+
+				<input id="month4" name="view4" type="radio">
+				<label for="month4">Month</label>
+				
+				<input id="year4" name="view4" type="radio">
+				<label for="year4">Year</label>
+				
+				<span class="switch-button"></span>
+			</fieldset>
+		
+		</div>
+		
+	</section>
+	
+	
+	<section>
+		<h2>Browser compatibility</h2>
+
+		<p>Firefox 3.5+, Google Chrome, Safari, Opera, IE 9+.</p>
+
+		<p><strong>Note:</strong> Browsers without support for mediaqueries, such as IE8 and bellow, get standard form elements. </p>
+		
+		<h3>Mobile support</h3>
+		
+		<p>Android 2.3+, iOS, Opera Mobile and Mini</p>
+		
+		<p><strong>Note:</strong> Mobile support requires JavaScript. </p>
+		
+	</section>
+	
+	<section>
+		<h2>Acknowledgements</h2>
+		
+		<p>The look of the toggle switches is based on <a href="http://www.premiumpixels.com/" target="_blank">Orman Clark's</a> work: </p>
+
+		<ul>
+			<li><a href="http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/" target="_blank">Sort Switches / Toggles</a></li>
+			<li><a href="http://www.premiumpixels.com/freebies/onoff-switches-and-toggles-psd/" target="_blank">On/Off Switches and Toggles</a></li>
+		</ul>
+		
+	</section>
+	
+	
+	<footer>
+		<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net" title="Ghinda - Ionuț Colceriu">Ionuț Colceriu</a>.
+	</footer>
+	
+	<script src="toggle-switch-mobile.js"></script>
+	
+	<script>
+		var _gaq = [['_setAccount', 'UA-19824700-1'], ['_trackPageview']];
+		(function(d, t) {
+			var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.async = 1;
+			g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g, s);
+		})(document, 'script');
+	</script>
+	
+</body>
+</html>
