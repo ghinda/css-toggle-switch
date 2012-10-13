@@ -117,7 +117,7 @@ https://github.com/ghinda/css-toggle-switch
 	.toggle input:checked ~ span {
 		right: 45px;
 	}
-
+	
 	.toggle input:checked + label:after {
 		background-color: #a0c66b;
 		border-color: #87aa5b;
@@ -266,5 +266,14 @@ https://github.com/ghinda/css-toggle-switch
 	.switch.yellow input:checked + label {
 		color: #494525;
 	}
+	
+	/* Bugfix for older Webkit, including mobile Webkit. Adapted from:
+	 * http://css-tricks.com/webkit-sibling-bug/
+	 */
+	.switch, .toggle {
+		-webkit-animation: bugfix infinite 1s;
+	}
+	
+	@-webkit-keyframes bugfix { from { position: relative; } to { position: relative; } }
 
 }

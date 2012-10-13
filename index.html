@@ -3,12 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<title>CSS Toggle Switches</title>
-	<meta name="description" content="">
-	<style>
+	<meta name="description" content="Accessible, CSS-only, toggle switches with mobile support, using standard form elements.">
 	
+	<link rel="stylesheet" href="toggle-switch.css">
+	
+	<!-- Demo Styles. Not required by the toggle switches -->
+	<style>
 		/* General styles */
 		body {
-			max-width: 500px;
+			max-width: 620px;
 			margin: 10px auto;
 			background-color: #41464f;
 			
@@ -54,15 +57,6 @@
 			border-radius: 2px;
 		}
 		
-		.example pre.prettyprint {
-			width: 100%;
-			padding: 0;
-			margin: 0 auto 2em auto;
-			border: 0;
-			background: none;
-		}
-		
-		
 		/* Default form styles */
 		fieldset {
 			margin: 0 0 2em 0;	
@@ -72,15 +66,20 @@
 		fieldset legend {
 			color: #fff;
 		}
+		
+		body pre[class*="language-"] {
+			padding: 0 0 1em 0;
+			margin: 0 0 .5em 0;
+			background: none;
+		}
 	
 	</style>
-	<link rel="stylesheet" href="toggle-switch.css">
 	
-	<!-- prettyify -->
-    <link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css">
-    <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+	<!-- Prism Syntax Highlighter -->
+    <link rel="stylesheet" href="prism/prism.css">
+    <script src="prism/prism.js"></script>
 </head>
-<body onload="prettyPrint()">
+<body>
 
 	<a class="ribbon" href="https://github.com/ghinda/css-toggle-switch" target="_blank">
 		<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
@@ -90,6 +89,11 @@
 		<h1>CSS Toggle Switches</h1>
 
 		<p>Accessible, CSS-only, toggle switches with mobile support, using standard form elements. </p>
+		
+		<p>
+			<strong>Update:</strong>
+			The latest version does not require JavaScript for mobile support.
+		</p>
 		
 		<p>You can read more about the development process: </p>
 		
@@ -108,16 +112,17 @@
 		
 		<div class="example">
 			
-<pre class="prettyprint"><code>&lt;fieldset class=&quot;toggle&quot;&gt;
+<pre><code class="language-markup">
+&lt;fieldset class=&quot;toggle&quot;&gt;
 	&lt;input id=&quot;view&quot; type=&quot;checkbox&quot; checked /&gt;
-	&lt;label for=&quot;view&quot;&gt;Wireless:&lt;/label&gt;
+	&lt;label for=&quot;view&quot; onclick=&quot;&quot;&gt;Wireless:&lt;/label&gt;
 	&lt;span class=&quot;toggle-button&quot;&gt;&lt;/span&gt;
 &lt;/fieldset&gt;
 </code></pre>
 
 			<fieldset class="toggle">
 				<input id="view" type="checkbox" checked />
-				<label for="view">Wireless:</label>
+				<label for="view" onclick="">Wireless:</label>
 				<span class="toggle-button"></span>
 			</fieldset>
 		
@@ -132,14 +137,15 @@
 		
 		<div class="example">
 			
-<pre class="prettyprint"><code>&lt;fieldset class=&quot;switch&quot;&gt;
+<pre><code class="language-markup">
+&lt;fieldset class=&quot;switch&quot;&gt;
 	&lt;legend&gt;View: &lt;/legend&gt;
 	
 	&lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
-	&lt;label for=&quot;week&quot;&gt;Week&lt;/label&gt;
+	&lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
 	&lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
-	&lt;label for=&quot;month&quot;&gt;Month&lt;/label&gt;
+	&lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
 	
 	&lt;span class=&quot;switch-button&quot;&gt;&lt;/span&gt;
 &lt;/fieldset&gt;
@@ -149,10 +155,10 @@
 				<legend>View: </legend>
 				
 				<input id="week" name="view" type="radio" checked>
-				<label for="week">Week</label>
+				<label for="week" onclick="">Week</label>
 
 				<input id="month" name="view" type="radio">	
-				<label for="month">Month</label>
+				<label for="month" onclick="">Month</label>
 				
 				<span class="switch-button"></span>
 			</fieldset>
@@ -164,14 +170,15 @@
 		
 		<div class="example">
 			
-<pre class="prettyprint"><code>&lt;fieldset class=&quot;switch blue&quot;&gt;
+<pre><code class="language-markup">
+&lt;fieldset class=&quot;switch blue&quot;&gt;
 	&lt;legend&gt;View: &lt;/legend&gt;
 	
 	&lt;input id=&quot;week2&quot; name=&quot;view2&quot; type=&quot;radio&quot; checked&gt;		
-	&lt;label for=&quot;week2&quot;&gt;Week&lt;/label&gt;
+	&lt;label for=&quot;week2&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
 	&lt;input id=&quot;month2&quot; name=&quot;view2&quot; type=&quot;radio&quot;&gt;	
-	&lt;label for=&quot;month2&quot;&gt;Month&lt;/label&gt;
+	&lt;label for=&quot;month2&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
 	
 	&lt;span class=&quot;switch-button&quot;&gt;&lt;/span&gt;
 &lt;/fieldset&gt;
@@ -181,10 +188,10 @@
 				<legend>View: </legend>
 				
 				<input id="week2" name="view2" type="radio" checked>		
-				<label for="week2">Week</label>
+				<label for="week2" onclick="">Week</label>
 
 				<input id="month2" name="view2" type="radio">	
-				<label for="month2">Month</label>
+				<label for="month2" onclick="">Month</label>
 				
 				<span class="switch-button"></span>
 			</fieldset>
@@ -193,10 +200,10 @@
 				<legend>View: </legend>
 				
 				<input id="week3" name="view3" type="radio" checked>		
-				<label for="week3">Week</label>
+				<label for="week3" onclick="">Week</label>
 
 				<input id="month3" name="view3" type="radio">	
-				<label for="month3">Month</label>
+				<label for="month3" onclick="">Month</label>
 				
 				<span class="switch-button"></span>
 			</fieldset>
@@ -209,17 +216,18 @@
 		
 		<div class="example">
 				
-<pre class="prettyprint"><code>&lt;fieldset class=&quot;switch switch-treo&quot;&gt;
+<pre><code class="language-markup">
+&lt;fieldset class=&quot;switch switch-treo&quot;&gt;
 	&lt;legend&gt;View: &lt;/legend&gt;
 	
 	&lt;input id=&quot;week4&quot; name=&quot;view4&quot; type=&quot;radio&quot; checked&gt;		
-	&lt;label for=&quot;week4&quot;&gt;Week&lt;/label&gt;
+	&lt;label for=&quot;week4&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
 	&lt;input id=&quot;month4&quot; name=&quot;view4&quot; type=&quot;radio&quot;&gt;
-	&lt;label for=&quot;month4&quot;&gt;Month&lt;/label&gt;
+	&lt;label for=&quot;month4&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
 	
 	&lt;input id=&quot;year4&quot; name=&quot;view4&quot; type=&quot;radio&quot;&gt;
-	&lt;label for=&quot;year4&quot;&gt;Year&lt;/label&gt;
+	&lt;label for=&quot;year4&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
 	
 	&lt;span class=&quot;switch-button&quot;&gt;&lt;/span&gt;
 &lt;/fieldset&gt;
@@ -229,13 +237,13 @@
 				<legend>View: </legend>
 				
 				<input id="week4" name="view4" type="radio" checked>		
-				<label for="week4">Week</label>
+				<label for="week4" onclick="">Week</label>
 
 				<input id="month4" name="view4" type="radio">
-				<label for="month4">Month</label>
+				<label for="month4" onclick="">Month</label>
 				
 				<input id="year4" name="view4" type="radio">
-				<label for="year4">Year</label>
+				<label for="year4" onclick="">Year</label>
 				
 				<span class="switch-button"></span>
 			</fieldset>
@@ -246,17 +254,13 @@
 	
 	
 	<section>
-		<h2>Browser compatibility</h2>
+		<h2>Compatibility</h2>
 
-		<p>Firefox 3.5+, Google Chrome, Safari, Opera, IE 9+.</p>
+		<p>The toggle switches should work on all modern browsers, including mobile ones. </p>
 
-		<p><strong>Note:</strong> Browsers without support for mediaqueries, such as IE8 and bellow, get standard form elements. </p>
+		<p><strong>Browsers without support for mediaqueries, such as IE8 and bellow, get standard form elements. </strong></p>
 		
-		<h3>Mobile support</h3>
-		
-		<p>Android 2.3+, iOS, Opera Mobile and Mini</p>
-		
-		<p><strong>Note:</strong> Mobile support requires JavaScript. </p>
+		<p>The <code class="language-markup">onclick=""</code> attribute is required for older iOS and Opera Mini support. </p>
 		
 	</section>
 	
@@ -275,9 +279,8 @@
 	
 	<footer>
 		<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net" title="Ghinda - Ionuț Colceriu">Ionuț Colceriu</a>.
+		<p><small>Latest update: October 2012</small></p>
 	</footer>
-	
-	<script src="toggle-switch-mobile.js"></script>
 	
 	<script>
 		var _gaq = [['_setAccount', 'UA-19824700-1'], ['_trackPageview']];
