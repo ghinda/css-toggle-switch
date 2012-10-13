@@ -61,6 +61,11 @@ if(touchSupport) {
 	// Mobile Webkit(Android, iOS, BB, WebOS, etc.), and others with Touch support
 	for(var i = 0; i < labels.length; i++ ) {
 		labels[i].ontouchstart = forceReflow;
+		
+		// fix iOS issue where tapping on the label doesn't focus the input
+		// report and fix by @github.com/scruffian
+		// http://stackoverflow.com/questions/7358781/tapping-on-label-in-mobile-safari
+		labels[i].onclick = function(){};
 	};
 	
 } else if(mobile) {
