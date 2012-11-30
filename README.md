@@ -1,13 +1,17 @@
 # Accessible, CSS-only toggle switches
 
-An attempt to create a set of accessible, css-only, toggle switches, using standard form controls.
+Accessible, screen-reader friendly, flexible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. 
 
-Look is based on [Orman Clark's](http://www.premiumpixels.com/) toggle switches:
+Compatible with [Bootstrap](http://twitter.github.com/bootstrap/) and [Foundation](http://foundation.zurb.com/).
 
-* [Sort Switches / Toggles](http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/)
-* [On/Off Switches and Toggles](http://www.premiumpixels.com/freebies/onoff-switches-and-toggles-psd/)
+You can use the toggles as standalone widgets, or along with Twitter Bootstrap or ZURB Foundation.
 
-# Details
+Standalone themes are based on:
+* [Sort Switches / Toggles by Orman Clark](http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/)
+* Apple iOS
+* Android Holo
+
+# Development details
 
 * http://ghinda.net/css-toggle-switches/
 * http://ghinda.net/css-toggle-switches-mobile/

@@ -1,0 +1,328 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>CSS Toggle Switches with Bootstrap</title>
+	<meta name="description" content="Accessible, screen-reader friendly, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.">
+	<meta name="author" content="Ionuț Colceriu">
+	
+	<!-- Standalone demo styles, not required by the toggles --->
+	<link rel="stylesheet" href="demo.css">
+	
+	<!-- Bootstrap styles -->
+	<link rel="stylesheet" href="lib/bootstrap.css">
+	
+	<!-- Toggle Switch -->
+	<link rel="stylesheet" href="toggle-switch.css">
+	
+	<!-- Prism Syntax Highlighter -->
+    <link rel="stylesheet" href="lib/prism/prism-light.css">
+    <script src="lib/prism/prism.js"></script>
+</head>
+<body>
+	
+	<div class="container-narrow">
+	
+		<a class="ribbon" href="https://github.com/ghinda/css-toggle-switch" target="_blank">
+			<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+		</a>
+
+		<header>
+			<h1>CSS Toggle Switches</h1>
+
+			<p class="description">Accessible, screen-reader friendly, flexible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. </p>
+			
+			<p class="frameworks">
+				These examples use Bootstrap, you can also use the <a href="index.html">toggles alone</a>, 
+				or with <a href="foundation.html">Foundation</a>.
+			</p>
+			
+			<a href="https://github.com/ghinda/css-toggle-switch/archive/gh-pages.zip" class="download-button">Download</a>
+			
+			<label class="toggle well header-toggle" onclick="">
+				<input id="view" type="checkbox" />
+				<p>
+					<span>On</span>
+					<span>Off</span>
+				</p>
+				
+				<a class="slide-button btn"></a>
+			</label>
+		</header>
+		
+		<p>The toggle switches are very flexible, so you can use a number of classes provided by Bootstrap, to make them look and act exactly as you need them. </p>
+		
+		<hr>
+		
+		<div class="row-fluid">
+			
+			<label class="checkbox toggle well" onclick="">
+				<input id="view" type="checkbox" checked />
+				<p>
+					Wireless
+					<span>On</span>
+					<span>Off</span>
+				</p>
+				
+				<a class="btn btn-primary slide-button"></a>
+			</label>
+			
+<pre><code class="language-markup">
+&lt;label class=&quot;checkbox toggle well&quot; onclick=&quot;&quot;&gt;
+	&lt;input id=&quot;view&quot; type=&quot;checkbox&quot; checked /&gt;
+	&lt;p&gt;
+		Wireless
+		&lt;span&gt;On&lt;/span&gt;
+		&lt;span&gt;Off&lt;/span&gt;
+	&lt;/p&gt;
+	
+	&lt;a class=&quot;btn btn-primary slide-button&quot;&gt;&lt;/a&gt;
+&lt;/label&gt;
+</code></pre>			
+			
+		</div>
+		
+		<hr>
+		
+		<div class="row-fluid">
+			
+			<label>View: </label>
+			
+			<div class="well switch">
+				<input id="week" name="view" type="radio" checked>
+				<label for="week" onclick="">Week</label>
+
+				<input id="month" name="view" type="radio">	
+				<label for="month" onclick="">Month</label>
+				
+				<span class="slide-button btn"></span>
+			</div>
+			
+<pre><code class="language-markup">
+&lt;div class=&quot;well switch&quot;&gt;
+	&lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
+	&lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+
+	&lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+	&lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+	
+	&lt;span class=&quot;slide-button btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+			
+		</div>
+		
+		<hr>
+		
+		<div class="row-fluid">
+			
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label">View</label>
+					<div class="controls well switch">
+						<input id="week2" name="view" type="radio" checked>
+						<label for="week2" onclick="">Week</label>
+
+						<input id="month2" name="view" type="radio">	
+						<label for="month2" onclick="">Month</label>
+						
+						<span class="slide-button btn"></span>
+					</div>
+				</div>
+			</form>
+			
+<pre><code class="language-markup">
+&lt;form class=&quot;form-horizontal&quot;&gt;
+	&lt;div class=&quot;control-group&quot;&gt;
+		&lt;label class=&quot;control-label&quot;&gt;View&lt;/label&gt;
+		&lt;div class=&quot;controls well switch&quot;&gt;
+			&lt;input id=&quot;week2&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
+			&lt;label for=&quot;week2&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+
+			&lt;input id=&quot;month2&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+			&lt;label for=&quot;month2&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+			
+			&lt;span class=&quot;slide-button btn&quot;&gt;&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+			
+		</div>
+		
+		<hr>
+		
+		<div class="row-fluid">		
+		
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label">View</label>
+					<div class="controls btn switch switch-three">
+						<input id="week3" name="view" type="radio" checked>
+						<label for="week3" onclick="">Week</label>
+
+						<input id="month3" name="view" type="radio">	
+						<label for="month3" onclick="">Month</label>
+						
+						<input id="month4" name="view" type="radio">	
+						<label for="month4" onclick="">Month</label>
+						
+						<span class="slide-button btn btn-success"></span>
+					</div>
+				</div>
+			</form>
+			
+<pre><code class="language-markup">
+&lt;form class=&quot;form-horizontal&quot;&gt;
+	&lt;div class=&quot;control-group&quot;&gt;
+		&lt;label class=&quot;control-label&quot;&gt;View&lt;/label&gt;
+		&lt;div class=&quot;controls btn switch switch-three&quot;&gt;
+			&lt;input id=&quot;week3&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
+			&lt;label for=&quot;week3&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+
+			&lt;input id=&quot;month3&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+			&lt;label for=&quot;month3&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+			
+			&lt;input id=&quot;month4&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+			&lt;label for=&quot;month4&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+			
+			&lt;span class=&quot;slide-button btn btn-success&quot;&gt;&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/form&gt;
+</code></pre>				
+			
+		</div>
+		
+		<hr>
+		
+		<div class="row-fluid">
+			
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label">View</label>
+					<div class="controls switch switch-four alert alert-success">
+						<input id="week5" name="view" type="radio" checked>
+						<label for="week5" onclick="">Week</label>
+
+						<input id="month6" name="view" type="radio">	
+						<label for="month6" onclick="">Month</label>
+						
+						<input id="month7" name="view" type="radio">
+						<label for="month7" onclick="">Year</label>
+						
+						<input id="month8" name="view" type="radio">	
+						<label for="month8" onclick="">Decade</label>
+						
+						<span class="slide-button btn btn-info disabled"></span>
+					</div>
+				</div>
+			</form>
+			
+<pre><code class="language-markup">
+&lt;form class=&quot;form-horizontal&quot;&gt;
+	&lt;div class=&quot;control-group&quot;&gt;
+		&lt;label class=&quot;control-label&quot;&gt;View&lt;/label&gt;
+		&lt;div class=&quot;controls switch switch-four alert alert-success&quot;&gt;
+			&lt;input id=&quot;week5&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
+			&lt;label for=&quot;week5&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+
+			&lt;input id=&quot;month6&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+			&lt;label for=&quot;month6&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+			
+			&lt;input id=&quot;month7&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
+			&lt;label for=&quot;month7&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
+			
+			&lt;input id=&quot;month8&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+			&lt;label for=&quot;month8&quot; onclick=&quot;&quot;&gt;Decade&lt;/label&gt;
+			
+			&lt;span class=&quot;slide-button btn btn-info disabled&quot;&gt;&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/form&gt;
+</code></pre>				
+			
+		</div>
+		
+		<hr>
+		
+		<div class="row-fluid">
+			
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label">View</label>
+					<div class="controls btn disabled switch switch-five">
+						<input id="week9" name="view" type="radio" checked>
+						<label for="week9" onclick="">Week</label>
+
+						<input id="month10" name="view" type="radio">	
+						<label for="month10" onclick="">Month</label>
+						
+						<input id="month11" name="view" type="radio">
+						<label for="month11" onclick="">Year</label>
+						
+						<input id="month12" name="view" type="radio">	
+						<label for="month12" onclick="">Decade</label>
+						
+						<input id="month13" name="view" type="radio">	
+						<label for="month13" onclick="">Millenium</label>
+						
+						<span class="slide-button btn btn-warning"></span>
+					</div>
+				</div>
+			</form>
+			
+<pre><code class="language-markup">
+&lt;form class=&quot;form-horizontal&quot;&gt;
+	&lt;div class=&quot;control-group&quot;&gt;
+		&lt;label class=&quot;control-label&quot;&gt;View&lt;/label&gt;
+		&lt;div class=&quot;controls btn disabled switch switch-five&quot;&gt;
+			&lt;input id=&quot;week9&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
+			&lt;label for=&quot;week9&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+
+			&lt;input id=&quot;month10&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+			&lt;label for=&quot;month10&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+			
+			&lt;input id=&quot;month11&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
+			&lt;label for=&quot;month11&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
+			
+			&lt;input id=&quot;month12&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+			&lt;label for=&quot;month12&quot; onclick=&quot;&quot;&gt;Decade&lt;/label&gt;
+			
+			&lt;input id=&quot;month13&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;	
+			&lt;label for=&quot;month13&quot; onclick=&quot;&quot;&gt;Millenium&lt;/label&gt;
+			
+			&lt;span class=&quot;slide-button btn btn-warning&quot;&gt;&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/form&gt;
+</code></pre>				
+			
+		</div>
+		
+		<footer>
+			
+			<hr>
+			
+			<h3>
+				<a href="http://twitter.github.com/bootstrap/" target="_blank">Get Bootstrap.</a>
+			</h3>
+		
+			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net" title="Ghinda - Ionuț Colceriu">Ionuț Colceriu</a>.
+			<p><small>Latest update: November 2012</small></p>
+		</footer>
+		
+	</div>
+	
+	<script>
+		var _gaq = [['_setAccount', 'UA-19824700-1'], ['_trackPageview']];
+		(function(d, t) {
+			var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.async = 1;
+			g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g, s);
+		})(document, 'script');
+	</script>
+	
+</body>
+</html>

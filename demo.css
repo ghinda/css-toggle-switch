@@ -1,0 +1,168 @@
+/* Demo Styles. Not required by the toggle switches */
+body {
+	background-color: #41464f;
+	
+	font-family: sans-serif;
+	font-size: 100%;
+	color: #fff;
+}
+
+.container-narrow {
+	max-width: 630px;
+	padding: 10px 0;
+	margin: 0 auto;
+}
+
+.container-foundation {
+	max-width: 768px;
+	padding: 10px 0;
+	margin: 0 auto;
+}
+
+code {
+	background: none !important;
+}
+
+a {
+	color: #38A3D4;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a img {
+	border: 0;
+}
+
+section {
+	padding-bottom: 5%;
+}
+
+h1 {
+	font-size: 300%;
+}
+
+h2 {
+	color: #BEC8DA;
+}
+
+h3 {
+	color: #8C9CB9;
+}
+
+code {
+	color: #B5E1F5;
+}
+
+footer {
+	text-align: center;
+	font-size: 80%;
+}
+
+.toggle.android p,
+.toggle.candy p {
+	color: #fff !important;
+}
+
+/* github ribbon */
+.ribbon {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+/* header */
+
+header {
+	position: relative;
+	overflow: hidden;
+}
+
+header h1 {
+	margin: 30px 0 5px;
+}
+
+.description {
+	width: 80%;
+	margin-top: 0;
+
+	color: #888;
+	font-size: 80%;
+}
+
+.frameworks {
+	float: left;
+	width: 65%;
+	
+	font-size: 140%;
+}
+
+.frameworks,
+.download-button {
+	margin: 50px 0;
+}
+
+
+.download-button {
+	float: left;
+	width: 25%;
+	padding: 15px 0;
+	margin-left: 10%;
+	
+	background-color: #279fca;
+	
+	color: #fff;
+	font-size: 130%;
+	text-align: center;
+	text-decoration: none;
+}
+
+.download-button:hover {
+	background-color: #57bbdf;
+}
+
+.download-button:active {
+	background-color: #157192;
+}
+
+.header-toggle {
+	position: absolute !important;
+	top: 43px;
+	right: 0;
+	width: 100px;
+}
+
+/* examples */
+
+.example {
+	padding: 3%;
+	margin: 0 -3% 3em -3%;
+	background-color: #32373F;
+	
+	border-radius: 2px;
+}
+
+body .example pre {
+	clear: both;
+
+	padding: 1.5em 0 0 0;
+	margin: 0;
+	background: none;
+}
+
+/* Default form styles */
+fieldset {
+	margin: 0 0 2em 0;	
+	border: 0;
+}
+
+fieldset legend {
+	color: #fff;
+}
+
+/* Bootstrap Demo */
+.bootstrap-container {
+	max-width: 630px;
+	margin: 10px auto;
+}
