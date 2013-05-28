@@ -317,7 +317,7 @@ https://github.com/ghinda/css-toggle-switch
 		-moz-transform: skew(20deg) translateX(10px);
 		-ms-transform: skew(20deg) translateX(10px);
 		-o-transform: skew(20deg) translateX(10px);
-		transform: skew(20deg);
+		transform: skew(20deg) translateX(10px);
 	}
 
 	.android.toggle .slide-button {
@@ -350,6 +350,12 @@ https://github.com/ghinda/css-toggle-switch
 	.android.switch,
 	.android span {
 		text-transform: uppercase;
+	}
+
+	/* Fix Android/Holo Theme in firefox - force absolute position */
+	.android.switch input {
+		top: 0;
+		left: 0;
 	}
 
 	/* iOS Theme
