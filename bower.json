@@ -1,0 +1,9 @@
+{
+	"name": "acornmediaplayer",
+	"version": "1.8.1",
+	"dependencies": {
+		"jquery": "~2.0"
+	},
+	"devDependencies": {
+	}
+}
