@@ -1,8 +1,8 @@
 # Accessible, CSS-only toggle switches
 
-Accessible, screen-reader friendly, flexible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. 
+Accessible, screen-reader friendly, flexible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.
 
-Compatible with [Bootstrap](http://twitter.github.com/bootstrap/) and [Foundation](http://foundation.zurb.com/).
+Compatible with [Bootstrap](http://getbootstrap.com/) and [Foundation](http://foundation.zurb.com/).
 
 You can use the toggles as standalone widgets, or along with Twitter Bootstrap or ZURB Foundation.
 

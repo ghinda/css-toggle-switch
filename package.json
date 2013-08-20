@@ -1,0 +1,17 @@
+{
+  "name": "css-toggle-switch",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.x",
+    "grunt-contrib-compass": "~0.3.x",
+    "grunt-contrib-watch": "~0.4.x",
+    "grunt-concurrent": "~0.3.x",
+    "grunt-contrib-connect": "~0.3.x",
+    "connect-livereload": "~0.2.x",
+    "matchdep": "~0.1.x"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
