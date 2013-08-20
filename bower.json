@@ -1,8 +1,10 @@
 {
-	"name": "acornmediaplayer",
-	"version": "1.8.1",
+	"name": "css-toggle-switch",
+	"version": "1.0.0",
 	"dependencies": {
-		"jquery": "~2.0"
+		"bootstrap": "~3",
+		"foundation": "~4",
+		"prism": "gh-pages"
 	},
 	"devDependencies": {
 	}

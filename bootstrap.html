@@ -11,14 +11,15 @@
 	<link rel="stylesheet" href="demo.css">
 	
 	<!-- Bootstrap styles -->
-	<link rel="stylesheet" href="lib/bootstrap.css">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	
 	<!-- Toggle Switch -->
-	<link rel="stylesheet" href="toggle-switch.css">
+	<link rel="stylesheet" href="dist/toggle-switch.css">
 	
 	<!-- Prism Syntax Highlighter -->
-    <link rel="stylesheet" href="lib/prism/prism-light.css">
-    <script src="lib/prism/prism.js"></script>
+    <link rel="stylesheet" href="bower_components/prism/prism.css">
+    <link rel="stylesheet" href="bower_components/prism/prism-okaidia.css">
+    <script src="bower_components/prism/prism.js"></script>
 </head>
 <body>
 	
@@ -47,7 +48,7 @@
 					<span>Off</span>
 				</p>
 				
-				<a class="slide-button btn"></a>
+				<a class="slide-button btn btn-primary"></a>
 			</label>
 		</header>
 		
@@ -96,7 +97,7 @@
 				<input id="month" name="view" type="radio">	
 				<label for="month" onclick="">Month</label>
 				
-				<span class="slide-button btn"></span>
+				<span class="slide-button btn btn-info"></span>
 			</div>
 			
 <pre><code class="language-markup">
@@ -127,7 +128,7 @@
 						<input id="month2" name="view" type="radio">	
 						<label for="month2" onclick="">Month</label>
 						
-						<span class="slide-button btn"></span>
+						<span class="slide-button btn btn-default"></span>
 					</div>
 				</div>
 			</form>
@@ -252,7 +253,7 @@
 			<form class="form-horizontal">
 				<div class="control-group">
 					<label class="control-label">View</label>
-					<div class="controls btn disabled switch switch-five">
+					<div class="controls btn switch switch-five">
 						<input id="week9" name="view" type="radio" checked>
 						<label for="week9" onclick="">Week</label>
 

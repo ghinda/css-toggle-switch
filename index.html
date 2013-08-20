@@ -11,11 +11,12 @@
 	<link rel="stylesheet" href="demo.css">
 	
 	<!-- Toggle Switch -->
-	<link rel="stylesheet" href="toggle-switch.css">
+	<link rel="stylesheet" href="dist/toggle-switch.css">
 	
 	<!-- Prism Syntax Highlighter -->
-    <link rel="stylesheet" href="lib/prism/prism.css">
-    <script src="lib/prism/prism.js"></script>
+    <link rel="stylesheet" href="bower_components/prism/prism.css">
+    <link rel="stylesheet" href="bower_components/prism/prism-okaidia.css">
+    <script src="bower_components/prism/prism.js"></script>
 </head>
 <body>
 
@@ -406,7 +407,7 @@
 		
 		<footer>
 			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net" title="Ghinda - Ionuț Colceriu">Ionuț Colceriu</a>.
-			<p><small>Latest update: March 2013</small></p>
+			<p><small>Latest update: {{ page.date | date: "%d %B %Y" }}</small></p>
 		</footer>
 		
 	</div>
