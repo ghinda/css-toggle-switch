@@ -1,0 +1,7 @@
+{
+	"name": "css-toggle-switch",
+	"description": "Accessible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.",
+	"version": "1.0.0",
+	"main": "dist/css-toggle-switch.css",
+	"author": "Ionut Colceriu"
+}

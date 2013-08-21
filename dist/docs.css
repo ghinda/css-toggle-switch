@@ -1,5 +1,4 @@
 /* Demo Styles. Not required by the toggle switches */
-/* line 2, ../src/docs.scss */
 body {
   background-color: #41464f;
   font-family: sans-serif;
@@ -7,79 +6,65 @@ body {
   color: #fff;
 }
 
-/* line 10, ../src/docs.scss */
 .container-narrow {
   max-width: 630px;
   padding: 10px 0;
   margin: 0 auto;
 }
 
-/* line 16, ../src/docs.scss */
 .container-foundation {
   max-width: 768px;
   padding: 10px 0;
   margin: 0 auto;
 }
 
-/* line 22, ../src/docs.scss */
 code {
   background: none !important;
 }
 
-/* line 26, ../src/docs.scss */
 a {
   color: #38A3D4;
 }
 
-/* line 30, ../src/docs.scss */
 a:hover {
   text-decoration: none;
 }
 
-/* line 34, ../src/docs.scss */
 a img {
   border: 0;
 }
 
-/* line 38, ../src/docs.scss */
 section {
   padding-bottom: 5%;
 }
 
-/* line 42, ../src/docs.scss */
 h1 {
   font-size: 300%;
 }
 
-/* line 46, ../src/docs.scss */
 h2 {
   color: #BEC8DA;
 }
 
-/* line 50, ../src/docs.scss */
 h3 {
   color: #8C9CB9;
 }
 
-/* line 54, ../src/docs.scss */
 code {
   color: #B5E1F5;
 }
 
-/* line 58, ../src/docs.scss */
 footer {
   text-align: center;
   font-size: 80%;
 }
 
-/* line 64, ../src/docs.scss */
 .toggle.android p,
 .toggle.candy p {
   color: #fff !important;
 }
 
 /* github ribbon */
-/* line 69, ../src/docs.scss */
 .ribbon {
   position: absolute;
   top: 0;
@@ -87,40 +72,34 @@ footer {
 }
 
 /* header */
-/* line 77, ../src/docs.scss */
 header {
   position: relative;
   overflow: hidden;
 }
 
-/* line 82, ../src/docs.scss */
 header h1 {
   margin: 30px 0 5px;
   letter-spacing: -0.08em;
 }
 
-/* line 88, ../src/docs.scss */
 .description {
   width: 80%;
   margin-top: 0;
   color: #888;
-  font-size: 80%;
+  font-size: 100%;
 }
 
-/* line 96, ../src/docs.scss */
 .frameworks {
   float: left;
   width: 65%;
   font-size: 140%;
 }
 
-/* line 104, ../src/docs.scss */
 .frameworks,
 .download-button {
   margin: 50px 0;
 }
 
-/* line 109, ../src/docs.scss */
 .download-button {
   float: left;
   width: 25%;
@@ -133,17 +112,14 @@ header h1 {
   text-decoration: none;
 }
 
-/* line 123, ../src/docs.scss */
 .download-button:hover {
   background-color: #57bbdf;
 }
 
-/* line 127, ../src/docs.scss */
 .download-button:active {
   background-color: #157192;
 }
 
-/* line 131, ../src/docs.scss */
 .header-toggle {
   position: absolute !important;
   top: 43px;
@@ -152,7 +128,6 @@ header h1 {
 }
 
 /* examples */
-/* line 140, ../src/docs.scss */
 .example {
   padding: 3%;
   margin: 0 -3% 3em -3%;
@@ -160,7 +135,6 @@ header h1 {
   border-radius: 2px;
 }
 
-/* line 148, ../src/docs.scss */
 body .example pre {
   clear: both;
   padding: 1.5em 0 0 0;
@@ -169,19 +143,16 @@ body .example pre {
 }
 
 /* Default form styles */
-/* line 157, ../src/docs.scss */
 fieldset {
   margin: 0 0 2em 0;
   border: 0;
 }
 
-/* line 162, ../src/docs.scss */
 fieldset legend {
   color: #fff;
 }
 
 /* Bootstrap Demo */
-/* line 167, ../src/docs.scss */
 .bootstrap-container {
   max-width: 630px;
   margin: 10px auto;

@@ -7,12 +7,13 @@
 	<meta name="description" content="Accessible, screen-reader friendly, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.">
 	<meta name="author" content="Ionuț Colceriu">
 
-	<!-- Foundation styles -->
 	<link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
-	<link rel="stylesheet" href="dist/foundation.css">
 
-	<!-- Standalone demo styles, not required by the toggles --->
+	<!-- Docs styles, not required by the switches -->
 	<link rel="stylesheet" href="dist/docs.css">
+
+	<!-- Foundation styles -->
+	<link rel="stylesheet" href="dist/foundation.css">
 
 	<!--
 	Toggle Switch
@@ -35,21 +36,23 @@
 		<header class="row">
 			<h1>CSS Toggle Switches</h1>
 
-			<p class="description">Accessible, screen-reader friendly, flexible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. </p>
+			<p class="description">Accessible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. </p>
 
 			<p class="frameworks">
 				These examples use Foundation, you can also use the <a href="index.html">toggles alone</a>,
 				or with <a href="bootstrap.html">Bootstrap</a>.
 			</p>
 
-			<div class="switch header-toggle small-2">
-				<input id="x" name="switch-x" type="radio" checked>
-				<label for="x" onclick="">Off</label>
+			<div class="small-2 header-toggle">
+				<div class="switch">
+					<input id="x" name="switch-x" type="radio" checked>
+					<label for="x" onclick="">Off</label>
 
-				<input id="x1" name="switch-x" type="radio">
-				<label for="x1" onclick="">On</label>
+					<input id="x1" name="switch-x" type="radio">
+					<label for="x1" onclick="">On</label>
 
-				<span></span>
+					<span></span>
+				</div>
 			</div>
 
 		</header>
@@ -70,8 +73,8 @@
 				<a href="http://foundation.zurb.com/" target="_blank">Get Foundation.</a>
 			</h3>
 
-			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net" title="Ghinda - Ionuț Colceriu">Ionuț Colceriu</a>.
-			<p><small>Latest update: March 2013</small></p>
+			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net">Ionuț Colceriu</a>.
+			<p><small>Latest update: {{ page.date | date: "%d %B %Y" }}</small></p>
 		</footer>
 
 	</div>

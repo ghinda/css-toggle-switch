@@ -1,11 +1,13 @@
 @charset "UTF-8";
-/* ------------------------------------------
-CSS TOGGLE SWITCHES (Ionuț Colceriu)
-Licensed under Unlicense
-https://github.com/ghinda/css-toggle-switch
------------------------------------------- */
+/*
+ * CSS TOGGLE SWITCHES
+ * Unlicense
+ *
+ * Ionuț Colceriu - ghinda.net
+ * https://github.com/ghinda/css-toggle-switch
+ *
+ */
 /* Hide by default */
-/* line 10, ../src/toggle-switch.scss */
 .switch .slide-button,
 .toggle p span {
   display: none;
@@ -18,7 +20,6 @@ https://github.com/ghinda/css-toggle-switch
 @media only screen {
   /* Checkbox
    */
-  /* line 23, ../src/toggle-switch.scss */
   .toggle {
     position: relative;
     padding: 0;
@@ -28,7 +29,6 @@ https://github.com/ghinda/css-toggle-switch
   /* Position the label over all the elements, except the slide-button
    * Clicking anywhere on the label will change the switch-state
    */
-  /* line 32, ../src/toggle-switch.scss */
   .toggle label {
     position: relative;
     z-index: 3;
@@ -38,14 +38,12 @@ https://github.com/ghinda/css-toggle-switch
 
   /* Don't hide the input from screen-readers and keyboard access
    */
-  /* line 42, ../src/toggle-switch.scss */
   .toggle input {
     position: absolute;
     opacity: 0;
     z-index: 5;
   }
 
-  /* line 48, ../src/toggle-switch.scss */
   .toggle p {
     position: absolute;
     left: -100px;
@@ -55,7 +53,6 @@ https://github.com/ghinda/css-toggle-switch
     text-align: left;
   }
 
-  /* line 59, ../src/toggle-switch.scss */
   .toggle p span {
     position: absolute;
     top: 0;
@@ -67,12 +64,10 @@ https://github.com/ghinda/css-toggle-switch
     text-align: center;
   }
 
-  /* line 72, ../src/toggle-switch.scss */
   .toggle p span:last-child {
     left: 50%;
   }
 
-  /* line 76, ../src/toggle-switch.scss */
   .toggle .slide-button {
     position: absolute;
     right: 0;
@@ -86,19 +81,16 @@ https://github.com/ghinda/css-toggle-switch
 
   /* Radio Switch
    */
-  /* line 90, ../src/toggle-switch.scss */
   .switch {
     position: relative;
     padding: 0;
   }
 
-  /* line 95, ../src/toggle-switch.scss */
   .switch input {
     position: absolute;
     opacity: 0;
   }
 
-  /* line 100, ../src/toggle-switch.scss */
   .switch label {
     position: relative;
     z-index: 2;
@@ -109,7 +101,6 @@ https://github.com/ghinda/css-toggle-switch
     text-align: center;
   }
 
-  /* line 112, ../src/toggle-switch.scss */
   .switch .slide-button {
     position: absolute;
     top: 0;
@@ -120,86 +111,71 @@ https://github.com/ghinda/css-toggle-switch
     height: 100%;
   }
 
-  /* line 123, ../src/toggle-switch.scss */
   .switch input:last-of-type:checked ~ .slide-button {
     left: 50%;
   }
 
   /* Switch with 3 items */
-  /* line 129, ../src/toggle-switch.scss */
   .switch.switch-three label,
   .switch.switch-three .slide-button {
     width: 33.3%;
   }
 
-  /* line 133, ../src/toggle-switch.scss */
   .switch.switch-three input:checked:nth-of-type(2) ~ .slide-button {
     left: 33.3%;
   }
 
-  /* line 137, ../src/toggle-switch.scss */
   .switch.switch-three input:checked:last-of-type ~ .slide-button {
     left: 66.6%;
   }
 
   /* Switch with 4 items */
-  /* line 143, ../src/toggle-switch.scss */
   .switch.switch-four label,
   .switch.switch-four .slide-button {
     width: 25%;
   }
 
-  /* line 147, ../src/toggle-switch.scss */
   .switch.switch-four input:checked:nth-of-type(2) ~ .slide-button {
     left: 25%;
   }
 
-  /* line 151, ../src/toggle-switch.scss */
   .switch.switch-four input:checked:nth-of-type(3) ~ .slide-button {
     left: 50%;
   }
 
-  /* line 155, ../src/toggle-switch.scss */
   .switch.switch-four input:checked:last-of-type ~ .slide-button {
     left: 75%;
   }
 
   /* Switch with 5 items */
-  /* line 161, ../src/toggle-switch.scss */
   .switch.switch-five label,
   .switch.switch-five .slide-button {
     width: 20%;
   }
 
-  /* line 165, ../src/toggle-switch.scss */
   .switch.switch-five input:checked:nth-of-type(2) ~ .slide-button {
     left: 20%;
   }
 
-  /* line 169, ../src/toggle-switch.scss */
   .switch.switch-five input:checked:nth-of-type(3) ~ .slide-button {
     left: 40%;
   }
 
-  /* line 173, ../src/toggle-switch.scss */
   .switch.switch-five input:checked:nth-of-type(4) ~ .slide-button {
     left: 60%;
   }
 
-  /* line 177, ../src/toggle-switch.scss */
   .switch.switch-five input:checked:last-of-type ~ .slide-button {
     left: 80%;
   }
 
   /* Shared */
-  /* line 183, ../src/toggle-switch.scss */
   .toggle,
   .switch {
     display: block;
     height: 30px;
   }
 
-  /* line 189, ../src/toggle-switch.scss */
   .switch *,
   .toggle * {
     -webkit-box-sizing: border-box;
@@ -209,7 +185,6 @@ https://github.com/ghinda/css-toggle-switch
     box-sizing: border-box;
   }
 
-  /* line 198, ../src/toggle-switch.scss */
   .switch .slide-button,
   .toggle .slide-button {
     display: block;
@@ -220,7 +195,6 @@ https://github.com/ghinda/css-toggle-switch
     transition: all 0.3s ease-out;
   }
 
-  /* line 210, ../src/toggle-switch.scss */
   .toggle label,
   .toggle p,
   .switch label {
@@ -228,13 +202,11 @@ https://github.com/ghinda/css-toggle-switch
     vertical-align: middle;
   }
 
-  /* line 215, ../src/toggle-switch.scss */
   .toggle input:checked ~ .slide-button {
     right: 50%;
   }
 
   /* Outline the toggles when the inputs are focused */
-  /* line 221, ../src/toggle-switch.scss */
   .toggle input:focus ~ .slide-button,
   .switch input:focus + label {
     outline: 1px dotted #888;
@@ -243,18 +215,15 @@ https://github.com/ghinda/css-toggle-switch
   /* Bugfix for older Webkit, including mobile Webkit. Adapted from:
    * http://css-tricks.com/webkit-sibling-bug/
    */
-  /* line 228, ../src/toggle-switch.scss */
   .switch, .toggle {
     -webkit-animation: bugfix infinite 1s;
   }
 
   @-webkit-keyframes bugfix {
-    /* line 232, ../src/toggle-switch.scss */
     from {
       position: relative;
     }
 
-    /* line 232, ../src/toggle-switch.scss */
     to {
       position: relative;
     }
@@ -265,7 +234,6 @@ https://github.com/ghinda/css-toggle-switch
    * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
    * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
    */
-  /* line 243, ../src/toggle-switch.scss */
   .candy {
     background-color: #2d3035;
     color: #fff;
@@ -276,13 +244,11 @@ https://github.com/ghinda/css-toggle-switch
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0px rgba(255, 255, 255, 0.2);
   }
 
-  /* line 256, ../src/toggle-switch.scss */
   .candy input:checked + label {
     color: #333;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
-  /* line 261, ../src/toggle-switch.scss */
   .candy .slide-button {
     border: 1px solid #333;
     background-color: #70c66b;
@@ -295,23 +261,19 @@ https://github.com/ghinda/css-toggle-switch
     border-radius: 3px;
   }
 
-  /* line 277, ../src/toggle-switch.scss */
   .candy p {
     color: #333;
     text-shadow: none;
   }
 
-  /* line 283, ../src/toggle-switch.scss */
   .candy span {
     color: #fff;
   }
 
-  /* line 287, ../src/toggle-switch.scss */
   .candy.blue .slide-button {
     background-color: #38a3d4;
   }
 
-  /* line 291, ../src/toggle-switch.scss */
   .candy.yellow .slide-button {
     background-color: #f5e560;
   }
@@ -319,23 +281,19 @@ https://github.com/ghinda/css-toggle-switch
   /* Android Theme
    * Based on Holo
    */
-  /* line 299, ../src/toggle-switch.scss */
   .android {
     background-color: #b6b6b6;
     color: #fff;
   }
 
-  /* line 305, ../src/toggle-switch.scss */
   .android.toggle {
     border: 2px solid #b6b6b6;
   }
 
-  /* line 309, ../src/toggle-switch.scss */
   .android.switch {
     overflow: hidden;
   }
 
-  /* line 313, ../src/toggle-switch.scss */
   .android.switch .slide-button {
     background-color: #279fca;
     -webkit-transform: skew(20deg) translateX(10px);
@@ -345,19 +303,16 @@ https://github.com/ghinda/css-toggle-switch
     transform: skew(20deg);
   }
 
-  /* line 323, ../src/toggle-switch.scss */
   .android.toggle .slide-button {
     border-radius: 2px;
     background-color: #848484;
   }
 
   /* Selected ON toggle */
-  /* line 330, ../src/toggle-switch.scss */
   .android.toggle input:first-of-type:checked ~ .slide-button {
     background-color: #279fca;
   }
 
-  /* line 334, ../src/toggle-switch.scss */
   .android.switch input:first-of-type:checked ~ .slide-button {
     -webkit-transform: skew(20deg) translateX(-10px);
     -moz-transform: skew(20deg) translateX(-10px);
@@ -366,17 +321,14 @@ https://github.com/ghinda/css-toggle-switch
     transform: skew(20deg) translateX(-10px);
   }
 
-  /* line 342, ../src/toggle-switch.scss */
   .android p {
     color: #333;
   }
 
-  /* line 346, ../src/toggle-switch.scss */
   .android span {
     color: #fff;
   }
 
-  /* line 351, ../src/toggle-switch.scss */
   .android.switch,
   .android span {
     text-transform: uppercase;
@@ -385,7 +337,6 @@ https://github.com/ghinda/css-toggle-switch
   /* iOS Theme
    * Similar to iOS but more accessible
    */
-  /* line 359, ../src/toggle-switch.scss */
   .ios {
     background: -webkit-linear-gradient(top, #cfcfcf, #efefef 50%, #f9f9f9 50%, #fefefe);
     background: -moz-linear-gradient(top, #cfcfcf, #efefef 50%, #f9f9f9 50%, #fefefe);
@@ -402,7 +353,6 @@ https://github.com/ghinda/css-toggle-switch
     text-shadow: none;
   }
 
-  /* line 378, ../src/toggle-switch.scss */
   .ios.toggle .slide-button {
     border: 1px solid #919191;
     background: -webkit-linear-gradient(top, #cdcdcd, #fbfbfb);
@@ -416,14 +366,12 @@ https://github.com/ghinda/css-toggle-switch
   }
 
   /* Selected ON toggle */
-  /* line 394, ../src/toggle-switch.scss */
   .ios.toggle input:first-of-type:checked ~ p span:first-child,
   .ios.switch input:checked + label {
     color: #fff;
     text-shadow: 0 -1px 0 #1b3b6f;
   }
 
-  /* line 400, ../src/toggle-switch.scss */
   .ios.toggle input:first-of-type:checked ~ .slide-button,
   .ios.switch .slide-button {
     background: -webkit-linear-gradient(top, #3672dc, #4085ec 50%, #4d8fef 50%, #76adfc);
@@ -439,7 +387,6 @@ https://github.com/ghinda/css-toggle-switch
     text-shadow: 0 -1px 0 #1b3b6f;
   }
 
-  /* line 417, ../src/toggle-switch.scss */
   .ios.toggle p span {
     color: #7f7f7f;
   }

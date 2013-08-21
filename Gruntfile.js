@@ -70,7 +70,8 @@ module.exports = function (grunt) {
 		compass: {
 			options: {
 				sassDir: '<%= yeoman.app %>',
-				cssDir: './dist'
+				cssDir: './dist',
+				noLineComments: true
 			},
 			dist: {},
 			server: {
@@ -91,7 +92,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('server', function (target) {
 		if (target === 'dist') {
-			return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
+			return grunt.task.run(['build', 'connect:dist:keepalive']);
 		}
 
 		grunt.task.run([
