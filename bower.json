@@ -4,16 +4,17 @@
 	"main": "./dist/toggle-switch.css",
 	"author": "Ionut Colceriu",
 	"ignore": [
-		"bower_components/",
-		"dist/docs.css",
-		"dist/foundation.css",
-		"src/docs.scss",
-		"src/foundation.scss",
+		"./bower_components/",
+		"./dist/docs.css",
+		"./dist/foundation.css",
+		"./src/docs.scss",
+		"./src/foundation.scss",
 		"CHANGELOG.md",
 		"*.html",
 		"Gruntfile.js",
 		"package.json",
-		"component.json"
+		"component.json",
+		".gitignore"
 	],
 	"devDependencies": {
 		"bootstrap": "~3",
