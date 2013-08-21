@@ -5,7 +5,7 @@ Licensed under Unlicense
 https://github.com/ghinda/css-toggle-switch
 ------------------------------------------ */
 /* Hide by default */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000310}}
+/* line 10, ../src/toggle-switch.scss */
 .switch .slide-button,
 .toggle p span {
   display: none;
@@ -18,7 +18,7 @@ https://github.com/ghinda/css-toggle-switch
 @media only screen {
   /* Checkbox
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000323}}
+  /* line 23, ../src/toggle-switch.scss */
   .toggle {
     position: relative;
     padding: 0;
@@ -28,7 +28,7 @@ https://github.com/ghinda/css-toggle-switch
   /* Position the label over all the elements, except the slide-button
    * Clicking anywhere on the label will change the switch-state
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000332}}
+  /* line 32, ../src/toggle-switch.scss */
   .toggle label {
     position: relative;
     z-index: 3;
@@ -38,14 +38,14 @@ https://github.com/ghinda/css-toggle-switch
 
   /* Don't hide the input from screen-readers and keyboard access
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000342}}
+  /* line 42, ../src/toggle-switch.scss */
   .toggle input {
     position: absolute;
     opacity: 0;
     z-index: 5;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000348}}
+  /* line 48, ../src/toggle-switch.scss */
   .toggle p {
     position: absolute;
     left: -100px;
@@ -55,7 +55,7 @@ https://github.com/ghinda/css-toggle-switch
     text-align: left;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000359}}
+  /* line 59, ../src/toggle-switch.scss */
   .toggle p span {
     position: absolute;
     top: 0;
@@ -67,12 +67,12 @@ https://github.com/ghinda/css-toggle-switch
     text-align: center;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000372}}
+  /* line 72, ../src/toggle-switch.scss */
   .toggle p span:last-child {
     left: 50%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000376}}
+  /* line 76, ../src/toggle-switch.scss */
   .toggle .slide-button {
     position: absolute;
     right: 0;
@@ -86,19 +86,19 @@ https://github.com/ghinda/css-toggle-switch
 
   /* Radio Switch
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000390}}
+  /* line 90, ../src/toggle-switch.scss */
   .switch {
     position: relative;
     padding: 0;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\0000395}}
+  /* line 95, ../src/toggle-switch.scss */
   .switch input {
     position: absolute;
     opacity: 0;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003100}}
+  /* line 100, ../src/toggle-switch.scss */
   .switch label {
     position: relative;
     z-index: 2;
@@ -109,7 +109,7 @@ https://github.com/ghinda/css-toggle-switch
     text-align: center;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003112}}
+  /* line 112, ../src/toggle-switch.scss */
   .switch .slide-button {
     position: absolute;
     top: 0;
@@ -120,86 +120,86 @@ https://github.com/ghinda/css-toggle-switch
     height: 100%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003123}}
+  /* line 123, ../src/toggle-switch.scss */
   .switch input:last-of-type:checked ~ .slide-button {
     left: 50%;
   }
 
   /* Switch with 3 items */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003129}}
+  /* line 129, ../src/toggle-switch.scss */
   .switch.switch-three label,
   .switch.switch-three .slide-button {
     width: 33.3%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003133}}
+  /* line 133, ../src/toggle-switch.scss */
   .switch.switch-three input:checked:nth-of-type(2) ~ .slide-button {
     left: 33.3%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003137}}
+  /* line 137, ../src/toggle-switch.scss */
   .switch.switch-three input:checked:last-of-type ~ .slide-button {
     left: 66.6%;
   }
 
   /* Switch with 4 items */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003143}}
+  /* line 143, ../src/toggle-switch.scss */
   .switch.switch-four label,
   .switch.switch-four .slide-button {
     width: 25%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003147}}
+  /* line 147, ../src/toggle-switch.scss */
   .switch.switch-four input:checked:nth-of-type(2) ~ .slide-button {
     left: 25%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003151}}
+  /* line 151, ../src/toggle-switch.scss */
   .switch.switch-four input:checked:nth-of-type(3) ~ .slide-button {
     left: 50%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003155}}
+  /* line 155, ../src/toggle-switch.scss */
   .switch.switch-four input:checked:last-of-type ~ .slide-button {
     left: 75%;
   }
 
   /* Switch with 5 items */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003161}}
+  /* line 161, ../src/toggle-switch.scss */
   .switch.switch-five label,
   .switch.switch-five .slide-button {
     width: 20%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003165}}
+  /* line 165, ../src/toggle-switch.scss */
   .switch.switch-five input:checked:nth-of-type(2) ~ .slide-button {
     left: 20%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003169}}
+  /* line 169, ../src/toggle-switch.scss */
   .switch.switch-five input:checked:nth-of-type(3) ~ .slide-button {
     left: 40%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003173}}
+  /* line 173, ../src/toggle-switch.scss */
   .switch.switch-five input:checked:nth-of-type(4) ~ .slide-button {
     left: 60%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003177}}
+  /* line 177, ../src/toggle-switch.scss */
   .switch.switch-five input:checked:last-of-type ~ .slide-button {
     left: 80%;
   }
 
   /* Shared */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003183}}
+  /* line 183, ../src/toggle-switch.scss */
   .toggle,
   .switch {
     display: block;
     height: 30px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003189}}
+  /* line 189, ../src/toggle-switch.scss */
   .switch *,
   .toggle * {
     -webkit-box-sizing: border-box;
@@ -209,7 +209,7 @@ https://github.com/ghinda/css-toggle-switch
     box-sizing: border-box;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003198}}
+  /* line 198, ../src/toggle-switch.scss */
   .switch .slide-button,
   .toggle .slide-button {
     display: block;
@@ -220,7 +220,7 @@ https://github.com/ghinda/css-toggle-switch
     transition: all 0.3s ease-out;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003210}}
+  /* line 210, ../src/toggle-switch.scss */
   .toggle label,
   .toggle p,
   .switch label {
@@ -228,13 +228,13 @@ https://github.com/ghinda/css-toggle-switch
     vertical-align: middle;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003215}}
+  /* line 215, ../src/toggle-switch.scss */
   .toggle input:checked ~ .slide-button {
     right: 50%;
   }
 
   /* Outline the toggles when the inputs are focused */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003221}}
+  /* line 221, ../src/toggle-switch.scss */
   .toggle input:focus ~ .slide-button,
   .switch input:focus + label {
     outline: 1px dotted #888;
@@ -243,7 +243,7 @@ https://github.com/ghinda/css-toggle-switch
   /* Bugfix for older Webkit, including mobile Webkit. Adapted from:
    * http://css-tricks.com/webkit-sibling-bug/
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003228}}
+  /* line 228, ../src/toggle-switch.scss */
   .switch, .toggle {
     -webkit-animation: bugfix infinite 1s;
   }
@@ -265,7 +265,7 @@ https://github.com/ghinda/css-toggle-switch
    * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
    * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003243}}
+  /* line 243, ../src/toggle-switch.scss */
   .candy {
     background-color: #2d3035;
     color: #fff;
@@ -276,13 +276,13 @@ https://github.com/ghinda/css-toggle-switch
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0px rgba(255, 255, 255, 0.2);
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003256}}
+  /* line 256, ../src/toggle-switch.scss */
   .candy input:checked + label {
     color: #333;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003261}}
+  /* line 261, ../src/toggle-switch.scss */
   .candy .slide-button {
     border: 1px solid #333;
     background-color: #70c66b;
@@ -295,23 +295,23 @@ https://github.com/ghinda/css-toggle-switch
     border-radius: 3px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003277}}
+  /* line 277, ../src/toggle-switch.scss */
   .candy p {
     color: #333;
     text-shadow: none;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003283}}
+  /* line 283, ../src/toggle-switch.scss */
   .candy span {
     color: #fff;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003287}}
+  /* line 287, ../src/toggle-switch.scss */
   .candy.blue .slide-button {
     background-color: #38a3d4;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003291}}
+  /* line 291, ../src/toggle-switch.scss */
   .candy.yellow .slide-button {
     background-color: #f5e560;
   }
@@ -319,23 +319,23 @@ https://github.com/ghinda/css-toggle-switch
   /* Android Theme
    * Based on Holo
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003299}}
+  /* line 299, ../src/toggle-switch.scss */
   .android {
     background-color: #b6b6b6;
     color: #fff;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003305}}
+  /* line 305, ../src/toggle-switch.scss */
   .android.toggle {
     border: 2px solid #b6b6b6;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003309}}
+  /* line 309, ../src/toggle-switch.scss */
   .android.switch {
     overflow: hidden;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003313}}
+  /* line 313, ../src/toggle-switch.scss */
   .android.switch .slide-button {
     background-color: #279fca;
     -webkit-transform: skew(20deg) translateX(10px);
@@ -345,19 +345,19 @@ https://github.com/ghinda/css-toggle-switch
     transform: skew(20deg);
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003323}}
+  /* line 323, ../src/toggle-switch.scss */
   .android.toggle .slide-button {
     border-radius: 2px;
     background-color: #848484;
   }
 
   /* Selected ON toggle */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003330}}
+  /* line 330, ../src/toggle-switch.scss */
   .android.toggle input:first-of-type:checked ~ .slide-button {
     background-color: #279fca;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003334}}
+  /* line 334, ../src/toggle-switch.scss */
   .android.switch input:first-of-type:checked ~ .slide-button {
     -webkit-transform: skew(20deg) translateX(-10px);
     -moz-transform: skew(20deg) translateX(-10px);
@@ -366,17 +366,17 @@ https://github.com/ghinda/css-toggle-switch
     transform: skew(20deg) translateX(-10px);
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003342}}
+  /* line 342, ../src/toggle-switch.scss */
   .android p {
     color: #333;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003346}}
+  /* line 346, ../src/toggle-switch.scss */
   .android span {
     color: #fff;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003351}}
+  /* line 351, ../src/toggle-switch.scss */
   .android.switch,
   .android span {
     text-transform: uppercase;
@@ -385,7 +385,7 @@ https://github.com/ghinda/css-toggle-switch
   /* iOS Theme
    * Similar to iOS but more accessible
    */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003359}}
+  /* line 359, ../src/toggle-switch.scss */
   .ios {
     background: -webkit-linear-gradient(top, #cfcfcf, #efefef 50%, #f9f9f9 50%, #fefefe);
     background: -moz-linear-gradient(top, #cfcfcf, #efefef 50%, #f9f9f9 50%, #fefefe);
@@ -402,7 +402,7 @@ https://github.com/ghinda/css-toggle-switch
     text-shadow: none;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003378}}
+  /* line 378, ../src/toggle-switch.scss */
   .ios.toggle .slide-button {
     border: 1px solid #919191;
     background: -webkit-linear-gradient(top, #cdcdcd, #fbfbfb);
@@ -416,14 +416,14 @@ https://github.com/ghinda/css-toggle-switch
   }
 
   /* Selected ON toggle */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003394}}
+  /* line 394, ../src/toggle-switch.scss */
   .ios.toggle input:first-of-type:checked ~ p span:first-child,
   .ios.switch input:checked + label {
     color: #fff;
     text-shadow: 0 -1px 0 #1b3b6f;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003400}}
+  /* line 400, ../src/toggle-switch.scss */
   .ios.toggle input:first-of-type:checked ~ .slide-button,
   .ios.switch .slide-button {
     background: -webkit-linear-gradient(top, #3672dc, #4085ec 50%, #4d8fef 50%, #76adfc);
@@ -439,7 +439,7 @@ https://github.com/ghinda/css-toggle-switch
     text-shadow: 0 -1px 0 #1b3b6f;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Mokush\/Dev\/css-toggle-switch\/src\/toggle-switch\.scss}line{font-family:\00003417}}
+  /* line 417, ../src/toggle-switch.scss */
   .ios.toggle p span {
     color: #7f7f7f;
   }

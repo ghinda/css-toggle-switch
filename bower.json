@@ -1,11 +1,16 @@
 {
 	"name": "css-toggle-switch",
 	"version": "1.0.0",
-	"dependencies": {
+	"main": "dist/toggle-switch.css",
+	"author": "Ionut Colceriu",
+	"ignore": [
+		"CHANGELOG.md",
+		"component.json"
+	],
+	"devDependencies": {
 		"bootstrap": "~3",
 		"foundation": "~4",
+		"normalize-css": "*",
 		"prism": "gh-pages"
-	},
-	"devDependencies": {
 	}
 }
