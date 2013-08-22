@@ -300,7 +300,7 @@
     -moz-transform: skew(20deg) translateX(10px);
     -ms-transform: skew(20deg) translateX(10px);
     -o-transform: skew(20deg) translateX(10px);
-    transform: skew(20deg);
+    transform: skew(20deg) translateX(10px);
   }
 
   .android.toggle .slide-button {
