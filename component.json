@@ -5,5 +5,8 @@
 	"description": "Accessible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.",
 	"keywords": [ "toggle", "switch", "ui" ],
 	"repo": "ghinda/css-toggle-switch",
-	"main": "dist/css-toggle-switch.css"
+	"styles": [
+		"dist/css-toggle-switch.css",
+		"src/css-toggle-switch.scss"
+	]
 }
