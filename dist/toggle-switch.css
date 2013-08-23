@@ -134,9 +134,60 @@
     -webkit-animation: bugfix infinite 1s;
     position: relative;
     padding: 0;
+    /* Generate styles for the multiple states */
     /* Switch with 3 items */
-    /* Switch with 4 items */
-    /* Switch with 5 items */
+    	/*&.switch-three label,
+    	&.switch-three .slide-button {
+    		width: 33.3%;
+    	}
+    
+    	&.switch-three input:checked:nth-of-type(2) ~ .slide-button {
+    		left: 33.3%;
+    	}
+    
+    	&.switch-three input:checked:last-of-type ~ .slide-button {
+    		left: 66.6%;
+    	}
+    
+    	/* Switch with 4 items *
+    	&.switch-four label,
+    	&.switch-four .slide-button {
+    		width: 25%;
+    	}
+    
+    	&.switch-four input:checked:nth-of-type(2) ~ .slide-button {
+    		left: 25%;
+    	}
+    
+    	&.switch-four input:checked:nth-of-type(3) ~ .slide-button {
+    		left: 50%;
+    	}
+    
+    	&.switch-four input:checked:last-of-type ~ .slide-button {
+    		left: 75%;
+    	}
+    
+    	/* Switch with 5 items *
+    	&.switch-five label,
+    	&.switch-five .slide-button {
+    		width: 20%;
+    	}
+    
+    	&.switch-five input:checked:nth-of-type(2) ~ .slide-button {
+    		left: 20%;
+    	}
+    
+    	&.switch-five input:checked:nth-of-type(3) ~ .slide-button {
+    		left: 40%;
+    	}
+    
+    	&.switch-five input:checked:nth-of-type(4) ~ .slide-button {
+    		left: 60%;
+    	}
+    
+    	&.switch-five input:checked:last-of-type ~ .slide-button {
+    		left: 80%;
+    	}*/
   }
   .switch * {
     -webkit-box-sizing: border-box;
@@ -184,40 +235,43 @@
   .switch input:last-of-type:checked ~ .slide-button {
     left: 50%;
   }
-  .switch.switch-three label, .switch.switch-three .slide-button {
-    width: 33.3%;
+  .switch.switch-3 label,
+  .switch.switch-3 .slide-button {
+    width: 33.33333%;
   }
-  .switch.switch-three input:checked:nth-of-type(2) ~ .slide-button {
-    left: 33.3%;
+  .switch.switch-3 input:checked:nth-of-type(2) ~ .slide-button {
+    left: 33.33333%;
   }
-  .switch.switch-three input:checked:last-of-type ~ .slide-button {
-    left: 66.6%;
+  .switch.switch-3 input:checked:last-of-type ~ .slide-button {
+    left: 66.66667%;
   }
-  .switch.switch-four label, .switch.switch-four .slide-button {
+  .switch.switch-4 label,
+  .switch.switch-4 .slide-button {
     width: 25%;
   }
-  .switch.switch-four input:checked:nth-of-type(2) ~ .slide-button {
+  .switch.switch-4 input:checked:nth-of-type(2) ~ .slide-button {
     left: 25%;
   }
-  .switch.switch-four input:checked:nth-of-type(3) ~ .slide-button {
+  .switch.switch-4 input:checked:nth-of-type(3) ~ .slide-button {
     left: 50%;
   }
-  .switch.switch-four input:checked:last-of-type ~ .slide-button {
+  .switch.switch-4 input:checked:last-of-type ~ .slide-button {
     left: 75%;
   }
-  .switch.switch-five label, .switch.switch-five .slide-button {
+  .switch.switch-5 label,
+  .switch.switch-5 .slide-button {
     width: 20%;
   }
-  .switch.switch-five input:checked:nth-of-type(2) ~ .slide-button {
+  .switch.switch-5 input:checked:nth-of-type(2) ~ .slide-button {
     left: 20%;
   }
-  .switch.switch-five input:checked:nth-of-type(3) ~ .slide-button {
+  .switch.switch-5 input:checked:nth-of-type(3) ~ .slide-button {
     left: 40%;
   }
-  .switch.switch-five input:checked:nth-of-type(4) ~ .slide-button {
+  .switch.switch-5 input:checked:nth-of-type(4) ~ .slide-button {
     left: 60%;
   }
-  .switch.switch-five input:checked:last-of-type ~ .slide-button {
+  .switch.switch-5 input:checked:last-of-type ~ .slide-button {
     left: 80%;
   }
 
@@ -365,9 +419,9 @@
   }
   .ios.toggle input:first-of-type:checked ~ span:before {
     border-color: #53d76a;
-    -webkit-box-shadow: inset 0 0 0 50px #53d76a;
-    -moz-box-shadow: inset 0 0 0 50px #53d76a;
-    box-shadow: inset 0 0 0 50px #53d76a;
+    -webkit-box-shadow: inset 0 0 0 30px #53d76a;
+    -moz-box-shadow: inset 0 0 0 30px #53d76a;
+    box-shadow: inset 0 0 0 30px #53d76a;
   }
   .ios.toggle input:first-of-type:checked ~ span span {
     opacity: 0;
@@ -380,7 +434,7 @@
     background-color: #fafafa;
     border: 1px solid lightgrey;
     border-radius: 30px;
-    color: #535353;
+    color: #868686;
     -webkit-box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
     -moz-box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
     box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
@@ -392,5 +446,8 @@
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+  }
+  .ios input:checked + label {
+    color: #3a3a3a;
   }
 }

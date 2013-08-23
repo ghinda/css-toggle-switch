@@ -166,8 +166,31 @@
 		left: 50%;
 	}
 
+	/* Generate styles for the multiple states */
+	@for $i from 1 through 3 {
+		$state: $i + 2;
+		$width: 100 / ($i + 2);
+
+		&.switch-#{$state} {
+			label,
+			.slide-button {
+				width: $width * 1%;
+			}
+		}
+
+		@for $j from 2 through ($i + 1) {
+			&.switch-#{$state} input:checked:nth-of-type(#{$j}) ~ .slide-button {
+				left: $width * ($j - 1) * 1%;
+			}
+		}
+
+		&.switch-#{$state} input:checked:last-of-type ~ .slide-button {
+			left: 100 - $width * 1%;
+		}
+	}
+
 	/* Switch with 3 items */
-	&.switch-three label,
+	/*&.switch-three label,
 	&.switch-three .slide-button {
 		width: 33.3%;
 	}
@@ -180,7 +203,7 @@
 		left: 66.6%;
 	}
 
-	/* Switch with 4 items */
+	/* Switch with 4 items *
 	&.switch-four label,
 	&.switch-four .slide-button {
 		width: 25%;
@@ -198,7 +221,7 @@
 		left: 75%;
 	}
 
-	/* Switch with 5 items */
+	/* Switch with 5 items *
 	&.switch-five label,
 	&.switch-five .slide-button {
 		width: 20%;
@@ -218,7 +241,7 @@
 
 	&.switch-five input:checked:last-of-type ~ .slide-button {
 		left: 80%;
-	}
+	}*/
 
 }
 
@@ -432,7 +455,7 @@
 				~ span:before {
 					border-color: $green;
 
-					@include box-shadow(inset 0 0 0 50px $green);
+					@include box-shadow(inset 0 0 0 30px $green);
 				}
 
 				~ span span {
@@ -453,7 +476,7 @@
 			border: 1px solid $grey;
 			border-radius: 30px;
 
-			color: darken($grey, 50%);
+			color: darken($grey, 30%);
 
 			@include box-shadow(
 				inset rgba(0, 0, 0, 0.1) 0 1px 0
@@ -467,6 +490,11 @@
 			}
 
 		}
+
+		input:checked + label {
+			color: darken($grey, 60%);
+		}
+
 	}
 
 }
