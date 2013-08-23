@@ -7,6 +7,8 @@
  * https://github.com/ghinda/css-toggle-switch
  *
  */
+/* Toggle Switches
+ */
 /* Shared
  */
 @-webkit-keyframes bugfix {
@@ -23,13 +25,13 @@
  */
 /* Radio Switch
  */
-/* Hide by default */
+/* Hide by default
+ */
 .switch .slide-button,
 .toggle span span {
   display: none;
 }
 
-/* Toggle Switches */
 /* We can't test for a specific feature,
  * so we only target browsers with support for media queries.
  */
@@ -135,59 +137,6 @@
     position: relative;
     padding: 0;
     /* Generate styles for the multiple states */
-    /* Switch with 3 items */
-    	/*&.switch-three label,
-    	&.switch-three .slide-button {
-    		width: 33.3%;
-    	}
-    
-    	&.switch-three input:checked:nth-of-type(2) ~ .slide-button {
-    		left: 33.3%;
-    	}
-    
-    	&.switch-three input:checked:last-of-type ~ .slide-button {
-    		left: 66.6%;
-    	}
-    
-    	/* Switch with 4 items *
-    	&.switch-four label,
-    	&.switch-four .slide-button {
-    		width: 25%;
-    	}
-    
-    	&.switch-four input:checked:nth-of-type(2) ~ .slide-button {
-    		left: 25%;
-    	}
-    
-    	&.switch-four input:checked:nth-of-type(3) ~ .slide-button {
-    		left: 50%;
-    	}
-    
-    	&.switch-four input:checked:last-of-type ~ .slide-button {
-    		left: 75%;
-    	}
-    
-    	/* Switch with 5 items *
-    	&.switch-five label,
-    	&.switch-five .slide-button {
-    		width: 20%;
-    	}
-    
-    	&.switch-five input:checked:nth-of-type(2) ~ .slide-button {
-    		left: 20%;
-    	}
-    
-    	&.switch-five input:checked:nth-of-type(3) ~ .slide-button {
-    		left: 40%;
-    	}
-    
-    	&.switch-five input:checked:nth-of-type(4) ~ .slide-button {
-    		left: 60%;
-    	}
-    
-    	&.switch-five input:checked:last-of-type ~ .slide-button {
-    		left: 80%;
-    	}*/
   }
   .switch * {
     -webkit-box-sizing: border-box;
@@ -322,7 +271,6 @@
   }
 
   /* Android Theme
-   * Based on Holo
    */
   .android {
     background-color: #464747;
@@ -366,7 +314,6 @@
   }
 
   /* iOS Theme
-   * Similar to iOS but more accessible
    */
   .ios.toggle {
     color: lightgrey;
