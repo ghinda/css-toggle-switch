@@ -10,7 +10,7 @@
 /* Hide by default */
 
 .switch .slide-button,
-.toggle p span {
+.toggle span span {
 	display: none;
 }
 
@@ -48,7 +48,7 @@
 		z-index: 5;
 	}
 
-	.toggle p {
+	.toggle > span {
 		position: absolute;
 		left: -100px;
 
@@ -59,7 +59,7 @@
 		text-align: left;
 	}
 
-	.toggle p span {
+	.toggle span span {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -72,7 +72,7 @@
 		text-align: center;
 	}
 
-	.toggle p span:last-child {
+	.toggle span span:last-child {
 		left: 50%;
 	}
 
@@ -209,7 +209,7 @@
 	}
 
 	.toggle label,
-	.toggle p,
+	.toggle > span,
 	.switch label {
 		line-height: 30px;
 		vertical-align: middle;
@@ -277,7 +277,7 @@
 		border-radius: 3px;
 	}
 
-	.candy p {
+	.candy > span {
 		color: #333;
 
 		text-shadow: none;
@@ -342,7 +342,7 @@
 		transform: skew(20deg) translateX(-10px);
 	}
 
-	.android p {
+	.android > span {
 		color: #333;
 	}
 
@@ -393,7 +393,7 @@
 	}
 
 	/* Selected ON toggle */
-	.ios.toggle input:first-of-type:checked ~ p span:first-child,
+	.ios.toggle input:first-of-type:checked ~ span span:first-child,
 	.ios.switch input:checked + label {
 		color: #fff;
 		text-shadow: 0 -1px 0 #1b3b6f;
@@ -417,7 +417,7 @@
 		text-shadow: 0 -1px 0 #1b3b6f;
 	}
 
-	.ios.toggle p span {
+	.ios.toggle span span {
 		color: #7f7f7f;
 	}
 
