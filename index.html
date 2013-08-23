@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width">
 	<title>CSS Toggle Switches</title>
 	<meta name="description" content="Accessible, screen-reader friendly, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.">
 	<meta name="author" content="Ionuț Colceriu">
@@ -39,7 +39,7 @@
 			<a href="https://github.com/ghinda/css-toggle-switch/archive/gh-pages.zip" class="download-button">Download</a>
 
 			<label class="toggle android header-toggle" onclick="">
-				<input id="view" type="checkbox" />
+				<input type="checkbox" />
 				<span>
 					<span>On</span>
 					<span>Off</span>
@@ -51,14 +51,14 @@
 
 		<section>
 
-			<a name="checkbox"><h2>Checkbox</h2></a>
+			<a id="checkbox"><h2>Checkbox</h2></a>
 
 			<p>For "On/Off" states, use checkboxes. </p>
 
 			<div class="example">
 
 				<label class="checkbox toggle candy" onclick="">
-					<input id="view" type="checkbox" />
+					<input type="checkbox">
 					<span>
 						Wireless
 						<span>On</span>
@@ -70,7 +70,7 @@
 
 <pre><code class="language-markup">
 &lt;label class=&quot;checkbox toggle candy&quot; onclick=&quot;&quot;&gt;
-	&lt;input id=&quot;view&quot; type=&quot;checkbox&quot; /&gt;
+	&lt;input type=&quot;checkbox&quot;&gt;
 	&lt;span&gt;
 		Wireless
 		&lt;span&gt;On&lt;/span&gt;
@@ -87,8 +87,8 @@
 
 			<div class="example">
 
-				<label class="checkbox toggle candy" onclick="" style="width: 100px">
-					<input id="view" type="checkbox" />
+				<label class="checkbox toggle candy" style="width: 100px" onclick="">
+					<input type="checkbox">
 					<span>
 						Wireless
 						<span>On</span>
@@ -99,7 +99,7 @@
 				</label>
 
 <pre><code class="language-markup">
-&lt;label class=&quot;checkbox toggle candy&quot; onclick=&quot;&quot; style=&quot;width:100px&quot;&gt;
+&lt;label class=&quot;checkbox toggle candy&quot; style=&quot;width:100px&quot; onclick=&quot;&quot;&gt;
 	...
 </code></pre>
 
@@ -109,7 +109,7 @@
 
 
 		<section>
-			<a name="radio"><h2>Radio</h2></a>
+			<a id="radio"><h2>Radio</h2></a>
 
 			<p>If you need different states that are more specific than "On/Off", or more than two of them, use radio buttons. </p>
 
@@ -199,7 +199,7 @@
 		</section>
 
 		<section>
-			<a name="radio"><h2>Themes</h2></a>
+			<a id="themes"><h2>Themes</h2></a>
 			<p>There are 3 included themes with the toggle switches. </p>
 
 			<h3>Candy</h3>
