@@ -1,4 +1,6 @@
-/* Demo Styles. Not required by the toggle switches */
+/* Documentation styles for
+ * CSS Toggle Switch
+ */
 body {
   background-color: #41464f;
   font-family: sans-serif;
@@ -118,6 +120,15 @@ header h1 {
 
 .download-button:active {
   background-color: #157192;
+}
+
+.dependency-install {
+  clear: both;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #4d525d;
+  font-size: 150%;
+  text-align: center;
 }
 
 .header-toggle {
