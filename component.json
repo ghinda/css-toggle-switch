@@ -6,7 +6,7 @@
 	"keywords": [ "toggle", "switch", "ui" ],
 	"repo": "ghinda/css-toggle-switch",
 	"styles": [
-		"dist/css-toggle-switch.css",
-		"src/css-toggle-switch.scss"
+		"dist/toggle-switch.css",
+		"src/toggle-switch.scss"
 	]
 }
