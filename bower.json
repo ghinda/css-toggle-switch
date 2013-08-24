@@ -9,6 +9,7 @@
 		"bower_components/",
 		".sass-cache",
 		".gitignore",
+		"npm-debug.log",
 		"*.html",
 		"CHANGELOG.md",
 		"Gruntfile.js",
