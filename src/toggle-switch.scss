@@ -73,7 +73,7 @@
 		z-index: 5;
 
 		&:checked ~ .slide-button {
-			right: 50%;
+			right: 0%;
 		}
 
 	}
@@ -109,7 +109,7 @@
 
 	.slide-button {
 		position: absolute;
-		right: 0;
+		right: 50%;
 		top: 0;
 		z-index: 4;
 
@@ -283,10 +283,12 @@
 		);
 
 		> span span {
-			@include transition(all 0.1s ease-out);
+			opacity: 0;
+
+			@include transition(all 0.1s);
 
 			&:first-of-type {
-				opacity: 0;
+				opacity: 1;
 			}
 		}
 
@@ -302,19 +304,22 @@
 
 		/* Selected ON toggle
 		 */
-		&.toggle input:first-of-type:checked {
+		&.toggle input:checked {
 
 			~ .slide-button {
 				background-color: #0E88B1;
 			}
 
 			~ span span {
-				opacity: 0;
-
 				&:first-of-type {
+					opacity: 0;
+				}
+
+				&:last-of-type {
 					opacity: 1;
 				}
 			}
+
 
 		}
 
@@ -337,6 +342,7 @@
 			color: $grey;
 
 			.slide-button {
+				left: 0;
 				width: 30px;
 				background-color: $white;
 				border: 1px solid $grey;
@@ -354,9 +360,10 @@
 			> span span {
 				width: 100%;
 				left: 0;
+				opacity: 0;
 
 				&:first-of-type {
-					opacity: 0;
+					opacity: 1;
 					padding-left: 30px
 				}
 
@@ -366,7 +373,7 @@
 			}
 
 			> span:before {
-				content: "";
+				content: '';
 				display: block;
 				width: 100%;
 				height: 100%;
@@ -378,16 +385,17 @@
 				border: 1px solid $grey;
 				border-radius: 30px;
 
-				@include transition(all 0.3s ease-out);
+				@include transition(all 0.5s ease-out);
 
 				@include box-shadow(
 					inset rgba(0, 0, 0, 0.1) 0 1px 0
 				);
 			}
 
-			input:first-of-type:checked {
+			input:checked {
 				~ .slide-button {
-					left: 0;
+					left: 100%;
+					margin-left: -30px;
 				}
 
 				~ span:before {
@@ -397,9 +405,11 @@
 				}
 
 				~ span span {
-					opacity: 0;
-
 					&:first-of-type {
+						opacity: 0;
+					}
+
+					&:last-of-type {
 						opacity: 1;
 
 						color: $white;

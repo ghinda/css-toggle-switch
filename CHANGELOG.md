@@ -1,3 +1,9 @@
+== 1.1.0 (August 27, 2013)
+
+* Improve the old-Webkit infinite-animation bug-fix, to only target older devices, and avoid the high CPU usage issues on new or large-screen devices.
+* Reverse the order of the On/Off switch, to have the Off option first, and be more in line with the UI guidelines of iOS, Android and Windows, for toggle switches.
+* Minor improvements to the iOS and Android themes.
+
 == 1.0.0 (August 24, 2013)
 
 * Moved to Sass

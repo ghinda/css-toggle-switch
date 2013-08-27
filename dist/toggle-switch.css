@@ -75,7 +75,7 @@
     z-index: 5;
   }
   .toggle input:checked ~ .slide-button {
-    right: 50%;
+    right: 0%;
   }
   .toggle > span {
     position: absolute;
@@ -100,7 +100,7 @@
   }
   .toggle .slide-button {
     position: absolute;
-    right: 0;
+    right: 50%;
     top: 0;
     z-index: 4;
     display: block;
@@ -265,13 +265,14 @@
      */
   }
   .android > span span {
-    -webkit-transition: all 0.1s ease-out;
-    -moz-transition: all 0.1s ease-out;
-    -o-transition: all 0.1s ease-out;
-    transition: all 0.1s ease-out;
+    opacity: 0;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
   }
   .android > span span:first-of-type {
-    opacity: 0;
+    opacity: 1;
   }
   .android .slide-button {
     background-color: #666;
@@ -280,13 +281,13 @@
     -moz-box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, rgba(0, 0, 0, 0.3) 0 1px 0;
     box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, rgba(0, 0, 0, 0.3) 0 1px 0;
   }
-  .android.toggle input:first-of-type:checked ~ .slide-button {
+  .android.toggle input:checked ~ .slide-button {
     background-color: #0E88B1;
   }
-  .android.toggle input:first-of-type:checked ~ span span {
+  .android.toggle input:checked ~ span span:first-of-type {
     opacity: 0;
   }
-  .android.toggle input:first-of-type:checked ~ span span:first-of-type {
+  .android.toggle input:checked ~ span span:last-of-type {
     opacity: 1;
   }
   .android.switch,
@@ -301,6 +302,7 @@
     color: lightgrey;
   }
   .ios.toggle .slide-button {
+    left: 0;
     width: 30px;
     background-color: white;
     border: 1px solid lightgrey;
@@ -316,16 +318,17 @@
   .ios.toggle > span span {
     width: 100%;
     left: 0;
+    opacity: 0;
   }
   .ios.toggle > span span:first-of-type {
-    opacity: 0;
+    opacity: 1;
     padding-left: 30px;
   }
   .ios.toggle > span span:last-of-type {
     padding-right: 30px;
   }
   .ios.toggle > span:before {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 100%;
@@ -335,27 +338,28 @@
     background-color: #fafafa;
     border: 1px solid lightgrey;
     border-radius: 30px;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
     -webkit-box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
     -moz-box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
     box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
   }
-  .ios.toggle input:first-of-type:checked ~ .slide-button {
-    left: 0;
+  .ios.toggle input:checked ~ .slide-button {
+    left: 100%;
+    margin-left: -30px;
   }
-  .ios.toggle input:first-of-type:checked ~ span:before {
+  .ios.toggle input:checked ~ span:before {
     border-color: #53d76a;
     -webkit-box-shadow: inset 0 0 0 30px #53d76a;
     -moz-box-shadow: inset 0 0 0 30px #53d76a;
     box-shadow: inset 0 0 0 30px #53d76a;
   }
-  .ios.toggle input:first-of-type:checked ~ span span {
+  .ios.toggle input:checked ~ span span:first-of-type {
     opacity: 0;
   }
-  .ios.toggle input:first-of-type:checked ~ span span:first-of-type {
+  .ios.toggle input:checked ~ span span:last-of-type {
     opacity: 1;
     color: white;
   }
