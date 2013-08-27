@@ -11,16 +11,6 @@
  */
 /* Shared
  */
-@-webkit-keyframes bugfix {
-  from {
-    position: relative;
-  }
-
-  to {
-    position: relative;
-  }
-}
-
 /* Checkbox
  */
 /* Radio Switch
@@ -43,10 +33,6 @@
     height: 30px;
     /* Outline the toggles when the inputs are focused
      */
-    /* Bugfix for older Webkit, including mobile Webkit. Adapted from:
-     * http://css-tricks.com/webkit-sibling-bug/
-     */
-    -webkit-animation: bugfix infinite 1s;
     position: relative;
     padding: 0;
     margin-left: 100px;
@@ -130,10 +116,6 @@
     height: 30px;
     /* Outline the toggles when the inputs are focused
      */
-    /* Bugfix for older Webkit, including mobile Webkit. Adapted from:
-     * http://css-tricks.com/webkit-sibling-bug/
-     */
-    -webkit-animation: bugfix infinite 1s;
     position: relative;
     padding: 0;
     /* Generate styles for the multiple states */
@@ -396,5 +378,33 @@
   }
   .ios input:checked + label {
     color: #3a3a3a;
+  }
+}
+/* Bugfix for older Webkit, including mobile Webkit. Adapted from
+ * http://css-tricks.com/webkit-sibling-bug/
+ *
+ * Improved by @seantimm, to fix memory use issues
+ * https://github.com/zurb/foundation/pull/2725
+ */
+@media only screen and (-webkit-min-device-pixel-ratio: 0) and (max-device-width: 480px) {
+  .toggle,
+  .switch {
+    -webkit-animation: webkitSiblingBugfix infinite 1s;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .toggle,
+  .switch {
+    -webkit-animation: none 0;
+  }
+}
+
+@-webkit-keyframes webkitSiblingBugfix {
+  from {
+    position: relative;
+  }
+
+  to {
+    position: relative;
   }
 }

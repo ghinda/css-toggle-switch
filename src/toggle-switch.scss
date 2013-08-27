@@ -42,14 +42,7 @@
 		outline: 1px dotted #888;
 	}
 
-	/* Bugfix for older Webkit, including mobile Webkit. Adapted from:
-	 * http://css-tricks.com/webkit-sibling-bug/
-	 */
-	-webkit-animation: bugfix infinite 1s;
-
 }
-
-@-webkit-keyframes bugfix { from { position: relative; } to { position: relative; } }
 
 /* Checkbox
  */
@@ -443,3 +436,22 @@
 	}
 
 }
+
+/* Bugfix for older Webkit, including mobile Webkit. Adapted from
+ * http://css-tricks.com/webkit-sibling-bug/
+ *
+ * Improved by @seantimm, to fix memory use issues
+ * https://github.com/zurb/foundation/pull/2725
+ */
+.toggle,
+.switch {
+	@media only screen and (-webkit-min-device-pixel-ratio:0) and (max-device-width:480px) {
+		-webkit-animation: webkitSiblingBugfix infinite 1s;
+	}
+
+	@media only screen and (-webkit-min-device-pixel-ratio:1.5) {
+		-webkit-animation: none 0;
+	}
+}
+
+@-webkit-keyframes webkitSiblingBugfix { from { position: relative; } to { position: relative; } }
