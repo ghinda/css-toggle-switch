@@ -68,6 +68,10 @@
     z-index: 3;
     display: block;
     width: 100%;
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
   }
   .toggle input {
     position: absolute;
@@ -153,6 +157,10 @@
     height: 100%;
     margin: 0;
     text-align: center;
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
   }
   .switch .slide-button {
     position: absolute;
