@@ -63,6 +63,7 @@
 
 		display: block;
 		width: 100%;
+		@include transition(color 0.3s ease-out);
 	}
 
 	/* Don't hide the input from screen-readers and keyboard access
@@ -145,6 +146,7 @@
 
 		margin: 0;
 		text-align: center;
+		@include transition(color 0.3s ease-out);
 	}
 
 	.slide-button {
