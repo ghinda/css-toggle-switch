@@ -1,3 +1,8 @@
+== 1.1.1 ()
+
+* Add color transition on the labes, for the Candy theme
+* 
+
 == 1.1.0 (August 27, 2013)
 
 * Improve the old-Webkit infinite-animation bug-fix, to only target older devices, and avoid the high CPU usage issues on new or large-screen devices.

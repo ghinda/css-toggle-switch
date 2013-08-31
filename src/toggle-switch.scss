@@ -63,7 +63,6 @@
 
 		display: block;
 		width: 100%;
-		@include transition(color 0.3s ease-out);
 	}
 
 	/* Don't hide the input from screen-readers and keyboard access
@@ -146,7 +145,6 @@
 
 		margin: 0;
 		text-align: center;
-		@include transition(color 0.3s ease-out);
 	}
 
 	.slide-button {
@@ -232,6 +230,10 @@
 			inset 0 2px 6px rgba(0, 0, 0, 0.3),
 			0 1px 0px rgba(255, 255, 255, 0.2)
 		);
+
+		label {
+			@include transition(color 0.2s ease-out);
+		}
 
 		input:checked + label {
 			color: #333;
