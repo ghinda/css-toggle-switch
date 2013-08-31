@@ -1,7 +1,6 @@
-== 1.1.1 ()
+== 1.1.1 (August 31, 2013)
 
-* Add color transition on the labes, for the Candy theme
-* 
+* Add color transition on the labels, for the Candy theme
 
 == 1.1.0 (August 27, 2013)
 
