@@ -1,3 +1,8 @@
+== 2.0.0 (September X, 2013)
+
+* Change class names for both the checkbox and radio-based switches, to `.switch-light` and `.switch-toggle`, to not conflict with other components.
+*
+
 == 1.1.1 (August 31, 2013)
 
 * Add color transition on the labels, for the Candy theme

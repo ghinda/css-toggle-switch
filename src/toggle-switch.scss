@@ -46,7 +46,7 @@
 
 /* Checkbox
  */
-@mixin toggle() {
+@mixin switch-light() {
 
 	@include switch-shared();
 
@@ -123,7 +123,7 @@
 
 /* Radio Switch
  */
-@mixin switch() {
+@mixin switch-toggle() {
 
 	@include switch-shared();
 
@@ -189,8 +189,8 @@
 
 /* Hide by default
  */
-.switch .slide-button,
-.toggle span span {
+.switch-toggle .slide-button,
+.switch-light span span {
 	display: none;
 }
 
@@ -199,16 +199,16 @@
  */
 @media only screen {
 
-	/* Checkbox toggle
+	/* Checkbox switch
 	 */
-	.toggle {
-		@include toggle();
+	.switch-light {
+		@include switch-light();
 	}
 
 	/* Radio switch
 	 */
-	.switch {
-		@include switch();
+	.switch-toggle {
+		@include switch-toggle();
 	}
 
 	/* Standalone Themes */
@@ -306,9 +306,9 @@
 			);
 		}
 
-		/* Selected ON toggle
+		/* Selected ON switch-light
 		 */
-		&.toggle input:checked {
+		&.switch-light input:checked {
 
 			~ .slide-button {
 				background-color: #0E88B1;
@@ -327,7 +327,7 @@
 
 		}
 
-		&.switch,
+		&.switch-toggle,
 		> span span {
 			font-size: 85%;
 			text-transform: uppercase;
@@ -342,7 +342,7 @@
 		$grey: #d3d3d3;
 		$green: #53d76a;
 
-		&.toggle {
+		&.switch-light {
 			color: $grey;
 
 			.slide-button {
@@ -423,7 +423,7 @@
 
 		}
 
-		&.switch {
+		&.switch-toggle {
 			background-color: darken($white, 2%);
 			border: 1px solid $grey;
 			border-radius: 30px;
@@ -457,8 +457,8 @@
  * Improved by @seantimm, to fix memory use issues
  * https://github.com/zurb/foundation/pull/2725
  */
-.toggle,
-.switch {
+.switch-light,
+.switch-toggle {
 	@media only screen and (-webkit-min-device-pixel-ratio:0) and (max-device-width:480px) {
 		-webkit-animation: webkitSiblingBugfix infinite 1s;
 	}

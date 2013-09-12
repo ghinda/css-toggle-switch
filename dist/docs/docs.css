@@ -81,7 +81,11 @@ header {
 
 header h1 {
   margin: 30px 0 5px;
-  letter-spacing: -0.08em;
+  font-size: 3em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: .1em;
 }
 
 .description {
