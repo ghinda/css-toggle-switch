@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 			},
 			files: [
 				'./{,*/}*.html',
-				'./{,*/}*.css'
+				'./**/*.css'
 			]
 		}
 		},

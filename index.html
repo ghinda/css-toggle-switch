@@ -8,9 +8,9 @@
 	<meta name="author" content="Ionuț Colceriu">
 
 	<!-- Docs styles, not required by the switches -->
-	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-<!-- 	<link rel="stylesheet" href="dist/docs/docs.css"> -->
 	<link rel="stylesheet" href="dist/docs/foundation.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="dist/docs/docs.css">
 
 	<!-- Toggle Switch -->
 	<link rel="stylesheet" href="dist/toggle-switch.css">
@@ -23,12 +23,12 @@
 <body>
 
 	 <header class="row">
-		<div class="large-8 columns">
+		<div class="large-7 columns">
 			<h1>CSS TOGGLE SWITCHES</h1>
-			<p class="description">Accessible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. </p>
+			<p class="description">Accessible CSS toggle switches using standard form controls</p>
 		</div>
-		<div class="large-4 columns">
-			<ul class="inline-list right">
+		<div class="large-5 columns">
+			<ul class="inline-list right top-menu">
 				<li><a href="#">Standalone</a></li>
 				<li><a href="#">Bootstrap</a></li>
 				<li><a href="#">Foundation</a></li>
@@ -38,39 +38,66 @@
 
 	<div class="row">
 		<div class="large-12 columns">
-			<div class="panel">
+			<div class="panel hero-box">
 
 				<div class="row">
-					<div class="large-6 small-6 columns">
+					<div class="large-6 columns">
 
 						<h4>Light switch</h4>
 						<h5 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.
 						</h5>
 
+						<label class="switch-light android" onclick="">
+							<input type="checkbox">
+							<span>
+								Wireless
+								<span>Off</span>
+								<span>On</span>
+							</span>
+
+							<a class="slide-button"></a>
+						</label>
+
 					</div>
-					<div class="large-6 small-6 columns">
+					<div class="large-6 columns">
 
 						<h4>Toggle switch</h4>
 						<h5 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.
 						</h5>
 
+						<div class="row">
+							<label class="large-3 columns">View</label>
+							<div class="switch-toggle switch-3 android large-9 columns">
+								<input id="week81" name="view8" type="radio" checked>
+								<label for="week81" onclick="">Week</label>
+
+								<input id="month82" name="view8" type="radio">
+								<label for="month82" onclick="">Month</label>
+
+								<input id="month83" name="view8" type="radio">
+								<label for="month83" onclick="">Year</label>
+
+								<span class="slide-button"></span>
+							</div>
+						</div>
+
 					</div>
 
 				</div>
 
-				<div class="row">
+				<div class="row dependency-install">
 
-					<div class="dependency-install">
+					<div class="large-12 columns">
 						<pre><code><a href="http://bower.io/">bower</a> install --save css-toggle-switch</code></pre>
 						<pre><code><a href="http://component.io/">component</a> install ghinda/css-toggle-switch</code></pre>
 					</div>
 
 				</div>
 
-				<div class="nav-bar">
+				<div class="nav-bar hero-actions">
 					<ul class="button-group">
-						<li><a href="#" class="button">Github</a></li>
 						<li><a href="#" class="button">Download</a></li>
+						<li><a href="#" class="button">Github</a></li>
 					</ul>
 				</div>
 
@@ -88,40 +115,11 @@
 		</div>
 	</div>
 
-	<div class="container-narrow">
+	<div class="row">
 
-		<header>
-			<h1>CSS TOGGLE SWITCHES</h1>
+		<div class="large-12 columns">
 
-			<p class="description">Accessible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. </p>
-
-			<p class="frameworks">
-				You can use the switches alone, <br>
-				or with <a href="bootstrap.html">Bootstrap</a> or <a href="foundation.html">Foundation</a>.
-			</p>
-
-			<a href="https://github.com/ghinda/css-toggle-switch/archive/gh-pages.zip" class="download-button">Download</a>
-
-			<div class="dependency-install">
-				<pre><code><a href="http://bower.io/">bower</a> install --save css-toggle-switch</code></pre>
-				<pre><code><a href="http://component.io/">component</a> install ghinda/css-toggle-switch</code></pre>
-			</div>
-
-			<label class="switch-light android header-toggle" onclick="">
-				<input type="checkbox" />
-				<span>
-					<span>Off</span>
-					<span>On</span>
-				</span>
-
-				<a class="slide-button"></a>
-			</label>
-		</header>
-
-		<section>
-
-			<a id="checkbox"><h2>Checkbox</h2></a>
-
+			<h2>Light switch</h2>
 			<p>For "On/Off" states, use checkboxes. </p>
 
 			<div class="example">
@@ -174,11 +172,15 @@
 
 			</div>
 
-		</section>
+		</div>
 
+	</div>
 
-		<section>
-			<a id="radio"><h2>Radio</h2></a>
+	<div class="row">
+
+		<div class="large-12 columns">
+
+			<h2>Toggle switch</h2>
 
 			<p>If you need different states that are more specific than "On/Off", or more than two of them, use radio buttons. </p>
 
@@ -265,10 +267,16 @@
 
 			</div>
 
-		</section>
+		</div>
 
-		<section>
-			<a id="themes"><h2>Themes</h2></a>
+	</div>
+
+	<div class="row">
+
+		<div class="large-12 columns">
+
+			<h2>Themes</h2>
+
 			<p>There are 3 included themes with the toggle switches. </p>
 
 			<h3>Candy</h3>
@@ -429,11 +437,15 @@
 
 			</div>
 
-		</section>
+		</div>
 
+	</div>
 
-		<section>
-			<h2>Compatibility</h2>
+	<div class="row">
+
+		<div class="large-12 columns">
+
+			<h2>Browser support</h2>
 
 			<p>The toggle switches should work on all modern browsers, including mobile ones. </p>
 
@@ -441,9 +453,14 @@
 
 			<p>The <code class="language-markup">onclick=""</code> attribute is required for older iOS and Opera Mini support. </p>
 
-		</section>
+		</div>
 
-		<section>
+	</div>
+
+	<div class="row">
+
+		<div class="large-12 columns">
+
 			<h2>Acknowledgements</h2>
 
 			<ul>
@@ -457,22 +474,31 @@
 				</li>
 				<li>iOS label tap issue and fix reported by <a href="https://github.com/scruffian">@scruffian</a></li>
 			</ul>
-		</section>
 
-		<section>
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="large-12 columns">
+
 			<p>More about the development process on my website: </p>
 
 			<ul>
 				<li><a href="http://ghinda.net/css-toggle-switches/">CSS Toggle Switches</a></li>
 				<li><a href="http://ghinda.net/css-toggle-switches-mobile/">Mobile support for the CSS toggle switches</a></li>
 			</ul>
-		</section>
 
-		<footer>
-			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net">Ionuț Colceriu</a>.
-		</footer>
+		</div>
 
 	</div>
+
+	<footer class="row">
+		<div class="large-12 columns">
+			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net">Ionuț Colceriu</a>.
+		</div>
+	</footer>
 
 	<script>
 		var _gaq = [['_setAccount', 'UA-19824700-1'], ['_trackPageview']];

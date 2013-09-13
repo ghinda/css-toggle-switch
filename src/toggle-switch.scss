@@ -282,6 +282,10 @@
 
 		color: #fff;
 
+		label {
+			color: #fff;
+		}
+
 		@include box-shadow(
 			inset rgba(0, 0, 0, 0.1) 0 1px 0
 		);

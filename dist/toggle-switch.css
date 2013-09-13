@@ -270,6 +270,9 @@
     /* Selected ON switch-light
      */
   }
+  .android label {
+    color: #fff;
+  }
   .android > span span {
     opacity: 0;
     -webkit-transition: all 0.1s;

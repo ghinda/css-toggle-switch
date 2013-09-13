@@ -3,189 +3,121 @@
  */
 
 @import "compass";
+@import "utils";
 
-$colorBg: #41464f;
+$grey1: #1A1A1A;
+$grey2: #343434;
+$color1: #276774;
+$color2: #338A9B;
+$color3: #3FACC1;
+
+$white: #fff;
 
 body {
-	background-color: #41464f;
+	background-color: $grey2;
 
-	font-family: sans-serif;
-	font-size: 100%;
-	color: #fff;
+	color: $white;
 }
 
-.container-narrow {
-	max-width: 630px;
-	padding: 10px 0;
-	margin: 0 auto;
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: $white;
 }
 
-.container-foundation {
-	max-width: 768px;
-	padding: 10px 0;
-	margin: 0 auto;
+.row {
+	max-width: emCalc(830);
 }
 
-code {
-	background: none !important;
+/* Browse Happy prompt
+ */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
 }
 
-a {
-	color: #38A3D4;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-a img {
-	border: 0;
-}
-
-section {
-	padding-bottom: 5%;
-}
-
-h1 {
-	font-size: 300%;
-}
-
-h2 {
-	color: #BEC8DA;
-}
-
-h3 {
-	color: #8C9CB9;
-}
-
-code {
-	color: #B5E1F5;
-}
-
-footer {
-	text-align: center;
-	font-size: 80%;
-}
-
-.toggle.android p,
-.toggle.candy p {
-	color: #fff !important;
-}
-
-/* github ribbon */
-.ribbon {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-/* header */
+/* Header
+ */
 
 header {
-	position: relative;
-	overflow: hidden;
+
+	h1 {
+		margin: 0;
+
+		font-size: 2.5em;
+		font-family: 'Lato', sans-serif;
+		font-weight: 300;
+		text-transform: uppercase;
+		letter-spacing: -.03em;
+	}
+
+	.description {
+		font-size: emCalc(12);
+	}
+
+	.top-menu {
+		font-weight: bold;
+		font-size: emCalc(14);
+		text-transform: uppercase;
+	}
+
+
 }
 
-header h1 {
-	margin: 30px 0 5px;
+/* Hero */
 
-	font-size: 3em;
-	font-family: 'Lato', sans-serif;
-	font-weight: 300;
-	text-transform: uppercase;
-	letter-spacing: .1em;
-}
-
-.description {
-	width: 80%;
-	margin-top: 0;
-
-	color: #888;
-	font-size: 100%;
-}
-
-.frameworks {
-	float: left;
-	width: 65%;
-
-	font-size: 140%;
-}
-
-.frameworks,
-.download-button {
-	margin: 50px 0;
-}
-
-
-.download-button {
-	float: left;
-	width: 25%;
-	padding: 15px 0;
-	margin-left: 10%;
-
-	background-color: #279fca;
-
-	color: #fff;
-	font-size: 130%;
-	text-align: center;
-	text-decoration: none;
-}
-
-.download-button:hover {
-	background-color: #57bbdf;
-}
-
-.download-button:active {
-	background-color: #157192;
-}
-
-.dependency-install {
-	clear: both;
-	margin-bottom: 1em;
-	padding-bottom: 1em;
-	border-bottom: 1px solid lighten($colorBg, 5%);
-
-	font-size: 150%;
-	text-align: center;
-}
-
-.header-toggle {
-	position: absolute !important;
-	top: 43px;
-	right: 0;
-	width: 100px;
-}
-
-/* examples */
-
-.example {
-	padding: 3%;
-	margin: 0 -3% 3em -3%;
-	background-color: #32373F;
-
-	border-radius: 2px;
-}
-
-body .example pre {
-	clear: both;
-
-	padding: 1.5em 0 0 0;
-	margin: 0;
-	background: none;
-}
-
-/* Default form styles */
-fieldset {
-	margin: 0 0 2em 0;
+.hero-box {
 	border: 0;
+	background-color: $color2;
+	color: $white;
+
+	.hero-actions {
+		margin: 0 -1.25em -1.25em;
+
+		.button-group {
+			width: 100%;
+		}
+
+		li {
+			width: 50%;
+			margin: 0;
+		}
+
+		a {
+			width: 100%;
+			border: 0;
+			margin: 0;
+
+			border-top: 1px solid $color3;
+			background-color: $color2;
+
+			@include box-shadow(none);
+
+			&:hover {
+				background-color: darken($color3, 5%);
+			}
+		}
+
+		li:last-child a {
+			border-left: 1px solid $color3;
+		}
+	}
 }
 
-fieldset legend {
-	color: #fff;
-}
+.row.dependency-install {
+	overflow: hidden;
+	padding: emCalc(20);
+	margin: emCalc(20) -1.25em 0;
+	background-color: $color3;
 
-/* Bootstrap Demo */
-.bootstrap-container {
-	max-width: 630px;
-	margin: 10px auto;
+	pre {
+		margin: emCalc(8) 0;
+
+		text-align: center;
+	}
 }

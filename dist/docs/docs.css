@@ -1,174 +1,94 @@
 /* Documentation styles for
  * CSS Toggle Switch
  */
+/* Utils
+ */
+/* Mixins */
 body {
-  background-color: #41464f;
-  font-family: sans-serif;
-  font-size: 100%;
-  color: #fff;
+  background-color: #343434;
+  color: white;
 }
 
-.container-narrow {
-  max-width: 630px;
-  padding: 10px 0;
-  margin: 0 auto;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: white;
 }
 
-.container-foundation {
-  max-width: 768px;
-  padding: 10px 0;
-  margin: 0 auto;
+.row {
+  max-width: 51.875em;
 }
 
-code {
-  background: none !important;
+/* Browse Happy prompt
+ */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
-a {
-  color: #38A3D4;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-a img {
-  border: 0;
-}
-
-section {
-  padding-bottom: 5%;
-}
-
-h1 {
-  font-size: 300%;
-}
-
-h2 {
-  color: #BEC8DA;
-}
-
-h3 {
-  color: #8C9CB9;
-}
-
-code {
-  color: #B5E1F5;
-}
-
-footer {
-  text-align: center;
-  font-size: 80%;
-}
-
-.toggle.android p,
-.toggle.candy p {
-  color: #fff !important;
-}
-
-/* github ribbon */
-.ribbon {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-/* header */
-header {
-  position: relative;
-  overflow: hidden;
-}
-
+/* Header
+ */
 header h1 {
-  margin: 30px 0 5px;
-  font-size: 3em;
+  margin: 0;
+  font-size: 2.5em;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: -.03em;
+}
+header .description {
+  font-size: 0.75em;
+}
+header .top-menu {
+  font-weight: bold;
+  font-size: 0.875em;
+  text-transform: uppercase;
 }
 
-.description {
-  width: 80%;
-  margin-top: 0;
-  color: #888;
-  font-size: 100%;
-}
-
-.frameworks {
-  float: left;
-  width: 65%;
-  font-size: 140%;
-}
-
-.frameworks,
-.download-button {
-  margin: 50px 0;
-}
-
-.download-button {
-  float: left;
-  width: 25%;
-  padding: 15px 0;
-  margin-left: 10%;
-  background-color: #279fca;
-  color: #fff;
-  font-size: 130%;
-  text-align: center;
-  text-decoration: none;
-}
-
-.download-button:hover {
-  background-color: #57bbdf;
-}
-
-.download-button:active {
-  background-color: #157192;
-}
-
-.dependency-install {
-  clear: both;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
-  border-bottom: 1px solid #4d525d;
-  font-size: 150%;
-  text-align: center;
-}
-
-.header-toggle {
-  position: absolute !important;
-  top: 43px;
-  right: 0;
-  width: 100px;
-}
-
-/* examples */
-.example {
-  padding: 3%;
-  margin: 0 -3% 3em -3%;
-  background-color: #32373F;
-  border-radius: 2px;
-}
-
-body .example pre {
-  clear: both;
-  padding: 1.5em 0 0 0;
-  margin: 0;
-  background: none;
-}
-
-/* Default form styles */
-fieldset {
-  margin: 0 0 2em 0;
+/* Hero */
+.hero-box {
   border: 0;
+  background-color: #338a9b;
+  color: white;
+}
+.hero-box .hero-actions {
+  margin: 0 -1.25em -1.25em;
+}
+.hero-box .hero-actions .button-group {
+  width: 100%;
+}
+.hero-box .hero-actions li {
+  width: 50%;
+  margin: 0;
+}
+.hero-box .hero-actions a {
+  width: 100%;
+  border: 0;
+  margin: 0;
+  border-top: 1px solid #3facc1;
+  background-color: #338a9b;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.hero-box .hero-actions a:hover {
+  background-color: #389bae;
+}
+.hero-box .hero-actions li:last-child a {
+  border-left: 1px solid #3facc1;
 }
 
-fieldset legend {
-  color: #fff;
+.row.dependency-install {
+  overflow: hidden;
+  padding: 1.25em;
+  margin: 1.25em -1.25em 0;
+  background-color: #3facc1;
 }
-
-/* Bootstrap Demo */
-.bootstrap-container {
-  max-width: 630px;
-  margin: 10px auto;
+.row.dependency-install pre {
+  margin: 0.5em 0;
+  text-align: center;
 }
