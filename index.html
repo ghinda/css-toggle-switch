@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>CSS Toggle Switches</title>
+	<title>CSS Toggle Switches: Accessible CSS toggle switches using standard form controls</title>
 	<meta name="description" content="Accessible, screen-reader friendly, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.">
 	<meta name="author" content="Ionuț Colceriu">
 
@@ -44,8 +44,7 @@
 					<div class="large-6 columns">
 
 						<h4>Light switch</h4>
-						<h5 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.
-						</h5>
+						<p>For simple "On/Off" options, use the light switch. </p>
 
 						<label class="switch-light android" onclick="">
 							<input type="checkbox">
@@ -62,10 +61,9 @@
 					<div class="large-6 columns">
 
 						<h4>Toggle switch</h4>
-						<h5 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.
-						</h5>
+						<p>To select between two or more specific options, use the toggle switch. </p>
 
-						<div class="row">
+						<div class="row toggle-demo">
 							<label class="large-3 columns">View</label>
 							<div class="switch-toggle switch-3 android large-9 columns">
 								<input id="week81" name="view8" type="radio" checked>
@@ -96,8 +94,18 @@
 
 				<div class="nav-bar hero-actions">
 					<ul class="button-group">
-						<li><a href="#" class="button">Download</a></li>
-						<li><a href="#" class="button">Github</a></li>
+						<li>
+							<a href="#" class="button">
+								<i class="icon-arrow-down"></i>
+								Download
+							</a>
+						</li>
+						<li>
+							<a href="#" class="button">
+								<i class="icon-github"></i>
+								Github
+							</a>
+						</li>
 					</ul>
 				</div>
 
@@ -108,9 +116,9 @@
 	<div class="row">
 		<div class="large-12 columns">
 
-			<p class="frameworks">
-				You can use the switches <a href="bootstrap.html">standalone</a>, with <a href="bootstrap.html">Bootstrap</a> or with <a href="foundation.html">Foundation</a>.
-			</p>
+			<h5 class="frameworks text-center">
+				You can use the switches <a href="index.html">standalone</a>, with <a href="bootstrap.html">Bootstrap</a> or with <a href="foundation.html">Foundation</a>.
+			</h5>
 
 		</div>
 	</div>
@@ -479,24 +487,16 @@
 
 	</div>
 
-	<div class="row">
-
-		<div class="large-12 columns">
-
-			<p>More about the development process on my website: </p>
-
-			<ul>
-				<li><a href="http://ghinda.net/css-toggle-switches/">CSS Toggle Switches</a></li>
-				<li><a href="http://ghinda.net/css-toggle-switches-mobile/">Mobile support for the CSS toggle switches</a></li>
-			</ul>
-
+	<footer>
+		<div class="row">
+			<p class="large-12 columns text-center">
+				<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net">Ionuț Colceriu</a>
+			</p>
 		</div>
-
-	</div>
-
-	<footer class="row">
-		<div class="large-12 columns">
-			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net">Ionuț Colceriu</a>.
+		<div class="row">
+			<p class="large-12 columns text-center">
+				<a href="https://github.com/ghinda/css-toggle-switch">Follow @ghindas</a>
+			</p>
 		</div>
 	</footer>
 
