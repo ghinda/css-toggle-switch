@@ -24,14 +24,16 @@
 
 	 <header class="row">
 		<div class="large-7 columns">
-			<h1>CSS TOGGLE SWITCHES</h1>
+			<h1>
+				<a href="index.html">CSS TOGGLE SWITCHES</a>
+			</h1>
 			<p class="description">Accessible CSS toggle switches using standard form controls</p>
 		</div>
 		<div class="large-5 columns">
 			<ul class="inline-list right top-menu">
-				<li><a href="#">Standalone</a></li>
-				<li><a href="#">Bootstrap</a></li>
-				<li><a href="#">Foundation</a></li>
+				<li><a href="index.html" class="active">Standalone</a></li>
+				<li><a href="bootstrap.html">Bootstrap</a></li>
+				<li><a href="foundation.html">Foundation</a></li>
 			</ul>
 		</div>
 	</header>
@@ -44,7 +46,7 @@
 					<div class="large-6 columns">
 
 						<h4>Light switch</h4>
-						<p>For simple "On/Off" options, use the light switch. </p>
+						<p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
 						<label class="switch-light android" onclick="">
 							<input type="checkbox">
@@ -61,19 +63,19 @@
 					<div class="large-6 columns">
 
 						<h4>Toggle switch</h4>
-						<p>To select between two or more specific options, use the toggle switch. </p>
+						<p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
 
 						<div class="row toggle-demo">
 							<label class="large-3 columns">View</label>
 							<div class="switch-toggle switch-3 android large-9 columns">
-								<input id="week81" name="view8" type="radio" checked>
-								<label for="week81" onclick="">Week</label>
+								<input id="week-d1" name="view-d" type="radio" checked>
+								<label for="week-d1" onclick="">Week</label>
 
-								<input id="month82" name="view8" type="radio">
-								<label for="month82" onclick="">Month</label>
+								<input id="month-d2" name="view-d" type="radio">
+								<label for="month-d2" onclick="">Month</label>
 
-								<input id="month83" name="view8" type="radio">
-								<label for="month83" onclick="">Year</label>
+								<input id="month-d3" name="view-d" type="radio">
+								<label for="month-d3" onclick="">Year</label>
 
 								<span class="slide-button"></span>
 							</div>
@@ -95,13 +97,13 @@
 				<div class="nav-bar hero-actions">
 					<ul class="button-group">
 						<li>
-							<a href="#" class="button">
+							<a href="https://github.com/ghinda/css-toggle-switch/archive/gh-pages.zip" class="button">
 								<i class="icon-arrow-down"></i>
 								Download
 							</a>
 						</li>
 						<li>
-							<a href="#" class="button">
+							<a href="https://github.com/ghinda/css-toggle-switch" class="button">
 								<i class="icon-github"></i>
 								Github
 							</a>
@@ -128,11 +130,11 @@
 		<div class="large-12 columns">
 
 			<h2>Light switch</h2>
-			<p>For "On/Off" states, use checkboxes. </p>
+			<p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
-			<div class="example">
+			<div class="example large-12">
 
-				<label class="switch-light candy" onclick="">
+				<label class="switch-light candy large-3" onclick="">
 					<input type="checkbox">
 					<span>
 						Wireless
@@ -143,8 +145,7 @@
 					<a class="slide-button"></a>
 				</label>
 
-<pre><code class="language-markup">
-&lt;label class=&quot;checkbox toggle candy&quot; onclick=&quot;&quot;&gt;
+<pre><code class="language-markup">&lt;label class=&quot;switch-light candy&quot; onclick=&quot;&quot;&gt;
 	&lt;input type=&quot;checkbox&quot;&gt;
 	&lt;span&gt;
 		Wireless
@@ -154,28 +155,6 @@
 
 	&lt;a class=&quot;slide-button&quot;&gt;&lt;/a&gt;
 &lt;/label&gt;
-</code></pre>
-
-			</div>
-
-			<p>The toggle is fluid, you can set any width on it. </p>
-
-			<div class="example">
-
-				<label class="switch-light candy" style="width: 100px" onclick="">
-					<input type="checkbox">
-					<span>
-						Wireless
-						<span>Off</span>
-						<span>On</span>
-					</span>
-
-					<a class="slide-button"></a>
-				</label>
-
-<pre><code class="language-markup">
-&lt;label class=&quot;checkbox toggle candy&quot; style=&quot;width:100px&quot; onclick=&quot;&quot;&gt;
-	...
 </code></pre>
 
 			</div>
@@ -190,12 +169,12 @@
 
 			<h2>Toggle switch</h2>
 
-			<p>If you need different states that are more specific than "On/Off", or more than two of them, use radio buttons. </p>
+			<p>Use the toggle switches, instead of radio buttons, for two or more specific options. </p>
 
 			<div class="example">
 
 				<label>View</label>
-				<div class="switch-toggle candy blue">
+				<div class="switch-toggle candy large-5">
 					<input id="week" name="view" type="radio" checked>
 					<label for="week" onclick="">Week</label>
 
@@ -205,9 +184,8 @@
 					<span class="slide-button"></span>
 				</div>
 
-<pre><code class="language-markup">
-&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch candy blue&quot;&gt;
+<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
+&lt;div class=&quot;switch-toggle candy&quot;&gt;
 	&lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
 	&lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
@@ -220,30 +198,8 @@
 
 			</div>
 
-			<p>The radio switches are also fluid, so you can create your own layout. </p>
-
-			<div class="example">
-
-				<label style="float: left; width: 100px;">View</label>
-				<div class="switch-toggle candy blue" style="float: left; width: 200px;">
-					<input id="week2" name="view2" type="radio" checked>
-					<label for="week2" onclick="">Week</label>
-
-					<input id="month2" name="view2" type="radio">
-					<label for="month2" onclick="">Month</label>
-
-					<span class="slide-button"></span>
-				</div>
-
-<pre><code class="language-markup">
-&lt;label style=&quot;float: left; width: 100px;&quot;&gt;View&lt;/label&gt;
-	&lt;div class=&quot;switch candy blue&quot; style=&quot;float: left; width: 200px;&quot;&gt;
-		...
-</code></pre>
-
-			</div>
-
-			<p>And add up to 5 items. You could create new rules for more items, but if you have more than 5 items, you shouldn't really use a switch. </p>
+			<h3>Multiple options</h3>
+			<p>You can add up to 5 items by using the <code>.switch-3</code>, <code>.switch-4</code> and <code>.switch-5</code> classes. </p>
 
 			<div class="example">
 
@@ -267,10 +223,9 @@
 					<span class="slide-button"></span>
 				</div>
 
-<pre><code class="language-markup">
-&lt;label&gt;View&lt;/label&gt;
-	&lt;div class=&quot;switch switch-5 candy yellow&quot;&gt;
-		...
+<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
+&lt;div class=&quot;switch-toggle switch-5 candy yellow&quot;&gt;
+	[&hellip;]
 </code></pre>
 
 			</div>
@@ -285,30 +240,29 @@
 
 			<h2>Themes</h2>
 
-			<p>There are 3 included themes with the toggle switches. </p>
+			<p>There are three themes included with the switches. </p>
 
 			<h3>Candy</h3>
 
-			<p>Based on <a href="http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/" target="_blank">Sort Switches / Toggles by Orman Clark</a>. </p>
-			<p>It includes 2 additional color schemes, besides the default green: <code>blue</code> and <code>yellow</code>.</p>
+			<p>It includes three color schemes: the default green, <code>.blue</code> and <code>.yellow</code>.</p>
 
 			<div class="example">
 
-				<label class="switch-light candy" onclick="">
-					<input type="checkbox" />
-					<span>
-						Wireless
-						<span>Off</span>
-						<span>On</span>
-					</span>
+				<div class="large-4">
+					<label class="switch-light candy" onclick="">
+						<input type="checkbox" />
+						<span>
+							Wireless
+							<span>Off</span>
+							<span>On</span>
+						</span>
 
-					<a class="slide-button"></a>
-				</label>
-
-				<br>
+						<a class="slide-button"></a>
+					</label>
+				</div>
 
 				<label>View</label>
-				<div class="switch-toggle candy">
+				<div class="switch-toggle candy large-4">
 					<input id="week41" name="view4" type="radio" checked>
 					<label for="week41" onclick="">Week</label>
 
@@ -317,8 +271,6 @@
 
 					<span class="slide-button"></span>
 				</div>
-
-				<br>
 
 				<label>View</label>
 				<div class="switch-toggle switch-3 candy blue">
@@ -333,8 +285,6 @@
 
 					<span class="slide-button"></span>
 				</div>
-
-				<br>
 
 				<label>View</label>
 				<div class="switch-toggle switch-4 candy yellow">
@@ -358,21 +308,21 @@
 			<h3>Android</h3>
 			<div class="example">
 
-				<label class="switch-light android" onclick="">
-					<input type="checkbox" />
-					<span>
-						Wireless
-						<span>Off</span>
-						<span>On</span>
-					</span>
+				<div class="large-4">
+					<label class="switch-light android" onclick="">
+						<input type="checkbox" />
+						<span>
+							Wireless
+							<span>Off</span>
+							<span>On</span>
+						</span>
 
-					<a class="slide-button"></a>
-				</label>
-
-				<br>
+						<a class="slide-button"></a>
+					</label>
+				</div>
 
 				<label>View</label>
-				<div class="switch-toggle android">
+				<div class="switch-toggle android large-4">
 					<input id="week71" name="view7" type="radio" checked>
 					<label for="week71" onclick="">Week</label>
 
@@ -381,8 +331,6 @@
 
 					<span class="slide-button"></span>
 				</div>
-
-				<br>
 
 				<label>View</label>
 				<div class="switch-toggle switch-3 android">
@@ -414,8 +362,6 @@
 					<a class="slide-button"></a>
 				</label>
 
-				<br>
-
 				<label>View</label>
 				<div class="switch-toggle ios">
 					<input id="week91" name="view9" type="radio" checked>
@@ -426,8 +372,6 @@
 
 					<span class="slide-button"></span>
 				</div>
-
-				<br>
 
 				<label>View</label>
 				<div class="switch-toggle switch-3 ios">
@@ -455,11 +399,11 @@
 
 			<h2>Browser support</h2>
 
-			<p>The toggle switches should work on all modern browsers, including mobile ones. </p>
+			<p>The toggle switches work on all modern browsers, including mobile ones. </p>
 
-			<p><strong>Browsers without support for mediaqueries, such as IE8 and bellow, get standard form elements. </strong></p>
+			<p><strong>Browsers without support for media-queries, such as IE8 and bellow, get standard form elements. </p>
 
-			<p>The <code class="language-markup">onclick=""</code> attribute is required for older iOS and Opera Mini support. </p>
+			<p>The <code>onclick=""</code> attribute is required for older iOS and Opera Mini support. </p>
 
 		</div>
 

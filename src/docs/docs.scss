@@ -21,17 +21,39 @@ body {
 	color: $white;
 }
 
+a:hover {
+	text-decoration: underline;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
-	color: $white;
+	color: darken($white, 20%);
 	font-weight: normal;
 }
 
+h2 {
+	border-bottom: 1px solid darken($white, 60%);
+	margin-top: emCalc(20);
+	margin-bottom: emCalc(4);
+}
+
+h3 {
+	margin-top: emCalc(16);
+	margin-bottom: 0;
+
+	font-size: 1.5em;
+	color: $color2;
+}
+
+code {
+	color: $color2;
+}
+
 .row {
-	max-width: emCalc(830);
+	max-width: emCalc(780);
 }
 
 /* Browse Happy prompt
@@ -58,6 +80,16 @@ header {
 		font-weight: 300;
 		text-transform: uppercase;
 		letter-spacing: -.03em;
+
+		a {
+			color: $white;
+			text-decoration: none;
+
+			&:hover {
+				color: $white;
+				text-decoration: none;
+			}
+		}
 	}
 
 	.description {
@@ -73,6 +105,10 @@ header {
 		font-weight: bold;
 		font-size: emCalc(13);
 		text-transform: uppercase;
+
+		.active {
+			color: $white;
+		}
 	}
 
 
@@ -81,6 +117,7 @@ header {
 /* Hero */
 
 .hero-box {
+	margin-bottom: emCalc(20);
 	border: 0;
 	background-color: $color3;
 	color: $white;
@@ -93,9 +130,12 @@ header {
 		width: 95%;
 
 		> label {
-			display: table-cell;
-			vertical-align: middle;
+			padding-top: emCalc(8);
 		}
+	}
+
+	label {
+		color: $white;
 	}
 
 	.hero-actions {
@@ -129,6 +169,7 @@ header {
 				background-color: $color2;
 
 				color: $white;
+				text-decoration: none;
 			}
 
 			&:active {
@@ -169,4 +210,41 @@ header {
 			color: #333;
 		}
 	}
+}
+
+.frameworks {
+	margin-bottom: emCalc(32);
+}
+
+/* Examples
+ */
+
+body pre[class*="language-"] {
+	overflow-y: hidden;
+	padding: 0;
+	margin-top: emCalc(24);
+	background-color: transparent;
+}
+
+.example {
+	padding: emCalc(16);
+	background-color: darken($grey2, 2%);
+
+	@include border-radius(2px);
+
+	label {
+		color: $white;
+	}
+
+	.switch-toggle,
+	.switch-light {
+		margin-bottom: emCalc(20);
+	}
+}
+
+/* Footer
+ */
+
+footer {
+	margin-top: emCalc(20);
 }

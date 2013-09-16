@@ -9,6 +9,10 @@
 
 @import "compass";
 
+/* TODO
+ * Change .slide-button to <a>
+ */
+
 /* Toggle Switches
  */
 
@@ -432,8 +436,6 @@
 			border: 1px solid $grey;
 			border-radius: 30px;
 
-			color: darken($grey, 30%);
-
 			@include box-shadow(
 				inset rgba(0, 0, 0, 0.1) 0 1px 0
 			);
@@ -443,6 +445,10 @@
 				border-radius: 25px;
 
 				@include transition(all 0.3s ease-out);
+			}
+
+			label {
+				color: darken($grey, 30%);
 			}
 
 		}

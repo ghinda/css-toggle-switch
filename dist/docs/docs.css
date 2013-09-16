@@ -63,17 +63,38 @@ body {
   color: white;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
-  color: white;
+  color: #cccccc;
   font-weight: normal;
 }
 
+h2 {
+  border-bottom: 1px solid #666666;
+  margin-top: 1.25em;
+  margin-bottom: 0.25em;
+}
+
+h3 {
+  margin-top: 1em;
+  margin-bottom: 0;
+  font-size: 1.5em;
+  color: #338a9b;
+}
+
+code {
+  color: #338a9b;
+}
+
 .row {
-  max-width: 51.875em;
+  max-width: 48.75em;
 }
 
 /* Browse Happy prompt
@@ -98,6 +119,14 @@ header h1 {
   text-transform: uppercase;
   letter-spacing: -.03em;
 }
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
+header h1 a:hover {
+  color: white;
+  text-decoration: none;
+}
 header .description {
   margin-top: -0.75em;
   color: #cccccc;
@@ -109,9 +138,13 @@ header .top-menu {
   font-size: 0.8125em;
   text-transform: uppercase;
 }
+header .top-menu .active {
+  color: white;
+}
 
 /* Hero */
 .hero-box {
+  margin-bottom: 1.25em;
   border: 0;
   background-color: #3facc1;
   color: white;
@@ -123,8 +156,10 @@ header .top-menu {
   width: 95%;
 }
 .hero-box .toggle-demo > label {
-  display: table-cell;
-  vertical-align: middle;
+  padding-top: 0.5em;
+}
+.hero-box label {
+  color: white;
 }
 .hero-box .hero-actions {
   margin: 0 -1.25em -1.25em;
@@ -154,6 +189,7 @@ header .top-menu {
   border-color: #338a9b;
   background-color: #338a9b;
   color: white;
+  text-decoration: none;
 }
 .hero-box .hero-actions a:active {
   background-color: #276774;
@@ -185,4 +221,38 @@ header .top-menu {
 }
 .row.dependency-install pre code {
   color: #333;
+}
+
+.frameworks {
+  margin-bottom: 2em;
+}
+
+/* Examples
+ */
+body pre[class*="language-"] {
+  overflow-y: hidden;
+  padding: 0;
+  margin-top: 1.5em;
+  background-color: transparent;
+}
+
+.example {
+  padding: 1em;
+  background-color: #2f2f2f;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.example label {
+  color: white;
+}
+.example .switch-toggle,
+.example .switch-light {
+  margin-bottom: 1.25em;
+}
+
+/* Footer
+ */
+footer {
+  margin-top: 1.25em;
 }
