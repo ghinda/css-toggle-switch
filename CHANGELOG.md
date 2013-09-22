@@ -1,6 +1,7 @@
 == 2.0.0 (September X, 2013)
 
 * Change class names for both the checkbox and radio-based switches, to `.switch-light` and `.switch-toggle`, to not conflict with other components.
+* Replace the `.slide-button` element with a simpler anchor tag
 * Various small bug-fixes and improvements in the themes.
 *
 

@@ -6,11 +6,11 @@
 @import "utils";
 @import "icons";
 
-$grey1: #1A1A1A;
-$grey2: #343434;
-$color1: #276774;
-$color2: #338A9B;
-$color3: #3FACC1;
+$grey1: #2b2b2b;
+$grey2: #454545;
+$color1: #2f628d;
+$color2: #3b7db4;
+$color3: #5996c9;
 
 $white: #fff;
 
@@ -45,11 +45,23 @@ h3 {
 	margin-bottom: 0;
 
 	font-size: 1.5em;
-	color: $color2;
+	color: lighten($color3, 20%);
 }
 
 code {
 	color: $color2;
+}
+
+a {
+	color: $color3;
+
+	&:hover {
+		color: $color2;
+	}
+
+	&:active {
+		color: $color1;
+	}
 }
 
 .row {
@@ -75,9 +87,9 @@ header {
 	h1 {
 		margin: 0;
 
-		font-size: 2.5em;
-		font-family: 'Lato', sans-serif;
-		font-weight: 300;
+		font-size: 2.3em;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
 		text-transform: uppercase;
 		letter-spacing: -.03em;
 

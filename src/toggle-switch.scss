@@ -9,10 +9,6 @@
 
 @import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 
-/* TODO
- * Change .slide-button to <a>
- */
-
 /* Toggle Switches
  */
 
@@ -27,7 +23,7 @@
 		@include box-sizing(border-box);
 	}
 
-	.slide-button {
+	a {
 		display: block;
 
 		@include transition(all 0.3s ease-out);
@@ -41,7 +37,7 @@
 
 	/* Outline the toggles when the inputs are focused
 	 */
-	input:focus ~ .slide-button,
+	input:focus ~ a,
 	input:focus + label {
 		outline: 1px dotted #888;
 	}
@@ -58,7 +54,7 @@
 	padding: 0;
 	margin-left: 100px;
 
-	/* Position the label over all the elements, except the slide-button
+	/* Position the label over all the elements, except the slide-button (<a>)
 	 * Clicking anywhere on the label will change the switch-state
 	 */
 	label {
@@ -76,7 +72,7 @@
 		opacity: 0;
 		z-index: 5;
 
-		&:checked ~ .slide-button {
+		&:checked ~ a {
 			right: 0%;
 		}
 
@@ -111,7 +107,7 @@
 
 	}
 
-	.slide-button {
+	a {
 		position: absolute;
 		right: 50%;
 		top: 0;
@@ -151,7 +147,7 @@
 		text-align: center;
 	}
 
-	.slide-button {
+	a {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -162,7 +158,7 @@
 		height: 100%;
 	}
 
-	input:last-of-type:checked ~ .slide-button {
+	input:last-of-type:checked ~ a {
 		left: 50%;
 	}
 
@@ -173,18 +169,18 @@
 
 		&.switch-#{$state} {
 			label,
-			.slide-button {
+			a {
 				width: $width * 1%;
 			}
 		}
 
 		@for $j from 2 through ($i + 1) {
-			&.switch-#{$state} input:checked:nth-of-type(#{$j}) ~ .slide-button {
+			&.switch-#{$state} input:checked:nth-of-type(#{$j}) ~ a {
 				left: $width * ($j - 1) * 1%;
 			}
 		}
 
-		&.switch-#{$state} input:checked:last-of-type ~ .slide-button {
+		&.switch-#{$state} input:checked:last-of-type ~ a {
 			left: 100 - $width * 1%;
 		}
 	}
@@ -193,7 +189,7 @@
 
 /* Hide by default
  */
-.switch-toggle .slide-button,
+.switch-toggle a,
 .switch-light span span {
 	display: none;
 }
@@ -242,7 +238,7 @@
 			text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 		}
 
-		.slide-button {
+		a {
 			border: 1px solid #333;
 			background-color: #70c66b;
 			border-radius: 3px;
@@ -265,11 +261,11 @@
 			color: #fff;
 		}
 
-		&.blue .slide-button {
+		&.blue a {
 			background-color: #38a3d4;
 		}
 
-		&.yellow .slide-button {
+		&.yellow a {
 			background-color: #f5e560;
 		}
 	}
@@ -298,7 +294,7 @@
 			}
 		}
 
-		.slide-button {
+		a {
 			background-color: #666;
 			border-radius: 1px;
 
@@ -310,7 +306,7 @@
 		 */
 		&.switch-light input:checked {
 
-			~ .slide-button {
+			~ a {
 				background-color: #0E88B1;
 			}
 
@@ -345,7 +341,7 @@
 		&.switch-light {
 			color: $grey;
 
-			.slide-button {
+			a {
 				left: 0;
 				width: 30px;
 				background-color: $white;
@@ -393,7 +389,7 @@
 			}
 
 			input:checked {
-				~ .slide-button {
+				~ a {
 					left: 100%;
 					margin-left: -30px;
 				}
@@ -426,7 +422,7 @@
 
 			box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
 
-			.slide-button {
+			a {
 				background-color: $green;
 				border-radius: 25px;
 
