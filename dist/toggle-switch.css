@@ -218,7 +218,7 @@
     .android a {
       background-color: #666666;
       border-radius: 1px;
-      box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, rgba(0, 0, 0, 0.3) 0 1px 0; }
+      box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.3) 0 -1px 0; }
     .android.switch-light input:checked ~ a {
       background-color: #0e88b1; }
     .android.switch-light input:checked ~ span span:first-of-type {
@@ -229,7 +229,7 @@
       font-size: 85%;
       text-transform: uppercase; }
   .ios.switch-light {
-    color: lightgrey; }
+    color: #868686; }
     .ios.switch-light a {
       left: 0;
       width: 30px;

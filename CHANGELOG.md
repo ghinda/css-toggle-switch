@@ -1,13 +1,13 @@
 == 2.0.0 (September X, 2013)
 
 * Change class names for both the checkbox and radio-based switches, to `.switch-light` and `.switch-toggle`, to not conflict with other components.
-* Replace the `.slide-button` element with a simpler anchor tag
+* Replace the `.slide-button` element with a simpler anchor tag.
 * Various small bug-fixes and improvements in the themes.
 *
 
 == 1.1.1 (August 31, 2013)
 
-* Add color transition on the labels, for the Candy theme
+* Add color transition on the labels, for the Candy theme.
 
 == 1.1.0 (August 27, 2013)
 
@@ -17,10 +17,10 @@
 
 == 1.0.0 (August 24, 2013)
 
-* Moved to Sass
-* Support for Bootstrap 3.0
-* Improve the Android and iOS themes
-* Use Grunt to compile the Sass files
-* Use Bower for dependency management in the documentation
-* Bower and Component support
+* Moved to Sass.
+* Support for Bootstrap 3.0.
+* Improve the Android and iOS themes.
+* Use Grunt to compile the Sass files.
+* Use Bower for dependency management in the documentation.
+* Bower and Component support.
 
