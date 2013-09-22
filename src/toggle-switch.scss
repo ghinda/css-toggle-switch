@@ -7,7 +7,7 @@
  *
  */
 
-@import "compass";
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 
 /* TODO
  * Change .slide-button to <a>
@@ -230,10 +230,8 @@
 		text-align: center;
 		text-shadow: 1px 1px 1px #191b1e;
 
-		@include box-shadow(
-			inset 0 2px 6px rgba(0, 0, 0, 0.3),
-			0 1px 0px rgba(255, 255, 255, 0.2)
-		);
+		box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3),
+			0 1px 0px rgba(255, 255, 255, 0.2);
 
 		label {
 			@include transition(color 0.2s ease-out);
@@ -253,10 +251,8 @@
 				linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0))
 			);
 
-			@include box-shadow(
-				0 1px 1px rgba(0, 0, 0, 0.2),
-				inset 0 1px 1px rgba(255, 255, 255, 0.45)
-			);
+			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+				inset 0 1px 1px rgba(255, 255, 255, 0.45);
 		}
 
 		> span {
@@ -290,9 +286,7 @@
 			color: #fff;
 		}
 
-		@include box-shadow(
-			inset rgba(0, 0, 0, 0.1) 0 1px 0
-		);
+		box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
 
 		> span span {
 			opacity: 0;
@@ -308,10 +302,8 @@
 			background-color: #666;
 			border-radius: 1px;
 
-			@include box-shadow(
-				inset rgba(255, 255, 255, 0.2) 0 1px 0,
-				rgba(0, 0, 0, 0.3) 0 1px 0
-			);
+			box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0,
+				rgba(0, 0, 0, 0.3) 0 1px 0;
 		}
 
 		/* Selected ON switch-light
@@ -362,11 +354,9 @@
 
 				@include transition(all 0.3s ease-out);
 
-				@include box-shadow(
-					inset 0 -3px 3px hsla(0,0%,0%,.025),
+				box-shadow: inset 0 -3px 3px hsla(0,0%,0%,.025),
 					0 1px 4px hsla(0,0%,0%,.15),
-					0 4px 4px hsla(0,0%,0%,.1)
-				);
+					0 4px 4px hsla(0,0%,0%,.1);
 			}
 
 			> span span {
@@ -399,9 +389,7 @@
 
 				@include transition(all 0.5s ease-out);
 
-				@include box-shadow(
-					inset rgba(0, 0, 0, 0.1) 0 1px 0
-				);
+				box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
 			}
 
 			input:checked {
@@ -413,7 +401,7 @@
 				~ span:before {
 					border-color: $green;
 
-					@include box-shadow(inset 0 0 0 30px $green);
+					box-shadow: inset 0 0 0 30px $green;
 				}
 
 				~ span span {
@@ -436,9 +424,7 @@
 			border: 1px solid $grey;
 			border-radius: 30px;
 
-			@include box-shadow(
-				inset rgba(0, 0, 0, 0.1) 0 1px 0
-			);
+			box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
 
 			.slide-button {
 				background-color: $green;

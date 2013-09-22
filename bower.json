@@ -20,6 +20,7 @@
 		"bootstrap": "~3",
 		"foundation": "~4",
 		"normalize-css": "*",
-		"prism": "gh-pages"
+		"prism": "gh-pages",
+		"bourbon": "3.x"
 	}
 }

@@ -2,7 +2,7 @@
  * CSS Toggle Switch
  */
 
-@import "compass";
+@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "utils";
 @import "icons";
 
@@ -162,7 +162,7 @@ header {
 			font-weight: normal;
 			text-transform: uppercase;
 
-			@include box-shadow(none);
+			box-shadow: none;
 
 			&:hover {
 				border-color: $color2;
@@ -175,7 +175,7 @@ header {
 			&:active {
 				background-color: $color1;
 
-				@include box-shadow(inset 0 2px 2px 0 darken($color1, 5%));
+				box-shadow: inset 0 2px 2px 0 darken($color1, 5%);
 			}
 		}
 
@@ -230,7 +230,7 @@ body pre[class*="language-"] {
 	padding: emCalc(16);
 	background-color: darken($grey2, 2%);
 
-	@include border-radius(2px);
+	border-radius: 2px;
 
 	label {
 		color: $white;

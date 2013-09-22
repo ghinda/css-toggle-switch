@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 	// configurable paths
 	var yeomanConfig = {
 		app: 'src',
-		dist: './'
+		dist: 'dist'
 	};
 
 	try {
@@ -22,70 +22,72 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		yeoman: yeomanConfig,
 		watch: {
-		compass: {
-			files: [ '<%= yeoman.app %>/{,*/}*.{scss,sass}' ],
-			tasks: [ 'compass:server' ]
-		},
-		livereload: {
-			options: {
-				livereload: LIVERELOAD_PORT
+			sass: {
+				files: [ '<%= yeoman.app %>/{,*/}*.{scss,sass}' ],
+				tasks: [ 'sass:server' ]
 			},
-			files: [
-				'./{,*/}*.html',
-				'./**/*.css'
-			]
-		}
+			livereload: {
+				options: {
+					livereload: LIVERELOAD_PORT
+				},
+				files: [
+					'./{,*/}*.html',
+					'./**/*.css'
+				]
+			}
 		},
 		connect: {
-		options: {
-			port: 9000,
-			// Change this to '0.0.0.0' to access the server from outside.
-			hostname: 'localhost'
-		},
-		livereload: {
 			options: {
-			middleware: function (connect) {
-				return [
-				lrSnippet,
-				mountFolder(connect, './')
-				];
-			}
-			}
-		},
-		dist: {
-			options: {
-				middleware: function (connect) {
-					return [
-					mountFolder(connect, yeomanConfig.dist)
-					];
+				port: 9000,
+				hostname: '0.0.0.0'
+			},
+			livereload: {
+				options: {
+					middleware: function (connect) {
+						return [
+							lrSnippet,
+							mountFolder(connect, './')
+						];
+					}
+				}
+			},
+			dist: {
+				options: {
+					middleware: function (connect) {
+						return [
+							mountFolder(connect, './')
+						];
+					}
 				}
 			}
-		}
 		},
-		open: {
-			server: {
-				url: 'http://localhost:<%= connect.options.port %>'
-			}
-		},
-		compass: {
-			options: {
-				sassDir: '<%= yeoman.app %>',
-				cssDir: './dist',
-				noLineComments: true
+		sass: {
+			dist: {
+				files: {
+					'<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
+					'<%= yeoman.dist %>/docs/docs.css': '<%= yeoman.app %>/docs/docs.scss',
+					'<%= yeoman.dist %>/docs/foundation.css': 'bower_components/foundation/scss/foundation.scss'
+				}
 			},
-			dist: {},
 			server: {
 				options: {
-					debugInfo: false
+					includePaths: [
+						''
+					]
+				},
+				files: {
+					'<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
+					'<%= yeoman.dist %>/docs/docs.css': '<%= yeoman.app %>/docs/docs.scss',
+					'<%= yeoman.dist %>/docs/foundation.css': 'bower_components/foundation/scss/foundation.scss'
 				}
 			}
 		},
 		concurrent: {
 			server: [
-				'compass:server'
+				'sass:server'
 			],
 			dist: [
-				'compass:dist'
+				'sass:dist'
 			]
 		}
 	});
