@@ -92,6 +92,7 @@ header {
 	h1 {
 		margin: 0;
 
+		line-height: 1.4;
 		font-size: 2.3em;
 		font-family: 'Roboto', sans-serif;
 		font-weight: 400;
@@ -138,6 +139,7 @@ header {
 	border: 0;
 	padding: 1.25em;
 	background-color: $color3;
+	border-radius: 0;
 
 	color: #333;
 
@@ -294,8 +296,14 @@ pre {
 	clear: both;
 	background: transparent;
 	border: 0;
+	padding: 0;
+
+	font-weight: bold;
+	font-size: 100%;
 }
 
 code {
 	background: transparent;
+
+	font-family: Consolas, 'Liberation Mono', Courier, monospace;
 }

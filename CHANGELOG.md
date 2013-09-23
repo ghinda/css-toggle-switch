@@ -1,9 +1,12 @@
-== 2.0.0 (September X, 2013)
+== 2.0.0 (September 23, 2013)
 
 * Change class names for both the checkbox and radio-based switches, to `.switch-light` and `.switch-toggle`, to not conflict with other components.
 * Replace the `.slide-button` element with a simpler anchor tag.
+* Add compatibility with Foundation 4 for the multiple options switch.
+* Remove the Ruby dependency for development, by using grunt-sass instead of the previous grunt-contrib-compass.
+* Remove the Compass dependency for development, by using Bourbon instead.
 * Various small bug-fixes and improvements in the themes.
-*
+* New documentation website for version 2.0.0, with better demos.
 
 == 1.1.1 (August 31, 2013)
 
