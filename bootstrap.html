@@ -3,15 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>CSS Toggle Switches with Bootstrap</title>
+	<title>CSS Toggle Switches: Accessible CSS toggle switches using standard form controls, with Bootstrap</title>
 	<meta name="description" content="Accessible, screen-reader friendly, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.">
 	<meta name="author" content="Ionuț Colceriu">
 
 	<!-- Docs styles, not required by the switches -->
-	<link rel="stylesheet" href="dist/docs/docs.css">
-
-	<!-- Bootstrap styles -->
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="dist/docs/docs.css">
 
 	<!-- Toggle Switch -->
 	<link rel="stylesheet" href="dist/toggle-switch.css">
@@ -23,300 +22,310 @@
 </head>
 <body>
 
-	<div class="container-narrow">
+	 <header class="row">
+		<div class="col-lg-7">
+			<h1>
+				<a href="index.html">CSS Toggle Switches</a>
+			</h1>
+			<p class="description">Accessible CSS toggle switches using standard form controls</p>
+		</div>
+		<div class="col-lg-5">
+			<ul class="list-inline top-menu">
+				<li><a href="index.html">Standalone</a></li>
+				<li><a href="bootstrap.html" class="active">Bootstrap</a></li>
+				<li><a href="foundation.html">Foundation</a></li>
+			</ul>
+		</div>
+	</header>
 
-		<a class="ribbon" href="https://github.com/ghinda/css-toggle-switch" target="_blank">
-			<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
-		</a>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel hero-box">
 
-		<header>
-			<h1>CSS Toggle Switches</h1>
+				<div class="row">
+					<div class="col-lg-6">
 
-			<p class="description">Accessible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. </p>
+						<h4>Light switch</h4>
+						<p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
-			<p class="frameworks">
-				These examples use Bootstrap, you can also use the <a href="index.html">switches alone</a>,
-				or with <a href="foundation.html">Foundation</a>.
-			</p>
+						<label class="switch-light well" onclick="">
+							<input type="checkbox">
+							<span>
+								Wireless
+								<span>Off</span>
+								<span>On</span>
+							</span>
 
-			<a href="https://github.com/ghinda/css-toggle-switch/archive/gh-pages.zip" class="download-button">Download</a>
+							<a class="btn btn-primary"></a>
+						</label>
 
-			<div class="dependency-install">
-				<pre><code><a href="http://bower.io/">bower</a> install --save css-toggle-switch</code></pre>
-				<pre><code><a href="http://component.io/">component</a> install ghinda/css-toggle-switch</code></pre>
+					</div>
+					<div class="col-lg-6">
+
+						<h4>Toggle switch</h4>
+						<p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
+
+						<div class="row toggle-demo">
+							<label class="col-lg-3">View</label>
+							<div class="switch-toggle switch-3 well col-lg-9">
+								<input id="week-d1" name="view-d" type="radio" checked>
+								<label for="week-d1" onclick="">Week</label>
+
+								<input id="month-d2" name="view-d" type="radio">
+								<label for="month-d2" onclick="">Month</label>
+
+								<input id="month-d3" name="view-d" type="radio">
+								<label for="month-d3" onclick="">Year</label>
+
+								<a class="btn btn-primary"></a>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="row dependency-install">
+
+					<div class="col-lg-12">
+						<pre><code><a href="http://bower.io/">bower</a> install --save css-toggle-switch</code></pre>
+						<pre><code><a href="http://component.io/">component</a> install ghinda/css-toggle-switch</code></pre>
+					</div>
+
+				</div>
+
+				<div class="nav-bar hero-actions">
+					<div class="btn-group btn-group-justified">
+						<a href="https://github.com/ghinda/css-toggle-switch/archive/gh-pages.zip" class="btn">
+							<i class="icon-arrow-down"></i>
+							Download
+						</a>
+						<a href="https://github.com/ghinda/css-toggle-switch" class="btn">
+							<i class="icon-github"></i>
+							Github
+						</a>
+					</div>
+				</div>
+
 			</div>
+		</div>
+	</div>
 
-			<label class="toggle well header-toggle" onclick="">
-				<input type="checkbox">
-				<span>
-					<span>Off</span>
-					<span>On</span>
-				</span>
-				<a class="slide-button btn btn-primary"></a>
-			</label>
-		</header>
+	<div class="row">
+		<div class="col-lg-12">
 
-		<p>The toggle switches are very flexible, so you can use a number of classes provided by Bootstrap, to make them look and act exactly as you need them. </p>
+			<h5 class="frameworks text-center">
+				You can use the switches <a href="index.html">standalone</a>, with <a href="bootstrap.html">Bootstrap</a> or with <a href="foundation.html">Foundation</a>.
+			</h5>
 
-		<hr>
+		</div>
+	</div>
 
-		<div class="row-fluid">
+	<div class="row">
 
-			<label class="checkbox toggle well" onclick="">
-				<input type="checkbox" checked>
-				<span>
-					Wireless
-					<span>Off</span>
-					<span>On</span>
-				</span>
-				<a class="btn btn-primary slide-button"></a>
-			</label>
+		<div class="col-lg-12">
 
-<pre><code class="language-markup">&lt;label class=&quot;checkbox toggle well&quot; onclick=&quot;&quot;&gt;
-	&lt;input id=&quot;view&quot; type=&quot;checkbox&quot; checked /&gt;
+			<h2>Light switch</h2>
+			<p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
+
+			<div class="example col-lg-12">
+
+				<label class="switch-light well col-lg-3" onclick="">
+					<input type="checkbox">
+					<span>
+						Wireless
+						<span>Off</span>
+						<span>On</span>
+					</span>
+
+					<a class="btn btn-primary"></a>
+				</label>
+
+<pre><code class="language-markup">&lt;label class=&quot;switch-light well&quot; onclick=&quot;&quot;&gt;
+	&lt;input type=&quot;checkbox&quot;&gt;
 	&lt;span&gt;
 		Wireless
 		&lt;span&gt;Off&lt;/span&gt;
 		&lt;span&gt;On&lt;/span&gt;
 	&lt;/span&gt;
-	&lt;a class=&quot;btn btn-primary slide-button&quot;&gt;&lt;/a&gt;
+
+	&lt;a class=&quot;btn btn-primary&quot;&gt;&lt;/a&gt;
 &lt;/label&gt;
 </code></pre>
 
-		</div>
-
-		<hr>
-
-		<div class="row-fluid">
-
-			<label>View: </label>
-
-			<div class="well switch">
-				<input id="week" name="view" type="radio" checked>
-				<label for="week" onclick="">Week</label>
-
-				<input id="month" name="view" type="radio">
-				<label for="month" onclick="">Month</label>
-
-				<span class="slide-button btn btn-info"></span>
 			</div>
 
-<pre><code class="language-markup">&lt;label&gt;View: &lt;/label&gt;
-&lt;div class=&quot;well switch&quot;&gt;
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-lg-12">
+
+			<h2>Toggle switch</h2>
+
+			<p>Use the toggle switches, instead of radio buttons, for two or more specific options. </p>
+
+			<div class="example">
+
+				<div class="col-lg-5">
+					<label>View</label>
+					<div class="switch-toggle well">
+						<input id="week" name="view" type="radio" checked>
+						<label for="week" onclick="">Week</label>
+
+						<input id="month" name="view" type="radio">
+						<label for="month" onclick="">Month</label>
+
+						<a class="btn btn-primary"></a>
+					</div>
+				</div>
+
+<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
+&lt;div class=&quot;switch-toggle well&quot;&gt;
 	&lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
 	&lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
 	&lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
 	&lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
 
-	&lt;span class=&quot;slide-button btn btn-info&quot;&gt;&lt;/span&gt;
+	&lt;a class=&quot;btn btn-primary&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 </code></pre>
 
-		</div>
+			</div>
 
-		<hr>
+			<h3>Multiple options</h3>
+			<p>You can add up to 5 items by using the <code>.switch-3</code>, <code>.switch-4</code> and <code>.switch-5</code> classes. </p>
 
-		<div class="row-fluid">
+			<div class="example">
 
-			<form class="form-horizontal">
-				<div class="form-group">
-					<label class="control-label col-lg-2">View</label>
-					<div class="col-lg-10">
-						<div class="well switch">
-							<input id="week2" name="view" type="radio" checked>
-							<label for="week2" onclick="">Week</label>
-
-							<input id="month2" name="view" type="radio">
-							<label for="month2" onclick="">Month</label>
-
-							<span class="slide-button btn btn-default"></span>
-						</div>
-					</div>
-				</div>
-			</form>
-
-<pre><code class="language-markup">&lt;form class=&quot;form-horizontal&quot;&gt;
-	&lt;div class=&quot;form-group&quot;&gt;
-		&lt;label class=&quot;control-label col-lg-2&quot;&gt;View&lt;/label&gt;
-		&lt;div class=&quot;col-lg-10&quot;&gt;
-			&lt;div class=&quot;well switch&quot;&gt;
-				&lt;input id=&quot;week2&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
-				&lt;label for=&quot;week2&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
-
-				&lt;input id=&quot;month2&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-				&lt;label for=&quot;month2&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
-
-				&lt;span class=&quot;slide-button btn btn-default&quot;&gt;&lt;/span&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
-
-		</div>
-
-		<hr>
-
-		<div class="row-fluid">
-
-			<form class="form-horizontal">
-				<div class="form-group">
-					<label class="control-label col-lg-2">View</label>
-					<div class="col-lg-10">
-						<div class="btn switch switch-3">
-							<input id="week3" name="view" type="radio" checked>
-							<label for="week3" onclick="">Week</label>
-
-							<input id="month3" name="view" type="radio">
-							<label for="month3" onclick="">Month</label>
-
-							<input id="year3" name="view" type="radio">
-							<label for="year3" onclick="">Year</label>
-
-							<span class="slide-button btn btn-success"></span>
-						</div>
-					</div>
-				</div>
-			</form>
-
-<pre><code class="language-markup">&lt;form class=&quot;form-horizontal&quot;&gt;
-	&lt;div class=&quot;form-group&quot;&gt;
-		&lt;label class=&quot;control-label col-lg-2&quot;&gt;View&lt;/label&gt;
-		&lt;div class=&quot;col-lg-10&quot;&gt;
-			&lt;div class=&quot;btn switch switch-3&quot;&gt;
-				&lt;input id=&quot;week3&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
-				&lt;label for=&quot;week3&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
-
-				&lt;input id=&quot;month3&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-				&lt;label for=&quot;month3&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
-
-				&lt;input id=&quot;year3&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-				&lt;label for=&quot;year3&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
-
-				&lt;span class=&quot;slide-button btn btn-success&quot;&gt;&lt;/span&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
-
-		</div>
-
-		<hr>
-
-		<div class="row-fluid">
-
-			<form class="form-horizontal">
-				<div class="control-group">
-					<label class="control-label col-lg-2">View</label>
-					<div class="col-lg-10">
-						<div class="switch switch-4 alert alert-success">
-							<input id="week5" name="view" type="radio" checked>
-							<label for="week5" onclick="">Week</label>
-
-							<input id="month6" name="view" type="radio">
-							<label for="month6" onclick="">Month</label>
-
-							<input id="month7" name="view" type="radio">
-							<label for="month7" onclick="">Year</label>
-
-							<input id="month8" name="view" type="radio">
-							<label for="month8" onclick="">Decade</label>
-
-							<span class="slide-button btn btn-info disabled"></span>
-						</div>
-					</div>
-				</div>
-			</form>
-
-<pre><code class="language-markup">&lt;form class=&quot;form-horizontal&quot;&gt;
-	&lt;div class=&quot;control-group&quot;&gt;
-		&lt;label class=&quot;control-label col-lg-2&quot;&gt;View&lt;/label&gt;
-		&lt;div class=&quot;col-lg-10&quot;&gt;
-			&lt;div class=&quot;switch switch-4 alert alert-success&quot;&gt;
-				&lt;input id=&quot;week5&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
-				&lt;label for=&quot;week5&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
-
-				&lt;input id=&quot;month6&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-				&lt;label for=&quot;month6&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
-
-				&lt;input id=&quot;month7&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-				&lt;label for=&quot;month7&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
-
-				&lt;input id=&quot;month8&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-				&lt;label for=&quot;month8&quot; onclick=&quot;&quot;&gt;Decade&lt;/label&gt;
-
-				&lt;span class=&quot;slide-button btn btn-info disabled&quot;&gt;&lt;/span&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
-
-		</div>
-
-		<hr>
-
-		<div class="row-fluid">
-
-			<form>
 				<label>View</label>
-				<div class="alert alert-info switch switch-5">
-					<input id="week9" name="view" type="radio" checked>
-					<label for="week9" onclick="">Week</label>
+				<div class="switch-toggle switch-5 well">
+					<input id="hour3" name="view3" type="radio" checked>
+					<label for="hour3" onclick="">Hour</label>
 
-					<input id="month10" name="view" type="radio">
-					<label for="month10" onclick="">Month</label>
+					<input id="day4" name="view3" type="radio">
+					<label for="day4" onclick="">Day</label>
 
-					<input id="month11" name="view" type="radio">
-					<label for="month11" onclick="">Year</label>
+					<input id="week5" name="view3" type="radio">
+					<label for="week5" onclick="">Week</label>
 
-					<input id="month12" name="view" type="radio">
-					<label for="month12" onclick="">Decade</label>
+					<input id="month6" name="view3" type="radio">
+					<label for="month6" onclick="">Month</label>
 
-					<input id="month13" name="view" type="radio">
-					<label for="month13" onclick="">Millenium</label>
+					<input id="year7" name="view3" type="radio">
+					<label for="year7" onclick="">Year</label>
 
-					<span class="slide-button btn btn-warning"></span>
+					<a class="btn btn-primary"></a>
 				</div>
-			</form>
 
 <pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;alert alert-info switch switch-5&quot;&gt;
-	&lt;input id=&quot;week9&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
-	&lt;label for=&quot;week9&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
-
-	&lt;input id=&quot;month10&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-	&lt;label for=&quot;month10&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
-
-	&lt;input id=&quot;month11&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-	&lt;label for=&quot;month11&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
-
-	&lt;input id=&quot;month12&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-	&lt;label for=&quot;month12&quot; onclick=&quot;&quot;&gt;Decade&lt;/label&gt;
-
-	&lt;input id=&quot;month13&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-	&lt;label for=&quot;month13&quot; onclick=&quot;&quot;&gt;Millenium&lt;/label&gt;
-
-	&lt;span class=&quot;slide-button btn btn-warning&quot;&gt;&lt;/span&gt;
-&lt;/div&gt;
+&lt;div class=&quot;switch-toggle switch-5 well&quot;&gt;
+	[&hellip;]
 </code></pre>
+
+			</div>
 
 		</div>
 
-		<footer>
+	</div>
 
-			<hr>
+	<div class="row">
 
+		<div class="col-lg-12">
+
+			<h2>Different looks</h2>
+
+			<p>The switches are very flexible, so you can use and combine a number of classes provided by Bootstrap, along with it's grid, to make them look exactly like you need them. </p>
+
+			<div class="example">
+
+				<div class="row">
+					<div class="col-lg-4">
+						<label class="switch-light progress" onclick="">
+							<input type="checkbox">
+							<span>
+								Wireless
+								<span aria-label="Off" title="Off">O</span>
+								<span aria-label="On" title="On">I</span>
+							</span>
+
+							<a class="progress-bar"></a>
+						</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-4">
+						<label>View</label>
+						<div class="switch-toggle well">
+							<input id="week41" name="view4" type="radio" checked>
+							<label for="week41" onclick="">Week</label>
+
+							<input id="month42" name="view4" type="radio">
+							<label for="month42" onclick="">Month</label>
+
+							<a class="btn btn-primary disabled"></a>
+						</div>
+					</div>
+				</div>
+
+				<label>View</label>
+				<div class="switch-toggle switch-3 alert alert-info">
+					<input id="week51" name="view5" type="radio" checked>
+					<label for="week51" onclick="">Week</label>
+
+					<input id="month52" name="view5" type="radio">
+					<label for="month52" onclick="">Month</label>
+
+					<input id="month53" name="view5" type="radio">
+					<label for="month53" onclick="">Year</label>
+
+					<a class="btn btn-primary disabled"></a>
+				</div>
+
+				<label>View</label>
+				<div class="switch-toggle switch-4 alert alert-success">
+					<input id="week61" name="view6" type="radio" checked>
+					<label for="week61" onclick="">Week</label>
+
+					<input id="month62" name="view6" type="radio">
+					<label for="month62" onclick="">Month</label>
+
+					<input id="year63" name="view6" type="radio">
+					<label for="year63" onclick="">Year</label>
+
+					<input id="decade63" name="view6" type="radio">
+					<label for="decade63" onclick="">Decade</label>
+
+					<a class="btn btn-default"></a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
 			<h3>
 				<a href="http://getbootstrap.com/" target="_blank">Get Bootstrap.</a>
 			</h3>
-
-			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net">Ionuț Colceriu</a>.
-		</footer>
-
+		</div>
 	</div>
+
+	<footer>
+		<div class="row">
+			<div class="col-lg-12">
+				<p>
+					<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> is a project by <a href="http://ghinda.net">Ionuț Colceriu</a>. Follow <a href="https://twitter.com/ghindas">@ghindas</a>.
+				</p>
+			</div>
+		</div>
+	</footer>
 
 	<script>
 		var _gaq = [['_setAccount', 'UA-19824700-1'], ['_trackPageview']];

@@ -52,6 +52,7 @@ you can use the generic selector below, but it's slower:
   content: "\e002"; }
 
 body {
+  font-size: 16px;
   margin: 1.75em 0;
   background-color: #454545;
   color: white; }
@@ -85,7 +86,11 @@ a {
     color: #2f628d; }
 
 .row {
-  max-width: 48.75em; }
+  max-width: 48.75em;
+  margin: 0 auto; }
+
+.row .row {
+  width: auto; }
 
 /* Browse Happy prompt
  */
@@ -128,8 +133,11 @@ header {
 .hero-box {
   margin-bottom: 1.25em;
   border: 0;
+  padding: 1.25em;
   background-color: #5996c9;
-  color: white; }
+  color: #333333; }
+  .hero-box h4 {
+    color: #333333; }
   .hero-box .switch-light {
     width: 100px; }
   .hero-box .toggle-demo {
@@ -155,7 +163,8 @@ header {
       font-size: 1em;
       font-weight: normal;
       text-transform: uppercase;
-      box-shadow: none; }
+      box-shadow: none;
+      border-radius: 0; }
       .hero-box .hero-actions a:hover {
         border-color: #3b7db4;
         background-color: #3b7db4;
@@ -169,6 +178,7 @@ header {
 
 .row.dependency-install {
   overflow: hidden;
+  width: auto;
   padding: 1.25em;
   margin: 1.25em -1.25em 0;
   background-color: #7fafd6; }
@@ -207,3 +217,19 @@ body pre[class*="language-"] {
  */
 footer {
   margin-top: 1.25em; }
+
+/* Bootstrap
+ */
+.well.switch-light > span, .well.switch-toggle > span {
+  color: white; }
+.well.switch-light span span, .well.switch-light label, .well.switch-toggle span span, .well.switch-toggle label {
+  color: #2b2b2b; }
+
+pre {
+  display: block;
+  clear: both;
+  background: transparent;
+  border: 0; }
+
+code {
+  background: transparent; }

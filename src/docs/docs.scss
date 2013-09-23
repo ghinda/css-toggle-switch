@@ -14,6 +14,7 @@ $color2: #3b7db4;
 $color3: #5996c9;
 
 body {
+	font-size: 16px;
 	margin: emCalc(28) 0;
 	background-color: $grey2;
 
@@ -65,6 +66,11 @@ a {
 
 .row {
 	max-width: emCalc(780);
+	margin: 0 auto;
+}
+
+.row .row {
+	width: auto;
 }
 
 /* Browse Happy prompt
@@ -130,8 +136,14 @@ header {
 .hero-box {
 	margin-bottom: emCalc(20);
 	border: 0;
+	padding: 1.25em;
 	background-color: $color3;
-	color: $white;
+
+	color: #333;
+
+	h4 {
+		color: #333;
+	}
 
 	.switch-light {
 		width: 100px;
@@ -174,6 +186,7 @@ header {
 			text-transform: uppercase;
 
 			box-shadow: none;
+			border-radius: 0;
 
 			&:hover {
 				border-color: $color2;
@@ -198,6 +211,7 @@ header {
 
 .row.dependency-install {
 	overflow: hidden;
+	width: auto;
 	padding: emCalc(20);
 	margin: emCalc(20) -1.25em 0;
 	background-color: lighten($color3, 10%);
@@ -259,4 +273,29 @@ body pre[class*="language-"] {
 
 footer {
 	margin-top: emCalc(20);
+}
+
+/* Bootstrap
+ */
+.well.switch-light,
+.well.switch-toggle {
+	> span {
+		color: $white;
+	}
+
+	span span,
+	label {
+		color: $grey1;
+	}
+}
+
+pre {
+	display: block;
+	clear: both;
+	background: transparent;
+	border: 0;
+}
+
+code {
+	background: transparent;
 }
