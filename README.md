@@ -1,17 +1,46 @@
-# Accessible, CSS-only toggle switches
+# CSS Toggle Switches
 
-Accessible, screen-reader friendly, flexible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.
+CSS Toggle Switches are a set of accessible CSS-only *switch* components, created from standard form controls in the markup.
 
-Compatible with [Bootstrap](http://getbootstrap.com/) and [Foundation](http://foundation.zurb.com/).
+You can use them standalone, or with [Bootstrap](http://getbootstrap.com/) or [Foundation](http://foundation.zurb.com/).
 
-You can use the toggles as standalone widgets, or along with Twitter Bootstrap or ZURB Foundation.
+## Install
 
-Standalone themes are based on:
-* [Sort Switches / Toggles by Orman Clark](http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/)
-* Apple iOS
-* Android Holo
+Download from the [project page](http://ghinda.net/css-toggle-switch/).
 
-# Development details
+Install with [Bower](http://bower.io/): `bower install --save css-toggle-switch`
 
-* http://ghinda.net/css-toggle-switches/
-* http://ghinda.net/css-toggle-switches-mobile/
+Install with [Component(1)](http://component.io/): `component install ghinda/css-toggle-switch`
+
+
+## How to use it
+
+Just include `toggle-switch.css`, and use the markup from the [documentation](http://ghinda.net/css-toggle-switch/).
+
+
+## Switches
+
+### Light switch
+
+Use the light switch, instead of a checkbox, for simple *On/Off* options.
+
+### Toggle switch
+
+Use the toggle switches, instead of radio buttons, for two or more, specific options.
+
+
+## Browser support
+
+The toggle switches work on all modern browsers, including mobile ones(even proxy-browsers like Opera Mini).
+
+**Browsers without support for media-queries, such as IE8 and bellow, get standard form elements.**
+
+The `onclick=""` attribute is required for older iOS and Opera Mini support.
+
+
+## Acknowledgements
+
+CSS Toggle Switches is a project by [Ionuț Colceriu](http://ghinda.net).
+
+* Standalone themes are based on [Sort Switches / Toggles by Orman Clark](http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/), [iOS 7](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISwitch.html) and [Android](https://developer.android.com/design/building-blocks/switches.html).
+* iOS label tap issue and fix reported by [scruffian](https://github.com/scruffian).
