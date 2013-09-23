@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 				},
 				files: [
 					'./{,*/}*.html',
-					'./**/*.css'
+					'./{,*/}*.css'
 				]
 			}
 		},
@@ -64,9 +64,10 @@ module.exports = function (grunt) {
 		sass: {
 			dist: {
 				files: {
-					'<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
-					'<%= yeoman.dist %>/docs/docs.css': '<%= yeoman.app %>/docs/docs.scss',
-					'<%= yeoman.dist %>/docs/foundation.css': 'bower_components/foundation/scss/foundation.scss'
+					'<%= yeoman.dist %>/*.css': '<%= yeoman.app %>/*.scss'
+// 					'<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
+// 					'<%= yeoman.dist %>/docs/docs.css': '<%= yeoman.app %>/docs/docs.scss',
+// 					'<%= yeoman.dist %>/docs/foundation.css': 'bower_components/foundation/scss/foundation.scss'
 				}
 			},
 			server: {

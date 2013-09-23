@@ -128,7 +128,10 @@
 	@include switch-shared();
 
 	position: relative;
-	padding: 0;
+
+	/* For callout panels in foundation
+	 */
+	padding: 0 !important;
 
 	input {
 		position: absolute;
@@ -230,6 +233,7 @@
 			0 1px 0px rgba(255, 255, 255, 0.2);
 
 		label {
+			color: #fff;
 			@include transition(color 0.2s ease-out);
 		}
 

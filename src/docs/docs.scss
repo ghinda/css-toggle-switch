@@ -6,13 +6,12 @@
 @import "utils";
 @import "icons";
 
+$white: #fff;
 $grey1: #2b2b2b;
 $grey2: #454545;
 $color1: #2f628d;
 $color2: #3b7db4;
 $color3: #5996c9;
-
-$white: #fff;
 
 body {
 	margin: emCalc(28) 0;
@@ -72,10 +71,10 @@ a {
  */
 
 .browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
 }
 
 /* Header
@@ -146,7 +145,7 @@ header {
 		}
 	}
 
-	label {
+	.row > label {
 		color: $white;
 	}
 
@@ -244,7 +243,8 @@ body pre[class*="language-"] {
 
 	border-radius: 2px;
 
-	label {
+	> label,
+	.row > label {
 		color: $white;
 	}
 

@@ -136,7 +136,7 @@ header {
     width: 95%; }
     .hero-box .toggle-demo > label {
       padding-top: 0.5em; }
-  .hero-box label {
+  .hero-box .row > label {
     color: white; }
   .hero-box .hero-actions {
     margin: 0 -1.25em -1.25em; }
@@ -198,7 +198,7 @@ body pre[class*="language-"] {
   padding: 1em;
   background-color: #404040;
   border-radius: 2px; }
-  .example label {
+  .example > label, .example .row > label {
     color: white; }
   .example .switch-toggle, .example .switch-light {
     margin-bottom: 1.25em; }

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>CSS Toggle Switches with Foundation</title>
+	<meta name="description" content="Accessible, screen-reader friendly, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.">
+	<meta name="author" content="Ionuț Colceriu">
+
+	<link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
+
+	<!-- Docs styles, not required by the switches -->
+	<link rel="stylesheet" href="dist/docs/docs.css">
+
+	<!-- Foundation styles -->
+	<link rel="stylesheet" href="dist/docs/foundation.css">
+
+	<!-- Prism Syntax Highlighter -->
+    <link rel="stylesheet" href="bower_components/prism/prism.css">
+    <link rel="stylesheet" href="bower_components/prism/prism-okaidia.css">
+    <script src="bower_components/prism/prism.js"></script>
+</head>
+<body>
+
+	<div class="container-foundation">
+
+		<a class="ribbon" href="https://github.com/ghinda/css-toggle-switch" target="_blank">
+			<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+		</a>
+
+		<header class="row">
+			<h1>CSS Toggle Switches</h1>
+
+			<p class="description">Accessible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls. </p>
+
+			<p class="frameworks">
+				These examples use Foundation, you can also use the <a href="index.html">switches alone</a>,
+				or with <a href="bootstrap.html">Bootstrap</a>.
+			</p>
+
+			<div class="small-2 header-toggle">
+				<div class="switch">
+					<input id="x" name="switch-x" type="radio" checked>
+					<label for="x" onclick="">Off</label>
+
+					<input id="x1" name="switch-x" type="radio">
+					<label for="x1" onclick="">On</label>
+
+					<span></span>
+				</div>
+			</div>
+
+		</header>
+
+		<div data-alert class="alert-box secondary">
+			Foundation 4 now includes it's own <a href="http://foundation.zurb.com/docs/components/switch.html">switch component</a>, based on this one, that allows you to switch between two options.
+
+			<br><br>
+
+			If you need to choose between more than two options, I recommend you use <a href="http://foundation.zurb.com/docs/components/button-groups.html">button groups</a> or radio buttons.
+		</div>
+
+		<footer>
+
+			<hr>
+
+			<h3>
+				<a href="http://foundation.zurb.com/" target="_blank">Get Foundation.</a>
+			</h3>
+
+			<a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switches</a> by <a href="http://ghinda.net">Ionuț Colceriu</a>.
+		</footer>
+
+	</div>
+
+	<script>
+		var _gaq = [['_setAccount', 'UA-19824700-1'], ['_trackPageview']];
+		(function(d, t) {
+			var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.async = 1;
+			g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g, s);
+		})(document, 'script');
+	</script>
+
+</body>
+</html>
