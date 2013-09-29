@@ -298,15 +298,12 @@
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from
  * http://css-tricks.com/webkit-sibling-bug/
  *
- * Improved by @seantimm, to fix memory use issues
+ * Original conditional @mediaquery by @seantimm, to fix memory use issues on new devices.
  * https://github.com/zurb/foundation/pull/2725
  */
-@media only screen and (-webkit-min-device-pixel-ratio: 0) and (max-device-width: 480px) {
+@media only screen and (-webkit-max-device-pixel-ratio: 1.5) and (max-device-width: 480px) {
   .switch-light, .switch-toggle {
     -webkit-animation: webkitSiblingBugfix infinite 1s; } }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
-  .switch-light, .switch-toggle {
-    -webkit-animation: none 0; } }
 
 @-webkit-keyframes webkitSiblingBugfix {
   from {
