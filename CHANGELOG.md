@@ -1,3 +1,7 @@
+== 2.0.1 (September 29, 2013)
+
+* Improve the old-Webkit bug-fix that was mostly visible on mobile devices, to improve device compatibility.
+
 == 2.0.0 (September 23, 2013)
 
 * Change class names for both the checkbox and radio-based switches, to `.switch-light` and `.switch-toggle`, to not conflict with other components.
