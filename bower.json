@@ -19,8 +19,9 @@
 	"devDependencies": {
 		"bootstrap": "~3",
 		"foundation": "~4",
-		"normalize-css": "*",
-		"prism": "gh-pages",
-		"bourbon": "3.x"
+		"normalize-css": "~2",
+		"bourbon": "~3",
+		"qunit": "~1",
+		"prism": "gh-pages"
 	}
 }

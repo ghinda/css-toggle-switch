@@ -20,7 +20,7 @@
           <li><a href="#">This is another</a></li>
           <li><a href="#">Yet another</a></li>
         </ul>
-        
+
         <a href="#" class="small secondary radius button split">Split Button <span data-dropdown="drop2"></span></a><br>
         <ul id="drop2" class="f-dropdown" data-dropdown-content>
           <li><a href="#">This is a link</a></li>
@@ -34,7 +34,7 @@
           <li><a href="#">This is another</a></li>
           <li><a href="#">Yet another</a></li>
         </ul>
-    
+
         <a href="#" class="large success button split">Split Button <span data-dropdown="drop4"></span></a><br>
         <ul id="drop4" class="f-dropdown" data-dropdown-content>
           <li><a href="#">This is a link</a></li>
@@ -147,47 +147,69 @@ $split-button-padding-tny: $button-tny * 9;
 $split-button-span-width-tny: $button-tny * 6.5;
 $split-button-pip-size-tny: $button-tny;
 $split-button-pip-top-tny: $button-tny * 2;
-$split-button-pip-default-float-tny: emCalc(-5);
+$split-button-pip-default-float-tny: em-calc(-5);
 
 /* We use these to control small split buttons */
 $split-button-padding-sml: $button-sml * 7;
 $split-button-span-width-sml: $button-sml * 5;
 $split-button-pip-size-sml: $button-sml;
 $split-button-pip-top-sml: $button-sml * 1.5;
-$split-button-pip-default-float-sml: emCalc(-9);
+$split-button-pip-default-float-sml: em-calc(-9);
 
 /* We use these to control medium split buttons */
 $split-button-padding-med: $button-med * 6.4;
 $split-button-span-width-med: $button-med * 4;
-$split-button-pip-size-med: $button-med - emCalc(3);
+$split-button-pip-size-med: $button-med - em-calc(3);
 $split-button-pip-top-med: $button-med * 1.5;
-$split-button-pip-default-float-med: emCalc(-9);
+$split-button-pip-default-float-med: em-calc(-9);
 
 /* We use these to control large split buttons */
 $split-button-padding-lrg: $button-lrg * 6;
 $split-button-span-width-lrg: $button-lrg * 3.75;
-$split-button-pip-size-lrg: $button-lrg - emCalc(6);
-$split-button-pip-top-lrg: $button-lrg + emCalc(5);
-$split-button-pip-default-float-lrg: emCalc(-9);
+$split-button-pip-size-lrg: $button-lrg - em-calc(6);
+$split-button-pip-top-lrg: $button-lrg + em-calc(5);
+$split-button-pip-default-float-lrg: em-calc(-9);
 ', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You don't need this JS to create dropdown button styles with Foundation. The only reason you'll need to include <code>foundation.dropdown.js</code> is if you want to add one of our dropdowns to the button. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the dropdown plugin.</p>
-        <p>Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS file in your directory:</p>
+        <div class="panel">
+          Before you can use split buttons you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.dropdown.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
 
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
         <p>Required Foundation Library: <code>foundation.dropdown.js</code></p>
 
         <h5>Creating the Dropdown</h5>
         <p>To create a dropdown, you'll need to attach a data-attribute to whatever element you want the dropdown attached to (in this case a button). From there, you'll create a list that holds the links or content and add another data-attribute that associates with the element it belongs to. Here's an example of that markup:</p>
 
 <%= code_example '
-<a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button <span data-dropdown="drop1"></span></a><br>
+<a href="#" class="button split">Dropdown Button <span data-dropdown="drop1"></span></a>
 <ul id="drop1" class="f-dropdown" data-dropdown-content>
   <li><a href="#">This is a link</a></li>
   <li><a href="#">This is another</a></li>
@@ -208,7 +230,7 @@ $split-button-pip-default-float-lrg: emCalc(-9);
 
         <p>Dropdown button options can only be passed in during initialization at this time.</p>
 
-<%= code_example "{ 
+<%= code_example "{
   // specify the class used for active sections
   activeClass: 'open'
 }", :js %>

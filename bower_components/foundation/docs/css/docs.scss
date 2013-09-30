@@ -4,8 +4,6 @@
 @import "footer";
 @import "offcanvas";
 
-ol, li {list-style:none;}
-
 #changelog {
   ol, li {list-style: disc; margin-left: 30px;}
 }
@@ -23,7 +21,7 @@ ol, li {list-style:none;}
 }
 
 .highlight pre {
-  margin: 0px;
+  margin: 0;
   font-size: .7em;
   line-height: 1.4em;
   white-space: pre-wrap;

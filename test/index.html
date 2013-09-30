@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>CSS Toggle Switch: Tests</title>
+
+	<!-- Toggle Switch -->
+	<link rel="stylesheet" href="../dist/toggle-switch.css">
+
+	<link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css" type="text/css" media="screen">
+
+	<script src="../bower_components/qunit/qunit/qunit.js"></script>
+	<script src="tests.js"></script>
+
+	<style>
+		#fixture-hidden {
+			position: absolute;
+			top: -10000px;
+			left: -10000px;
+			width: 1000px;
+			height: 1000px;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="qunit"></div>
+
+	<div id="fixture-hidden">
+
+		<div class="barebones">
+			<label class="switch-light" onclick="">
+				<input type="checkbox">
+				<span>
+					Wireless
+					<span>Off</span>
+					<span>On</span>
+				</span>
+
+				<a></a>
+			</label>
+
+			<div class="switch-toggle">
+				<input id="barebones1" name="barebones" type="radio" checked>
+				<label for="barebones1" onclick="">Week</label>
+
+				<input id="barebones2" name="barebones" type="radio">
+				<label for="barebones2" onclick="">Month</label>
+
+				<a></a>
+			</div>
+		</div>
+
+		<div class="android">
+			<label class="switch-light android" onclick="">
+				<input type="checkbox">
+				<span>
+					Wireless
+					<span>Off</span>
+					<span>On</span>
+				</span>
+
+				<a></a>
+			</label>
+
+			<div class="switch-toggle android">
+				<input id="android1" name="android" type="radio" checked>
+				<label for="android1" onclick="">Week</label>
+
+				<input id="android2" name="android" type="radio">
+				<label for="android2" onclick="">Month</label>
+
+				<a></a>
+			</div>
+		</div>
+
+		<div class="candy">
+			<label class="switch-light candy" onclick="">
+				<input type="checkbox">
+				<span>
+					Wireless
+					<span>Off</span>
+					<span>On</span>
+				</span>
+
+				<a></a>
+			</label>
+
+			<div class="switch-toggle candy">
+				<input id="candy1" name="candy" type="radio" checked>
+				<label for="candy1" onclick="">Week</label>
+
+				<input id="candy2" name="candy" type="radio">
+				<label for="candy2" onclick="">Month</label>
+
+				<a></a>
+			</div>
+		</div>
+
+		<div class="ios">
+			<label class="switch-light ios" onclick="">
+				<input type="checkbox">
+				<span>
+					Wireless
+					<span>Off</span>
+					<span>On</span>
+				</span>
+
+				<a></a>
+			</label>
+
+			<div class="switch-toggle ios">
+				<input id="ios1" name="ios" type="radio" checked>
+				<label for="ios1" onclick="">Week</label>
+
+				<input id="ios2" name="ios" type="radio">
+				<label for="ios2" onclick="">Month</label>
+
+				<a></a>
+			</div>
+		</div>
+
+		<div class="switch-toggle switch-3">
+			<input id="three1" name="three" type="radio" checked>
+			<label for="three1" onclick="">Week</label>
+
+			<input id="three2" name="three" type="radio">
+			<label for="three2" onclick="">Month</label>
+
+			<input id="three3" name="three" type="radio">
+			<label for="three3" onclick="">Year</label>
+
+			<a></a>
+		</div>
+
+		<div class="switch-toggle switch-4">
+			<input id="four1" name="four" type="radio" checked>
+			<label for="four1" onclick="">Week</label>
+
+			<input id="four2" name="four" type="radio">
+			<label for="four2" onclick="">Month</label>
+
+			<input id="four3" name="four" type="radio">
+			<label for="four3" onclick="">Year</label>
+
+			<input id="four4" name="four" type="radio">
+			<label for="four4" onclick="">Decade</label>
+
+			<a></a>
+		</div>
+
+		<div class="switch-toggle switch-5">
+			<input id="five0" name="five" type="radio" checked>
+			<label for="five0" onclick="">Day</label>
+
+			<input id="five1" name="five" type="radio">
+			<label for="five1" onclick="">Week</label>
+
+			<input id="five2" name="five" type="radio">
+			<label for="five2" onclick="">Month</label>
+
+			<input id="five3" name="five" type="radio">
+			<label for="five3" onclick="">Year</label>
+
+			<input id="five4" name="five" type="radio">
+			<label for="five4" onclick="">Decade</label>
+
+			<a></a>
+		</div>
+
+	</div>
+
+</body>
+</html>

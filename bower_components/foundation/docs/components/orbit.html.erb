@@ -224,26 +224,32 @@ $include-html-orbit-classes: $include-html-classes;
 
 /* We use these to control the caption styles */
 $orbit-container-bg: #f5f5f5;
-$orbit-caption-bg-old: rgb(0,0,0);
 $orbit-caption-bg: rgba(0,0,0,0.6);
 $orbit-caption-font-color: #fff;
+$orbit-caption-font-size: emCalc(14);
+$orbit-caption-position: "bottom";    // Supported values: "bottom", "under"
+$orbit-caption-padding: emCalc(10,14);
+$orbit-caption-height: auto;
 
 /* We use these to control the left/right nav styles */
-$orbit-nav-bg-old: rgb(0,0,0);
 $orbit-nav-bg: rgba(0,0,0,0.6);
+$orbit-nav-bg-hover: rgba(0,0,0,0.6);
+$orbit-nav-arrow-color: #fff;
+$orbit-nav-arrow-color-hover: #ccc;
 
 /* We use these to control the timer styles */
-$orbit-timer-bg-old: rgb(0,0,0);
 $orbit-timer-bg: rgba(0,0,0,0.6);
+$orbit-timer-show-progress-bar: true;
 
 /* We use these to control the bullet nav styles */
 $orbit-bullet-nav-color: #999;
-$orbit-bullet-nav-color-active: #555;
+$orbit-bullet-nav-color-active: #222;
+$orbit-bullet-radius: emCalc(18);
 
-/* We use thes to controls the style of slide numbers */
+/* We use these to controls the style of slide numbers */
 $orbit-slide-number-bg: rgba(0,0,0,0);
 $orbit-slide-number-font-color: #fff;
-$orbit-slide-number-padding: emCalc(5px);
+$orbit-slide-number-padding: em-calc(5px);
 
 /* Graceful Loading Wrapper and preloader */
 $wrapper-class: "slideshow-wrapper";
@@ -253,9 +259,33 @@ $preloader-class: "preloader";
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>foundation.orbit.js</code> if you want to use Orbit. You'll also need to make sure to include <code>zepto.js</code> and/or <code>jquery.js</code> along with <code>foundation.js</code> above the Orbit plugin. Above your closing <code>&lt;/body&gt;</code> tag include the Foundation library and either Zepto or jQuery.</p>
+        <div class="panel">
+          Before you can use Orbit you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.orbit.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
+
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.orbit.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
 
         <p>Required Foundation Library: <code>foundation.orbit.js</code></p>
 

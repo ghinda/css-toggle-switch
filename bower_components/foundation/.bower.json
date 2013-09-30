@@ -1,12 +1,12 @@
 {
   "name": "foundation",
   "homepage": "https://github.com/zurb/foundation",
-  "version": "4.3.1",
-  "_release": "4.3.1",
+  "version": "4.3.2",
+  "_release": "4.3.2",
   "_resolution": {
     "type": "version",
-    "tag": "v4.3.1",
-    "commit": "a09b6b68be297f8a740a96dba0316f746a91202e"
+    "tag": "v4.3.2",
+    "commit": "bc42dd31fddd12c62a863f63baf972a6252db5c8"
   },
   "_source": "git://github.com/zurb/foundation.git",
   "_target": "~4",

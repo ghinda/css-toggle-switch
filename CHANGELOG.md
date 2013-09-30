@@ -1,3 +1,7 @@
+== 2.0.2 (October X, 2013)
+
+* Created Qunit tests for all the themes and switches with multiple options.
+
 == 2.0.1 (September 29, 2013)
 
 * Improve the old-Webkit bug-fix that was mostly visible on mobile devices, to improve device compatibility.
