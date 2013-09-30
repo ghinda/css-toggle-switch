@@ -1,4 +1,4 @@
-== 2.0.2 (October X, 2013)
+== 2.0.2 (September 30, 2013)
 
 * Created Qunit tests for all the themes and switches with multiple options.
 

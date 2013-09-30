@@ -1,6 +1,6 @@
 {
 	"name": "css-toggle-switch",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"author": "Ionut Colceriu",
 	"description": "Accessible, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.",
 	"keywords": [ "toggle", "switch", "ui" ],
