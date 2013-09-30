@@ -8,7 +8,6 @@ function testSwitchTheme(name, theme) {
 	});
 
 	test(name + ' switch-toggle', function() {
-		console.log($switchToggleButton);
 		notEqual($switchToggleButton.offsetLeft, '0');
 	});
 };
@@ -25,16 +24,16 @@ function testSwitchNumber(name, number) {
 window.onload = function() {
 
 	// click all the switches
-	var $switchLightButtons = document.querySelectorAll('.switch-light');
-	var $switchToggleButtons = document.querySelectorAll('.switch-toggle label:last-of-type');
+	var $switchLightButtons = document.querySelectorAll('.switch-light input');
+	var $switchToggleButtons = document.querySelectorAll('.switch-toggle input:last-of-type');
 
 	var i;
 	for(i = 0; i < $switchLightButtons.length; i++) {
-		$switchLightButtons[i].click();
+		$switchLightButtons[i].checked = true;
 	}
 
 	for(i = 0; i < $switchToggleButtons.length; i++) {
-		$switchToggleButtons[i].click();
+		$switchToggleButtons[i].checked = true;
 	}
 
 	// give it a second to move the switch buttons

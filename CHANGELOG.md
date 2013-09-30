@@ -1,3 +1,7 @@
+== 2.0.3 (October X, 2013)
+
+* Improve the Qunit tests, to bypass issues caused by touch events on some mobile platforms.
+
 == 2.0.2 (September 30, 2013)
 
 * Created Qunit tests for all the themes and switches with multiple options.
