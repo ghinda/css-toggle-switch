@@ -171,7 +171,7 @@
       left: 60%; }
     .switch-toggle.switch-5 input:checked:last-of-type ~ a {
       left: 80%; }
-  .candy {
+  .switch-candy {
     background-color: #2d3035;
     border-radius: 3px;
     color: white;
@@ -179,62 +179,62 @@
     text-align: center;
     text-shadow: 1px 1px 1px #191b1e;
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0px rgba(255, 255, 255, 0.2); }
-    .candy label {
+    .switch-candy label {
       color: white;
       -webkit-transition: color 0.2s ease-out;
       -moz-transition: color 0.2s ease-out;
       transition: color 0.2s ease-out; }
-    .candy input:checked + label {
+    .switch-candy input:checked + label {
       color: #333333;
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
-    .candy a {
+    .switch-candy a {
       border: 1px solid #333333;
       background-color: #70c66b;
       border-radius: 3px;
       background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
       background-image: linear-gradient(to  bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45); }
-    .candy > span {
+    .switch-candy > span {
       color: #333333;
       text-shadow: none; }
-    .candy span {
+    .switch-candy span {
       color: white; }
-    .candy.blue a {
+    .switch-candy.switch-candy-blue a {
       background-color: #38a3d4; }
-    .candy.yellow a {
+    .switch-candy.switch-candy-yellow a {
       background-color: #f5e560; }
-  .android {
+  .switch-android {
     background-color: #464747;
     border-radius: 1px;
     color: white;
     box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
     /* Selected ON switch-light
 		 */ }
-    .android label {
+    .switch-android label {
       color: white; }
-    .android > span span {
+    .switch-android > span span {
       opacity: 0;
       -webkit-transition: all 0.1s;
       -moz-transition: all 0.1s;
       transition: all 0.1s; }
-      .android > span span:first-of-type {
+      .switch-android > span span:first-of-type {
         opacity: 1; }
-    .android a {
+    .switch-android a {
       background-color: #666666;
       border-radius: 1px;
       box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.3) 0 -1px 0; }
-    .android.switch-light input:checked ~ a {
+    .switch-android.switch-light input:checked ~ a {
       background-color: #0e88b1; }
-    .android.switch-light input:checked ~ span span:first-of-type {
+    .switch-android.switch-light input:checked ~ span span:first-of-type {
       opacity: 0; }
-    .android.switch-light input:checked ~ span span:last-of-type {
+    .switch-android.switch-light input:checked ~ span span:last-of-type {
       opacity: 1; }
-    .android.switch-toggle, .android > span span {
+    .switch-android.switch-toggle, .switch-android > span span {
       font-size: 85%;
       text-transform: uppercase; }
-  .ios.switch-light {
+  .switch-ios.switch-light {
     color: #868686; }
-    .ios.switch-light a {
+    .switch-ios.switch-light a {
       left: 0;
       width: 30px;
       background-color: white;
@@ -244,16 +244,16 @@
       -moz-transition: all 0.3s ease-out;
       transition: all 0.3s ease-out;
       box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.025), 0 1px 4px rgba(0, 0, 0, 0.15), 0 4px 4px rgba(0, 0, 0, 0.1); }
-    .ios.switch-light > span span {
+    .switch-ios.switch-light > span span {
       width: 100%;
       left: 0;
       opacity: 0; }
-      .ios.switch-light > span span:first-of-type {
+      .switch-ios.switch-light > span span:first-of-type {
         opacity: 1;
         padding-left: 30px; }
-      .ios.switch-light > span span:last-of-type {
+      .switch-ios.switch-light > span span:last-of-type {
         padding-right: 30px; }
-    .ios.switch-light > span:before {
+    .switch-ios.switch-light > span:before {
       content: '';
       display: block;
       width: 100%;
@@ -268,37 +268,43 @@
       -moz-transition: all 0.5s ease-out;
       transition: all 0.5s ease-out;
       box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0; }
-    .ios.switch-light input:checked ~ a {
+    .switch-ios.switch-light input:checked ~ a {
       left: 100%;
       margin-left: -30px; }
-    .ios.switch-light input:checked ~ span:before {
+    .switch-ios.switch-light input:checked ~ span:before {
       border-color: #53d76a;
       box-shadow: inset 0 0 0 30px #53d76a; }
-    .ios.switch-light input:checked ~ span span:first-of-type {
+    .switch-ios.switch-light input:checked ~ span span:first-of-type {
       opacity: 0; }
-    .ios.switch-light input:checked ~ span span:last-of-type {
+    .switch-ios.switch-light input:checked ~ span span:last-of-type {
       opacity: 1;
       color: white; }
-  .ios.switch-toggle {
+  .switch-ios.switch-toggle {
     background-color: #fafafa;
     border: 1px solid lightgrey;
     border-radius: 30px;
     box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0; }
-    .ios.switch-toggle a {
+    .switch-ios.switch-toggle a {
       background-color: #53d76a;
       border-radius: 25px;
       -webkit-transition: all 0.3s ease-out;
       -moz-transition: all 0.3s ease-out;
       transition: all 0.3s ease-out; }
-    .ios.switch-toggle label {
+    .switch-ios.switch-toggle label {
       color: #868686; }
-  .ios input:checked + label {
+  .switch-ios input:checked + label {
     color: #3a3a3a; } }
 
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from
  * http://css-tricks.com/webkit-sibling-bug/
  */
-.switch-light, .switch-toggle {
-  -webkit-animation: webkitSiblingBugfix infinite 1s; }
+@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 800px) {
+  .switch-light, .switch-toggle {
+    -webkit-animation: webkitSiblingBugfix infinite 1s; } }
 
-@-webkit-keyframes webkitSiblingBugfix { }
+@-webkit-keyframes webkitSiblingBugfix {
+  from {
+    -webkit-transform: translate3d(0, 0, 0); }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0); } }

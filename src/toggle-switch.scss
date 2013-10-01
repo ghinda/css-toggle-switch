@@ -221,7 +221,7 @@
 	 * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
 	 * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
 	 */
-	.candy {
+	.switch-candy {
 		background-color: #2d3035;
 		border-radius: 3px;
 
@@ -266,18 +266,18 @@
 			color: #fff;
 		}
 
-		&.blue a {
+		&.switch-candy-blue a {
 			background-color: #38a3d4;
 		}
 
-		&.yellow a {
+		&.switch-candy-yellow a {
 			background-color: #f5e560;
 		}
 	}
 
 	/* Android Theme
 	 */
-	.android {
+	.switch-android {
 		background-color: #464747;
 		border-radius: 1px;
 
@@ -338,7 +338,7 @@
 
 	/* iOS Theme
 	 */
-	.ios {
+	.switch-ios {
 		$white: #fff;
 		$grey: #d3d3d3;
 		$green: #53d76a;
@@ -453,7 +453,15 @@
  */
 .switch-light,
 .switch-toggle {
-	-webkit-animation: webkitSiblingBugfix infinite 1s;
+	@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 800px) {
+		-webkit-animation: webkitSiblingBugfix infinite 1s;
+	}
 }
 
-@-webkit-keyframes webkitSiblingBugfix {}
+@-webkit-keyframes webkitSiblingBugfix {
+	from {
+		-webkit-transform: translate3d(0,0,0);
+	} to {
+		-webkit-transform: translate3d(0,0,0);
+	}
+}
