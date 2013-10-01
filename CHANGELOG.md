@@ -1,3 +1,7 @@
+== 2.1.3 (October 1, 2013)
+
+* More changes to the old-Webkit bug-fix, to fix issues with old Android on tablets.
+
 == 2.1.2 (October 1, 2013)
 
 * Prefix the generic class names for the themes with `.switch-` to avoid conflicts. So now we have `.switch-android`, `.switch-candy` and `.switch-ios`.

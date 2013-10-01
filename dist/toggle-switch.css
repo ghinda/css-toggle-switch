@@ -298,7 +298,7 @@
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from
  * http://css-tricks.com/webkit-sibling-bug/
  */
-@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 800px) {
+@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 1280px) {
   .switch-light, .switch-toggle {
     -webkit-animation: webkitSiblingBugfix infinite 1s; } }
 

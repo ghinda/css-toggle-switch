@@ -453,7 +453,7 @@
  */
 .switch-light,
 .switch-toggle {
-	@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 800px) {
+	@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 1280px) {
 		-webkit-animation: webkitSiblingBugfix infinite 1s;
 	}
 }
