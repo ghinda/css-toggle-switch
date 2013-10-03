@@ -82,6 +82,45 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		'saucelabs-qunit': {
+			all: {
+				options: {
+					username: 'css-toggle-switch',
+					key: 'b97f2029-1558-4060-83fe-6b588c866c4e',
+					urls: [ 'http://127.0.0.1:9000/test' ],
+					detailedError: true,
+					browsers: [
+						{
+							browserName: 'chrome'
+						}, {
+							browserName: 'firefox'
+						}, {
+							browserName: 'opera'
+						}, {
+							browserName: 'android',
+							platform: 'Linux',
+							version: '4'
+						}, {
+							browserName: 'internet explorer',
+							platform: 'Windows 7',
+							version: '9'
+						}, {
+							browserName: 'internet explorer',
+							platform: 'Windows 8',
+							version: '10'
+						}, {
+							browserName: 'safari',
+							platform: 'OS X 10.8',
+							version: '6'
+						}, {
+							browserName: 'iphone',
+							platform: 'OS X 10.8',
+							version: '6'
+						}
+					]
+				}
+			}
+		},
 		concurrent: {
 			server: [
 				'sass:server'
@@ -103,6 +142,13 @@ module.exports = function (grunt) {
 			'watch'
 		]);
 	});
+
+	grunt.registerTask('test', [
+		'concurrent:server',
+		'connect:dist',
+		//'qunit',
+		'saucelabs-qunit'
+	]);
 
 	grunt.registerTask('build', [
 		'concurrent:dist'
