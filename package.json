@@ -1,6 +1,10 @@
 {
 	"name": "css-toggle-switch",
 	"version": "2.1.3",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ghinda/css-toggle-switch.git"
+  },
 	"dependencies": {},
 	"devDependencies": {
 		"grunt": "~0.4",
