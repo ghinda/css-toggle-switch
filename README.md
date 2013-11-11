@@ -1,4 +1,6 @@
-# CSS Toggle Switches
+# CSS Toggle Switch
+
+[![Build Status](https://travis-ci.org/ghinda/css-toggle-switch.png)](https://travis-ci.org/ghinda/css-toggle-switch)
 
 CSS Toggle Switches are a set of accessible CSS-only *switch* components, created from standard form controls in the markup.
 
@@ -36,10 +38,6 @@ The toggle switches work on all modern browsers, including mobile ones(even prox
 **Browsers without support for media-queries, such as IE8 and bellow, get standard form elements.**
 
 The `onclick=""` attribute is required for older iOS and Opera Mini support.
-
-### SauceLabs Tests
-
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/css-toggle-switch.svg)](https://saucelabs.com/u/css-toggle-switch)
 
 ## Acknowledgements
 
