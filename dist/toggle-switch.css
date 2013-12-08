@@ -129,7 +129,7 @@
     .switch-toggle input {
       position: absolute;
       opacity: 0; }
-    .switch-toggle label {
+    .switch-toggle input + label {
       position: relative;
       z-index: 2;
       float: left;

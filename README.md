@@ -39,6 +39,16 @@ The toggle switches work on all modern browsers, including mobile ones(even prox
 
 The `onclick=""` attribute is required for older iOS and Opera Mini support.
 
+## Development
+
+You'll need Grunt:
+
+	grunt server
+
+Then
+
+	http://localhost:9000/
+
 ## Acknowledgements
 
 CSS Toggle Switches is a project by [Ionuț Colceriu](http://ghinda.net).
