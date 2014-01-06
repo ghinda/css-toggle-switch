@@ -1,3 +1,7 @@
+== 2.1.4 (January 6, 2014)
+
+* Initial LESS version.
+
 == 2.1.3 (October 1, 2013)
 
 * More changes to the old-Webkit bug-fix, to fix issues with old Android on tablets.
