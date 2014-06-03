@@ -1,3 +1,8 @@
+== 2.1.6 (June 6, 2014)
+
+* Upgrade bower components.
+* Fix bower version issues.
+
 == 2.1.4 (January 6, 2014)
 
 * Initial LESS version.
