@@ -1,12 +1,13 @@
 {
 	"name": "css-toggle-switch",
-	"version": "2.1.4",
+	"version": "2.1.5",
 	"main": "./dist/toggle-switch.css",
 	"author": "Ionut Colceriu",
 	"ignore": [
-		"**/docs/",
+		"src/docs/",
 		"node_modules/",
 		"bower_components/",
+		"test/",
 		".sass-cache",
 		".gitignore",
 		"npm-debug.log",
