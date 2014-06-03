@@ -4,7 +4,7 @@
 	"main": "./dist/toggle-switch.css",
 	"author": "Ionut Colceriu",
 	"ignore": [
-		"src/docs/",
+		"**/docs/",
 		"node_modules/",
 		"bower_components/",
 		"test/",
