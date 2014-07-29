@@ -55,7 +55,7 @@ body {
   font-size: 16px;
   margin: 1.75em 0;
   background-color: #454545;
-  color: white; }
+  color: #fff; }
 
 a:hover {
   text-decoration: underline; }
@@ -96,8 +96,8 @@ a {
  */
 .browsehappy {
   margin: 0.2em 0;
-  background: #cccccc;
-  color: black;
+  background: #ccc;
+  color: #000;
   padding: 0.2em 0; }
 
 /* Header
@@ -113,10 +113,10 @@ header {
     text-transform: uppercase;
     letter-spacing: -0.03em; }
     header h1 a {
-      color: white;
+      color: #fff;
       text-decoration: none; }
       header h1 a:hover {
-        color: white;
+        color: #fff;
         text-decoration: none; }
   header .description {
     margin-top: -0.75em;
@@ -128,7 +128,7 @@ header {
     font-size: 0.8125em;
     text-transform: uppercase; }
     header .top-menu .active {
-      color: white; }
+      color: #fff; }
 
 /* Hero */
 .hero-box {
@@ -137,9 +137,9 @@ header {
   padding: 1.25em;
   background-color: #5996c9;
   border-radius: 0;
-  color: #333333; }
+  color: #333; }
   .hero-box h4 {
-    color: #333333; }
+    color: #333; }
   .hero-box .switch-light {
     width: 100px; }
   .hero-box .toggle-demo {
@@ -147,7 +147,7 @@ header {
     .hero-box .toggle-demo > label {
       padding-top: 0.5em; }
   .hero-box .row > label {
-    color: white; }
+    color: #fff; }
   .hero-box .hero-actions {
     margin: 0 -1.25em -1.25em; }
     .hero-box .hero-actions .button-group {
@@ -161,7 +161,7 @@ header {
       margin: 0;
       padding: 1em;
       background-color: #5996c9;
-      color: #333333;
+      color: #333;
       font-size: 1em;
       font-weight: normal;
       text-transform: uppercase;
@@ -170,7 +170,7 @@ header {
       .hero-box .hero-actions a:hover {
         border-color: #3b7db4;
         background-color: #3b7db4;
-        color: white;
+        color: #fff;
         text-decoration: none; }
       .hero-box .hero-actions a:active {
         background-color: #2f628d;
@@ -193,7 +193,7 @@ header {
       .row.dependency-install pre a:hover {
         text-decoration: underline; }
     .row.dependency-install pre code {
-      color: #333333; }
+      color: #333; }
 
 .frameworks {
   margin-bottom: 2em; }
@@ -211,7 +211,7 @@ body pre[class*="language-"] {
   background-color: #404040;
   border-radius: 2px; }
   .example > label, .example .row > label {
-    color: white; }
+    color: #fff; }
   .example .switch-toggle, .example .switch-light {
     margin-bottom: 1.25em; }
 
@@ -223,7 +223,7 @@ footer {
 /* Bootstrap
  */
 .well.switch-light > span, .well.switch-toggle > span {
-  color: white; }
+  color: #fff; }
 .well.switch-light span span, .well.switch-light label, .well.switch-toggle span span, .well.switch-toggle label {
   color: #2b2b2b; }
 

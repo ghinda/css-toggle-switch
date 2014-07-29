@@ -37,26 +37,18 @@ grunt binary. For additional grunt tasks, also run `npm install`.
 
 ## Releases
 
-Install git-extras and run `git changelog` to update History.md. Clean up the
-changelog, removing merge commits or whitespace cleanups.
+Use [jquery-release](https://github.com/jquery/jquery-release). The following aren't yet handled there:
 
-Update qunit/qunit.js|css and package.json to the release version, commit and
-tag (Put the 'v' in front of the tag, e.g. `v1.8.0`), update them again to
-the next version, commit and push commits and tags:
+Install [git-extras](https://github.com/visionmedia/git-extras) and run `git changelog` to update History.md. Clean up the changelog, removing merge commits or whitespace cleanups. Commit this before using the release script.
 
-	git push --tags origin master
+Then run the script.
 
-To upload to code.jquery.com (replace $version accordingly), ssh to code.origin.jquery.com:
+Update web sites, replacing previous versions with new ones:
 
-	cp qunit/qunit.js /var/www/html/code.jquery.com/qunit/qunit-$version.js
-	cp qunit/qunit.css /var/www/html/code.jquery.com/qunit/qunit-$version.css
+* jquery/jquery-wp-content themes/jquery/footer-qunit.php
+* jquery/qunitjs.com pages/index.html
 
-Then update /var/www/html/code.jquery.com/index.html and purge it with:
+Finally announce on Twitter @qunitjs
 
-	curl -s http://code.origin.jquery.com/?reload
-
-Update web-base-template to link to those files for qunitjs.com.
-
-Publish to npm via
-
-	npm publish
+	Released @VERSION: https://github.com/jquery/qunit/tree/@VERSION
+	Changelog: https://github.com/jquery/qunit/blob/@VERSION/History.md
