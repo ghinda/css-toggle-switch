@@ -43,15 +43,15 @@ The `onclick=""` attribute is required for older iOS and Opera Mini support.
 
 You'll need Grunt:
 
-	grunt server
+  grunt server
 
 Then
 
-	http://localhost:9000/
+  http://localhost:9000/
 
 ## Acknowledgements
 
-CSS Toggle Switches is a project by [Ionuț Colceriu](http://ghinda.net).
-
 * Standalone themes are based on [Sort Switches / Toggles by Orman Clark](http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/), [iOS 7](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISwitch.html) and [Android](https://developer.android.com/design/building-blocks/switches.html).
 * iOS label tap issue and fix reported by [scruffian](https://github.com/scruffian).
+
+CSS Toggle Switches is a project by [Ionuț Colceriu](http://ghinda.net).

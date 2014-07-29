@@ -1,31 +1,31 @@
 {
-	"name": "css-toggle-switch",
-	"version": "2.1.6",
-	"main": "./dist/toggle-switch.css",
-	"author": "Ionut Colceriu",
-	"ignore": [
-		"**/docs/",
-		"node_modules/",
-		"bower_components/",
-		"test/",
-		".sass-cache",
-		".gitignore",
-		".kateconfig",
-		".editorconfig",
-		".travis.yml",
-		"npm-debug.log",
-		"*.html",
-		"CHANGELOG.md",
-		"Gruntfile.js",
-		"component.json",
-		"package.json"
-	],
-	"devDependencies": {
-		"bootstrap": "~3",
-		"foundation": "~5",
-		"normalize-css": "~2",
-		"bourbon": "~3",
-		"qunit": "~1",
-		"prism": "gh-pages"
-	}
+  "name": "css-toggle-switch",
+  "version": "2.1.6",
+  "main": "./dist/toggle-switch.css",
+  "author": "Ionut Colceriu",
+  "ignore": [
+    "**/docs/",
+    "node_modules/",
+    "bower_components/",
+    "test/",
+    ".sass-cache",
+    ".gitignore",
+    ".kateconfig",
+    ".editorconfig",
+    ".travis.yml",
+    "npm-debug.log",
+    "*.html",
+    "CHANGELOG.md",
+    "Gruntfile.js",
+    "component.json",
+    "package.json"
+  ],
+  "devDependencies": {
+    "bootstrap": "~3",
+    "foundation": "~5",
+    "normalize-css": "~2",
+    "bourbon": "~3",
+    "qunit": "~1",
+    "prism": "gh-pages"
+  }
 }

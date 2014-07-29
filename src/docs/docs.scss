@@ -1,6 +1,6 @@
 /* Documentation styles for
- * CSS Toggle Switch
- */
+* CSS Toggle Switch
+*/
 
 @import "../../bower_components/bourbon/dist/bourbon";
 @import "utils";
@@ -14,15 +14,15 @@ $color2: #3b7db4;
 $color3: #5996c9;
 
 body {
-	font-size: 16px;
-	margin: emCalc(28) 0;
-	background-color: $grey2;
+  font-size: 16px;
+  margin: emCalc(28) 0;
+  background-color: $grey2;
 
-	color: $white;
+  color: $white;
 }
 
 a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 h1,
@@ -30,104 +30,104 @@ h2,
 h3,
 h4,
 h5 {
-	color: darken($white, 20%);
-	font-weight: normal;
+  color: darken($white, 20%);
+  font-weight: normal;
 }
 
 h2 {
-	border-bottom: 1px solid darken($white, 60%);
-	margin-top: emCalc(20);
-	margin-bottom: emCalc(4);
+  border-bottom: 1px solid darken($white, 60%);
+  margin-top: emCalc(20);
+  margin-bottom: emCalc(4);
 }
 
 h3 {
-	margin-top: emCalc(16);
-	margin-bottom: 0;
+  margin-top: emCalc(16);
+  margin-bottom: 0;
 
-	font-size: 1.5em;
-	color: lighten($color3, 20%);
+  font-size: 1.5em;
+  color: lighten($color3, 20%);
 }
 
 code {
-	color: $color2;
+  color: $color2;
 }
 
 a {
-	color: $color3;
+  color: $color3;
 
-	&:hover {
-		color: $color2;
-	}
+  &:hover {
+    color: $color2;
+  }
 
-	&:active {
-		color: $color1;
-	}
+  &:active {
+    color: $color1;
+  }
 }
 
 .row {
-	max-width: emCalc(800);
-	margin: 0 auto;
+  max-width: emCalc(800);
+  margin: 0 auto;
 }
 
 .row .row {
-	width: auto;
+  width: auto;
 }
 
 /* Browse Happy prompt
- */
+*/
 
 .browsehappy {
-	margin: 0.2em 0;
-	background: #ccc;
-	color: #000;
-	padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
 /* Header
- */
+*/
 
 header {
-	padding-bottom: emCalc(20);
+  padding-bottom: emCalc(20);
 
-	h1 {
-		margin: 0;
+  h1 {
+    margin: 0;
 
-		line-height: 1.4;
-		font-size: 2.3em;
-		font-family: 'Roboto', sans-serif;
-		font-weight: 400;
-		text-transform: uppercase;
-		letter-spacing: -.03em;
+    line-height: 1.4;
+    font-size: 2.3em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -.03em;
 
-		a {
-			color: $white;
-			text-decoration: none;
+    a {
+      color: $white;
+      text-decoration: none;
 
-			&:hover {
-				color: $white;
-				text-decoration: none;
-			}
-		}
-	}
+      &:hover {
+        color: $white;
+        text-decoration: none;
+      }
+    }
+  }
 
-	.description {
-		margin-top: emCalc(-12);
+  .description {
+    margin-top: emCalc(-12);
 
-		color: darken($white, 20%);
-		font-size: emCalc(14);
-	}
+    color: darken($white, 20%);
+    font-size: emCalc(14);
+  }
 
-	.top-menu {
-		margin-top: emCalc(28);
+  .top-menu {
+    margin-top: emCalc(28);
 
-		font-weight: bold;
-		font-size: emCalc(13);
-		text-transform: uppercase;
+    font-weight: bold;
+    font-size: emCalc(13);
+    text-transform: uppercase;
 
-		.active {
-			color: $white;
-		}
-	}
+    .active {
+      color: $white;
+    }
+  }
 
 
 }
@@ -135,175 +135,180 @@ header {
 /* Hero */
 
 .hero-box {
-	margin-bottom: emCalc(20);
-	border: 0;
-	padding: 1.25em;
-	background-color: $color3;
-	border-radius: 0;
+  margin-bottom: emCalc(20);
+  border: 0;
+  padding: 1.25em;
+  background-color: $color3;
+  border-radius: 0;
 
-	color: #333;
+  color: #333;
 
-	h4 {
-		color: #333;
-	}
+  h4 {
+    color: #333;
+  }
 
-	.switch-light {
-		width: 100px;
-	}
+  p a {
+    color: #333;
+    font-weight: bold;
+  }
 
-	.toggle-demo {
-		width: 95%;
+  .switch-light {
+    width: 100px;
+  }
 
-		> label {
-			padding-top: emCalc(8);
-		}
-	}
+  .toggle-demo {
+    width: 95%;
 
-	.row > label {
-		color: $white;
-	}
+    > label {
+      padding-top: emCalc(8);
+    }
+  }
 
-	.hero-actions {
-		margin: 0 -1.25em -1.25em;
+  .row > label {
+    color: $white;
+  }
 
-		.button-group {
-			width: 100%;
-		}
+  .hero-actions {
+    margin: 0 -1.25em -1.25em;
 
-		li {
-			width: 50%;
-			margin: 0;
-		}
+    .button-group {
+      width: 100%;
+    }
 
-		a {
-			width: 100%;
-			border: 0;
-			margin: 0;
-			padding: emCalc(16);
-			background-color: $color3;
+    li {
+      width: 50%;
+      margin: 0;
+    }
 
-			color: #333;
-			font-size: 1em;
-			font-weight: normal;
-			text-transform: uppercase;
+    a {
+      width: 100%;
+      border: 0;
+      margin: 0;
+      padding: emCalc(16);
+      background-color: $color3;
 
-			box-shadow: none;
-			border-radius: 0;
+      color: #333;
+      font-size: 1em;
+      font-weight: normal;
+      text-transform: uppercase;
 
-			&:hover {
-				border-color: $color2;
-				background-color: $color2;
+      box-shadow: none;
+      border-radius: 0;
 
-				color: $white;
-				text-decoration: none;
-			}
+      &:hover {
+        border-color: $color2;
+        background-color: $color2;
 
-			&:active {
-				background-color: $color1;
+        color: $white;
+        text-decoration: none;
+      }
 
-				box-shadow: inset 0 2px 2px 0 darken($color1, 5%);
-			}
-		}
+      &:active {
+        background-color: $color1;
 
-		li:last-child a {
-			border-left: 1px solid darken($color3, 5%);
-		}
-	}
+        box-shadow: inset 0 2px 2px 0 darken($color1, 5%);
+      }
+    }
+
+    li:last-child a {
+      border-left: 1px solid darken($color3, 5%);
+    }
+  }
 }
 
 .row.dependency-install {
-	overflow: hidden;
-	width: auto;
-	padding: emCalc(20);
-	margin: emCalc(20) -1.25em 0;
-	background-color: lighten($color3, 10%);
+  overflow: hidden;
+  width: auto;
+  padding: emCalc(20);
+  margin: emCalc(20) -1.25em 0;
+  background-color: lighten($color3, 10%);
 
-	pre {
-		text-align: center;
+  pre {
+    text-align: center;
 
-		&:first-child {
-			margin-bottom: emCalc(20);
-		}
+    &:first-child {
+      margin-bottom: emCalc(20);
+    }
 
-		a {
-			color: $color1;
+    a {
+      color: $color1;
 
-			&:hover {
-				text-decoration: underline;
-			}
-		}
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
-		code {
-			color: #333;
-		}
-	}
+    code {
+      color: #333;
+    }
+  }
 }
 
 .frameworks {
-	margin-bottom: emCalc(32);
+  margin-bottom: emCalc(32);
 }
 
 /* Examples
- */
+*/
 
 body pre[class*="language-"] {
-	overflow-y: hidden;
-	padding: 0;
-	margin-top: emCalc(24);
-	background-color: transparent;
+  overflow-y: hidden;
+  padding: 0;
+  margin-top: emCalc(24);
+  background-color: transparent;
 }
 
 .example {
-	padding: emCalc(16);
-	background-color: darken($grey2, 2%);
+  padding: emCalc(16);
+  background-color: darken($grey2, 2%);
 
-	border-radius: 2px;
+  border-radius: 2px;
 
-	> label,
-	.row > label {
-		color: $white;
-	}
+  > label,
+  .row > label {
+    color: $white;
+  }
 
-	.switch-toggle,
-	.switch-light {
-		margin-bottom: emCalc(20);
-	}
+  .switch-toggle,
+  .switch-light {
+    margin-bottom: emCalc(20);
+  }
 }
 
 /* Footer
- */
+*/
 
 footer {
-	margin-top: emCalc(20);
+  margin-top: emCalc(20);
 }
 
 /* Bootstrap
- */
+*/
 .well.switch-light,
 .well.switch-toggle {
-	> span {
-		color: $white;
-	}
+  > span {
+    color: $white;
+  }
 
-	span span,
-	label {
-		color: $grey1;
-	}
+  span span,
+  label {
+    color: $grey1;
+  }
 }
 
 pre {
-	display: block;
-	clear: both;
-	background: transparent;
-	border: 0;
-	padding: 0;
+  display: block;
+  clear: both;
+  background: transparent;
+  border: 0;
+  padding: 0;
 
-	font-weight: bold;
-	font-size: 100%;
+  font-weight: bold;
+  font-size: 100%;
 }
 
 code {
-	background: transparent;
+  background: transparent;
 
-	font-family: Consolas, 'Liberation Mono', Courier, monospace;
+  font-family: Consolas, 'Liberation Mono', Courier, monospace;
 }

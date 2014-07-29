@@ -20,14 +20,13 @@
     "download.js",
     "prefixfree.min.js",
     "utopia.js",
-    "code.js",
-    "components.js"
+    "code.js"
   ],
-  "_release": "584911cab6",
+  "_release": "c101a3fa97",
   "_resolution": {
     "type": "branch",
     "branch": "gh-pages",
-    "commit": "584911cab688749c739fad2371e2db8d085763f6"
+    "commit": "c101a3fa9747a1f0046ac14fe22ab138316d6954"
   },
   "_source": "git://github.com/LeaVerou/prism.git",
   "_target": "gh-pages",

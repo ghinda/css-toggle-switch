@@ -1,55 +1,55 @@
 /*
- * CSS TOGGLE SWITCHES
- * Unlicense
- *
- * Ionuț Colceriu - ghinda.net
- * https://github.com/ghinda/css-toggle-switch
- *
- */
+* CSS TOGGLE SWITCHES
+* Unlicense
+*
+* Ionuț Colceriu - ghinda.net
+* https://github.com/ghinda/css-toggle-switch
+*
+*/
 /* Toggle Switches
- */
+*/
 /* Shared
- */
+*/
 /* Checkbox
- */
+*/
 /* Radio Switch
- */
+*/
 /* Hide by default
- */
+*/
 .switch-toggle a, .switch-light span span {
   display: none; }
 
 /* We can't test for a specific feature,
- * so we only target browsers with support for media queries.
- */
+* so we only target browsers with support for media queries.
+*/
 @media only screen {
   /* Checkbox switch
-	 */
+  */
   /* Radio switch
-	 */
+  */
   /* Standalone Themes */
   /* Candy Theme
-	 * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
-	 * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
-	 */
+  * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
+  * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
+  */
   /* Android Theme
-	 */
+  */
   /* iOS Theme
-	 */
+  */
   .switch-light {
     display: block;
     height: 30px;
     /* Outline the toggles when the inputs are focused
-	 */
+  */
     position: relative;
     overflow: visible;
     padding: 0;
     margin-left: 100px;
     /* Position the label over all the elements, except the slide-button (<a>)
-	 * Clicking anywhere on the label will change the switch-state
-	 */
+  * Clicking anywhere on the label will change the switch-state
+  */
     /* Don't hide the input from screen-readers and keyboard access
-	 */ }
+  */ }
     .switch-light * {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -106,10 +106,10 @@
     display: block;
     height: 30px;
     /* Outline the toggles when the inputs are focused
-	 */
+  */
     position: relative;
     /* For callout panels in foundation
-	 */
+  */
     padding: 0 !important;
     /* Generate styles for the multiple states */ }
     .switch-toggle * {
@@ -148,11 +148,11 @@
     .switch-toggle input:last-of-type:checked ~ a {
       left: 50%; }
     .switch-toggle.switch-3 label, .switch-toggle.switch-3 a {
-      width: 33.33333%; }
+      width: 33.3333333333%; }
     .switch-toggle.switch-3 input:checked:nth-of-type(2) ~ a {
-      left: 33.33333%; }
+      left: 33.3333333333%; }
     .switch-toggle.switch-3 input:checked:last-of-type ~ a {
-      left: 66.66667%; }
+      left: 66.6666666667%; }
     .switch-toggle.switch-4 label, .switch-toggle.switch-4 a {
       width: 25%; }
     .switch-toggle.switch-4 input:checked:nth-of-type(2) ~ a {
@@ -209,7 +209,7 @@
     color: #fff;
     box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
     /* Selected ON switch-light
-		 */ }
+    */ }
     .switch-android label {
       color: #fff; }
     .switch-android > span span {
@@ -296,8 +296,8 @@
     color: #3a3a3a; } }
 
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from
- * http://css-tricks.com/webkit-sibling-bug/
- */
+* http://css-tricks.com/webkit-sibling-bug/
+*/
 @media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 1280px) {
   .switch-light, .switch-toggle {
     -webkit-animation: webkitSiblingBugfix infinite 1s; } }

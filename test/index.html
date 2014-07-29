@@ -1,223 +1,223 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>CSS Toggle Switch: Tests</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>CSS Toggle Switch: Tests</title>
 
-	<!-- Bootstrap and Foundation -->
-	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="../dist/docs/foundation.css">
+  <!-- Bootstrap and Foundation -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../dist/docs/foundation.css">
 
-	<!-- Toggle Switch -->
-	<link rel="stylesheet" href="../dist/toggle-switch.css">
+  <!-- Toggle Switch -->
+  <link rel="stylesheet" href="../dist/toggle-switch.css">
 
-	<!-- Qunit -->
-	<link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css" type="text/css" media="screen">
-	<script src="../bower_components/qunit/qunit/qunit.js"></script>
+  <!-- Qunit -->
+  <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css" type="text/css" media="screen">
+  <script src="../bower_components/qunit/qunit/qunit.js"></script>
 
-	<!-- Tests -->
-	<script src="tests.js"></script>
-	<style>
-		#fixture-hidden {
-			position: absolute;
-			top: -10000px;
-			left: -10000px;
-			width: 1000px;
-			height: 1000px;
-		}
-	</style>
+  <!-- Tests -->
+  <script src="tests.js"></script>
+  <style>
+    #fixture-hidden {
+      position: absolute;
+      top: -10000px;
+      left: -10000px;
+      width: 1000px;
+      height: 1000px;
+    }
+  </style>
 </head>
 <body>
 
-	<div id="qunit"></div>
+  <div id="qunit"></div>
 
-	<div id="fixture-hidden">
+  <div id="fixture-hidden">
 
-		<div class="barebones">
-			<label class="switch-light" onclick="">
-				<input type="checkbox">
-				<span>
-					Wireless
-					<span>Off</span>
-					<span>On</span>
-				</span>
+    <div class="barebones">
+      <label class="switch-light" onclick="">
+        <input type="checkbox">
+        <span>
+          Wireless
+          <span>Off</span>
+          <span>On</span>
+        </span>
 
-				<a></a>
-			</label>
+        <a></a>
+      </label>
 
-			<div class="switch-toggle">
-				<input id="barebones1" name="barebones" type="radio" checked>
-				<label for="barebones1" onclick="">Week</label>
+      <div class="switch-toggle">
+        <input id="barebones1" name="barebones" type="radio" checked>
+        <label for="barebones1" onclick="">Week</label>
 
-				<input id="barebones2" name="barebones" type="radio">
-				<label for="barebones2" onclick="">Month</label>
+        <input id="barebones2" name="barebones" type="radio">
+        <label for="barebones2" onclick="">Month</label>
 
-				<a></a>
-			</div>
-		</div>
+        <a></a>
+      </div>
+    </div>
 
-		<div class="android">
-			<label class="switch-light switch-android" onclick="">
-				<input type="checkbox">
-				<span>
-					Wireless
-					<span>Off</span>
-					<span>On</span>
-				</span>
+    <div class="android">
+      <label class="switch-light switch-android" onclick="">
+        <input type="checkbox">
+        <span>
+          Wireless
+          <span>Off</span>
+          <span>On</span>
+        </span>
 
-				<a></a>
-			</label>
+        <a></a>
+      </label>
 
-			<div class="switch-toggle switch-android">
-				<input id="android1" name="android" type="radio" checked>
-				<label for="android1" onclick="">Week</label>
+      <div class="switch-toggle switch-android">
+        <input id="android1" name="android" type="radio" checked>
+        <label for="android1" onclick="">Week</label>
 
-				<input id="android2" name="android" type="radio">
-				<label for="android2" onclick="">Month</label>
+        <input id="android2" name="android" type="radio">
+        <label for="android2" onclick="">Month</label>
 
-				<a></a>
-			</div>
-		</div>
+        <a></a>
+      </div>
+    </div>
 
-		<div class="candy">
-			<label class="switch-light switch-candy" onclick="">
-				<input type="checkbox">
-				<span>
-					Wireless
-					<span>Off</span>
-					<span>On</span>
-				</span>
+    <div class="candy">
+      <label class="switch-light switch-candy" onclick="">
+        <input type="checkbox">
+        <span>
+          Wireless
+          <span>Off</span>
+          <span>On</span>
+        </span>
 
-				<a></a>
-			</label>
+        <a></a>
+      </label>
 
-			<div class="switch-toggle switch-candy">
-				<input id="candy1" name="candy" type="radio" checked>
-				<label for="candy1" onclick="">Week</label>
+      <div class="switch-toggle switch-candy">
+        <input id="candy1" name="candy" type="radio" checked>
+        <label for="candy1" onclick="">Week</label>
 
-				<input id="candy2" name="candy" type="radio">
-				<label for="candy2" onclick="">Month</label>
+        <input id="candy2" name="candy" type="radio">
+        <label for="candy2" onclick="">Month</label>
 
-				<a></a>
-			</div>
-		</div>
+        <a></a>
+      </div>
+    </div>
 
-		<div class="ios">
-			<label class="switch-light switch-ios" onclick="">
-				<input type="checkbox">
-				<span>
-					Wireless
-					<span>Off</span>
-					<span>On</span>
-				</span>
+    <div class="ios">
+      <label class="switch-light switch-ios" onclick="">
+        <input type="checkbox">
+        <span>
+          Wireless
+          <span>Off</span>
+          <span>On</span>
+        </span>
 
-				<a></a>
-			</label>
+        <a></a>
+      </label>
 
-			<div class="switch-toggle switch-ios">
-				<input id="ios1" name="ios" type="radio" checked>
-				<label for="ios1" onclick="">Week</label>
+      <div class="switch-toggle switch-ios">
+        <input id="ios1" name="ios" type="radio" checked>
+        <label for="ios1" onclick="">Week</label>
 
-				<input id="ios2" name="ios" type="radio">
-				<label for="ios2" onclick="">Month</label>
+        <input id="ios2" name="ios" type="radio">
+        <label for="ios2" onclick="">Month</label>
 
-				<a></a>
-			</div>
-		</div>
+        <a></a>
+      </div>
+    </div>
 
-		<div class="switch-toggle switch-3">
-			<input id="three1" name="three" type="radio" checked>
-			<label for="three1" onclick="">Week</label>
+    <div class="switch-toggle switch-3">
+      <input id="three1" name="three" type="radio" checked>
+      <label for="three1" onclick="">Week</label>
 
-			<input id="three2" name="three" type="radio">
-			<label for="three2" onclick="">Month</label>
+      <input id="three2" name="three" type="radio">
+      <label for="three2" onclick="">Month</label>
 
-			<input id="three3" name="three" type="radio">
-			<label for="three3" onclick="">Year</label>
+      <input id="three3" name="three" type="radio">
+      <label for="three3" onclick="">Year</label>
 
-			<a></a>
-		</div>
+      <a></a>
+    </div>
 
-		<div class="switch-toggle switch-4">
-			<input id="four1" name="four" type="radio" checked>
-			<label for="four1" onclick="">Week</label>
+    <div class="switch-toggle switch-4">
+      <input id="four1" name="four" type="radio" checked>
+      <label for="four1" onclick="">Week</label>
 
-			<input id="four2" name="four" type="radio">
-			<label for="four2" onclick="">Month</label>
+      <input id="four2" name="four" type="radio">
+      <label for="four2" onclick="">Month</label>
 
-			<input id="four3" name="four" type="radio">
-			<label for="four3" onclick="">Year</label>
+      <input id="four3" name="four" type="radio">
+      <label for="four3" onclick="">Year</label>
 
-			<input id="four4" name="four" type="radio">
-			<label for="four4" onclick="">Decade</label>
+      <input id="four4" name="four" type="radio">
+      <label for="four4" onclick="">Decade</label>
 
-			<a></a>
-		</div>
+      <a></a>
+    </div>
 
-		<div class="switch-toggle switch-5">
-			<input id="five0" name="five" type="radio" checked>
-			<label for="five0" onclick="">Day</label>
+    <div class="switch-toggle switch-5">
+      <input id="five0" name="five" type="radio" checked>
+      <label for="five0" onclick="">Day</label>
 
-			<input id="five1" name="five" type="radio">
-			<label for="five1" onclick="">Week</label>
+      <input id="five1" name="five" type="radio">
+      <label for="five1" onclick="">Week</label>
 
-			<input id="five2" name="five" type="radio">
-			<label for="five2" onclick="">Month</label>
+      <input id="five2" name="five" type="radio">
+      <label for="five2" onclick="">Month</label>
 
-			<input id="five3" name="five" type="radio">
-			<label for="five3" onclick="">Year</label>
+      <input id="five3" name="five" type="radio">
+      <label for="five3" onclick="">Year</label>
 
-			<input id="five4" name="five" type="radio">
-			<label for="five4" onclick="">Decade</label>
+      <input id="five4" name="five" type="radio">
+      <label for="five4" onclick="">Decade</label>
 
-			<a></a>
-		</div>
+      <a></a>
+    </div>
 
-		<div class="bootstrap">
-			<label class="switch-light well" onclick="">
-				<input type="checkbox">
-				<span>
-					Wireless
-					<span>Off</span>
-					<span>On</span>
-				</span>
+    <div class="bootstrap">
+      <label class="switch-light well" onclick="">
+        <input type="checkbox">
+        <span>
+          Wireless
+          <span>Off</span>
+          <span>On</span>
+        </span>
 
-				<a class="btn btn-primary"></a>
-			</label>
+        <a class="btn btn-primary"></a>
+      </label>
 
-			<div class="switch-toggle switch-3 well col-lg-9">
-				<input id="bootstrap1" name="bootstrap" type="radio" checked>
-				<label for="bootstrap1" onclick="">Week</label>
+      <div class="switch-toggle switch-3 well col-lg-9">
+        <input id="bootstrap1" name="bootstrap" type="radio" checked>
+        <label for="bootstrap1" onclick="">Week</label>
 
-				<input id="bootstrap2" name="bootstrap" type="radio">
-				<label for="bootstrap2" onclick="">Month</label>
+        <input id="bootstrap2" name="bootstrap" type="radio">
+        <label for="bootstrap2" onclick="">Month</label>
 
-				<input id="bootstrap3" name="bootstrap" type="radio">
-				<label for="bootstrap3" onclick="">Year</label>
+        <input id="bootstrap3" name="bootstrap" type="radio">
+        <label for="bootstrap3" onclick="">Year</label>
 
-				<a class="btn btn-primary"></a>
-			</div>
-		</div>
+        <a class="btn btn-primary"></a>
+      </div>
+    </div>
 
-		<div class="foundation">
+    <div class="foundation">
 
-			<div class="switch-toggle switch-3 panel large-9 columns">
-				<input id="foundation1" name="foundation" type="radio" checked>
-				<label for="foundation1" onclick="">Week</label>
+      <div class="switch-toggle switch-3 panel large-9 columns">
+        <input id="foundation1" name="foundation" type="radio" checked>
+        <label for="foundation1" onclick="">Week</label>
 
-				<input id="foundation2" name="foundation" type="radio">
-				<label for="foundation2" onclick="">Month</label>
+        <input id="foundation2" name="foundation" type="radio">
+        <label for="foundation2" onclick="">Month</label>
 
-				<input id="foundation3" name="foundation" type="radio">
-				<label for="foundation3" onclick="">Year</label>
+        <input id="foundation3" name="foundation" type="radio">
+        <label for="foundation3" onclick="">Year</label>
 
-				<a class="button"></a>
-			</div>
+        <a class="button"></a>
+      </div>
 
-		</div>
+    </div>
 
-	</div>
+  </div>
 
 </body>
 </html>
