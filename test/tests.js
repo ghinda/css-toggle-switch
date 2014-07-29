@@ -4,14 +4,14 @@ function testSwitchTheme(name, theme) {
     $switchToggleButton = $container.querySelector('.switch-toggle a');
 
   if($switchLightButton) {
-    test(name + ' switch-light', function() {
-      notEqual($switchLightButton.offsetLeft, '0');
+    QUnit.test(name + ' switch-light', function(assert) {
+      assert.notEqual($switchLightButton.offsetLeft, '0');
     });
   }
 
   if($switchToggleButton) {
-    test(name + ' switch-toggle', function() {
-      notEqual($switchToggleButton.offsetLeft, '0');
+    QUnit.test(name + ' switch-toggle', function(assert) {
+      assert.notEqual($switchToggleButton.offsetLeft, '0');
     });
   }
 };
@@ -20,8 +20,8 @@ function testSwitchNumber(name, number) {
   var $container = document.getElementsByClassName(number)[0],
     $switchToggleButton = $container.querySelector('a');
 
-  test(name, function() {
-    notEqual($switchToggleButton.offsetLeft, '0');
+  QUnit.test(name, function(assert) {
+    assert.notEqual($switchToggleButton.offsetLeft, '0');
   });
 };
 
@@ -79,3 +79,32 @@ window.onload = function() {
   }, 1000);
 
 };
+
+var log = [];
+var testName;
+
+QUnit.done(function (test_results) {
+  var tests = [];
+  for(var i = 0, len = log.length; i < len; i++) {
+    var details = log[i];
+    tests.push({
+      name: details.name,
+      result: details.result,
+      expected: details.expected,
+      actual: details.actual,
+      source: details.source
+    });
+  }
+  test_results.tests = tests;
+
+  window.global_test_results = test_results;
+});
+
+QUnit.testStart(function(testDetails){
+  QUnit.log(function(details){
+    if (!details.result) {
+      details.name = testDetails.name;
+      log.push(details);
+    }
+  });
+});
