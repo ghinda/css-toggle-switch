@@ -1,0 +1,425 @@
+/*
+* CSS TOGGLE SWITCHES
+* Unlicense
+*
+* Ionuț Colceriu - ghinda.net
+* https://github.com/ghinda/css-toggle-switch
+*
+*/
+
+@charset "UTF-8";
+@import "../bower_components/bourbon/dist/bourbon";
+
+/* Toggle Switches */
+
+/* Shared */
+@mixin switch-shared() {
+	display: block;
+	height: rem-calc(30);
+
+	* {
+		@include box-sizing(border-box);
+	}
+
+	a {
+		display: block;
+		@include transition(all 0.15s ease-out);
+	}
+
+	label,
+	> span {
+		line-height: rem-calc(30);
+		vertical-align: middle;
+	}
+
+	/* Outline the toggles when the inputs are focused
+	 */
+	input:focus ~ a,
+	input:focus + label {
+		outline: rem-calc(0) dotted #888;
+	}
+}
+
+/* Checkbox
+ */
+@mixin switch-light() {
+	@include switch-shared();
+	position: relative;
+	overflow: visible;
+	padding: 0;
+	margin-left: rem-calc(100);
+
+	/* Position the label over all the elements, except the slide-button (<a>)
+	 * Clicking anywhere on the label will change the switch-state
+	 */
+	label {
+		position: relative;
+		z-index: 3;
+		display: block;
+		width: 100%;
+	}
+
+	/* Don't hide the input from screen-readers and keyboard access
+	 */
+	input {
+		position: absolute;
+		opacity: 0;
+		z-index: 5;
+
+		&:checked ~ a {
+			right: 0%;
+		}
+	}
+
+	> span {
+		position: absolute;
+		left: rem-calc(-100);
+		width: 100%;
+		margin: 0;
+		padding-right: rem-calc(100);
+		text-align: left;
+
+		span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 5;
+			display: block;
+			width: 50%;
+			margin-left: rem-calc(100);
+			text-align: center;
+
+			&:last-child {
+				left: 50%;
+			}
+		}
+	}
+
+	a {
+		position: absolute;
+		right: 50%;
+		top: 0;
+		z-index: 4;
+		display: block;
+		width: 50%;
+		height: 100%;
+		padding: 0;
+	}
+
+}
+
+/* Radio Switch
+ */
+@mixin switch-toggle() {
+	@include switch-shared();
+	position: relative;
+
+	/* For callout panels in foundation
+	 */
+	padding: 0 !important;
+
+	input {
+		position: absolute;
+		opacity: 0;
+	}
+
+	input + label {
+		position: relative;
+		z-index: 2;
+		float: left;
+		width: 50%;
+		height: 100%;
+		margin: 0;
+		text-align: center;
+	}
+
+	a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 0;
+		z-index: 1;
+		width: 50%;
+		height: 100%;
+	}
+
+	input:last-of-type:checked ~ a {
+		left: 50%;
+	}
+
+	/* Generate styles for the multiple states */
+	@for $i from 1 through 3 {
+		$state: $i + 2;
+		$width: 100 / ($i + 2);
+
+		&.switch-#{$state} {
+			label,
+			a {
+				width: $width * 1%;
+			}
+		}
+
+		@for $j from 2 through ($i + 1) {
+			&.switch-#{$state} input:checked:nth-of-type(#{$j}) ~ a {
+				left: $width * ($j - 1) * 1%;
+			}
+		}
+
+		&.switch-#{$state} input:checked:last-of-type ~ a {
+			left: 100 - $width * 1%;
+		}
+	}
+
+}
+
+/* Hide by default
+ */
+.switch-toggle a,
+.switch-light span span {
+	display: none;
+}
+
+/* We can't test for a specific feature,
+ * so we only target browsers with support for media queries.
+ */
+@media only screen {
+
+	/* Checkbox switch
+	 */
+	.switch-light {
+		@include switch-light();
+	}
+
+	/* Radio switch
+	 */
+	.switch-toggle {
+		@include switch-toggle();
+	}
+
+	/* Standalone Themes */
+
+	/* Candy Theme
+	 * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
+	 * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
+	 */
+	.switch-candy {
+		background-color: #2d3035;
+		border-radius: rem-calc(3);
+		color: #fff;
+		font-weight: bold;
+		text-align: center;
+		text-shadow: rem-calc(1 1 1) #191b1e;
+		box-shadow: inset rem-calc(0 2 6) rgba(0, 0, 0, 0.3),
+		rem-calc(0 1 0) rgba(255, 255, 255, 0.2);
+
+		label {
+			color: #fff;
+			@include transition(color 0.2s ease-out);
+		}
+
+		input:checked + label {
+			color: #333;
+			text-shadow: rem-calc(0 1 0) rgba(255,255,255,0.5);
+		}
+
+		a {
+			border: rem-calc(1) solid #333;
+			background-color: #70c66b;
+			border-radius: rem-calc(3);
+			@include background-image(
+					linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0))
+			);
+
+			box-shadow: rem-calc(0 1 1) rgba(0, 0, 0, 0.2),
+			inset rem-calc(0 1 1) rgba(255, 255, 255, 0.45);
+		}
+
+		> span {
+			color: #333;
+			text-shadow: none;
+		}
+
+		span {
+			color: #fff;
+		}
+
+		&.switch-candy-blue a {
+			background-color: #38a3d4;
+		}
+
+		&.switch-candy-yellow a {
+			background-color: #f5e560;
+		}
+	}
+
+	/* Android Theme
+	 */
+	.switch-android {
+		background-color: #464747;
+		border-radius: rem-calc(1);
+		color: #fff;
+
+		label {
+			color: #fff;
+		}
+
+		box-shadow: inset rgba(0, 0, 0, 0.1) rem-calc(0 1 0);
+
+		> span span {
+			opacity: 0;
+
+			@include transition(all 0.1s);
+
+			&:first-of-type {
+				opacity: 1;
+			}
+		}
+
+		a {
+			background-color: #666;
+			border-radius: rem-calc(1);
+			box-shadow: inset rgba(255, 255, 255, 0.2) rem-calc(0 1 0),
+			inset rgba(0, 0, 0, 0.3) rem-calc(0 -1 0);
+		}
+
+		/* Selected ON switch-light
+		 */
+		&.switch-light input:checked {
+			~ a {
+				background-color: #0E88B1;
+			}
+
+			~ span span {
+				&:first-of-type {
+					opacity: 0;
+				}
+
+				&:last-of-type {
+					opacity: 1;
+				}
+			}
+		}
+
+		&.switch-toggle,
+		> span span {
+			font-size: 85%;
+			text-transform: uppercase;
+		}
+	}
+
+	/* iOS Theme
+	 */
+	.switch-ios {
+		$white: #fff;
+		$grey: #d3d3d3;
+		$green: #53d76a;
+
+		&.switch-light {
+			color: darken($grey, 30%);
+
+			a {
+				left: 0;
+				width: rem-calc(30);
+				background-color: $white;
+				border: rem-calc(1) solid $grey;
+				border-radius: 100%;
+				@include transition(all 0.3s ease-out);
+				box-shadow: inset rem-calc(0 -3 3) hsla(0,0%,0%,.025),
+				rem-calc(0 1 4) hsla(0,0%,0%,.15),
+				rem-calc(0 4 4) hsla(0,0%,0%,.1);
+			}
+
+			> span span {
+				width: 100%;
+				left: 0;
+				opacity: 0;
+
+				&:first-of-type {
+					opacity: 1;
+					padding-left: rem-calc(30);
+				}
+
+				&:last-of-type {
+					padding-right: rem-calc(30);
+				}
+			}
+
+			> span:before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: rem-calc(100);
+				top: 0;
+				background-color: darken($white, 2%);
+				border: rem-calc(1) solid $grey;
+				border-radius: rem-calc(30);
+				@include transition(all 0.5s ease-out);
+				box-shadow: inset rgba(0, 0, 0, 0.1) rem-calc(0 1 0);
+			}
+
+			input:checked {
+				~ a {
+					left: 100%;
+					margin-left: rem-calc(-30);
+				}
+
+				~ span:before {
+					border-color: $green;
+					box-shadow: inset 0 0 0 rem-calc(30) $green;
+				}
+
+				~ span span {
+					&:first-of-type {
+						opacity: 0;
+					}
+
+					&:last-of-type {
+						opacity: 1;
+						color: $white;
+					}
+				}
+			}
+		}
+
+		&.switch-toggle {
+			background-color: darken($white, 2%);
+			border: rem-calc(1) solid $grey;
+			border-radius: rem-calc(30);
+			box-shadow: inset rgba(0, 0, 0, 0.1) rem-calc(0 1 0)
+
+			a {
+				background-color: $green;
+				border-radius: rem-calc(25);
+				@include transition(all 0.3s ease-out);
+			}
+
+			label {
+				color: darken($grey, 30%);
+			}
+		}
+
+		input:checked + label {
+			color: darken($grey, 60%);
+		}
+	}
+}
+
+/* Bugfix for older Webkit, including mobile Webkit. Adapted from
+ * http://css-tricks.com/webkit-sibling-bug/
+ */
+.switch-light,
+.switch-toggle {
+	@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: rem-calc(1280)) {
+		-webkit-animation: webkitSiblingBugfix infinite 1s;
+	}
+}
+
+@-webkit-keyframes webkitSiblingBugfix {
+	from {
+		-webkit-transform: translate3d(0,0,0);
+	} to {
+		  -webkit-transform: translate3d(0,0,0);
+	  }
+}
