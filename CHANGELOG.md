@@ -1,3 +1,7 @@
+== 2.1.7 (X, 2014)
+
+* Added UTF-8 charset
+
 == 2.1.6 (June 6, 2014)
 
 * Upgrade bower components.
