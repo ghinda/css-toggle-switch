@@ -7,461 +7,488 @@
 *
 */
 
+@charset "UTF-8";
 @import "../bower_components/bourbon/dist/bourbon";
 
-/* Toggle Switches
-*/
+/* Supported values are px, rem-calc, em-calc */
+$size-unit: px !default;
+$em-base: 16 !default;
 
-/* Shared
-*/
+/* Functions */
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function convert-to-em($value)  {
+	$value: strip-unit($value) / strip-unit($em-base) * 1em;
+	@if ($value == 0em) { $value: 0; }
+	@return $value;
+}
+
+@function em-calc($values) {
+	$max: length($values);
+	@if $max == 1 { @return convert-to-em(nth($values, 1)); }
+	$em-values: ();
+	@for $i from 1 through $max {
+		$em-values: append($em-values, convert-to-em(nth($values, $i)));
+	}
+	@return $em-values;
+}
+
+@function convert-to-rem($value)  {
+	$value: strip-unit($value) / strip-unit($em-base) * 1rem;
+	@if ($value == 0rem) { $value: 0; }
+	@return $value;
+}
+
+@function rem-calc($values) {
+	$max: length($values);
+	@if $max == 1 { @return convert-to-rem(nth($values, 1)); }
+	$rem-values: ();
+	@for $i from 1 through $max {
+		$rem-values: append($rem-values, convert-to-rem(nth($values, $i)));
+	}
+	@return $rem-values;
+}
+
+@function convert-to-px($value)  {
+	$value: strip-unit($value) * 1px;
+	@if ($value == 0px) { $value: 0; }
+	@return $value;
+}
+
+@function px-calc($values) {
+	$max: length($values);
+	@if $max == 1 { @return convert-to-px(nth($values, 1)); }
+	$px-values: ();
+	@for $i from 1 through $max {
+		$px-values: append($px-values, convert-to-px(nth($values, $i)));
+	}
+	@return $px-values;
+}
+
+@function size($value) {
+	@if $size-unit == px {
+		@return px-calc($value)
+	}
+	@if $size-unit == rem-calc {
+		@return rem-calc($value)
+	}
+	@if $size-unit == em-calc {
+		@return em-calc($value)
+	}
+}
+
+/* Toggle Switches */
+
+/* Shared */
 @mixin switch-shared() {
+	display: block;
+	height: size(30);
 
-  display: block;
-  height: 30px;
+	* {
+		@include box-sizing(border-box);
+	}
 
-  * {
-    @include box-sizing(border-box);
-  }
+	a {
+		display: block;
+		@include transition(all 0.15s ease-out);
+	}
 
-  a {
-    display: block;
+	label,
+	> span {
+		line-height: size(30);
+		vertical-align: middle;
+	}
 
-    @include transition(all 0.3s ease-out);
-  }
-
-  label,
-  > span {
-    line-height: 30px;
-    vertical-align: middle;
-  }
-
-  /* Outline the toggles when the inputs are focused
-  */
-  input:focus ~ a,
-  input:focus + label {
-    outline: 1px dotted #888;
-  }
-
+	/* Outline the toggles when the inputs are focused
+	 */
+	input:focus ~ a,
+	input:focus + label {
+		outline: size(0) dotted #888;
+	}
 }
 
 /* Checkbox
-*/
+ */
 @mixin switch-light() {
+	@include switch-shared();
+	position: relative;
+	overflow: visible;
+	padding: 0;
+	margin-left: size(100);
 
-  @include switch-shared();
+	/* Position the label over all the elements, except the slide-button (<a>)
+	 * Clicking anywhere on the label will change the switch-state
+	 */
+	label {
+		position: relative;
+		z-index: 3;
+		display: block;
+		width: 100%;
+	}
 
-  position: relative;
-  overflow: visible;
-  padding: 0;
-  margin-left: 100px;
+	/* Don't hide the input from screen-readers and keyboard access
+	 */
+	input {
+		position: absolute;
+		opacity: 0;
+		z-index: 5;
 
-  /* Position the label over all the elements, except the slide-button (<a>)
-  * Clicking anywhere on the label will change the switch-state
-  */
-  label {
-    position: relative;
-    z-index: 3;
+		&:checked ~ a {
+			right: 0%;
+		}
+	}
 
-    display: block;
-    width: 100%;
-  }
+	> span {
+		position: absolute;
+		left: size(-100);
+		width: 100%;
+		margin: 0;
+		padding-right: size(100);
+		text-align: left;
 
-  /* Don't hide the input from screen-readers and keyboard access
-  */
-  input {
-    position: absolute;
-    opacity: 0;
-    z-index: 5;
+		span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 5;
+			display: block;
+			width: 50%;
+			margin-left: size(100);
+			text-align: center;
 
-    &:checked ~ a {
-      right: 0%;
-    }
+			&:last-child {
+				left: 50%;
+			}
+		}
+	}
 
-  }
-
-  > span {
-    position: absolute;
-    left: -100px;
-
-    width: 100%;
-    margin: 0;
-    padding-right: 100px;
-
-    text-align: left;
-
-    span {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 5;
-
-      display: block;
-      width: 50%;
-      margin-left: 100px;
-
-      text-align: center;
-
-      &:last-child {
-        left: 50%;
-      }
-    }
-
-  }
-
-  a {
-    position: absolute;
-    right: 50%;
-    top: 0;
-    z-index: 4;
-
-    display: block;
-    width: 50%;
-    height: 100%;
-    padding: 0;
-  }
+	a {
+		position: absolute;
+		right: 50%;
+		top: 0;
+		z-index: 4;
+		display: block;
+		width: 50%;
+		height: 100%;
+		padding: 0;
+	}
 
 }
 
 /* Radio Switch
-*/
+ */
 @mixin switch-toggle() {
+	@include switch-shared();
+	position: relative;
 
-  @include switch-shared();
+	/* For callout panels in foundation
+	 */
+	padding: 0 !important;
 
-  position: relative;
+	input {
+		position: absolute;
+		opacity: 0;
+	}
 
-  /* For callout panels in foundation
-  */
-  padding: 0 !important;
+	input + label {
+		position: relative;
+		z-index: 2;
+		float: left;
+		width: 50%;
+		height: 100%;
+		margin: 0;
+		text-align: center;
+	}
 
-  input {
-    position: absolute;
-    opacity: 0;
-  }
+	a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 0;
+		z-index: 1;
+		width: 50%;
+		height: 100%;
+	}
 
-  input + label {
-    position: relative;
-    z-index: 2;
+	input:last-of-type:checked ~ a {
+		left: 50%;
+	}
 
-    float: left;
-    width: 50%;
-    height: 100%;
+	/* Generate styles for the multiple states */
+	@for $i from 1 through 3 {
+		$state: $i + 2;
+		$width: 100 / ($i + 2);
 
-    margin: 0;
-    text-align: center;
-  }
+		&.switch-#{$state} {
+			label,
+			a {
+				width: $width * 1%;
+			}
+		}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0;
-    z-index: 1;
+		@for $j from 2 through ($i + 1) {
+			&.switch-#{$state} input:checked:nth-of-type(#{$j}) ~ a {
+				left: $width * ($j - 1) * 1%;
+			}
+		}
 
-    width: 50%;
-    height: 100%;
-  }
-
-  input:last-of-type:checked ~ a {
-    left: 50%;
-  }
-
-  /* Generate styles for the multiple states */
-  @for $i from 1 through 3 {
-    $state: $i + 2;
-    $width: 100 / ($i + 2);
-
-    &.switch-#{$state} {
-      label,
-      a {
-        width: $width * 1%;
-      }
-    }
-
-    @for $j from 2 through ($i + 1) {
-      &.switch-#{$state} input:checked:nth-of-type(#{$j}) ~ a {
-        left: $width * ($j - 1) * 1%;
-      }
-    }
-
-    &.switch-#{$state} input:checked:last-of-type ~ a {
-      left: 100 - $width * 1%;
-    }
-  }
+		&.switch-#{$state} input:checked:last-of-type ~ a {
+			left: 100 - $width * 1%;
+		}
+	}
 
 }
 
 /* Hide by default
-*/
+ */
 .switch-toggle a,
 .switch-light span span {
-  display: none;
+	display: none;
 }
 
 /* We can't test for a specific feature,
-* so we only target browsers with support for media queries.
-*/
+ * so we only target browsers with support for media queries.
+ */
 @media only screen {
 
-  /* Checkbox switch
-  */
-  .switch-light {
-    @include switch-light();
-  }
+	/* Checkbox switch
+	 */
+	.switch-light {
+		@include switch-light();
+	}
 
-  /* Radio switch
-  */
-  .switch-toggle {
-    @include switch-toggle();
-  }
+	/* Radio switch
+	 */
+	.switch-toggle {
+		@include switch-toggle();
+	}
 
-  /* Standalone Themes */
+	/* Standalone Themes */
 
-  /* Candy Theme
-  * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
-  * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
-  */
-  .switch-candy {
-    background-color: #2d3035;
-    border-radius: 3px;
+	/* Candy Theme
+	 * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
+	 * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
+	 */
+	.switch-candy {
+		background-color: #2d3035;
+		border-radius: size(3);
+		color: #fff;
+		font-weight: bold;
+		text-align: center;
+		text-shadow: size(1 1 1) #191b1e;
+		box-shadow: inset size(0 2 6) rgba(0, 0, 0, 0.3),
+		size(0 1 0) rgba(255, 255, 255, 0.2);
 
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: 1px 1px 1px #191b1e;
+		label {
+			color: #fff;
+			@include transition(color 0.2s ease-out);
+		}
 
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3),
-      0 1px 0px rgba(255, 255, 255, 0.2);
+		input:checked + label {
+			color: #333;
+			text-shadow: size(0 1 0) rgba(255,255,255,0.5);
+		}
 
-    label {
-      color: #fff;
-      @include transition(color 0.2s ease-out);
-    }
+		a {
+			border: size(1) solid #333;
+			background-color: #70c66b;
+			border-radius: size(3);
+			@include background-image(
+					linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0))
+			);
 
-    input:checked + label {
-      color: #333;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-    }
+			box-shadow: size(0 1 1) rgba(0, 0, 0, 0.2),
+			inset size(0 1 1) rgba(255, 255, 255, 0.45);
+		}
 
-    a {
-      border: 1px solid #333;
-      background-color: #70c66b;
-      border-radius: 3px;
+		> span {
+			color: #333;
+			text-shadow: none;
+		}
 
-      @include background-image(
-        linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0))
-      );
+		span {
+			color: #fff;
+		}
 
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.45);
-    }
+		&.switch-candy-blue a {
+			background-color: #38a3d4;
+		}
 
-    > span {
-      color: #333;
+		&.switch-candy-yellow a {
+			background-color: #f5e560;
+		}
+	}
 
-      text-shadow: none;
-    }
+	/* Android Theme
+	 */
+	.switch-android {
+		background-color: #464747;
+		border-radius: size(1);
+		color: #fff;
 
-    span {
-      color: #fff;
-    }
+		label {
+			color: #fff;
+		}
 
-    &.switch-candy-blue a {
-      background-color: #38a3d4;
-    }
+		box-shadow: inset rgba(0, 0, 0, 0.1) size(0 1 0);
 
-    &.switch-candy-yellow a {
-      background-color: #f5e560;
-    }
-  }
+		> span span {
+			opacity: 0;
 
-  /* Android Theme
-  */
-  .switch-android {
-    background-color: #464747;
-    border-radius: 1px;
+			@include transition(all 0.1s);
 
-    color: #fff;
+			&:first-of-type {
+				opacity: 1;
+			}
+		}
 
-    label {
-      color: #fff;
-    }
+		a {
+			background-color: #666;
+			border-radius: size(1);
+			box-shadow: inset rgba(255, 255, 255, 0.2) size(0 1 0),
+			inset rgba(0, 0, 0, 0.3) size(0 -1 0);
+		}
 
-    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
+		/* Selected ON switch-light
+		 */
+		&.switch-light input:checked {
+			~ a {
+				background-color: #0E88B1;
+			}
 
-    > span span {
-      opacity: 0;
+			~ span span {
+				&:first-of-type {
+					opacity: 0;
+				}
 
-      @include transition(all 0.1s);
+				&:last-of-type {
+					opacity: 1;
+				}
+			}
+		}
 
-      &:first-of-type {
-        opacity: 1;
-      }
-    }
+		&.switch-toggle,
+		> span span {
+			font-size: 85%;
+			text-transform: uppercase;
+		}
+	}
 
-    a {
-      background-color: #666;
-      border-radius: 1px;
+	/* iOS Theme
+	 */
+	.switch-ios {
+		$white: #fff;
+		$grey: #d3d3d3;
+		$green: #53d76a;
 
-      box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0,
-        inset rgba(0, 0, 0, 0.3) 0 -1px 0;
-    }
+		&.switch-light {
+			color: darken($grey, 30%);
 
-    /* Selected ON switch-light
-    */
-    &.switch-light input:checked {
+			a {
+				left: 0;
+				width: size(30);
+				background-color: $white;
+				border: size(1) solid $grey;
+				border-radius: 100%;
+				@include transition(all 0.3s ease-out);
+				box-shadow: inset size(0 -3 3) hsla(0,0%,0%,.025),
+				size(0 1 4) hsla(0,0%,0%,.15),
+				size(0 4 4) hsla(0,0%,0%,.1);
+			}
 
-      ~ a {
-        background-color: #0E88B1;
-      }
+			> span span {
+				width: 100%;
+				left: 0;
+				opacity: 0;
 
-      ~ span span {
-        &:first-of-type {
-          opacity: 0;
-        }
+				&:first-of-type {
+					opacity: 1;
+					padding-left: size(30);
+				}
 
-        &:last-of-type {
-          opacity: 1;
-        }
-      }
+				&:last-of-type {
+					padding-right: size(30);
+				}
+			}
 
+			> span:before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: size(100);
+				top: 0;
+				background-color: darken($white, 2%);
+				border: size(1) solid $grey;
+				border-radius: size(30);
+				@include transition(all 0.5s ease-out);
+				box-shadow: inset rgba(0, 0, 0, 0.1) size(0 1 0);
+			}
 
-    }
+			input:checked {
+				~ a {
+					left: 100%;
+					margin-left: size(-30);
+				}
 
-    &.switch-toggle,
-    > span span {
-      font-size: 85%;
-      text-transform: uppercase;
-    }
+				~ span:before {
+					border-color: $green;
+					box-shadow: inset 0 0 0 size(30) $green;
+				}
 
-  }
+				~ span span {
+					&:first-of-type {
+						opacity: 0;
+					}
 
-  /* iOS Theme
-  */
-  .switch-ios {
-    $white: #fff;
-    $grey: #d3d3d3;
-    $green: #53d76a;
+					&:last-of-type {
+						opacity: 1;
+						color: $white;
+					}
+				}
+			}
+		}
 
-    &.switch-light {
-      color: darken($grey, 30%);
+		&.switch-toggle {
+			background-color: darken($white, 2%);
+			border: size(1) solid $grey;
+			border-radius: size(30);
+			box-shadow: inset rgba(0, 0, 0, 0.1) size(0 1 0)
 
-      a {
-        left: 0;
-        width: 30px;
-        background-color: $white;
-        border: 1px solid $grey;
-        border-radius: 100%;
+			a {
+				background-color: $green;
+				border-radius: size(25);
+				@include transition(all 0.3s ease-out);
+			}
 
-        @include transition(all 0.3s ease-out);
+			label {
+				color: darken($grey, 30%);
+			}
+		}
 
-        box-shadow: inset 0 -3px 3px hsla(0,0%,0%,.025),
-          0 1px 4px hsla(0,0%,0%,.15),
-          0 4px 4px hsla(0,0%,0%,.1);
-      }
-
-      > span span {
-        width: 100%;
-        left: 0;
-        opacity: 0;
-
-        &:first-of-type {
-          opacity: 1;
-          padding-left: 30px
-        }
-
-        &:last-of-type {
-          padding-right: 30px;
-        }
-      }
-
-      > span:before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 100px;
-        top: 0;
-
-        background-color: darken($white, 2%);
-        border: 1px solid $grey;
-        border-radius: 30px;
-
-        @include transition(all 0.5s ease-out);
-
-        box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
-      }
-
-      input:checked {
-        ~ a {
-          left: 100%;
-          margin-left: -30px;
-        }
-
-        ~ span:before {
-          border-color: $green;
-
-          box-shadow: inset 0 0 0 30px $green;
-        }
-
-        ~ span span {
-          &:first-of-type {
-            opacity: 0;
-          }
-
-          &:last-of-type {
-            opacity: 1;
-
-            color: $white;
-          }
-        }
-      }
-
-    }
-
-    &.switch-toggle {
-      background-color: darken($white, 2%);
-      border: 1px solid $grey;
-      border-radius: 30px;
-
-      box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
-
-      a {
-        background-color: $green;
-        border-radius: 25px;
-
-        @include transition(all 0.3s ease-out);
-      }
-
-      label {
-        color: darken($grey, 30%);
-      }
-
-    }
-
-    input:checked + label {
-      color: darken($grey, 60%);
-    }
-
-  }
-
+		input:checked + label {
+			color: darken($grey, 60%);
+		}
+	}
 }
 
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from
-* http://css-tricks.com/webkit-sibling-bug/
-*/
+ * http://css-tricks.com/webkit-sibling-bug/
+ */
 .switch-light,
 .switch-toggle {
-  @media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 1280px) {
-    -webkit-animation: webkitSiblingBugfix infinite 1s;
-  }
+	@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: size(1280)) {
+		-webkit-animation: webkitSiblingBugfix infinite 1s;
+	}
 }
 
 @-webkit-keyframes webkitSiblingBugfix {
-  from {
-    -webkit-transform: translate3d(0,0,0);
-  } to {
-    -webkit-transform: translate3d(0,0,0);
-  }
+	from {
+		-webkit-transform: translate3d(0,0,0);
+	} to {
+		  -webkit-transform: translate3d(0,0,0);
+	  }
 }
