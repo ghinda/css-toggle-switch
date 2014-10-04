@@ -1,6 +1,9 @@
-== 2.1.7 (X, 2014)
+== 3.0.0 (October 4, 2014)
 
-* Added UTF-8 charset
+* Add UTF-8 charset.
+* Complete refactoring to export the CSS with multiple unit types (px, em, rem) by [Henjo Hoeksma](https://github.com/hphoeksma). We now have 3 different versions that you can use, depending on if and how you want the switch to scale.
+* Spacing tweaks for the `switch-android` theme.
+
 
 == 2.1.6 (June 6, 2014)
 

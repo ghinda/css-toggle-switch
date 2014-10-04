@@ -66,7 +66,7 @@ module.exports = function (grunt) {
         files: {
           '<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
           '<%= yeoman.dist %>/toggle-switch-rem.css': '<%= yeoman.app %>/toggle-switch-rem.scss',
-          '<%= yeoman.dist %>/toggle-switch-em.css': '<%= yeoman.app %>/toggle-switch-em.scss',
+          '<%= yeoman.dist %>/toggle-switch-px.css': '<%= yeoman.app %>/toggle-switch-px.scss',
           '<%= yeoman.dist %>/docs/docs.css': '<%= yeoman.app %>/docs/docs.scss',
           '<%= yeoman.dist %>/docs/foundation.css': 'bower_components/foundation/scss/foundation.scss'
         }
@@ -80,7 +80,7 @@ module.exports = function (grunt) {
         files: {
           '<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
           '<%= yeoman.dist %>/toggle-switch-rem.css': '<%= yeoman.app %>/toggle-switch-rem.scss',
-          '<%= yeoman.dist %>/toggle-switch-em.css': '<%= yeoman.app %>/toggle-switch-em.scss',
+          '<%= yeoman.dist %>/toggle-switch-px.css': '<%= yeoman.app %>/toggle-switch-px.scss',
           '<%= yeoman.dist %>/docs/docs.css': '<%= yeoman.app %>/docs/docs.scss',
           '<%= yeoman.dist %>/docs/foundation.css': 'bower_components/foundation/scss/foundation.scss'
         }

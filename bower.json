@@ -1,6 +1,6 @@
 {
   "name": "css-toggle-switch",
-  "version": "2.1.7",
+  "version": "3.0.0",
   "main": "./dist/toggle-switch.css",
   "author": "Ionut Colceriu",
   "ignore": [
