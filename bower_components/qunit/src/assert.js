@@ -1,46 +1,51 @@
-// `assert` initialized at top of scope
+function Assert( testContext ) {
+	this.test = testContext;
+}
+
 // Assert helpers
-// All of these must either call QUnit.push() or manually do:
-// - runLoggingCallbacks( "log", .. );
-// - config.current.assertions.push({ .. });
-assert = QUnit.assert = {
+QUnit.assert = Assert.prototype = {
+
+	// Specify the number of expected assertions to guarantee that failed test (no assertions are run at all) don't slip through.
+	expect: function( asserts ) {
+		if ( arguments.length === 1 ) {
+			this.test.expected = asserts;
+		} else {
+			return this.test.expected;
+		}
+	},
+
+	// Exports test.push() to the user API
+	push: function() {
+		var assert = this;
+
+		// Backwards compatibility fix.
+		// Allows the direct use of global exported assertions and QUnit.assert.*
+		// Although, it's use is not recommended as it can leak assertions
+		// to other tests from async tests, because we only get a reference to the current test,
+		// not exactly the test where assertion were intended to be called.
+		if ( !QUnit.config.current ) {
+			throw new Error( "assertion outside test context, in " + sourceFromStacktrace( 2 ) );
+		}
+		if ( !( assert instanceof Assert ) ) {
+			assert = QUnit.config.current.assert;
+		}
+		return assert.test.push.apply( assert.test, arguments );
+	},
+
 	/**
 	 * Asserts rough true-ish result.
 	 * @name ok
 	 * @function
 	 * @example ok( "asdfasdf".length > 5, "There must be at least 5 chars" );
 	 */
-	ok: function( result, msg ) {
-		if ( !config.current ) {
-			throw new Error( "ok() assertion outside test context, was " + sourceFromStacktrace(2) );
+	ok: function( result, message ) {
+		message = message || ( result ? "okay" : "failed, expected argument to be truthy, was: " +
+			QUnit.dump.parse( result ) );
+		if ( !!result ) {
+			this.push( true, result, true, message );
+		} else {
+			this.test.pushFailure( message, null, result );
 		}
-		result = !!result;
-		msg = msg || ( result ? "okay" : "failed" );
-
-		var source,
-			details = {
-				module: config.current.module,
-				name: config.current.testName,
-				result: result,
-				message: msg
-			};
-
-		msg = "<span class='test-message'>" + escapeText( msg ) + "</span>";
-
-		if ( !result ) {
-			source = sourceFromStacktrace( 2 );
-			if ( source ) {
-				details.source = source;
-				msg += "<table><tr class='test-source'><th>Source: </th><td><pre>" +
-					escapeText( source ) +
-					"</pre></td></tr></table>";
-			}
-		}
-		runLoggingCallbacks( "log", QUnit, details );
-		config.current.assertions.push({
-			result: result,
-			message: msg
-		});
 	},
 
 	/**
@@ -52,7 +57,7 @@ assert = QUnit.assert = {
 	 */
 	equal: function( actual, expected, message ) {
 		/*jshint eqeqeq:false */
-		QUnit.push( expected == actual, actual, expected, message );
+		this.push( expected == actual, actual, expected, message );
 	},
 
 	/**
@@ -61,7 +66,7 @@ assert = QUnit.assert = {
 	 */
 	notEqual: function( actual, expected, message ) {
 		/*jshint eqeqeq:false */
-		QUnit.push( expected != actual, actual, expected, message );
+		this.push( expected != actual, actual, expected, message );
 	},
 
 	/**
@@ -69,9 +74,9 @@ assert = QUnit.assert = {
 	 * @function
 	 */
 	propEqual: function( actual, expected, message ) {
-		actual = objectValues(actual);
-		expected = objectValues(expected);
-		QUnit.push( QUnit.equiv(actual, expected), actual, expected, message );
+		actual = objectValues( actual );
+		expected = objectValues( expected );
+		this.push( QUnit.equiv( actual, expected ), actual, expected, message );
 	},
 
 	/**
@@ -79,9 +84,9 @@ assert = QUnit.assert = {
 	 * @function
 	 */
 	notPropEqual: function( actual, expected, message ) {
-		actual = objectValues(actual);
-		expected = objectValues(expected);
-		QUnit.push( !QUnit.equiv(actual, expected), actual, expected, message );
+		actual = objectValues( actual );
+		expected = objectValues( expected );
+		this.push( !QUnit.equiv( actual, expected ), actual, expected, message );
 	},
 
 	/**
@@ -89,7 +94,7 @@ assert = QUnit.assert = {
 	 * @function
 	 */
 	deepEqual: function( actual, expected, message ) {
-		QUnit.push( QUnit.equiv(actual, expected), actual, expected, message );
+		this.push( QUnit.equiv( actual, expected ), actual, expected, message );
 	},
 
 	/**
@@ -97,7 +102,7 @@ assert = QUnit.assert = {
 	 * @function
 	 */
 	notDeepEqual: function( actual, expected, message ) {
-		QUnit.push( !QUnit.equiv(actual, expected), actual, expected, message );
+		this.push( !QUnit.equiv( actual, expected ), actual, expected, message );
 	},
 
 	/**
@@ -105,7 +110,7 @@ assert = QUnit.assert = {
 	 * @function
 	 */
 	strictEqual: function( actual, expected, message ) {
-		QUnit.push( expected === actual, actual, expected, message );
+		this.push( expected === actual, actual, expected, message );
 	},
 
 	/**
@@ -113,87 +118,63 @@ assert = QUnit.assert = {
 	 * @function
 	 */
 	notStrictEqual: function( actual, expected, message ) {
-		QUnit.push( expected !== actual, actual, expected, message );
+		this.push( expected !== actual, actual, expected, message );
 	},
 
 	"throws": function( block, expected, message ) {
-		var actual,
+		var actual, expectedType,
 			expectedOutput = expected,
 			ok = false;
 
-		// 'expected' is optional
-		if ( !message && typeof expected === "string" ) {
+		// 'expected' is optional unless doing string comparison
+		if ( message == null && typeof expected === "string" ) {
 			message = expected;
 			expected = null;
 		}
 
-		config.current.ignoreGlobalErrors = true;
+		this.test.ignoreGlobalErrors = true;
 		try {
-			block.call( config.current.testEnvironment );
+			block.call( this.test.testEnvironment );
 		} catch (e) {
 			actual = e;
 		}
-		config.current.ignoreGlobalErrors = false;
+		this.test.ignoreGlobalErrors = false;
 
 		if ( actual ) {
+			expectedType = QUnit.objectType( expected );
 
 			// we don't want to validate thrown error
 			if ( !expected ) {
 				ok = true;
 				expectedOutput = null;
 
-			// expected is an Error object
-			} else if ( expected instanceof Error ) {
-				ok = actual instanceof Error &&
-					 actual.name === expected.name &&
-					 actual.message === expected.message;
-
 			// expected is a regexp
-			} else if ( QUnit.objectType( expected ) === "regexp" ) {
+			} else if ( expectedType === "regexp" ) {
 				ok = expected.test( errorString( actual ) );
 
 			// expected is a string
-			} else if ( QUnit.objectType( expected ) === "string" ) {
+			} else if ( expectedType === "string" ) {
 				ok = expected === errorString( actual );
 
-			// expected is a constructor
-			} else if ( actual instanceof expected ) {
+			// expected is a constructor, maybe an Error constructor
+			} else if ( expectedType === "function" && actual instanceof expected ) {
 				ok = true;
 
-			// expected is a validation function which returns true is validation passed
-			} else if ( expected.call( {}, actual ) === true ) {
+			// expected is an Error object
+			} else if ( expectedType === "object" ) {
+				ok = actual instanceof expected.constructor &&
+					actual.name === expected.name &&
+					actual.message === expected.message;
+
+			// expected is a validation function which returns true if validation passed
+			} else if ( expectedType === "function" && expected.call( {}, actual ) === true ) {
 				expectedOutput = null;
 				ok = true;
 			}
 
-			QUnit.push( ok, actual, expectedOutput, message );
+			this.push( ok, actual, expectedOutput, message );
 		} else {
-			QUnit.pushFailure( message, null, "No exception was thrown." );
+			this.test.pushFailure( message, null, "No exception was thrown." );
 		}
 	}
-};
-
-/**
- * @deprecated since 1.8.0
- * Kept assertion helpers in root for backwards compatibility.
- */
-extend( QUnit.constructor.prototype, assert );
-
-/**
- * @deprecated since 1.9.0
- * Kept to avoid TypeErrors for undefined methods.
- */
-QUnit.constructor.prototype.raises = function() {
-	QUnit.push( false, false, false, "QUnit.raises has been deprecated since 2012 (fad3c1ea), use QUnit.throws instead" );
-};
-
-/**
- * @deprecated since 1.0.0, replaced with error pushes since 1.3.0
- * Kept to avoid TypeErrors for undefined methods.
- */
-QUnit.constructor.prototype.equals = function() {
-	QUnit.push( false, false, false, "QUnit.equals has been deprecated since 2009 (e88049a0), use QUnit.equal instead" );
-};
-QUnit.constructor.prototype.same = function() {
-	QUnit.push( false, false, false, "QUnit.same has been deprecated since 2009 (e88049a0), use QUnit.deepEqual instead" );
 };

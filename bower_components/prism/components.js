@@ -63,17 +63,17 @@ var components = {
 			"option": "default",
 			"require": "clike"
 		},
-		"java" : {
+		"java": {
 			"title": "Java",
 			"require": "clike",
 			"owner": "sherblot"
 		},
-		"php" : {
+		"php": {
 			"title": "PHP",
 			"require": "clike",
 			"owner": "milesj"
 		},
-		"php-extras" : {
+		"php-extras": {
 			"title": "PHP Extras",
 			"require": "php",
 			"owner": "milesj"
@@ -88,7 +88,7 @@ var components = {
 			"require": "css",
 			"owner": "MoOx"
 		},
-		"bash" : {
+		"bash": {
 			"title": "Bash",
 			"require": "clike",
 			"owner": "zeitgeist87"
@@ -157,6 +157,10 @@ var components = {
 			"require": "java",
 			"owner": "jozic"
 		},
+		"haskell": {
+			"title": "Haskell",
+			"owner": "bholst"
+		},
 		"swift": {
 			"title": "Swift",
 			"require": "clike",
@@ -174,6 +178,18 @@ var components = {
 		"ini": {
 			"title": "Ini",
 			"owner": "aviaryan"
+		},
+		"latex": {
+			"title": "LaTeX",
+			"owner": "japborst"
+		},
+		"apacheconf": {
+			"title": "Apache Configuration",
+			"owner": "GuiTeK"
+		},
+		"git": {
+			"title": "Git",
+			"owner": "lgiraudel"
 		}
 	},
 	"plugins": {

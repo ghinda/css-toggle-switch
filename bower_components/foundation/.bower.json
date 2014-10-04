@@ -1,8 +1,9 @@
 {
   "name": "foundation",
-  "version": "5.3.1",
+  "version": "5.4.5",
   "main": [
     "css/foundation.css",
+    "css/foundation.css.map",
     "js/foundation.js"
   ],
   "dependencies": {
@@ -18,11 +19,11 @@
   },
   "private": true,
   "homepage": "https://github.com/zurb/bower-foundation",
-  "_release": "5.3.1",
+  "_release": "5.4.5",
   "_resolution": {
     "type": "version",
-    "tag": "5.3.1",
-    "commit": "447a0dcbc9a113b0d32b529762663762f2446ae9"
+    "tag": "5.4.5",
+    "commit": "274f57c2e626ea7126881c6ad618a663f079956c"
   },
   "_source": "git://github.com/zurb/bower-foundation.git",
   "_target": "~5",

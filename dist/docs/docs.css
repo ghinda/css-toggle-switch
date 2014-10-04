@@ -76,7 +76,9 @@ h3 {
   color: #a6c7e2; }
 
 code {
-  color: #3b7db4; }
+  border: 0;
+  color: #3b7db4;
+  font-weight: bold; }
 
 a {
   color: #5996c9; }

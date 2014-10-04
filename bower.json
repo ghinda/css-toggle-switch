@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "main": "./dist/toggle-switch.css",
   "author": "Ionut Colceriu",
+  "main": "dist/toggle-switch.css",
   "ignore": [
     "**/docs/",
     "node_modules/",
