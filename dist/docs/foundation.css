@@ -918,7 +918,7 @@ select {
     color: #4f4f4f; }
   .alert-box.warning {
     background-color: #f08a24;
-    border-color: #de730f;
+    border-color: #de770f;
     color: #fff; }
   .alert-box.info {
     background-color: #a0d3e8;
@@ -2818,7 +2818,7 @@ ul.pagination {
   .panel.callout {
     border-style: solid;
     border-width: 1px;
-    border-color: #b6eeff;
+    border-color: #b6efff;
     margin-bottom: 1.25rem;
     padding: 1.25rem;
     background: #ecfaff; }
