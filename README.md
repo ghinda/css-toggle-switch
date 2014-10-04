@@ -12,7 +12,7 @@ Download from the [project page](http://ghinda.net/css-toggle-switch/).
 
 Install with [Bower](http://bower.io/): `bower install --save css-toggle-switch`
 
-Install with [Component(1)](http://component.io/): `component install ghinda/css-toggle-switch`
+Install with [Component](https://component.github.io/): `component install ghinda/css-toggle-switch`
 
 
 ## How to use it
@@ -43,15 +43,21 @@ The `onclick=""` attribute is required for older iOS and Opera Mini support.
 
 You'll need Grunt:
 
+```
   grunt server
+```
 
 Then
 
+```
   http://localhost:9000/
+```
 
 ## Acknowledgements
 
 * Standalone themes are based on [Sort Switches / Toggles by Orman Clark](http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/), [iOS 7](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISwitch.html) and [Android](https://developer.android.com/design/building-blocks/switches.html).
-* iOS label tap issue and fix reported by [scruffian](https://github.com/scruffian).
+* iOS label tap issue and fix reported by [Ben Dwyer](https://github.com/scruffian).
+* Refactoring to export the CSS with multiple unit types (px, em, rem) by [Henjo Hoeksma](https://github.com/hphoeksma).
+* [List of contributors on Github](https://github.com/ghinda/css-toggle-switch/graphs/contributors)
 
 CSS Toggle Switches is a project by [Ionuț Colceriu](http://ghinda.net).
