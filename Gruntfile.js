@@ -112,12 +112,12 @@ module.exports = function (grunt) {
               version: '10'
             }, {
               browserName: 'safari',
-              platform: 'OS X 10.8',
-              version: '6'
+              platform: 'OS X 10.10',
+              version: '8'
             }, {
-              browserName: 'iphone',
-              platform: 'OS X 10.8',
-              version: '6'
+              browserName: 'iPhone',
+              platform: 'OS X 10.9',
+              version: '8.0'
             }
           ]
         }
