@@ -21,6 +21,6 @@
     "commit": "a7ded258a66809b38c48d701b37b436c0f379c50"
   },
   "_source": "git://github.com/thoughtbot/bourbon.git",
-  "_target": "~3",
+  "_target": "~3.x",
   "_originalSource": "bourbon"
 }

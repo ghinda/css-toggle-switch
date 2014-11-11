@@ -84,7 +84,7 @@ $em-base: 16 !default;
 /* Shared */
 @mixin switch-shared() {
   display: block;
-  height: size(30);
+  min-height: size(30);
 
   * {
     @include box-sizing(border-box);
@@ -182,6 +182,7 @@ $em-base: 16 !default;
 @mixin switch-toggle() {
   @include switch-shared();
   position: relative;
+  display: table;
 
   /* For callout panels in foundation
   */
@@ -199,9 +200,8 @@ $em-base: 16 !default;
   input + label {
     position: relative;
     z-index: 2;
-    float: left;
-    width: 50%;
-    height: 100%;
+    display: table-cell;
+    padding: 0 size(8);
     margin: 0;
 
     text-align: center;

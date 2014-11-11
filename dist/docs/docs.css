@@ -158,6 +158,7 @@ header {
     .hero-box .hero-actions .button-group {
       width: 100%; }
     .hero-box .hero-actions li {
+      float: left;
       width: 50%;
       margin: 0; }
     .hero-box .hero-actions a {
@@ -188,7 +189,7 @@ header {
   width: auto;
   padding: 1.25em;
   margin: 1.25em -1.25em 0;
-  background-color: #7fafd6; }
+  background-color: #7faed6; }
   .row.dependency-install pre {
     text-align: center; }
     .row.dependency-install pre:first-child {

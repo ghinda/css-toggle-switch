@@ -25,20 +25,9 @@
 @media only screen {
   /* Checkbox switch
   */
-  /* Radio switch
-  */
-  /* Standalone Themes */
-  /* Candy Theme
-  * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
-  * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
-  */
-  /* Android Theme
-  */
-  /* iOS Theme
-  */
   .switch-light {
     display: block;
-    height: 1.875rem;
+    min-height: 1.875rem;
     /* Outline the toggles when the inputs are focused
   */
     position: relative;
@@ -102,12 +91,16 @@
       width: 50%;
       height: 100%;
       padding: 0; }
+
+  /* Radio switch
+  */
   .switch-toggle {
     display: block;
-    height: 1.875rem;
+    min-height: 1.875rem;
     /* Outline the toggles when the inputs are focused
   */
     position: relative;
+    display: table;
     /* For callout panels in foundation
   */
     padding: 0 !important;
@@ -134,9 +127,8 @@
     .switch-toggle input + label {
       position: relative;
       z-index: 2;
-      float: left;
-      width: 50%;
-      height: 100%;
+      display: table-cell;
+      padding: 0 0.5rem;
       margin: 0;
       text-align: center; }
     .switch-toggle a {
@@ -173,6 +165,12 @@
       left: 60%; }
     .switch-toggle.switch-5 input:checked:last-of-type ~ a {
       left: 80%; }
+
+  /* Standalone Themes */
+  /* Candy Theme
+  * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
+  * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
+  */
   .switch-candy {
     background-color: #2d3035;
     border-radius: 3px;
@@ -205,6 +203,9 @@
       background-color: #38a3d4; }
     .switch-candy.switch-candy-yellow a {
       background-color: #f5e560; }
+
+  /* Android Theme
+  */
   .switch-android {
     background-color: #464747;
     border-radius: 1px;
@@ -237,6 +238,9 @@
       opacity: 1; }
     .switch-android.switch-toggle, .switch-android > span span {
       text-transform: uppercase; }
+
+  /* iOS Theme
+  */
   .switch-ios.switch-light {
     color: #868686; }
     .switch-ios.switch-light a {
@@ -298,7 +302,8 @@
     .switch-ios.switch-toggle label {
       color: #868686; }
   .switch-ios input:checked + label {
-    color: #3a3a3a; } }
+    color: #3a3a3a; }
+ }
 
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from
 * http://css-tricks.com/webkit-sibling-bug/

@@ -9,9 +9,9 @@
   "devDependencies": {
     "grunt": "~0.4",
     "grunt-contrib-watch": "~0.6",
-    "grunt-concurrent": "~0.5",
-    "grunt-contrib-connect": "~0.8",
-    "connect-livereload": "~0.4",
+    "grunt-concurrent": "~1.0",
+    "grunt-contrib-connect": "~0.9",
+    "connect-livereload": "~0.5",
     "matchdep": "~0.3",
     "grunt-sass": "~0",
     "grunt-saucelabs": "~8"

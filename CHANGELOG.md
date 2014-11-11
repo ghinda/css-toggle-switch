@@ -1,3 +1,8 @@
+== 3.1.0 (November 11, 2014)
+
+* Remove the fixed-height on the `.switch-toggle` component, allowing it to expand it's height depending on the content. The `.switch-light` component still has a fixed height, required because of the absolute positioning.
+* `.switch-toggle` now uses `display: table` to horizontally arrange the labels, instead of using floats.
+
 == 3.0.0 (October 4, 2014)
 
 * Add UTF-8 charset.
