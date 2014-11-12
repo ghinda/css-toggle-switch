@@ -101,6 +101,7 @@
   */
     position: relative;
     display: table;
+    table-layout: fixed;
     /* For callout panels in foundation
   */
     padding: 0 !important;
@@ -128,6 +129,7 @@
       position: relative;
       z-index: 2;
       display: table-cell;
+      width: 50%;
       padding: 0 0.5rem;
       margin: 0;
       text-align: center; }

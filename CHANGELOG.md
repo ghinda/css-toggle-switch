@@ -1,3 +1,7 @@
+== 3.1.1 (November 12, 2014)
+
+* Fixes for the `.switch-toggle` component when using two elements, caused by the `display: table-cell`.
+
 == 3.1.0 (November 11, 2014)
 
 * Remove the fixed-height on the `.switch-toggle` component, allowing it to expand it's height depending on the content. The `.switch-light` component still has a fixed height, required because of the absolute positioning.

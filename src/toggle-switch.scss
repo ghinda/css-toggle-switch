@@ -183,6 +183,7 @@ $em-base: 16 !default;
   @include switch-shared();
   position: relative;
   display: table;
+  table-layout: fixed;
 
   /* For callout panels in foundation
   */
@@ -201,6 +202,7 @@ $em-base: 16 !default;
     position: relative;
     z-index: 2;
     display: table-cell;
+    width: 50%;
     padding: 0 size(8);
     margin: 0;
 
