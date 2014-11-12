@@ -104,11 +104,13 @@
     /* For callout panels in foundation
   */
     padding: 0 !important;
-    /* Generate styles for the multiple states */ }
+    /* Generate styles for the multiple states */
+  width: 100%}
     .switch-toggle * {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
-      box-sizing: border-box; }
+      box-sizing: border-box;
+    width: 50%}
     .switch-toggle a {
       display: block;
       -webkit-transition: all 0.2s ease-out;
