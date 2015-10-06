@@ -113,7 +113,7 @@ header {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: -0.03em; }
+    letter-spacing: -.03em; }
     header h1 a {
       color: #fff;
       text-decoration: none; }

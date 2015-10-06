@@ -1,3 +1,85 @@
+
+1.19.0 / 2015-09-01
+==================
+
+  * Assert: Add support to ES6' Map and Set equiv objects
+  * Build: Enable IRC notifications for Travis CI
+  * Build: Add 'Readme' to commitplease components
+  * Build: Remove unintended QUnit global export on Node
+  * Build: Remove testSwarm job
+  * Core: Implement QUnit.stack
+  * Dump: Escape backslash when quoting strings
+  * HTML Reporter: Avoid readyState issue with PhantomJS
+  * HTML Reporter: HTML reporter enhancements for negative asserts
+  * HTML Reporter: Show diff only when it helps
+  * Tests: Avoid loosen errors on autostart test
+  * Tests: HTML Reporter tests are now isolated with reordering disabled
+  * Tests: Rename stack error tests
+  * Test: Release module hooks to avoid memory leaks
+  * Test: Don't pass Promise fulfillment value to QUnit.start
+  * Test: Source Displayed Even for Passed Test
+
+1.18.0 / 2015-04-03
+==================
+
+  * Assert: throws uses push method only
+  * Assert: Fix missing test on exported throws
+  * Assert: Implements notOk to assert falsy values
+  * Core: More graceful handling of AMD
+  * Core: Simplify stack trace methods
+  * Core: Expose Dump maxDepth property
+  * Core: Expose QUnit version as QUnit.version property
+  * Core: Handle multiple testId parameters
+  * Dump: Fix .name/.property doublettes
+  * HTML Reporter: New diff using Google's Diff-Patch-Match Library
+  * HTML Reporter: Make it more obvious why diff is suppressed.
+  * HTML Reporter: Change display text for bad tests
+  * HTML Reporter: Fix checkbox and select handling in IE <9
+  * HTML Reporter: Fix test filter without any module
+  * HTML Reporter: Retain failed tests numbers
+  * Test: lowercase the valid test filter before using it
+
+1.17.1 / 2015-01-20
+==================
+
+  * HTML Reporter: Fix missing toolbar bug
+
+1.17.0 / 2015-01-19
+==================
+
+  * Build: Remove bower.json from ignored files
+  * Build: Support Node.js export parity with CommonJS
+  * HTML Reporter: Add the filter field
+  * HTML Reporter: Don't hide skipped tests
+  * HTML Reporter: Fix regression for old markup
+  * HTML Reporter: Prevent XSS attacks
+  * HTML Reporter: QUnit.url is now a private function in the HTML Reporter
+  * HTML Reporter: url params can be set by code
+
+1.16.0 / 2014-12-03
+==================
+
+  * Assert: Add alias for throws called 'raises'
+  * Async: Fail assertions after existing assert.async flows are resolved
+  * Async: Implement assert.async
+  * Async: Tests are now Promise-aware
+  * Callbacks: Restore and warn if some logging callback gets modified
+  * Callbacks: Throws an error on non-function params for logging methods
+  * Core: change url() helper to output `?foo` instead of `?foo=true`
+  * Core: Detail modules and tests names in the logging callbacks
+  * Core: Implements QUnit.skip
+  * Core: Remove constructor
+  * Core: Rename config.module to config.moduleFilter
+  * Core: Use `Error#stack` without throwing when available
+  * Dump: Configurable limit for object depth
+  * HTML Reporter: Enable activating config.hidepassed from URL params
+  * HTML Reporter: Move QUnit.reset back to core to run it before testDone
+  * HTML Reporter: Output runtime of each assertion in results
+  * Logging: Add runtime to moduleDone
+  * Logging: Defer begin event till tests actually starts
+  * Test: Introduce order independent testId to replace testNumber
+  * Test: Rename module's setup/teardown to beforeEach/afterEach
+
 1.15.0 / 2014-08-08
 ==================
 
