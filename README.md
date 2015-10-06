@@ -1,4 +1,4 @@
-# CSS Toggle Switch [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=ghinda&url=https://github.com/ghinda/css-toggle-switch&title=css-toggle-switch&language=javascript&tags=github&category=software)
+# CSS Toggle Switch
 
 [![Build Status](https://travis-ci.org/ghinda/css-toggle-switch.png)](https://travis-ci.org/ghinda/css-toggle-switch)
 
