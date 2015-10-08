@@ -131,6 +131,8 @@ header {
     text-transform: uppercase; }
     header .top-menu .active {
       color: #fff; }
+    header .top-menu li:first-child {
+      margin: 0; }
 
 /* Hero */
 .hero-box {

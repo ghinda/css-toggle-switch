@@ -19,6 +19,14 @@ Install with [Component](https://component.github.io/): `component install ghind
 
 Just include `toggle-switch.css`, and use the markup from the [documentation](http://ghinda.net/css-toggle-switch/).
 
+### Scaling
+
+By default, the switches will scale along with the font size on their parent, because they're built using `em`s.
+
+If you want to switches to scale using `rem`s, you can include the `toggle-switch-rem.css` file (without including `toggle-switch.css`).
+
+If you don't need the switches to scale at all, you can use the the `toggle-switch-px.css` file.
+
 
 ## Switches
 

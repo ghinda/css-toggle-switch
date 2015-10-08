@@ -1,6 +1,7 @@
 ## [3.1.2] - 2015-10-06
 
--
+- Switch to the MIT license, from Unlicense.
+- Upgrade all dependencies to their latest version.
 
 ## [3.1.1] - 2014-11-12
 
