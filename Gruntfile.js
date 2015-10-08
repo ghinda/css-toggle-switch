@@ -115,9 +115,15 @@ module.exports = function (grunt) {
               platform: 'OS X 10.10',
               version: '8'
             }, {
-              browserName: 'iPhone',
-              platform: 'OS X 10.9',
-              version: '8.0'
+              browserName: 'iPhone 4s',
+              platform: 'OS X 10.10',
+              version: '8.0',
+              deviceOrientation: 'portrait'
+            }, {
+              browserName: 'iPhone 6',
+              platform: 'OS X 10.10',
+              version: '9.0',
+              deviceOrientation: 'portrait'
             }
           ]
         }
