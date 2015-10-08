@@ -14,6 +14,8 @@ Install with [Bower](http://bower.io/): `bower install --save css-toggle-switch`
 
 Install with [Component](https://component.github.io/): `component install ghinda/css-toggle-switch`
 
+Install with [npm](https://www.npmjs.com/package/css-toggle-switch): `npm install --save css-toggle-switch`
+
 
 ## How to use it
 
