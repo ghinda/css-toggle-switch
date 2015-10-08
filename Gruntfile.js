@@ -90,7 +90,7 @@ module.exports = function (grunt) {
       all: {
         options: {
           urls: [ 'http://127.0.0.1:9000/test' ],
-          detailedError: true,
+          pollInterval: 5000,
           browsers: [
             {
               browserName: 'chrome'
