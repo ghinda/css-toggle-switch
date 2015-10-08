@@ -4,24 +4,27 @@
 	"test_framework": "qunit",
 	"test_path": [
 		"test/index.html",
-		"test/async.html",
 		"test/logs.html",
-		"test/setTimeout.html"
+		"test/amd.html"
 	],
 	"browsers": [
 		"chrome_previous",
-		"chrome_latest",
+		"chrome_current",
 		"firefox_previous",
-		"firefox_latest",
-		"opera_previous",
-		"opera_latest",
+		"firefox_current",
+		"opera_current",
 		"safari_previous",
-		"safari_latest",
+		"safari_current",
 		"ie_6",
 		"ie_7",
 		"ie_8",
 		"ie_9",
 		"ie_10",
-		"ie_11"
+		"ie_11",
+		"edge_latest",
+		{
+			"os": "iOS",
+			"os_version": "8.3"
+		}
 	]
 }

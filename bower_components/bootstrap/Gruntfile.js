@@ -1,7 +1,7 @@
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
- * Copyright 2013-2014 Twitter, Inc.
+ * Copyright 2013-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -18,6 +18,7 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var npmShrinkwrap = require('npm-shrinkwrap');
+  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var getLessVarsData = function () {
     var filePath = path.join(__dirname, 'less/variables.less');
@@ -27,6 +28,13 @@ module.exports = function (grunt) {
   };
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
+  var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
+
+  Object.keys(configBridge.paths).forEach(function (key) {
+    configBridge.paths[key].forEach(function (val, i, arr) {
+      arr[i] = path.join('./docs/assets', val);
+    });
+  });
 
   // Project configuration.
   grunt.initConfig({
@@ -36,23 +44,10 @@ module.exports = function (grunt) {
     banner: '/*!\n' +
             ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
             ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
+            ' * Licensed under the <%= pkg.license %> license\n' +
             ' */\n',
-    // NOTE: This jqueryCheck/jqueryVersionCheck code is duplicated in customizer.js;
-    //       if making changes here, be sure to update the other copy too.
-    jqueryCheck: [
-      'if (typeof jQuery === \'undefined\') {',
-      '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\')',
-      '}\n'
-    ].join('\n'),
-    jqueryVersionCheck: [
-      '+function ($) {',
-      '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')',
-      '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {',
-      '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 1.9.1 or higher\')',
-      '  }',
-      '}(jQuery);\n\n'
-    ].join('\n'),
+    jqueryCheck: configBridge.config.jqueryCheck.join('\n'),
+    jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
 
     // Task configuration.
     clean: {
@@ -68,7 +63,7 @@ module.exports = function (grunt) {
         options: {
           jshintrc: 'grunt/.jshintrc'
         },
-        src: ['Gruntfile.js', 'grunt/*.js']
+        src: ['Gruntfile.js', 'package.js', 'grunt/*.js']
       },
       core: {
         src: 'js/*.js'
@@ -131,6 +126,10 @@ module.exports = function (grunt) {
 
     uglify: {
       options: {
+        compress: {
+          warnings: false
+        },
+        mangle: true,
         preserveComments: 'some'
       },
       core: {
@@ -138,25 +137,11 @@ module.exports = function (grunt) {
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
-        // NOTE: This src list is duplicated in footer.html; if making changes here, be sure to update the other copy too.
-        src: [
-          'docs/assets/js/vendor/less.min.js',
-          'docs/assets/js/vendor/jszip.min.js',
-          'docs/assets/js/vendor/uglify.min.js',
-          'docs/assets/js/vendor/Blob.js',
-          'docs/assets/js/vendor/FileSaver.js',
-          'docs/assets/js/raw-files.min.js',
-          'docs/assets/js/src/customizer.js'
-        ],
+        src: configBridge.paths.customizerJs,
         dest: 'docs/assets/js/customize.min.js'
       },
       docsJs: {
-        // NOTE: This src list is duplicated in footer.html; if making changes here, be sure to update the other copy too.
-        src: [
-          'docs/assets/js/vendor/holder.js',
-          'docs/assets/js/vendor/ZeroClipboard.min.js',
-          'docs/assets/js/src/application.js'
-        ],
+        src: configBridge.paths.docsJs,
         dest: 'docs/assets/js/docs.min.js'
       }
     },
@@ -195,16 +180,7 @@ module.exports = function (grunt) {
 
     autoprefixer: {
       options: {
-        browsers: [
-          'Android 2.3',
-          'Android >= 4',
-          'Chrome >= 20',
-          'Firefox >= 24', // Firefox 24 is the latest ESR
-          'Explorer >= 8',
-          'iOS >= 6',
-          'Opera >= 12',
-          'Safari >= 6'
-        ]
+        browsers: configBridge.config.autoprefixerBrowsers
       },
       core: {
         options: {
@@ -219,7 +195,7 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: 'docs/assets/css/src/docs.css'
+        src: ['docs/assets/css/src/docs.css']
       },
       examples: {
         expand: true,
@@ -251,9 +227,11 @@ module.exports = function (grunt) {
 
     cssmin: {
       options: {
+        // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
+        //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
         compatibility: 'ie8',
         keepSpecialComments: '*',
-        noAdvanced: true
+        advanced: false
       },
       minifyCore: {
         src: 'dist/css/<%= pkg.name %>.css',
@@ -265,20 +243,10 @@ module.exports = function (grunt) {
       },
       docs: {
         src: [
-          'docs/assets/css/src/docs.css',
-          'docs/assets/css/src/pygments-manni.css'
+          'docs/assets/css/src/pygments-manni.css',
+          'docs/assets/css/src/docs.css'
         ],
         dest: 'docs/assets/css/docs.min.css'
-      }
-    },
-
-    usebanner: {
-      options: {
-        position: 'top',
-        banner: '<%= banner %>'
-      },
-      files: {
-        src: 'dist/css/*.css'
       }
     },
 
@@ -306,12 +274,17 @@ module.exports = function (grunt) {
 
     copy: {
       fonts: {
+        expand: true,
         src: 'fonts/*',
         dest: 'dist/'
       },
       docs: {
-        src: 'dist/*/*',
-        dest: 'docs/'
+        expand: true,
+        cwd: 'dist/',
+        src: [
+          '**/*'
+        ],
+        dest: 'docs/dist/'
       }
     },
 
@@ -325,7 +298,35 @@ module.exports = function (grunt) {
     },
 
     jekyll: {
-      docs: {}
+      options: {
+        config: '_config.yml'
+      },
+      docs: {},
+      github: {
+        options: {
+          raw: 'github: true'
+        }
+      }
+    },
+
+    htmlmin: {
+      dist: {
+        options: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          minifyCSS: true,
+          minifyJS: true,
+          removeAttributeQuotes: true,
+          removeComments: true
+        },
+        expand: true,
+        cwd: '_gh_pages',
+        dest: '_gh_pages',
+        src: [
+          '**/*.html',
+          '!examples/**/*.html'
+        ]
+      }
     },
 
     jade: {
@@ -343,28 +344,21 @@ module.exports = function (grunt) {
       }
     },
 
-    validation: {
+    htmllint: {
       options: {
-        charset: 'utf-8',
-        doctype: 'HTML5',
-        failHard: true,
-        reset: true,
-        relaxerror: [
-          'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
-          'Element img is missing required attribute src.',
-          'Attribute autocomplete not allowed on element input at this point.',
-          'Attribute autocomplete not allowed on element button at this point.'
+        ignore: [
+          'Attribute "autocomplete" not allowed on element "button" at this point.',
+          'Attribute "autocomplete" not allowed on element "input" at this point.',
+          'Element "img" is missing required attribute "src".'
         ]
       },
-      files: {
-        src: '_gh_pages/**/*.html'
-      }
+      src: '_gh_pages/**/*.html'
     },
 
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:src', 'qunit', 'concat']
+        tasks: ['jshint:core', 'qunit', 'concat']
       },
       test: {
         files: '<%= jshint.test.src %>',
@@ -383,6 +377,14 @@ module.exports = function (grunt) {
           return old ? RegExp.quote(old) : old;
         })(),
         replacement: grunt.option('newver'),
+        exclude: [
+          'dist/fonts',
+          'docs/assets',
+          'fonts',
+          'js/tests/vendor',
+          'node_modules',
+          'test-infra'
+        ],
         recursive: true
       }
     },
@@ -391,9 +393,10 @@ module.exports = function (grunt) {
       all: {
         options: {
           build: process.env.TRAVIS_JOB_ID,
-          concurrency: 10,
+          throttled: 10,
           maxRetries: 3,
-          urls: ['http://127.0.0.1:3000/js/tests/index.html'],
+          maxPollRetries: 4,
+          urls: ['http://127.0.0.1:3000/js/tests/index.html?hidepassed'],
           browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
         }
       }
@@ -403,7 +406,27 @@ module.exports = function (grunt) {
       npmUpdate: {
         command: 'npm update'
       }
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: 'bootstrap-<%= pkg.version %>-dist.zip',
+          mode: 'zip',
+          level: 9,
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/',
+            src: ['**'],
+            dest: 'bootstrap-<%= pkg.version %>-dist'
+          }
+        ]
+      }
     }
+
   });
 
 
@@ -412,7 +435,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -424,7 +447,9 @@ module.exports = function (grunt) {
   // Test task.
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
-  if (runSubset('core')) {
+  if (runSubset('core') &&
+      // Skip core tests if this is a Savage build
+      process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
     testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'test-js', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
@@ -450,7 +475,7 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
@@ -462,6 +487,8 @@ module.exports = function (grunt) {
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
+
+  grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
@@ -482,7 +509,9 @@ module.exports = function (grunt) {
   grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
   grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
-  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
+
+  grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github', 'htmlmin', 'compress']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.

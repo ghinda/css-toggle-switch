@@ -1,4 +1,4 @@
-# CSS Toggle Switch [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=ghinda&url=https://github.com/ghinda/css-toggle-switch&title=css-toggle-switch&language=javascript&tags=github&category=software)
+# CSS Toggle Switch
 
 [![Build Status](https://travis-ci.org/ghinda/css-toggle-switch.png)](https://travis-ci.org/ghinda/css-toggle-switch)
 
@@ -14,10 +14,20 @@ Install with [Bower](http://bower.io/): `bower install --save css-toggle-switch`
 
 Install with [Component](https://component.github.io/): `component install ghinda/css-toggle-switch`
 
+Install with [npm](https://www.npmjs.com/package/css-toggle-switch): `npm install --save css-toggle-switch`
+
 
 ## How to use it
 
 Just include `toggle-switch.css`, and use the markup from the [documentation](http://ghinda.net/css-toggle-switch/).
+
+### Scaling
+
+By default, the switches will scale along with the font size on their parent, because they're built using `em`s.
+
+If you want to switches to scale using `rem`s, you can include the `toggle-switch-rem.css` file (without including `toggle-switch.css`).
+
+If you don't need the switches to scale at all, you can use the the `toggle-switch-px.css` file.
 
 
 ## Switches

@@ -1,5 +1,5 @@
 // For browser, export only select globals
-if ( typeof window !== "undefined" ) {
+if ( defined.document ) {
 
 	// Deprecated
 	// Extend assert methods to QUnit and Global scope through Backwards compatibility
@@ -29,6 +29,7 @@ if ( typeof window !== "undefined" ) {
 				"start",
 				"stop",
 				"ok",
+				"notOk",
 				"equal",
 				"notEqual",
 				"propEqual",
@@ -48,7 +49,22 @@ if ( typeof window !== "undefined" ) {
 	window.QUnit = QUnit;
 }
 
-// For CommonJS environments, export everything
-if ( typeof module !== "undefined" && module.exports ) {
+// For nodejs
+if ( typeof module !== "undefined" && module && module.exports ) {
 	module.exports = QUnit;
+
+	// For consistency with CommonJS environments' exports
+	module.exports.QUnit = QUnit;
+}
+
+// For CommonJS with exports, but without module.exports, like Rhino
+if ( typeof exports !== "undefined" && exports ) {
+	exports.QUnit = QUnit;
+}
+
+if ( typeof define === "function" && define.amd ) {
+	define( function() {
+		return QUnit;
+	} );
+	QUnit.config.autostart = false;
 }
