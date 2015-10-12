@@ -124,11 +124,6 @@ module.exports = function (grunt) {
               deviceName: 'iPhone 4s',
               platform: 'OS X 10.10',
               version: '8.0'
-            }, {
-              browserName: 'iphone',
-              deviceName: 'iPhone 4s',
-              platform: 'OS X 10.10',
-              version: '9.0'
             }
           ]
         }

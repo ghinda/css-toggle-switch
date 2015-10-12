@@ -15,14 +15,12 @@
     "grunt-sass": "~0",
     "grunt-saucelabs": "~8"
   },
-  "peerDependencies": {
-    "grunt-cli": "~0.1"
-  },
+  "peerDependencies": {},
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "node -e \"require('grunt').tasks(['test']);\""
   },
   "description": "Accessible CSS toggle switch using standard form controls",
   "bugs": {
