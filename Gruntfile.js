@@ -90,14 +90,19 @@ module.exports = function (grunt) {
       all: {
         options: {
           urls: [ 'http://127.0.0.1:9000/test' ],
-          detailedError: true,
           browsers: [
             {
-              browserName: 'chrome'
+              browserName: 'chrome',
+              platform: 'Windows 10'
             }, {
-              browserName: 'firefox'
+              browserName: 'microsoftedge',
+              platform: 'Windows 10'
             }, {
-              browserName: 'opera'
+              browserName: 'firefox',
+              platform: 'Windows 10'
+            }, {
+              browserName: 'opera',
+              platform: 'Windows 7'
             }, {
               browserName: 'android',
               platform: 'Linux',
@@ -115,9 +120,15 @@ module.exports = function (grunt) {
               platform: 'OS X 10.10',
               version: '8'
             }, {
-              browserName: 'iPhone',
-              platform: 'OS X 10.9',
+              browserName: 'iphone',
+              deviceName: 'iPhone 4s',
+              platform: 'OS X 10.10',
               version: '8.0'
+            }, {
+              browserName: 'iphone',
+              deviceName: 'iPhone 4s',
+              platform: 'OS X 10.10',
+              version: '9.0'
             }
           ]
         }
@@ -131,14 +142,6 @@ module.exports = function (grunt) {
           ]
         }
       }
-    },
-    concurrent: {
-      server: [
-        'sass:server'
-      ],
-      dist: [
-        'sass:dist'
-      ]
     }
   });
 
@@ -148,20 +151,20 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'concurrent:server',
+      'sass:server',
       'connect:livereload',
       'watch'
     ]);
   });
 
   grunt.registerTask('test', [
-    'concurrent:server',
+    'sass:server',
     'connect:dist',
     'saucelabs-qunit'
   ]);
 
   grunt.registerTask('build', [
-    'concurrent:dist'
+    'sass:dist'
   ]);
 
   grunt.registerTask('default', [
