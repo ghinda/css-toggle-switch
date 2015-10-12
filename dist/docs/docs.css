@@ -113,7 +113,7 @@ header {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: -0.03em; }
+    letter-spacing: -.03em; }
     header h1 a {
       color: #fff;
       text-decoration: none; }
@@ -131,6 +131,11 @@ header {
     text-transform: uppercase; }
     header .top-menu .active {
       color: #fff; }
+    header .top-menu li:first-child {
+      margin: 0; }
+    header .top-menu li {
+      padding: 0;
+      margin-left: .8em; }
 
 /* Hero */
 .hero-box {

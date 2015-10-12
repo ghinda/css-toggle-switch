@@ -2,7 +2,7 @@
 * CSS Toggle Switch
 */
 
-@import "../../bower_components/bourbon/dist/bourbon";
+@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "utils";
 @import "icons";
 
@@ -129,6 +129,15 @@ header {
 
     .active {
       color: $white;
+    }
+
+    li:first-child {
+      margin: 0;
+    }
+
+    li {
+      padding: 0;
+      margin-left: .8em;
     }
   }
 

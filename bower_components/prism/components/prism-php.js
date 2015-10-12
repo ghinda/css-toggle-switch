@@ -12,19 +12,29 @@
  */
 
 Prism.languages.php = Prism.languages.extend('clike', {
-	'keyword': /\b(and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|private|protected|parent|throw|null|echo|print|trait|namespace|final|yield|goto|instanceof|finally|try|catch)\b/ig,
-	'constant': /\b[A-Z0-9_]{2,}\b/g,
+	'keyword': /\b(and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|private|protected|parent|throw|null|echo|print|trait|namespace|final|yield|goto|instanceof|finally|try|catch)\b/i,
+	'constant': /\b[A-Z0-9_]{2,}\b/,
 	'comment': {
-		pattern: /(^|[^\\])(\/\*[\w\W]*?\*\/|(^|[^:])(\/\/|#).*?(\r?\n|$))/g,
+		pattern: /(^|[^\\])(?:\/\*[\w\W]*?\*\/|\/\/.*)/,
 		lookbehind: true
 	}
 });
 
+// Shell-like comments are matched after strings, because they are less
+// common than strings containing hashes...
+Prism.languages.insertBefore('php', 'class-name', {
+	'shell-comment': {
+		pattern: /(^|[^\\])#.*/,
+		lookbehind: true,
+		alias: 'comment'
+	}
+});
+
 Prism.languages.insertBefore('php', 'keyword', {
-	'delimiter': /(\?>|<\?php|<\?)/ig,
-	'variable': /(\$\w+)\b/ig,
+	'delimiter': /\?>|<\?(?:php)?/i,
+	'variable': /\$\w+\b/i,
 	'package': {
-		pattern: /(\\|namespace\s+|use\s+)[\w\\]+/g,
+		pattern: /(\\|namespace\s+|use\s+)[\w\\]+/,
 		lookbehind: true,
 		inside: {
 			punctuation: /\\/
@@ -35,7 +45,7 @@ Prism.languages.insertBefore('php', 'keyword', {
 // Must be defined after the function pattern
 Prism.languages.insertBefore('php', 'operator', {
 	'property': {
-		pattern: /(->)[\w]+/g,
+		pattern: /(->)[\w]+/,
 		lookbehind: true
 	}
 });
@@ -75,7 +85,8 @@ if (Prism.languages.markup) {
 		}
 
 		for (var i = 0, t; t = env.tokenStack[i]; i++) {
-			env.highlightedCode = env.highlightedCode.replace('{{{PHP' + (i + 1) + '}}}', Prism.highlight(t, env.grammar, 'php'));
+			// The replace prevents $$, $&, $`, $', $n, $nn from being interpreted as special patterns
+			env.highlightedCode = env.highlightedCode.replace('{{{PHP' + (i + 1) + '}}}', Prism.highlight(t, env.grammar, 'php').replace(/\$/g, '$$$$'));
 		}
 
 		env.element.innerHTML = env.highlightedCode;
@@ -91,9 +102,9 @@ if (Prism.languages.markup) {
 	// Add the rules before all others
 	Prism.languages.insertBefore('php', 'comment', {
 		'markup': {
-			pattern: /<[^?]\/?(.*?)>/g,
+			pattern: /<[^?]\/?(.*?)>/,
 			inside: Prism.languages.markup
 		},
-		'php': /\{\{\{PHP[0-9]+\}\}\}/g
+		'php': /\{\{\{PHP[0-9]+\}\}\}/
 	});
 }

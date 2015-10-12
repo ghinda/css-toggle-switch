@@ -1,5 +1,4 @@
-[![Build Status](http://jenkins.jquery.com/job/QUnit/badge/icon)](http://jenkins.jquery.com/job/QUnit/)
-[![Coverage Status](https://coveralls.io/repos/jquery/qunit/badge.png)](https://coveralls.io/r/jquery/qunit)
+[![Build Status](https://travis-ci.org/jquery/qunit.svg?branch=master)](https://travis-ci.org/jquery/qunit) [![Coverage Status](https://coveralls.io/repos/jquery/qunit/badge.svg)](https://coveralls.io/github/jquery/qunit)
 
 # [QUnit](http://qunitjs.com) - A JavaScript Unit Testing Framework.
 
@@ -37,20 +36,27 @@ To run `grunt`, you need [Node.js](http://nodejs.org/download/), which includes 
 
 ## Releases
 
-Use [jquery-release](https://github.com/jquery/jquery-release). The following aren't yet handled there:
+Use [jquery-release](https://github.com/jquery/jquery-release). The following aren't handled there, do that first:
 
-* Install [git-extras](https://github.com/visionmedia/git-extras) and run `git changelog` to update History.md. Clean up the changelog, removing merge commits or whitespace cleanups.
+* Install [git-extras](https://github.com/visionmedia/git-extras) and run `git changelog` to update `History.md`. Clean up the changelog, removing merge commits, whitespace cleanups or other irrelevant commits.
 * Run `grunt authors` and add any new authors to AUTHORS.txt
 * Update the version property in `package.json` to have the right -pre version. Not necessary for patch releases.
 
-Commit these, then run the script.
+Commit these:
 
-Update web sites, replacing previous versions with new ones:
+	Build: Prepare @VERSION release, including authors and history update
 
-* jquery/jquery-wp-content themes/jquery/footer-qunit.php
-* jquery/qunitjs.com pages/index.html
+Then run the script:
 
-Finally announce on Twitter @qunitjs
+	node release.js --remote=jquery/qunit
 
-	Released @VERSION: https://github.com/jquery/qunit/tree/@VERSION
-	Changelog: https://github.com/jquery/qunit/blob/@VERSION/History.md
+Update `jquery/qunitjs.com`, replacing previous versions with new ones:
+
+* pages/index.html
+* resources/*.html
+
+Update [GitHub releases](https://github.com/jquery/qunit/releases), use the changelog from `History.md`.
+
+Finally announce on Twitter @qunitjs (add highlights if possible, otherwise a 2nd tweet might do):
+
+	Released @VERSION: https://github.com/jquery/qunit/releases/tag/1.17.0

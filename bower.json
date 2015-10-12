@@ -1,9 +1,8 @@
 {
   "name": "css-toggle-switch",
-  "version": "3.1.1",
-  "main": "./dist/toggle-switch.css",
-  "author": "Ionut Colceriu",
+  "version": "3.2.0",
   "main": "dist/toggle-switch.css",
+  "author": "Ionut Colceriu",
   "ignore": [
     "**/docs/",
     "node_modules/",
@@ -22,11 +21,11 @@
     "package.json"
   ],
   "devDependencies": {
-    "bootstrap": "~3.x",
-    "foundation": "~5.x",
-    "normalize-css": "~2.x",
-    "bourbon": "~3.x",
-    "qunit": "~1.x",
-    "prism": "gh-pages"
+    "bootstrap": "^3.3.5",
+    "bourbon": "^4.2.5",
+    "foundation": "^5.5.2",
+    "normalize-css": "^3.0.3",
+    "prism": "^1.1.0",
+    "qunit": "^1.19.0"
   }
 }

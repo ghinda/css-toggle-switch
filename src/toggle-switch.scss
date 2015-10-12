@@ -1,6 +1,5 @@
 /*
-* CSS TOGGLE SWITCHES
-* Unlicense
+* CSS TOGGLE SWITCH
 *
 * Ionuț Colceriu - ghinda.net
 * https://github.com/ghinda/css-toggle-switch
@@ -8,7 +7,7 @@
 */
 
 @charset "UTF-8";
-@import "../bower_components/bourbon/dist/bourbon";
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 
 /* Supported values are px, rem-calc, em-calc */
 $size-unit: em !default;
@@ -87,7 +86,7 @@ $em-base: 16 !default;
   min-height: size(30);
 
   * {
-    @include box-sizing(border-box);
+    box-sizing: border-box;
   }
 
   a {
