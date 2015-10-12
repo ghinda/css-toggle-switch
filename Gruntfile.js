@@ -126,7 +126,7 @@ module.exports = function (grunt) {
               version: '8.0'
             }, {
               browserName: 'iphone',
-              deviceName: 'iPhone 6',
+              deviceName: 'iPhone 4s',
               platform: 'OS X 10.10',
               version: '9.0'
             }
@@ -142,14 +142,6 @@ module.exports = function (grunt) {
           ]
         }
       }
-    },
-    concurrent: {
-      server: [
-        'sass:server'
-      ],
-      dist: [
-        'sass:dist'
-      ]
     }
   });
 
@@ -159,20 +151,20 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'concurrent:server',
+      'sass:server',
       'connect:livereload',
       'watch'
     ]);
   });
 
   grunt.registerTask('test', [
-    'concurrent:server',
+    'sass:server',
     'connect:dist',
     'saucelabs-qunit'
   ]);
 
   grunt.registerTask('build', [
-    'concurrent:dist'
+    'sass:dist'
   ]);
 
   grunt.registerTask('default', [
