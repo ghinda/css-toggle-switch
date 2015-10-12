@@ -90,10 +90,12 @@ module.exports = function (grunt) {
       all: {
         options: {
           urls: [ 'http://127.0.0.1:9000/test' ],
-          pollInterval: 5000,
           browsers: [
             {
               browserName: 'chrome',
+              platform: 'Windows 10'
+            }, {
+              browserName: 'microsoftedge',
               platform: 'Windows 10'
             }, {
               browserName: 'firefox',
@@ -118,11 +120,13 @@ module.exports = function (grunt) {
               platform: 'OS X 10.10',
               version: '8'
             }, {
-              browserName: 'iPhone 4s',
+              browserName: 'iphone',
+              deviceName: 'iPhone 4s',
               platform: 'OS X 10.10',
               version: '8.0'
             }, {
-              browserName: 'iPhone 6',
+              browserName: 'iphone',
+              deviceName: 'iPhone 6',
               platform: 'OS X 10.10',
               version: '9.0'
             }
