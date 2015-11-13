@@ -1,8 +1,9 @@
 /* Radio Switch
  */
 
-@mixin switch-toggle() {
+.switch-toggle {
   @include switch-shared();
+
   position: relative;
   display: table;
   table-layout: fixed;

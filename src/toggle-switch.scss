@@ -17,8 +17,6 @@ $em-base: 16 !default;
  */
 @import 'core/functions';
 @import 'core/shared';
-@import 'core/light';
-@import 'core/toggle';
 
 /* Hide by default
  */
@@ -31,20 +29,10 @@ $em-base: 16 !default;
  * so we only target browsers with support for media queries.
  */
 @media only screen {
+  @import 'core/light';
+  @import 'core/toggle';
 
-  /* Checkbox switch
-  */
-  .switch-light {
-    @include switch-light();
-  }
-
-  /* Radio switch
-  */
-  .switch-toggle {
-    @include switch-toggle();
-  }
-
-  @import 'themes/android';
+  @import 'themes/holo';
   @import 'themes/candy';
   @import 'themes/ios';
 }

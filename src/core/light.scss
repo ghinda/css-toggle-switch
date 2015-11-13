@@ -1,8 +1,9 @@
 /* Checkbox
  */
 
-@mixin switch-light() {
+.switch-light {
   @include switch-shared();
+
   position: relative;
   overflow: visible;
   padding: 0;
