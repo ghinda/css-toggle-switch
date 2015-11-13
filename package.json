@@ -7,13 +7,17 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4",
-    "grunt-contrib-watch": "~0.6",
-    "grunt-contrib-connect": "~0.9",
+    "assemble": "^0.4.42",
     "connect-livereload": "~0.5",
-    "matchdep": "~0.3",
+    "grunt": "~0.4",
+    "grunt-build-control": "^0.6.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-connect": "~0.9",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-watch": "~0.6",
     "grunt-sass": "~0",
-    "grunt-saucelabs": "~8"
+    "grunt-saucelabs": "~8",
+    "matchdep": "~0.3"
   },
   "peerDependencies": {},
   "engines": {

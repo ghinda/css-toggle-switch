@@ -1,7 +1,9 @@
 ## [4.0.0] - 2015-XX-XX
 
-- Change the project file structure, to make it easier to maintain/contribute/add new themes.
+- Rename the `android` theme to `holo`.
 - Remove the `less` version because it was unmaintained.
+- Change the project file structure, to make it easier to maintain/contribute/add new themes.
+- Use `assemble` to build the static documentation site.
 
 ## [3.2.0] - 2015-10-08
 
