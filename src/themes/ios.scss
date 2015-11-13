@@ -1,0 +1,97 @@
+/* iOS Theme
+  */
+  .switch-ios {
+    $white: #fff;
+    $grey: #d3d3d3;
+    $green: #53d76a;
+
+    &.switch-light {
+      color: darken($grey, 30%);
+
+      a {
+        left: 0;
+        width: size(30);
+        background-color: $white;
+        border: 1px solid $grey;
+        border-radius: 100%;
+        @include transition(all 0.3s ease-out);
+        box-shadow: inset 0 -3px 3px hsla(0,0%,0%,.025),
+        0 1px 4px hsla(0,0%,0%,.15),
+        0 4px 4px hsla(0,0%,0%,.1);
+      }
+
+      > span span {
+        width: 100%;
+        left: 0;
+        opacity: 0;
+
+        &:first-of-type {
+          opacity: 1;
+          padding-left: size(30);
+        }
+
+        &:last-of-type {
+          padding-right: size(30);
+        }
+      }
+
+      > span:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: size(100);
+        top: 0;
+        background-color: darken($white, 2%);
+        border: 1px solid $grey;
+        border-radius: 30px;
+        @include transition(all 0.5s ease-out);
+        box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
+      }
+
+      input:checked {
+        ~ a {
+          left: 100%;
+          margin-left: size(-30);
+        }
+
+        ~ span:before {
+          border-color: $green;
+          box-shadow: inset 0 0 0 30px $green;
+        }
+
+        ~ span span {
+          &:first-of-type {
+            opacity: 0;
+          }
+
+          &:last-of-type {
+            opacity: 1;
+            color: $white;
+          }
+        }
+      }
+    }
+
+    &.switch-toggle {
+      background-color: darken($white, 2%);
+      border: 1px solid $grey;
+      border-radius: 30px;
+      box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
+
+      a {
+        background-color: $green;
+        border-radius: 25px;
+        @include transition(all 0.3s ease-out);
+      }
+
+      label {
+        color: darken($grey, 30%);
+      }
+    }
+
+    input:checked + label {
+      color: darken($grey, 60%);
+    }
+  }

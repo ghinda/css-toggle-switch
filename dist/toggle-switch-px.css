@@ -6,22 +6,26 @@
 * https://github.com/ghinda/css-toggle-switch
 *
 */
-/* Supported values are px, rem-calc, em-calc */
-/* Functions */
-/* Toggle Switches */
-/* Shared */
+/* supported values are px, rem-calc, em-calc
+ */
+/* imports
+ */
+/* Functions
+ */
+/* Shared
+ */
 /* Checkbox
-*/
+ */
 /* Radio Switch
-*/
+ */
 /* Hide by default
-*/
+ */
 .switch-toggle a, .switch-light span span {
   display: none; }
 
 /* We can't test for a specific feature,
-* so we only target browsers with support for media queries.
-*/
+ * so we only target browsers with support for media queries.
+ */
 @media only screen {
   /* Checkbox switch
   */
@@ -162,7 +166,40 @@
       left: 60%; }
     .switch-toggle.switch-5 input:checked:last-of-type ~ a {
       left: 80%; }
-  /* Standalone Themes */
+  /* Android Theme
+  */
+  .switch-android {
+    background-color: #464747;
+    border-radius: 1px;
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
+    color: #fff;
+    /* Selected ON switch-light
+    */ }
+    .switch-android label {
+      color: #fff; }
+    .switch-android > span span {
+      opacity: 0;
+      margin-left: 115px;
+      -webkit-transition: all 0.1s;
+      -moz-transition: all 0.1s;
+      transition: all 0.1s; }
+      .switch-android > span span:first-of-type {
+        opacity: 1; }
+    .switch-android > span span, .switch-android input + label {
+      font-size: 85%;
+      line-height: 34.5px; }
+    .switch-android a {
+      background-color: #666;
+      border-radius: 1px;
+      box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.3) 0 -1px 0; }
+    .switch-android.switch-light input:checked ~ a {
+      background-color: #0E88B1; }
+    .switch-android.switch-light input:checked ~ span span:first-of-type {
+      opacity: 0; }
+    .switch-android.switch-light input:checked ~ span span:last-of-type {
+      opacity: 1; }
+    .switch-android.switch-toggle, .switch-android > span span {
+      text-transform: uppercase; }
   /* Candy Theme
   * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
   * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
@@ -199,40 +236,6 @@
       background-color: #38a3d4; }
     .switch-candy.switch-candy-yellow a {
       background-color: #f5e560; }
-  /* Android Theme
-  */
-  .switch-android {
-    background-color: #464747;
-    border-radius: 1px;
-    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
-    color: #fff;
-    /* Selected ON switch-light
-    */ }
-    .switch-android label {
-      color: #fff; }
-    .switch-android > span span {
-      opacity: 0;
-      margin-left: 115px;
-      -webkit-transition: all 0.1s;
-      -moz-transition: all 0.1s;
-      transition: all 0.1s; }
-      .switch-android > span span:first-of-type {
-        opacity: 1; }
-    .switch-android > span span, .switch-android input + label {
-      font-size: 85%;
-      line-height: 34.5px; }
-    .switch-android a {
-      background-color: #666;
-      border-radius: 1px;
-      box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.3) 0 -1px 0; }
-    .switch-android.switch-light input:checked ~ a {
-      background-color: #0E88B1; }
-    .switch-android.switch-light input:checked ~ span span:first-of-type {
-      opacity: 0; }
-    .switch-android.switch-light input:checked ~ span span:last-of-type {
-      opacity: 1; }
-    .switch-android.switch-toggle, .switch-android > span span {
-      text-transform: uppercase; }
   /* iOS Theme
   */
   .switch-ios.switch-light {
@@ -299,8 +302,8 @@
     color: #3a3a3a; } }
 
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from
-* http://css-tricks.com/webkit-sibling-bug/
-*/
+ * http://css-tricks.com/webkit-sibling-bug/
+ */
 @media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 1280px) {
   .switch-light, .switch-toggle {
     -webkit-animation: webkitSiblingBugfix infinite 1s; } }
@@ -311,3 +314,5 @@
 
   to {
     -webkit-transform: translate3d(0, 0, 0); } }
+
+/*# sourceMappingURL=toggle-switch-px.css.map */

@@ -23,7 +23,7 @@ module.exports = function (grunt) {
     yeoman: yeomanConfig,
     watch: {
       sass: {
-        files: [ '<%= yeoman.app %>/{,*/}*.{scss,sass}' ],
+        files: [ '<%= yeoman.app %>/{,*/}*.scss' ],
         tasks: [ 'sass:server' ]
       },
       livereload: {
@@ -62,6 +62,9 @@ module.exports = function (grunt) {
       }
     },
     sass: {
+      options: {
+        sourceMap: true
+      },
       dist: {
         files: {
           '<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',

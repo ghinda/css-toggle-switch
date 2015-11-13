@@ -1,3 +1,8 @@
+## [4.0.0] - 2015-XX-XX
+
+- Change the project file structure, to make it easier to maintain/contribute/add new themes.
+- Remove the `less` version because it was unmaintained.
+
 ## [3.2.0] - 2015-10-08
 
 - Switch to the MIT license, from Unlicense.

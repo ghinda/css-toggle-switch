@@ -1,0 +1,60 @@
+/* Android Theme
+  */
+  .switch-android {
+    background-color: #464747;
+    border-radius: 1px;
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
+
+    color: #fff;
+
+    label {
+      color: #fff;
+    }
+
+    > span span {
+      opacity: 0;
+      margin-left: size(100) + size(15);
+
+      @include transition(all 0.1s);
+
+      &:first-of-type {
+        opacity: 1;
+      }
+    }
+
+    > span span,
+    input + label {
+      font-size: 85%;
+      line-height: size(30) + size(0.3 * 15);
+    }
+
+    a {
+      background-color: #666;
+      border-radius: 1px;
+      box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0,
+      inset rgba(0, 0, 0, 0.3) 0 -1px 0;
+    }
+
+    /* Selected ON switch-light
+    */
+    &.switch-light input:checked {
+      ~ a {
+        background-color: #0E88B1;
+      }
+
+      ~ span span {
+        &:first-of-type {
+          opacity: 0;
+        }
+
+        &:last-of-type {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.switch-toggle,
+    > span span {
+      text-transform: uppercase;
+    }
+  }
