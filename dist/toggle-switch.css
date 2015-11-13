@@ -39,7 +39,7 @@
   */
     /* Don't hide the input from screen-readers and keyboard access
   */ }
-    .switch-light * {
+    .switch-light *, .switch-light *:before, .switch-light *:after {
       box-sizing: border-box; }
     .switch-light a {
       display: block;
@@ -103,7 +103,7 @@
   */
     padding: 0 !important;
     /* Generate styles for the multiple states */ }
-    .switch-toggle * {
+    .switch-toggle *, .switch-toggle *:before, .switch-toggle *:after {
       box-sizing: border-box; }
     .switch-toggle a {
       display: block;
@@ -162,40 +162,6 @@
       left: 60%; }
     .switch-toggle.switch-5 input:checked:last-of-type ~ a {
       left: 80%; }
-  /* Holo Theme
- */
-  .switch-holo {
-    background-color: #464747;
-    border-radius: 1px;
-    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
-    color: #fff;
-    /* Selected ON switch-light
-  */ }
-    .switch-holo label {
-      color: #fff; }
-    .switch-holo > span span {
-      opacity: 0;
-      margin-left: 7.1875em;
-      -webkit-transition: all 0.1s;
-      -moz-transition: all 0.1s;
-      transition: all 0.1s; }
-      .switch-holo > span span:first-of-type {
-        opacity: 1; }
-    .switch-holo > span span, .switch-holo input + label {
-      font-size: 85%;
-      line-height: 2.15625em; }
-    .switch-holo a {
-      background-color: #666;
-      border-radius: 1px;
-      box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.3) 0 -1px 0; }
-    .switch-holo.switch-light input:checked ~ a {
-      background-color: #0E88B1; }
-    .switch-holo.switch-light input:checked ~ span span:first-of-type {
-      opacity: 0; }
-    .switch-holo.switch-light input:checked ~ span span:last-of-type {
-      opacity: 1; }
-    .switch-holo.switch-toggle, .switch-holo > span span {
-      text-transform: uppercase; }
   /* Candy Theme
   * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
   * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
@@ -295,7 +261,82 @@
     .switch-ios.switch-toggle label {
       color: #868686; }
   .switch-ios input:checked + label {
-    color: #3a3a3a; } }
+    color: #3a3a3a; }
+  /* Holo Theme
+ */
+  .switch-holo {
+    background-color: #464747;
+    border-radius: 1px;
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
+    color: #fff;
+    /* Selected ON switch-light
+  */ }
+    .switch-holo label {
+      color: #fff; }
+    .switch-holo > span span {
+      opacity: 0;
+      margin-left: 7.1875em;
+      -webkit-transition: all 0.1s;
+      -moz-transition: all 0.1s;
+      transition: all 0.1s; }
+      .switch-holo > span span:first-of-type {
+        opacity: 1; }
+    .switch-holo > span span, .switch-holo input + label {
+      font-size: 85%;
+      line-height: 2.15625em; }
+    .switch-holo a {
+      background-color: #666;
+      border-radius: 1px;
+      box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.3) 0 -1px 0; }
+    .switch-holo.switch-light input:checked ~ a {
+      background-color: #0E88B1; }
+    .switch-holo.switch-light input:checked ~ span span:first-of-type {
+      opacity: 0; }
+    .switch-holo.switch-light input:checked ~ span span:last-of-type {
+      opacity: 1; }
+    .switch-holo.switch-toggle, .switch-holo > span span {
+      text-transform: uppercase; }
+  /* Material Theme
+ */
+  .switch-material a {
+    width: 1.75em;
+    height: 1.75em;
+    border-radius: 50%;
+    background: #fafafa;
+    box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.14), 0 0.1875em 0.125em -0.125em rgba(0, 0, 0, 0.2), 0 0.125em 0.25em 0 rgba(0, 0, 0, 0.12);
+    -webkit-transition: right .28s cubic-bezier(.4, 0, .2, 1);
+    -moz-transition: right .28s cubic-bezier(.4, 0, .2, 1);
+    transition: right .28s cubic-bezier(.4, 0, .2, 1); }
+  /* switch-light
+ */
+  .switch-material.switch-light > span:after {
+    content: '';
+    position: absolute;
+    right: -6em;
+    top: 0.2em;
+    width: 2.75em;
+    height: 1.5em;
+    border-radius: 1em;
+    background: rgba(0, 0, 0, 0.26); }
+  .switch-material.switch-light a {
+    right: 1.5em; }
+  .switch-material.switch-light span span {
+    position: absolute;
+    clip: rect(0 0 0 0); }
+  .switch-material.switch-light input:checked ~ a {
+    background: #3f51b5;
+    box-shadow: 0 0.1875em 0.25em 0 rgba(0, 0, 0, 0.14), 0 0.1875em 0.1875em -0.125em rgba(0, 0, 0, 0.2), 0 0.0625em 0.5em 0 rgba(0, 0, 0, 0.12); }
+  .switch-material.switch-light input:checked ~ span:after {
+    background: rgba(63, 81, 181, 0.5); }
+  /* TODO take .switch-light label outside the .switch-light class,
+ * like for the switch toggle.
+ */
+  /* TODO there's a bug with the track
+ * when the switch is smaller than 100 padding + switch width.
+ * TODO still needs ripple.
+ */
+  /* TODO switch-toggle
+ */ }
 
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from
  * http://css-tricks.com/webkit-sibling-bug/

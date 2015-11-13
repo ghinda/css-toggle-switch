@@ -32,9 +32,10 @@ $em-base: 16 !default;
   @import 'core/light';
   @import 'core/toggle';
 
-  @import 'themes/holo';
   @import 'themes/candy';
   @import 'themes/ios';
+  @import 'themes/holo';
+  @import 'themes/material';
 }
 
 /* Bugfix for older Webkit, including mobile Webkit. Adapted from

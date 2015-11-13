@@ -5,7 +5,9 @@
   display: block;
   min-height: size(30);
 
-  * {
+  *,
+  *:before,
+  *:after {
     box-sizing: border-box;
   }
 
