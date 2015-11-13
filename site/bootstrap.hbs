@@ -1,7 +1,8 @@
 ---
 layout: main.html
+name: bootstrap
 bootstrap: true
-title: ', with Bootstrap'
+title: 'with Bootstrap'
 ---
 
 <header class="row">
@@ -13,9 +14,7 @@ title: ', with Bootstrap'
   </div>
   <div class="col-lg-5">
     <ul class="list-inline top-menu">
-      <li><a href="index.html">Standalone</a></li>
-      <li><a href="bootstrap.html" class="active">Bootstrap</a></li>
-      <li><a href="foundation.html">Foundation</a></li>
+      {{> menu}}
     </ul>
   </div>
 </header>
@@ -317,9 +316,7 @@ title: ', with Bootstrap'
 <footer>
   <div class="row">
     <div class="col-lg-12">
-      <p>
-        <a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switch</a> is a project by <a href="http://ghinda.net">Ionuț Colceriu</a>. Follow <a href="https://twitter.com/ghindas">@ghindas</a>.
-      </p>
+      {{> credits}}
     </div>
   </div>
 </footer>

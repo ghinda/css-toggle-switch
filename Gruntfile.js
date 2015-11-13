@@ -124,7 +124,8 @@ module.exports = function (grunt) {
     },
     assemble: {
       options: {
-        layoutdir: 'site/layouts'
+        layoutdir: 'site/layouts',
+        partials: 'site/partials/*.html'
       },
       site: {
         files: [{

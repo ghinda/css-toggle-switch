@@ -1,5 +1,6 @@
 ---
 layout: main.html
+name: standalone
 foundation: true
 ---
 
@@ -12,9 +13,7 @@ foundation: true
   </div>
   <div class="large-5 columns">
     <ul class="inline-list right top-menu">
-      <li><a href="index.html" class="active">Standalone</a></li>
-      <li><a href="bootstrap.html">Bootstrap</a></li>
-      <li><a href="foundation.html">Foundation</a></li>
+      {{> menu}}
     </ul>
   </div>
 </header>
@@ -420,9 +419,7 @@ foundation: true
 <footer>
   <div class="row">
     <div class="large-12 columns">
-      <p>
-        <a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switch</a> is a project by <a href="http://ghinda.net">Ionuț Colceriu</a>. Follow <a href="https://twitter.com/ghindas">@ghindas</a>.
-      </p>
+      {{> credits}}
     </div>
   </div>
 </footer>
