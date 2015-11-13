@@ -10,18 +10,7 @@ module.exports = function (grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.loadNpmTasks('assemble');
 
-  // configurable paths
-  var yeomanConfig = {
-    app: 'src',
-    dist: 'dist'
-  };
-
-  try {
-    yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
-  } catch (e) {}
-
   grunt.initConfig({
-    yeoman: yeomanConfig,
     watch: {
       sass: {
         files: [ '{src,site}/{,*/}*.scss' ],
@@ -74,9 +63,9 @@ module.exports = function (grunt) {
       },
       server: {
         files: {
-          '<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
-          '<%= yeoman.dist %>/toggle-switch-rem.css': '<%= yeoman.app %>/toggle-switch-rem.scss',
-          '<%= yeoman.dist %>/toggle-switch-px.css': '<%= yeoman.app %>/toggle-switch-px.scss',
+          'dist/toggle-switch.css': 'src/toggle-switch.scss',
+          'dist/toggle-switch-rem.css': 'src/toggle-switch-rem.scss',
+          'dist/toggle-switch-px.css': 'src/toggle-switch-px.scss',
           'build/css/docs.css': 'site/css/docs.scss'
         }
       }
