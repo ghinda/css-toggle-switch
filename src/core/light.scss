@@ -7,63 +7,58 @@
   position: relative;
   overflow: visible;
   padding: 0;
-  margin-left: size(100);
+}
 
-  /* Position the label over all the elements, except the slide-button (<a>)
-  * Clicking anywhere on the label will change the switch-state
-  */
-  label {
-    position: relative;
-    z-index: 3;
-    display: block;
-    width: 100%;
-  }
+/* don't hide the input from screen-readers and keyboard access
+ */
+.switch-light input {
+  position: absolute;
+  opacity: 0;
+  z-index: 3;
+}
 
-  /* Don't hide the input from screen-readers and keyboard access
-  */
-  input {
-    position: absolute;
-    opacity: 0;
-    z-index: 5;
+.switch-light input:checked ~ span a {
+  right: 0%;
+}
 
-    &:checked ~ a {
-      right: 0%;
-    }
-  }
+/* inherit from label
+ */
+.switch-light > strong {
+  font-weight: inherit;
+}
 
-  > span {
-    position: absolute;
-    left: size(-100);
-    width: 100%;
-    margin: 0;
-    padding-right: size(100);
-    text-align: left;
+.switch-light > span {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  min-height: 1em;
+  /* overwrite 3rd party classes padding
+   * eg. bootstrap .well
+   */
+  padding: inherit;
 
-    span {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 5;
-      display: block;
-      width: 50%;
-      margin-left: size(100);
-      text-align: center;
+  text-align: left;
+}
 
-      &:last-child {
-        left: 50%;
-      }
-    }
-  }
+.switch-light > span span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  float: left;
+  width: 50%;
 
-  a {
-    position: absolute;
-    right: 50%;
-    top: 0;
-    z-index: 4;
-    display: block;
-    width: 50%;
-    height: 100%;
-    padding: 0;
-  }
+  text-align: center;
+  
+  @include user-select(none);
+}
 
+.switch-light a {
+  position: absolute;
+  right: 50%;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: 50%;
+  height: 100%;
+  padding: 0;
 }

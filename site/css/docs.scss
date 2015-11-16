@@ -176,7 +176,7 @@ header {
     }
   }
 
-  .row > label {
+  label {
     color: $white;
   }
 
@@ -229,6 +229,10 @@ header {
   }
 }
 
+.hero-box .switch-light .columns {
+  padding: 0;
+}
+
 .row.dependency-install {
   overflow: hidden;
   width: auto;
@@ -238,9 +242,10 @@ header {
 
   pre {
     text-align: center;
+    margin-bottom: emCalc(20);
 
-    &:first-child {
-      margin-bottom: emCalc(20);
+    &:last-child {
+      margin-bottom: 0;
     }
 
     a {
@@ -297,13 +302,13 @@ footer {
 
 /* Bootstrap
 */
-.well.switch-light,
+.switch-light,
 .well.switch-toggle {
   > span {
     color: $white;
   }
 
-  span span,
+   .well span,
   label {
     color: $grey1;
   }

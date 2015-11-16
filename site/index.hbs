@@ -28,15 +28,18 @@ foundation: true
           <h4>Light switch</h4>
           <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
-          <label class="switch-light switch-material" onclick="">
-            <input type="checkbox">
-            <span>
+          <label class="toggle-demo switch-light switch-candy">
+            <input type="checkbox" name="">
+
+            <strong class="large-6 columns">
               Wireless
+            </strong>
+
+            <span class="large-4 columns">
               <span>Off</span>
               <span>On</span>
+              <a></a>
             </span>
-
-            <a></a>
           </label>
 
         </div>
@@ -68,8 +71,7 @@ foundation: true
       <div class="row dependency-install">
 
         <div class="large-12 columns">
-          <pre><code><a href="http://bower.io/">bower</a> install --save css-toggle-switch</code></pre>
-          <pre><code><a href="http://component.io/">component</a> install ghinda/css-toggle-switch</code></pre>
+          {{> install}}
         </div>
 
       </div>

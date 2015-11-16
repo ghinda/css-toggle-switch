@@ -29,15 +29,17 @@ title: 'with Bootstrap'
           <h4>Light switch</h4>
           <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
-          <label class="switch-light well" onclick="">
+          <label class="switch-light" onclick="">
             <input type="checkbox">
-            <span>
+            <strong>
               Wireless
+            </strong>
+
+            <span class="well">
               <span>Off</span>
               <span>On</span>
+              <a class="btn btn-primary"></a>
             </span>
-
-            <a class="btn btn-primary"></a>
           </label>
 
         </div>
@@ -69,8 +71,7 @@ title: 'with Bootstrap'
       <div class="row dependency-install">
 
         <div class="col-lg-12">
-          <pre><code><a href="http://bower.io/">bower</a> install --save css-toggle-switch</code></pre>
-          <pre><code><a href="http://component.io/">component</a> install ghinda/css-toggle-switch</code></pre>
+          {{> install}}
         </div>
 
       </div>

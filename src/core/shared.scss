@@ -24,7 +24,7 @@
 
   /* Outline the toggles when the inputs are focused
   */
-  input:focus ~ a,
+  input:focus ~ span a,
   input:focus + label {
     outline: 1px dotted #888;
   }

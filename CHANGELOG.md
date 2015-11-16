@@ -1,7 +1,9 @@
 ## [4.0.0] - 2015-XX-XX
 
-- Rename the `android` theme to `holo`.
-- Remove the `less` version because it was unmaintained.
+- BREAKING: New HTML markup for `switch-light`.
+- BREAKING: Rename the `android` theme to `holo`.
+- BREAKING: Remove the `less` version because it was unmaintained.
+- Disable text selection of the "on/off" text of the `switch-light`, to fix issues with changing the selection by swiping component on mobile.
 - Change the project file structure, to make it easier to maintain/contribute/add new themes.
 - Use `assemble` to build the static documentation site.
 
