@@ -5,6 +5,7 @@
 - BREAKING: Remove the `less` version because it was unmaintained.
 - `switch-toggle` no longer needs the `switch-X` number classes. Just add up to 6 items, no extra work needed.
 - Fix issues with enlarged text on `switch-toggle`.
+- Various tweaks to the `ios` theme.
 - Change text color of the active option in the `switch-light` `candy` theme.
 - Add bold font-weights to all option labels in the `candy` theme.
 - Disable text selection of the "on/off" text of the `switch-light`, to fix issues with changing the selection by swiping component on mobile.

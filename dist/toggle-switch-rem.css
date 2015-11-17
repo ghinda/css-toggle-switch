@@ -309,6 +309,7 @@
   /* Material Theme
  */
   .switch-material a {
+    top: -0.1875rem;
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 50%;
@@ -319,32 +320,25 @@
     transition: right .28s cubic-bezier(.4, 0, .2, 1); }
   /* switch-light
  */
-  .switch-material.switch-light > span:after {
-    content: '';
-    position: absolute;
-    right: -6rem;
-    top: 0.2rem;
-    width: 2.75rem;
+  .switch-material.switch-light {
+    padding-bottom: 0.25rem; }
+  .switch-material.switch-light > span {
+    overflow: visible;
+    position: relative;
+    top: 0.1875rem;
+    width: 3.25rem;
     height: 1.5rem;
     border-radius: 1rem;
     background: rgba(0, 0, 0, 0.26); }
-  .switch-material.switch-light a {
-    right: 1.5rem; }
   .switch-material.switch-light span span {
     position: absolute;
     clip: rect(0 0 0 0); }
-  .switch-material.switch-light input:checked ~ a {
+  .switch-material.switch-light input:checked ~ span a {
+    right: 0;
     background: #3f51b5;
-    box-shadow: 0 0.1875rem 0.25rem 0 rgba(0, 0, 0, 0.14), 0 0.1875rem 0.1875rem -0.125rem rgba(0, 0, 0, 0.2), 0 0.0625rem 0.5rem 0 rgba(0, 0, 0, 0.12); }
-  .switch-material.switch-light input:checked ~ span:after {
+    box-shadow: 0 0.1875rem 0.25rem 0 rgba(0, 0, 0, 0.14), 0 0.1875rem 0.1875rem -0.125rem rgba(0, 0, 0, 0.2), 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.12); }
+  .switch-material.switch-light input:checked ~ span {
     background: rgba(63, 81, 181, 0.5); }
-  /* TODO take .switch-light label outside the .switch-light class,
- * like for the switch toggle.
- */
-  /* TODO there's a bug with the track
- * when the switch is smaller than 100 padding + switch width.
- * TODO still needs ripple.
- */
   /* TODO switch-toggle
  */ }
 

@@ -5,6 +5,7 @@
 }
 
 .switch-material a {
+  top: size(-3);
   width: size(28);
   height: size(28);
   border-radius: 50%;
@@ -20,26 +21,17 @@
 /* switch-light
  */
 .switch-material.switch-light {
-
+  padding-bottom: size(4);
 }
 
 .switch-material.switch-light > span {
-
-}
-
-.switch-material.switch-light > span:after {
-  content: '';
-  position: absolute;
-  right: size(-96);
-  top: size(3.2);
-  width: size(44);
+  overflow: visible;
+  position: relative;
+  top: size(3);
+  width: size(52);
   height: size(24);
   border-radius: size(16);
   background: rgba(0, 0, 0, .26);
-}
-
-.switch-material.switch-light a {
-  right: size(24);
 }
 
 .switch-material.switch-light span span {
@@ -47,27 +39,19 @@
   clip: rect(0 0 0 0);
 }
 
-.switch-material.switch-light input:checked ~ a {
+.switch-material.switch-light input:checked ~ span a {
+  right: 0;
+
   background: #3f51b5;
   box-shadow:
     0 size(3) size(4) 0 rgba(0, 0, 0, .14),
     0 size(3) size(3) size(-2) rgba(0, 0, 0, .2),
-    0 size(1) size(8) 0 rgba(0,0,0,.12);
+    0 size(1) size(6) 0 rgba(0,0,0,.12);
 }
 
-.switch-material.switch-light input:checked ~ span:after {
+.switch-material.switch-light input:checked ~ span {
   background: rgba(63, 81, 181, .5);
 }
-
-/* TODO take .switch-light label outside the .switch-light class,
- * like for the switch toggle.
- */
-
-/* TODO there's a bug with the track
- * when the switch is smaller than 100 padding + switch width.
- * TODO still needs ripple.
- */
-
 
 /* TODO switch-toggle
  */
