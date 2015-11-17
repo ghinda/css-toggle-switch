@@ -4,17 +4,9 @@
 .switch-toggle {
   @include switch-shared();
 
-  position: relative;
-  display: block;
-  table-layout: fixed;
-
   /* For callout panels in foundation
   */
   padding: 0 !important;
-
-  * {
-    font-size: 1em;
-  }
 
   input {
     position: absolute;

@@ -3,10 +3,6 @@
 
 .switch-light {
   @include switch-shared();
-
-  position: relative;
-  overflow: visible;
-  padding: 0;
 }
 
 /* don't hide the input from screen-readers and keyboard access

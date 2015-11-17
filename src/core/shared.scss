@@ -2,8 +2,9 @@
  */
 
 @mixin switch-shared() {
+  position: relative;
   display: block;
-  min-height: size(30);
+  overflow: hidden;
 
   *,
   *:before,
@@ -18,7 +19,7 @@
 
   label,
   > span {
-    line-height: size(30);
+    line-height: size(32);
     vertical-align: middle;
   }
 

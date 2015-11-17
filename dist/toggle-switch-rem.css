@@ -26,13 +26,11 @@
   /* Checkbox
  */
   .switch-light {
-    display: block;
-    min-height: 1.875rem;
-    /* Outline the toggles when the inputs are focused
-  */
     position: relative;
-    overflow: visible;
-    padding: 0; }
+    display: block;
+    overflow: hidden;
+    /* Outline the toggles when the inputs are focused
+  */ }
     .switch-light *, .switch-light *:before, .switch-light *:after {
       box-sizing: border-box; }
     .switch-light a {
@@ -41,7 +39,7 @@
       -moz-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
     .switch-light label, .switch-light > span {
-      line-height: 1.875rem;
+      line-height: 2rem;
       vertical-align: middle; }
     .switch-light input:focus ~ span a, .switch-light input:focus + label {
       outline: 1px dotted #888; }
@@ -90,13 +88,11 @@
   /* Radio Switch
  */
   .switch-toggle {
-    display: block;
-    min-height: 1.875rem;
-    /* Outline the toggles when the inputs are focused
-  */
     position: relative;
     display: block;
-    table-layout: fixed;
+    overflow: hidden;
+    /* Outline the toggles when the inputs are focused
+  */
     /* For callout panels in foundation
   */
     padding: 0 !important;
@@ -118,12 +114,10 @@
       -moz-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
     .switch-toggle label, .switch-toggle > span {
-      line-height: 1.875rem;
+      line-height: 2rem;
       vertical-align: middle; }
     .switch-toggle input:focus ~ span a, .switch-toggle input:focus + label {
       outline: 1px dotted #888; }
-    .switch-toggle * {
-      font-size: 1em; }
     .switch-toggle input {
       position: absolute;
       opacity: 0; }
@@ -211,69 +205,75 @@
   .switch-candy-yellow a {
     background-color: #f5e560; }
   /* iOS Theme
-  */
-  .switch-ios.switch-light {
-    color: #868686; }
-    .switch-ios.switch-light a {
-      left: 0;
-      width: 1.875rem;
-      background-color: #fff;
-      border: 1px solid #d3d3d3;
-      border-radius: 100%;
-      -webkit-transition: all 0.3s ease-out;
-      -moz-transition: all 0.3s ease-out;
-      transition: all 0.3s ease-out;
-      box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.025), 0 1px 4px rgba(0, 0, 0, 0.15), 0 4px 4px rgba(0, 0, 0, 0.1); }
-    .switch-ios.switch-light > span span {
-      width: 100%;
-      left: 0;
-      opacity: 0; }
-      .switch-ios.switch-light > span span:first-of-type {
-        opacity: 1;
-        padding-left: 1.875rem; }
-      .switch-ios.switch-light > span span:last-of-type {
-        padding-right: 1.875rem; }
-    .switch-ios.switch-light > span:before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 6.25rem;
-      top: 0;
-      background-color: #fafafa;
-      border: 1px solid #d3d3d3;
-      border-radius: 30px;
-      -webkit-transition: all 0.5s ease-out;
-      -moz-transition: all 0.5s ease-out;
-      transition: all 0.5s ease-out;
-      box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0; }
-    .switch-ios.switch-light input:checked ~ a {
-      left: 100%;
-      margin-left: -1.875rem; }
-    .switch-ios.switch-light input:checked ~ span:before {
-      border-color: #53d76a;
-      box-shadow: inset 0 0 0 30px #53d76a; }
-    .switch-ios.switch-light input:checked ~ span span:first-of-type {
-      opacity: 0; }
-    .switch-ios.switch-light input:checked ~ span span:last-of-type {
+*/
+  .switch-ios.switch-light span span {
+    color: #888b92; }
+  .switch-ios.switch-light a {
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 0.25rem solid #D8D9DB;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    transition: all .2s ease-out; }
+  .switch-ios.switch-light > span {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    background-color: #D8D9DB;
+    border-radius: 1.75rem;
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    transition: all .4s ease-out; }
+  .switch-ios.switch-light > span span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    line-height: 1.875rem;
+    vertical-align: middle;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    transition: all .2s ease-out; }
+    .switch-ios.switch-light > span span:first-of-type {
       opacity: 1;
-      color: #fff; }
+      padding-left: 1.875rem; }
+    .switch-ios.switch-light > span span:last-of-type {
+      padding-right: 1.875rem; }
+  .switch-ios.switch-light input:checked ~ span a {
+    left: 100%;
+    border-color: #4BD865;
+    margin-left: -2rem; }
+  .switch-ios.switch-light input:checked ~ span {
+    border-color: #4BD865;
+    box-shadow: inset 0 0 0 30px #4BD865; }
+  .switch-ios.switch-light input:checked ~ span span:first-of-type {
+    opacity: 0; }
+  .switch-ios.switch-light input:checked ~ span span:last-of-type {
+    opacity: 1;
+    color: #fff; }
   .switch-ios.switch-toggle {
-    background-color: #fafafa;
-    border: 1px solid #d3d3d3;
+    background-color: #D8D9DB;
     border-radius: 30px;
     box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0; }
     .switch-ios.switch-toggle a {
-      background-color: #53d76a;
-      border-radius: 25px;
-      -webkit-transition: all 0.3s ease-out;
-      -moz-transition: all 0.3s ease-out;
-      transition: all 0.3s ease-out; }
+      background-color: #4BD865;
+      border: 0.125rem solid #D8D9DB;
+      border-radius: 1.75rem;
+      -webkit-transition: all 0.12s ease-out;
+      -moz-transition: all 0.12s ease-out;
+      transition: all 0.12s ease-out; }
     .switch-ios.switch-toggle label {
-      color: #868686; }
+      height: 2.4em;
+      color: #888b92;
+      line-height: 2.4em;
+      vertical-align: middle; }
   .switch-ios input:checked + label {
-    color: #3a3a3a; }
+    color: #3e4043; }
   /* Holo Theme
  */
   .switch-toggle.switch-holo, .switch-light.switch-holo > span {

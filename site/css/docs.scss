@@ -164,14 +164,6 @@ header {
     font-weight: bold;
   }
 
-  .toggle-demo {
-    margin: 0;
-
-    > label {
-      padding-top: emCalc(8);
-    }
-  }
-
   .hero-actions {
     margin: 0 -1.25em -1.25em;
 
@@ -227,6 +219,19 @@ header {
 
 label {
   color: $white;
+}
+
+.row.toggle-demo {
+  margin: 0;
+}
+
+.row.toggle-demo > label,
+.row.toggle-demo > .switch-light strong {
+  padding-top: emCalc(6);
+}
+
+.row.toggle-demo > .switch-light {
+  padding: 0;
 }
 
 /* foundation switch-toggle
