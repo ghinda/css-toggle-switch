@@ -164,20 +164,12 @@ header {
     font-weight: bold;
   }
 
-  .switch-light {
-    width: 100px;
-  }
-
   .toggle-demo {
-    width: 95%;
+    margin: 0;
 
     > label {
       padding-top: emCalc(8);
     }
-  }
-
-  label {
-    color: $white;
   }
 
   .hero-actions {
@@ -231,6 +223,16 @@ header {
 
 .hero-box .switch-light .columns {
   padding: 0;
+}
+
+label {
+  color: $white;
+}
+
+/* foundation switch-toggle
+ */
+.switch-toggle.panel label {
+  color: #333;
 }
 
 .row.dependency-install {

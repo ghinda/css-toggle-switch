@@ -23,7 +23,7 @@
 
 /* inherit from label
  */
-.switch-light > strong {
+.switch-light strong {
   font-weight: inherit;
 }
 
@@ -40,7 +40,7 @@
   text-align: left;
 }
 
-.switch-light > span span {
+.switch-light span span {
   position: relative;
   z-index: 2;
   display: block;
@@ -48,7 +48,7 @@
   width: 50%;
 
   text-align: center;
-  
+
   @include user-select(none);
 }
 

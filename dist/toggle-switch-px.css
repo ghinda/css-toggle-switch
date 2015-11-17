@@ -55,7 +55,7 @@
     right: 0%; }
   /* inherit from label
  */
-  .switch-light > strong {
+  .switch-light strong {
     font-weight: inherit; }
   .switch-light > span {
     position: relative;
@@ -67,7 +67,7 @@
    */
     padding: inherit;
     text-align: left; }
-  .switch-light > span span {
+  .switch-light span span {
     position: relative;
     z-index: 2;
     display: block;
@@ -95,12 +95,21 @@
     /* Outline the toggles when the inputs are focused
   */
     position: relative;
-    display: table;
+    display: block;
     table-layout: fixed;
     /* For callout panels in foundation
   */
     padding: 0 !important;
-    /* Generate styles for the multiple states */ }
+    /* 2 items
+   */
+    /* 3 items
+   */
+    /* 4 items
+   */
+    /* 5 items
+   */
+    /* 6 items
+   */ }
     .switch-toggle *, .switch-toggle *:before, .switch-toggle *:after {
       box-sizing: border-box; }
     .switch-toggle a {
@@ -121,8 +130,8 @@
     .switch-toggle input + label {
       position: relative;
       z-index: 2;
-      display: table-cell;
-      width: 50%;
+      display: block;
+      float: left;
       padding: 0 8px;
       margin: 0;
       text-align: center; }
@@ -132,70 +141,75 @@
       left: 0;
       padding: 0;
       z-index: 1;
-      width: 50%;
+      width: 10px;
       height: 100%; }
-    .switch-toggle input:last-of-type:checked ~ a {
+    .switch-toggle label:nth-child(2):nth-last-child(4), .switch-toggle label:nth-child(2):nth-last-child(4) ~ label, .switch-toggle label:nth-child(2):nth-last-child(4) ~ a {
+      width: 50%; }
+    .switch-toggle label:nth-child(2):nth-last-child(4) ~ input:checked:nth-child(3) + label ~ a {
       left: 50%; }
-    .switch-toggle.switch-3 label, .switch-toggle.switch-3 a {
-      width: 33.3333333333%; }
-    .switch-toggle.switch-3 input:checked:nth-of-type(2) ~ a {
-      left: 33.3333333333%; }
-    .switch-toggle.switch-3 input:checked:last-of-type ~ a {
-      left: 66.6666666667%; }
-    .switch-toggle.switch-4 label, .switch-toggle.switch-4 a {
+    .switch-toggle label:nth-child(2):nth-last-child(6), .switch-toggle label:nth-child(2):nth-last-child(6) ~ label, .switch-toggle label:nth-child(2):nth-last-child(6) ~ a {
+      width: 33.33%; }
+    .switch-toggle label:nth-child(2):nth-last-child(6) ~ input:checked:nth-child(3) + label ~ a {
+      left: 33.33%; }
+    .switch-toggle label:nth-child(2):nth-last-child(6) ~ input:checked:nth-child(5) + label ~ a {
+      left: 66.66%; }
+    .switch-toggle label:nth-child(2):nth-last-child(8), .switch-toggle label:nth-child(2):nth-last-child(8) ~ label, .switch-toggle label:nth-child(2):nth-last-child(8) ~ a {
       width: 25%; }
-    .switch-toggle.switch-4 input:checked:nth-of-type(2) ~ a {
+    .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(3) + label ~ a {
       left: 25%; }
-    .switch-toggle.switch-4 input:checked:nth-of-type(3) ~ a {
+    .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(5) + label ~ a {
       left: 50%; }
-    .switch-toggle.switch-4 input:checked:last-of-type ~ a {
+    .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(7) + label ~ a {
       left: 75%; }
-    .switch-toggle.switch-5 label, .switch-toggle.switch-5 a {
+    .switch-toggle label:nth-child(2):nth-last-child(10), .switch-toggle label:nth-child(2):nth-last-child(10) ~ label, .switch-toggle label:nth-child(2):nth-last-child(10) ~ a {
       width: 20%; }
-    .switch-toggle.switch-5 input:checked:nth-of-type(2) ~ a {
+    .switch-toggle label:nth-child(2):nth-last-child(10) ~ input:checked:nth-child(3) + label ~ a {
       left: 20%; }
-    .switch-toggle.switch-5 input:checked:nth-of-type(3) ~ a {
+    .switch-toggle label:nth-child(2):nth-last-child(10) ~ input:checked:nth-child(5) + label ~ a {
       left: 40%; }
-    .switch-toggle.switch-5 input:checked:nth-of-type(4) ~ a {
+    .switch-toggle label:nth-child(2):nth-last-child(10) ~ input:checked:nth-child(7) + label ~ a {
       left: 60%; }
-    .switch-toggle.switch-5 input:checked:last-of-type ~ a {
+    .switch-toggle label:nth-child(2):nth-last-child(10) ~ input:checked:nth-child(9) + label ~ a {
       left: 80%; }
+    .switch-toggle label:nth-child(2):nth-last-child(12), .switch-toggle label:nth-child(2):nth-last-child(12) ~ label, .switch-toggle label:nth-child(2):nth-last-child(12) ~ a {
+      width: 16.6%; }
+    .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(3) + label ~ a {
+      left: 16.6%; }
+    .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(5) + label ~ a {
+      left: 33.2%; }
+    .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(7) + label ~ a {
+      left: 49.8%; }
+    .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(9) + label ~ a {
+      left: 66.4%; }
+    .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(11) + label ~ a {
+      left: 83%; }
   /* Candy Theme
-* Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
-* http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
-*/
-  .switch-candy > span {
+ * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
+ * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
+ */
+  .switch-toggle.switch-candy, .switch-light.switch-candy > span {
     background-color: #2d3035;
     border-radius: 3px;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.2); }
+  .switch-light.switch-candy span span, .switch-light.switch-candy input:checked ~ span span:first-child, .switch-toggle.switch-candy label {
     color: #fff;
     font-weight: bold;
     text-align: center;
-    text-shadow: 1px 1px 1px #191b1e;
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.2); }
-    .switch-candy > span label {
-      color: #fff;
-      -webkit-transition: color 0.2s ease-out;
-      -moz-transition: color 0.2s ease-out;
-      transition: color 0.2s ease-out; }
-    .switch-candy > span input:checked + label {
-      color: #333;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
-    .switch-candy > span a {
-      border: 1px solid #333;
-      background-color: #70c66b;
-      border-radius: 3px;
-      background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), transparent);
-      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45); }
-    .switch-candy > span > span {
-      color: #333;
-      text-shadow: none; }
-    .switch-candy > span span {
-      color: #fff; }
-    .switch-candy > span.switch-candy-blue a {
-      background-color: #38a3d4; }
-    .switch-candy > span.switch-candy-yellow a {
-      background-color: #f5e560; }
+    text-shadow: 1px 1px 1px #191b1e; }
+  .switch-light.switch-candy input ~ span span:first-child, .switch-light.switch-candy input:checked ~ span span:nth-child(2), .switch-candy input:checked + label {
+    color: #333;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
+  .switch-candy a {
+    border: 1px solid #333;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    background-color: #70c66b;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), transparent);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent); }
+  .switch-candy-blue a {
+    background-color: #38a3d4; }
+  .switch-candy-yellow a {
+    background-color: #f5e560; }
   /* iOS Theme
   */
   .switch-ios.switch-light {

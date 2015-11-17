@@ -3,6 +3,9 @@
 - BREAKING: New HTML markup for `switch-light`.
 - BREAKING: Rename the `android` theme to `holo`.
 - BREAKING: Remove the `less` version because it was unmaintained.
+- `switch-toggle` no longer needs the `switch-X` number classes. Just add up to 6 items, no extra work needed.
+- Change text color of the active option in the `switch-light` `candy` theme.
+- Add bold font-weights to all option labels in the `candy` theme.
 - Disable text selection of the "on/off" text of the `switch-light`, to fix issues with changing the selection by swiping component on mobile.
 - Change the project file structure, to make it easier to maintain/contribute/add new themes.
 - Use `assemble` to build the static documentation site.
