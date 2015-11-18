@@ -124,7 +124,7 @@ title: 'with Foundation'
       <a href="http://foundation.zurb.com/docs/components/switch.html">
         official switch</a>,
 
-      provided by Foundation, for for simple <em>&ldquo;On/Off&rdquo;</em> options. The official <em>Switch</em> component is initially based on code from <a href="http://ghinda.net/css-toggle-switch/">CSS Toggle Switches</a>.
+      provided by Foundation, for for simple <em>&ldquo;On/Off&rdquo;</em> options. The official <em>Switch</em> component was initially based on <a href="https://github.com/zurb/foundation/pull/1414">css-toggle-switch</a>.
     </p>
 
     <div class="example large-12 columns">
@@ -141,16 +141,14 @@ title: 'with Foundation'
 
       </div>
 
-<pre><code class="language-markup">&lt;div class=&quot;switch&quot;&gt;
-&lt;input id=&quot;y&quot; name=&quot;switch-y&quot; type=&quot;radio&quot; checked&gt;
-&lt;label for=&quot;y&quot; onclick=&quot;&quot;&gt;Off&lt;/label&gt;
-
-&lt;input id=&quot;y1&quot; name=&quot;switch-y&quot; type=&quot;radio&quot;&gt;
-&lt;label for=&quot;y1&quot; onclick=&quot;&quot;&gt;On&lt;/label&gt;
-
-&lt;span&gt;&lt;/span&gt;
-&lt;/div&gt;
-</code></pre>
+{{#markdown}}
+``` html
+<div class="switch">
+  <input id="exampleCheckboxSwitch2" type="checkbox">
+  <label for="exampleCheckboxSwitch2"></label>
+</div>
+```
+{{/markdown}}
 
     </div>
 
@@ -179,27 +177,30 @@ title: 'with Foundation'
         <a class="button"></a>
       </div>
 
-<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch-toggle panel&quot;&gt;
-&lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
-&lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+{{#markdown}}
+``` html
+<label>View</label>
+<div class="switch-toggle panel">
+  <input id="week" name="view" type="radio" checked>
+  <label for="week" onclick="">Week</label>
 
-&lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-&lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+  <input id="month" name="view" type="radio">
+  <label for="month" onclick="">Month</label>
 
-&lt;a class=&quot;button&quot;&gt;&lt;/a&gt;
-&lt;/div&gt;
-</code></pre>
+  <a class="button"></a>
+</div>
+```
+{{/markdown}}
 
     </div>
 
     <h3>Multiple options</h3>
-    <p>You can add up to 5 items by using the <code>.switch-3</code>, <code>.switch-4</code> and <code>.switch-5</code> classes. </p>
+    <p>Add up to 6 options. No extra work needed. </p>
 
     <div class="example">
 
       <label>View</label>
-      <div class="switch-toggle switch-5 panel">
+      <div class="switch-toggle panel">
         <input id="hour3" name="view3" type="radio" checked>
         <label for="hour3" onclick="">Hour</label>
 
@@ -218,10 +219,29 @@ title: 'with Foundation'
         <a class="button"></a>
       </div>
 
-<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch-toggle switch-5 panel&quot;&gt;
-[&hellip;]
-</code></pre>
+{{#markdown}}
+``` html
+<label>View</label>
+<div class="switch-toggle panel">
+  <input id="hour3" name="view3" type="radio" checked>
+  <label for="hour3" onclick="">Hour</label>
+
+  <input id="day4" name="view3" type="radio">
+  <label for="day4" onclick="">Day</label>
+
+  <input id="week5" name="view3" type="radio">
+  <label for="week5" onclick="">Week</label>
+
+  <input id="month6" name="view3" type="radio">
+  <label for="month6" onclick="">Month</label>
+
+  <input id="year7" name="view3" type="radio">
+  <label for="year7" onclick="">Year</label>
+
+  <a class="button"></a>
+</div>
+```
+{{/markdown}}
 
     </div>
 
@@ -235,7 +255,9 @@ title: 'with Foundation'
 
     <h2>Different looks</h2>
 
-    <p>The switches are very flexible, so you can use and combine a number of classes provided by Foundation, along with it's grid, to make them look exactly like you need them. </p>
+    <p>
+      The switches are very flexible, so you can mix and match a number of classes provided by Foundation, along with it's grid, to make them look exactly like you need them.
+    </p>
 
     <div class="example">
 
