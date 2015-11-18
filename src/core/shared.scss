@@ -19,7 +19,9 @@
 
   label,
   > span {
-    line-height: size(32);
+    /* breathing room for bootstrap/foundation classes
+     */
+    line-height: 2em;
     vertical-align: middle;
   }
 

@@ -39,7 +39,9 @@
       -moz-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
     .switch-light label, .switch-light > span {
-      line-height: 2rem;
+      /* breathing room for bootstrap/foundation classes
+     */
+      line-height: 2em;
       vertical-align: middle; }
     .switch-light input:focus ~ span a, .switch-light input:focus + label {
       outline: 1px dotted #888; }
@@ -59,11 +61,11 @@
     position: relative;
     overflow: hidden;
     display: block;
-    min-height: 1em;
+    min-height: 2em;
     /* overwrite 3rd party classes padding
    * eg. bootstrap .well
    */
-    padding: inherit;
+    padding: 0;
     text-align: left; }
   .switch-light span span {
     position: relative;
@@ -114,7 +116,9 @@
       -moz-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
     .switch-toggle label, .switch-toggle > span {
-      line-height: 2rem;
+      /* breathing room for bootstrap/foundation classes
+     */
+      line-height: 2em;
       vertical-align: middle; }
     .switch-toggle input:focus ~ span a, .switch-toggle input:focus + label {
       outline: 1px dotted #888; }
@@ -332,6 +336,7 @@
     top: 0.1875rem;
     width: 3.25rem;
     height: 1.5rem;
+    min-height: auto;
     border-radius: 1rem;
     background: rgba(0, 0, 0, 0.26); }
   .switch-material.switch-light span span {

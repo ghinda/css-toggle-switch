@@ -27,11 +27,11 @@
   position: relative;
   overflow: hidden;
   display: block;
-  min-height: 1em;
+  min-height: 2em;
   /* overwrite 3rd party classes padding
    * eg. bootstrap .well
    */
-  padding: inherit;
+  padding: 0;
 
   text-align: left;
 }

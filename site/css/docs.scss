@@ -221,6 +221,12 @@ label {
   color: $white;
 }
 
+/* bootstrap switch-toggle with .alert
+ */
+.alert label {
+  color: #333;
+}
+
 .row.toggle-demo {
   margin: emCalc(20) 0 0;
 }
