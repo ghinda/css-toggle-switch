@@ -3,7 +3,7 @@
 - BREAKING: New HTML markup for `switch-light`, more semantic and with more control over the label and switch widths and placement.
 - BREAKING: Rename the `android` theme to `holo`.
 - BREAKING: Remove the `less` version because it was unmaintained.
-- `switch-toggle` no longer needs the `switch-X` number classes. Just add up to 6 items, no extra work needed.
+- `switch-toggle` no longer needs the `switch-X` number classes. Just add up to 6 items, no extra classes needed.
 - New `material` theme, mimicking material design.
 - Fix issues with enlarged text on `switch-toggle`.
 - Various tweaks to the `ios` theme.
