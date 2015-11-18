@@ -30,14 +30,50 @@ foundation: true
 
           <div class="row toggle-demo">
 
-            <label class="switch-light switch-material">
-              <input type="checkbox" name="">
+            <label class="switch-light switch-candy">
+              <input type="checkbox">
 
               <strong class="large-4 columns">
                 Wireless
               </strong>
 
               <span class="large-4 columns left">
+                <span>Off</span>
+                <span>On</span>
+                <a></a>
+              </span>
+            </label>
+
+          </div>
+
+          <div class="row toggle-demo">
+
+            <label class="switch-light switch-material">
+              <input type="checkbox">
+
+              <strong class="large-4 columns">
+                Geolocation
+              </strong>
+
+              <span class="large-4 columns left">
+                <span>Off</span>
+                <span>On</span>
+                <a></a>
+              </span>
+            </label>
+
+          </div>
+
+          <div class="row toggle-demo">
+
+            <label class="switch-light switch-holo">
+              <input type="checkbox">
+
+              <strong class="large-4 columns">
+                Airplane Mode
+              </strong>
+
+              <span class="large-3 columns left">
                 <span>Off</span>
                 <span>On</span>
                 <a></a>
@@ -54,15 +90,47 @@ foundation: true
 
           <div class="row toggle-demo">
             <label class="large-3 columns">View</label>
+            <div class="switch-toggle switch-candy large-9 columns">
+              <input id="d-c1" name="view-d-c" type="radio" checked>
+              <label for="d-c1" onclick="">Week</label>
+
+              <input id="d-c2" name="view-d-c" type="radio">
+              <label for="d-c2" onclick="">Month</label>
+
+              <input id="d-c3" name="view-d-c" type="radio">
+              <label for="d-c3" onclick="">Year</label>
+
+              <a></a>
+            </div>
+          </div>
+
+          <div class="row toggle-demo">
+            <label class="large-3 columns">Storage</label>
             <div class="switch-toggle switch-material large-9 columns">
-              <input id="week-d1" name="view-d" type="radio" checked>
-              <label for="week-d1" onclick="">Week</label>
+              <input id="d-h1" name="view-d-h" type="radio" checked>
+              <label for="d-h1" onclick="">MTP</label>
 
-              <input id="month-d2" name="view-d" type="radio">
-              <label for="month-d2" onclick="">Month</label>
+              <input id="d-h2" name="view-d-h" type="radio">
+              <label for="d-h2" onclick="">UMS</label>
 
-              <input id="month-d3" name="view-d" type="radio">
-              <label for="month-d3" onclick="">Year</label>
+              <input id="d-h3" name="view-d-h" type="radio">
+              <label for="d-h3" onclick="">PTP</label>
+
+              <a></a>
+            </div>
+          </div>
+
+          <div class="row toggle-demo">
+            <label class="large-3 columns">Debug</label>
+            <div class="switch-toggle switch-holo large-9 columns">
+              <input id="d-m1" name="view-d-m" type="radio" checked>
+              <label for="d-m1" onclick="">Disabled</label>
+
+              <input id="d-m2" name="view-d-m" type="radio">
+              <label for="d-m2" onclick="">ADB</label>
+
+              <input id="d-m3" name="view-d-m" type="radio">
+              <label for="d-m3" onclick="">DevTools</label>
 
               <a></a>
             </div>
