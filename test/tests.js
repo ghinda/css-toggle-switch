@@ -65,13 +65,15 @@ window.onload = function() {
   setTimeout(function() {
 
     testSwitchTheme('Barebones Switches (no theme)', 'barebones');
-    testSwitchTheme('Android Theme', 'android');
+    testSwitchTheme('Holo Theme', 'holo');
     testSwitchTheme('Candy Theme', 'candy');
     testSwitchTheme('iOS Theme', 'ios');
+    testSwitchTheme('Material Theme', 'material');
 
-    testSwitchNumber('Switch-toggle with 3 options', 'switch-3');
-    testSwitchNumber('Switch-toggle with 4 options', 'switch-4');
-    testSwitchNumber('Switch-toggle with 5 options', 'switch-5');
+    testSwitchNumber('Switch-toggle with 3 options', 'test-3');
+    testSwitchNumber('Switch-toggle with 4 options', 'test-4');
+    testSwitchNumber('Switch-toggle with 5 options', 'test-5');
+    testSwitchNumber('Switch-toggle with 6 options', 'test-6');
 
     testSwitchTheme('Bootstrap', 'bootstrap');
     testSwitchTheme('Foundation', 'foundation');
