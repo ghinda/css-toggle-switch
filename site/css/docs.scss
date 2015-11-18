@@ -284,6 +284,7 @@ body pre[class*="language-"] {
 }
 
 .example {
+  margin: emCalc(8) 0 emCalc(20);
   padding: emCalc(16);
   background-color: darken($grey2, 2%);
 
@@ -298,6 +299,18 @@ body pre[class*="language-"] {
   .switch-light {
     margin-bottom: emCalc(20);
   }
+}
+
+.example .row {
+  margin: 0;
+}
+
+.example-light {
+  background: #F3F3F3;
+}
+
+.example-light label {
+  color: #333;
 }
 
 /* Footer

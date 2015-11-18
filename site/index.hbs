@@ -250,17 +250,22 @@ foundation: true
         <a></a>
       </div>
 
-<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch-toggle switch-candy&quot;&gt;
-&lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
-&lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+{{#markdown}}
+``` html
+<div class="switch-toggle switch-candy">
+  <input id="week" name="view" type="radio" checked>
+  <label for="week" onclick="">Week</label>
 
-&lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-&lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+  <input id="month" name="view" type="radio">
+  <label for="month" onclick="">Month</label>
 
-&lt;a&gt;&lt;/a&gt;
-&lt;/div&gt;
-</code></pre>
+  <input id="day" name="view" type="radio">
+  <label for="day" onclick="">Day</label>
+
+  <a></a>
+</div>
+```
+{{/markdown}}
 
     </div>
 
@@ -292,10 +297,32 @@ foundation: true
         <a></a>
       </div>
 
-<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch-toggle switch-5 switch-candy yellow&quot;&gt;
-[&hellip;]
-</code></pre>
+{{#markdown}}
+``` html
+<label>View</label>
+<div class="switch-toggle switch-candy">
+  <input id="hour3" name="view3" type="radio" checked>
+  <label for="hour3" onclick="">Hour</label>
+
+  <input id="day3" name="view3" type="radio">
+  <label for="day3" onclick="">Day</label>
+
+  <input id="week3" name="view3" type="radio">
+  <label for="week3" onclick="">Week</label>
+
+  <input id="month3" name="view3" type="radio">
+  <label for="month3" onclick="">Month</label>
+
+  <input id="year3" name="view3" type="radio">
+  <label for="year3" onclick="">Year</label>
+
+  <input id="decade3" name="view3" type="radio">
+  <label for="decade3" onclick="">Decade</label>
+
+  <a></a>
+</div>
+```
+{{/markdown}}
 
     </div>
 
@@ -309,15 +336,19 @@ foundation: true
 
     <h2>Themes</h2>
 
-    <p>There are three themes included with the switches. </p>
+    <p>
+      There are a bunch of themes included with the switches.
+    </p>
 
-    <h3>Candy</h3>
+    <h3>
+      Candy
+    </h3>
 
     <p>It includes three color schemes: the default green, <code>.switch-candy-blue</code> and <code>.switch-candy-yellow</code>.</p>
 
     <div class="example">
 
-      <div class="large-4">
+      <div class="large-3">
         <label class="switch-light switch-candy" onclick="">
           <input type="checkbox" />
 
@@ -366,10 +397,57 @@ foundation: true
 
     </div>
 
-    <h3>Holo</h3>
+    <h3>
+      Material
+    </h3>
+
+    <div class="example example-light">
+
+      <div class="row">
+        <div class="large-3">
+          <label class="switch-light switch-material" onclick="">
+            <input type="checkbox" />
+
+            <strong>
+              Wireless
+            </strong>
+
+            <span>
+              <span>Off</span>
+              <span>On</span>
+              <a></a>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-4">
+          <label>View</label>
+          <div class="switch-toggle switch-material">
+            <input id="e-m1" name="e-m" type="radio" checked>
+            <label for="e-m1" onclick="">Week</label>
+
+            <input id="e-m2" name="e-m" type="radio">
+            <label for="e-m2" onclick="">Month</label>
+
+            <input id="e-m3" name="e-m" type="radio">
+            <label for="e-m3" onclick="">Year</label>
+
+            <a></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>
+      Holo
+    </h3>
+
     <div class="example">
 
-      <div class="large-4">
+      <div class="large-2">
         <label class="switch-light switch-holo" onclick="">
           <input type="checkbox" />
 
@@ -462,7 +540,7 @@ foundation: true
 
     <ul>
       <li>
-        Standalone themes are based on <a href="http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/">Sort Switches/Toggles by Orman Clark</a>, <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISwitch.html">iOS</a> and <a href="https://developer.android.com/design/building-blocks/switches.html">Android Holo</a>.
+        Themes are based on <a href="http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/">Sort Switches/Toggles by Orman Clark</a>, <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISwitch.html">iOS</a>, <a href="http://www.getmdl.io/components/index.html#toggles-section">Material Design</a> and Android Holo.
       </li>
       <li>
         iOS label tap issue and fix reported by <a href="https://github.com/scruffian">Ben Dwyer</a>.
