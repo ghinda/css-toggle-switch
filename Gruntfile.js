@@ -6,7 +6,6 @@ var mountFolder = function (connect, dir) {
 };
 
 module.exports = function (grunt) {
-  // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.loadNpmTasks('assemble');
 
@@ -149,12 +148,8 @@ module.exports = function (grunt) {
         files: [
           {
             src: [
-              'bower_components/**'
-            ],
-            dest: 'build/'
-          },
-          {
-            src: [
+              'bower_components/**',
+              'test/**',
               'dist/**'
             ],
             dest: 'build/'
