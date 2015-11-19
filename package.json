@@ -1,19 +1,23 @@
 {
   "name": "css-toggle-switch",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ghinda/css-toggle-switch.git"
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4",
-    "grunt-contrib-watch": "~0.6",
-    "grunt-contrib-connect": "~0.9",
+    "assemble": "^0.4.42",
     "connect-livereload": "~0.5",
-    "matchdep": "~0.3",
+    "grunt": "~0.4",
+    "grunt-build-control": "^0.6.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-connect": "~0.9",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-watch": "~0.6",
     "grunt-sass": "~0",
-    "grunt-saucelabs": "~8"
+    "grunt-saucelabs": "~8",
+    "matchdep": "~0.3"
   },
   "peerDependencies": {},
   "engines": {
@@ -34,9 +38,10 @@
     "ui"
   ],
   "files": [
-    "dist/*.css",
-    "src/*.scss",
-    "LICENSE"
+    "dist/",
+    "src/",
+    "LICENSE",
+    "README.md"
   ],
   "author": "Ionut Colceriu <contact@ghinda.net> (https://ghinda.net/)",
   "license": "MIT"

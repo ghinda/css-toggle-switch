@@ -1,0 +1,380 @@
+---
+layout: main.html
+name: bootstrap
+bootstrap: true
+title: 'with Bootstrap'
+---
+
+<header class="row">
+  <div class="col-lg-7">
+    <h1>
+      <a href="index.html">CSS Toggle Switch</a>
+    </h1>
+    <p class="description">Accessible CSS toggle switch using standard form controls</p>
+  </div>
+  <div class="col-lg-5">
+    <ul class="list-inline top-menu">
+      {{> menu}}
+    </ul>
+  </div>
+</header>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel hero-box">
+
+      <div class="row">
+        <div class="col-lg-6">
+
+          <h4>Light switch</h4>
+          <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
+
+          <div class="row toggle-demo">
+
+            <label class="switch-light" onclick="">
+              <input type="checkbox">
+              <strong class="col-sm-4">
+                Wireless
+              </strong>
+
+              <span class="col-sm-4 well">
+                <span>Off</span>
+                <span>On</span>
+                <a class="btn btn-primary"></a>
+              </span>
+            </label>
+
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+
+          <h4>Toggle switch</h4>
+          <p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
+
+          <div class="row toggle-demo">
+            <label class="col-lg-3">View</label>
+            <div class="switch-toggle well col-lg-9">
+              <input id="week-d1" name="view-d" type="radio" checked>
+              <label for="week-d1" onclick="">Week</label>
+
+              <input id="month-d2" name="view-d" type="radio">
+              <label for="month-d2" onclick="">Month</label>
+
+              <input id="month-d3" name="view-d" type="radio">
+              <label for="month-d3" onclick="">Year</label>
+
+              <a class="btn btn-primary"></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row dependency-install">
+
+        <div class="col-lg-12">
+          {{> install}}
+        </div>
+
+      </div>
+
+      <div class="nav-bar hero-actions">
+        <div class="btn-group btn-group-justified">
+          <a href="https://github.com/ghinda/css-toggle-switch/archive/master.zip" class="btn">
+            <i class="icon-arrow-down"></i>
+            Download
+          </a>
+          <a href="https://github.com/ghinda/css-toggle-switch" class="btn">
+            <i class="icon-github"></i>
+            Github
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+
+    <h5 class="frameworks text-center">
+      You can use the switches <a href="index.html">standalone</a>, with <a href="bootstrap.html">Bootstrap</a> or with <a href="foundation.html">Foundation</a>.
+    </h5>
+
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <h2>Light switch</h2>
+    <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
+
+    <div class="example col-lg-12">
+
+      <label class="switch-light col-sm-3" onclick="">
+        <input type="checkbox">
+        <strong>
+          Wireless
+        </strong>
+
+        <span class="well">
+          <span>Off</span>
+          <span>On</span>
+          <a class="btn btn-primary"></a>
+        </span>
+      </label>
+
+{{#markdown}}
+``` html
+<label class="switch-light" onclick="">
+  <input type="checkbox">
+  <strong>
+    Wireless
+  </strong>
+
+  <span class="well">
+    <span>Off</span>
+    <span>On</span>
+    <a class="btn btn-primary"></a>
+  </span>
+</label>
+```
+{{/markdown}}
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <h2>Toggle switch</h2>
+
+    <p>Use the toggle switches, instead of radio buttons, for two or more specific options. </p>
+
+    <div class="example">
+
+      <div class="col-lg-5">
+        <label>View</label>
+        <div class="switch-toggle well">
+          <input id="week" name="view" type="radio" checked>
+          <label for="week" onclick="">Week</label>
+
+          <input id="month" name="view" type="radio">
+          <label for="month" onclick="">Month</label>
+
+          <a class="btn btn-primary"></a>
+        </div>
+      </div>
+
+{{#markdown}}
+``` html
+<label>View</label>
+<div class="switch-toggle well">
+  <input id="week" name="view" type="radio" checked>
+  <label for="week" onclick="">Week</label>
+
+  <input id="month" name="view" type="radio">
+  <label for="month" onclick="">Month</label>
+
+  <a class="btn btn-primary"></a>
+</div>
+```
+{{/markdown}}
+
+    </div>
+
+    <h3>Multiple options</h3>
+    <p>Add up to 6 options. No extra work needed. </p>
+
+    <div class="example">
+
+      <label>View</label>
+      <div class="switch-toggle well">
+        <input id="hour3" name="view3" type="radio" checked>
+        <label for="hour3" onclick="">Hour</label>
+
+        <input id="day4" name="view3" type="radio">
+        <label for="day4" onclick="">Day</label>
+
+        <input id="week5" name="view3" type="radio">
+        <label for="week5" onclick="">Week</label>
+
+        <input id="month6" name="view3" type="radio">
+        <label for="month6" onclick="">Month</label>
+
+        <input id="year7" name="view3" type="radio">
+        <label for="year7" onclick="">Year</label>
+
+        <a class="btn btn-primary"></a>
+      </div>
+
+{{#markdown}}
+``` html
+<label>View</label>
+<div class="switch-toggle well">
+  <input id="hour3" name="view3" type="radio" checked>
+  <label for="hour3" onclick="">Hour</label>
+
+  <input id="day4" name="view3" type="radio">
+  <label for="day4" onclick="">Day</label>
+
+  <input id="week5" name="view3" type="radio">
+  <label for="week5" onclick="">Week</label>
+
+  <input id="month6" name="view3" type="radio">
+  <label for="month6" onclick="">Month</label>
+
+  <input id="year7" name="view3" type="radio">
+  <label for="year7" onclick="">Year</label>
+
+  <a class="btn btn-primary"></a>
+</div>
+```
+{{/markdown}}
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <h2>Different looks</h2>
+
+    <p>The switches are very flexible, so you can mix and match a number of classes provided by Bootstrap, along with it's grid, to make them look exactly like you need them. </p>
+
+    <div class="example">
+
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="switch-light" onclick="">
+            <input type="checkbox">
+
+            <strong>
+              Wireless
+            </strong>
+
+            <span class="progress">
+              <span aria-label="Off" title="Off">O</span>
+              <span aria-label="On" title="On">I</span>
+              <a class="progress-bar"></a>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="switch-light" onclick="">
+            <input type="checkbox">
+
+            <strong class="col-sm-8">
+              Wireless
+            </strong>
+
+            <span class="progress col-sm-4">
+              <span aria-label="Off" title="Off">O</span>
+              <span aria-label="On" title="On">I</span>
+              <a class="progress-bar"></a>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="switch-light" onclick="">
+            <input type="checkbox">
+
+            <strong>
+              Bluetooth
+            </strong>
+
+            <span class="progress progress-striped active">
+              <span>Off</span>
+              <span>On</span>
+              <a class="progress-bar progress-bar-success"></a>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <label>View</label>
+          <div class="switch-toggle well">
+            <input id="week41" name="view4" type="radio" checked>
+            <label for="week41" onclick="">Week</label>
+
+            <input id="month42" name="view4" type="radio">
+            <label for="month42" onclick="">Month</label>
+
+            <a class="btn btn-primary disabled"></a>
+          </div>
+        </div>
+      </div>
+
+      <label>View</label>
+      <div class="switch-toggle alert alert-info">
+        <input id="week51" name="view5" type="radio" checked>
+        <label for="week51" onclick="">Week</label>
+
+        <input id="month52" name="view5" type="radio">
+        <label for="month52" onclick="">Month</label>
+
+        <input id="month53" name="view5" type="radio">
+        <label for="month53" onclick="">Year</label>
+
+        <a class="btn btn-primary disabled"></a>
+      </div>
+
+      <label>View</label>
+      <div class="switch-toggle alert alert-success">
+        <input id="week61" name="view6" type="radio" checked>
+        <label for="week61" onclick="">Week</label>
+
+        <input id="month62" name="view6" type="radio">
+        <label for="month62" onclick="">Month</label>
+
+        <input id="year63" name="view6" type="radio">
+        <label for="year63" onclick="">Year</label>
+
+        <input id="decade63" name="view6" type="radio">
+        <label for="decade63" onclick="">Decade</label>
+
+        <a class="btn btn-default"></a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h3>
+      <a href="http://getbootstrap.com/" target="_blank">Get Bootstrap.</a>
+    </h3>
+  </div>
+</div>
+
+<footer>
+  <div class="row">
+    <div class="col-lg-12">
+      {{> credits}}
+    </div>
+  </div>
+</footer>

@@ -1,3 +1,18 @@
+## [4.0.0] - 2015-XX-XX
+
+- BREAKING: New HTML markup for `switch-light`, more semantic and with more control over the label and switch widths and placement.
+- BREAKING: Rename the `android` theme to `holo`.
+- BREAKING: Remove the `less` version because it was unmaintained.
+- `switch-toggle` no longer needs the `switch-X` number classes. Just add up to 6 items, no extra classes needed.
+- New `material` theme, mimicking material design.
+- Fix issues with enlarged text on `switch-toggle`.
+- Various tweaks to the `ios` theme.
+- Change text color of the active option in the `switch-light` `candy` theme.
+- Add bold font-weights to all option labels in the `candy` theme.
+- Disable text selection of the "on/off" text of the `switch-light`, to fix issues with changing the selection by swiping component on mobile.
+- Change the project file structure, to make it easier to maintain/contribute/add new themes.
+- Use `assemble` to build the static documentation site.
+
 ## [3.2.0] - 2015-10-08
 
 - Switch to the MIT license, from Unlicense.

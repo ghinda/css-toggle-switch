@@ -1,0 +1,34 @@
+/* Shared
+ */
+
+@mixin switch-shared() {
+  position: relative;
+  display: block;
+  overflow: hidden;
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  a {
+    display: block;
+    @include transition(all 0.2s ease-out);
+  }
+
+  label,
+  > span {
+    /* breathing room for bootstrap/foundation classes
+     */
+    line-height: 2em;
+    vertical-align: middle;
+  }
+
+  /* Outline the toggles when the inputs are focused
+  */
+  input:focus ~ span a,
+  input:focus + label {
+    outline: 1px dotted #888;
+  }
+}

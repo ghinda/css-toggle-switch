@@ -6,33 +6,27 @@ var mountFolder = function (connect, dir) {
 };
 
 module.exports = function (grunt) {
-  // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
-  // configurable paths
-  var yeomanConfig = {
-    app: 'src',
-    dist: 'dist'
-  };
-
-  try {
-    yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
-  } catch (e) {}
+  grunt.loadNpmTasks('assemble');
 
   grunt.initConfig({
-    yeoman: yeomanConfig,
     watch: {
       sass: {
-        files: [ '<%= yeoman.app %>/{,*/}*.{scss,sass}' ],
+        files: [ '{src,site}/{,*/}*.scss' ],
         tasks: [ 'sass:server' ]
+      },
+      assemble: {
+        files: [ 'site/{,*/}*.{hbs,html}' ],
+        tasks: [ 'assemble' ]
       },
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
         },
         files: [
-          './{,*/}*.html',
-          './{,*/}*.css'
+          './build/*.html',
+          './build/{,*/}*.css',
+          './dist/*.css'
         ]
       }
     },
@@ -46,6 +40,7 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               lrSnippet,
+              mountFolder(connect, './build/'),
               mountFolder(connect, './')
             ];
           }
@@ -55,34 +50,22 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              mountFolder(connect, './')
+              mountFolder(connect, './build/')
             ];
           }
         }
       }
     },
     sass: {
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
-          '<%= yeoman.dist %>/toggle-switch-rem.css': '<%= yeoman.app %>/toggle-switch-rem.scss',
-          '<%= yeoman.dist %>/toggle-switch-px.css': '<%= yeoman.app %>/toggle-switch-px.scss',
-          '<%= yeoman.dist %>/docs/docs.css': '<%= yeoman.app %>/docs/docs.scss',
-          '<%= yeoman.dist %>/docs/foundation.css': 'bower_components/foundation/scss/foundation.scss'
-        }
+      options: {
+        sourceMap: true
       },
       server: {
-        options: {
-          includePaths: [
-            ''
-          ]
-        },
         files: {
-          '<%= yeoman.dist %>/toggle-switch.css': '<%= yeoman.app %>/toggle-switch.scss',
-          '<%= yeoman.dist %>/toggle-switch-rem.css': '<%= yeoman.app %>/toggle-switch-rem.scss',
-          '<%= yeoman.dist %>/toggle-switch-px.css': '<%= yeoman.app %>/toggle-switch-px.scss',
-          '<%= yeoman.dist %>/docs/docs.css': '<%= yeoman.app %>/docs/docs.scss',
-          '<%= yeoman.dist %>/docs/foundation.css': 'bower_components/foundation/scss/foundation.scss'
+          'dist/toggle-switch.css': 'src/toggle-switch.scss',
+          'dist/toggle-switch-rem.css': 'src/toggle-switch-rem.scss',
+          'dist/toggle-switch-px.css': 'src/toggle-switch-px.scss',
+          'build/css/docs.css': 'site/css/docs.scss'
         }
       }
     },
@@ -137,6 +120,55 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    assemble: {
+      options: {
+        layoutdir: 'site/layouts',
+        partials: 'site/partials/*.html'
+      },
+      site: {
+        files: [{
+          expand: true,
+          cwd: 'site',
+          src: '{,*/}*.hbs',
+          dest: 'build'
+        }]
+      }
+    },
+    clean: {
+      site: {
+        src: [
+          'build/',
+          'dist/'
+        ]
+      }
+    },
+    copy: {
+      site: {
+        files: [
+          {
+            src: [
+              'bower_components/**',
+              'test/**',
+              'dist/**'
+            ],
+            dest: 'build/'
+          }
+        ]
+      }
+    },
+    buildcontrol: {
+      options: {
+        dir: 'build',
+        commit: true,
+        push: true
+      },
+      site: {
+        options: {
+          remote: 'git@github.com:ghinda/css-toggle-switch.git',
+          branch: 'gh-pages'
+        }
+      }
     }
   });
 
@@ -146,20 +178,25 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'sass:server',
+      'clean',
+      'assemble',
+      'sass',
       'connect:livereload',
       'watch'
     ]);
   });
 
   grunt.registerTask('test', [
-    'sass:server',
+    'build',
     'connect:dist',
     'saucelabs-qunit'
   ]);
 
   grunt.registerTask('build', [
-    'sass:dist'
+    'clean',
+    'assemble',
+    'sass',
+    'copy'
   ]);
 
   grunt.registerTask('default', [

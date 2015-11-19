@@ -164,22 +164,6 @@ header {
     font-weight: bold;
   }
 
-  .switch-light {
-    width: 100px;
-  }
-
-  .toggle-demo {
-    width: 95%;
-
-    > label {
-      padding-top: emCalc(8);
-    }
-  }
-
-  .row > label {
-    color: $white;
-  }
-
   .hero-actions {
     margin: 0 -1.25em -1.25em;
 
@@ -229,6 +213,39 @@ header {
   }
 }
 
+.hero-box .switch-light .columns {
+  padding: 0;
+}
+
+label {
+  color: $white;
+}
+
+/* bootstrap switch-toggle with .alert
+ */
+.alert label {
+  color: #333;
+}
+
+.row.toggle-demo {
+  margin: emCalc(20) 0 0;
+}
+
+.row.toggle-demo > label,
+.row.toggle-demo > .switch-light strong {
+  padding-top: emCalc(6);
+}
+
+.row.toggle-demo > .switch-light {
+  padding-top: 0;
+}
+
+/* foundation switch-toggle
+ */
+.switch-toggle.panel label {
+  color: #333;
+}
+
 .row.dependency-install {
   overflow: hidden;
   width: auto;
@@ -238,9 +255,10 @@ header {
 
   pre {
     text-align: center;
+    margin-bottom: emCalc(20);
 
-    &:first-child {
-      margin-bottom: emCalc(20);
+    &:last-child {
+      margin-bottom: 0;
     }
 
     a {
@@ -272,6 +290,7 @@ body pre[class*="language-"] {
 }
 
 .example {
+  margin: emCalc(8) 0 emCalc(20);
   padding: emCalc(16);
   background-color: darken($grey2, 2%);
 
@@ -288,6 +307,18 @@ body pre[class*="language-"] {
   }
 }
 
+.example .row {
+  margin: 0;
+}
+
+.example-light {
+  background: #F3F3F3;
+}
+
+.example-light label {
+  color: #333;
+}
+
 /* Footer
 */
 
@@ -297,13 +328,13 @@ footer {
 
 /* Bootstrap
 */
-.well.switch-light,
+.switch-light,
 .well.switch-toggle {
   > span {
     color: $white;
   }
 
-  span span,
+   .well span,
   label {
     color: $grey1;
   }
