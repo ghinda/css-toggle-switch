@@ -38,9 +38,10 @@
     "ui"
   ],
   "files": [
-    "dist/*.css",
+    "dist/",
     "src/",
-    "LICENSE"
+    "LICENSE",
+    "README.md"
   ],
   "author": "Ionut Colceriu <contact@ghinda.net> (https://ghinda.net/)",
   "license": "MIT"
