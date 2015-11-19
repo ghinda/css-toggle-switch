@@ -3,448 +3,600 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS Toggle Switch: Accessible CSS toggle switch using standard form controls</title>
+  <title>
+    CSS Toggle Switch: Accessible CSS toggle switch using standard form controls
+  </title>
   <meta name="description" content="Accessible, screen-reader friendly, CSS-only toggle switches with full keyboard access and mobile support, using standard form controls.">
   <meta name="author" content="Ionuț Colceriu">
 
+  
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+  
+
+  
+
   <!-- Docs styles, not required by the switches -->
-  <link rel="stylesheet" href="dist/docs/foundation.css">
   <link href='http://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="dist/docs/docs.css">
+  <link rel="stylesheet" href="css/docs.css">
 
   <!-- Toggle Switch -->
   <link rel="stylesheet" href="dist/toggle-switch.css">
 
   <!-- Prism Syntax Highlighter -->
-    <link rel="stylesheet" href="bower_components/prism/themes/prism.css">
-    <link rel="stylesheet" href="bower_components/prism/themes/prism-okaidia.css">
-    <script src="bower_components/prism/prism.js"></script>
+  <link rel="stylesheet" href="bower_components/prism/themes/prism.css">
+  <link rel="stylesheet" href="bower_components/prism/themes/prism-okaidia.css">
+  <script src="bower_components/prism/prism.js"></script>
 </head>
 <body>
 
-  <header class="row">
-    <div class="large-7 columns">
-      <h1>
-        <a href="index.html">CSS Toggle Switch</a>
-      </h1>
-      <p class="description">Accessible CSS toggle switch using standard form controls</p>
-    </div>
-    <div class="large-5 columns">
-      <ul class="inline-list right top-menu">
-        <li><a href="index.html" class="active">Standalone</a></li>
-        <li><a href="bootstrap.html">Bootstrap</a></li>
-        <li><a href="foundation.html">Foundation</a></li>
-      </ul>
-    </div>
-  </header>
+  
 
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="hero-box">
+<header class="row">
+  <div class="large-7 columns">
+    <h1>
+      <a href="index.html">CSS Toggle Switch</a>
+    </h1>
+    <p class="description">Accessible CSS toggle switch using standard form controls</p>
+  </div>
+  <div class="large-5 columns">
+    <ul class="inline-list right top-menu">
+      <li><a href="index.html" class="active">Standalone</a></li>
+<li><a href="bootstrap.html" class="">Bootstrap</a></li>
+<li><a href="foundation.html" class="">Foundation</a></li>
 
-        <div class="row">
-          <div class="large-6 columns">
+    </ul>
+  </div>
+</header>
 
-            <h4>Light switch</h4>
-            <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="hero-box">
 
-            <label class="switch-light switch-android" onclick="">
+      <div class="row">
+        <div class="large-6 columns">
+
+          <h4>Light switch</h4>
+          <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
+
+          <div class="row toggle-demo">
+
+            <label class="switch-light switch-candy">
               <input type="checkbox">
-              <span>
+
+              <strong class="large-4 columns">
                 Wireless
+              </strong>
+
+              <span class="large-4 columns left">
                 <span>Off</span>
                 <span>On</span>
+                <a></a>
               </span>
-
-              <a></a>
             </label>
 
           </div>
-          <div class="large-6 columns">
 
-            <h4>Toggle switch</h4>
-            <p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
+          <div class="row toggle-demo">
 
-            <div class="row toggle-demo">
-              <label class="large-3 columns">View</label>
-              <div class="switch-toggle switch-3 switch-android large-9 columns">
-                <input id="week-d1" name="view-d" type="radio" checked>
-                <label for="week-d1" onclick="">Week</label>
+            <label class="switch-light switch-material">
+              <input type="checkbox">
 
-                <input id="month-d2" name="view-d" type="radio">
-                <label for="month-d2" onclick="">Month</label>
+              <strong class="large-4 columns">
+                Geolocation
+              </strong>
 
-                <input id="month-d3" name="view-d" type="radio">
-                <label for="month-d3" onclick="">Year</label>
-
+              <span class="large-4 columns left">
+                <span>Off</span>
+                <span>On</span>
                 <a></a>
-              </div>
+              </span>
+            </label>
+
+          </div>
+
+          <div class="row toggle-demo">
+
+            <label class="switch-light switch-holo">
+              <input type="checkbox">
+
+              <strong class="large-4 columns">
+                Airplane Mode
+              </strong>
+
+              <span class="large-3 columns left">
+                <span>Off</span>
+                <span>On</span>
+                <a></a>
+              </span>
+            </label>
+
+          </div>
+
+        </div>
+        <div class="large-6 columns">
+
+          <h4>Toggle switch</h4>
+          <p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
+
+          <div class="row toggle-demo">
+            <label class="large-3 columns">View</label>
+            <div class="switch-toggle switch-candy large-9 columns">
+              <input id="d-c1" name="view-d-c" type="radio" checked>
+              <label for="d-c1" onclick="">Week</label>
+
+              <input id="d-c2" name="view-d-c" type="radio">
+              <label for="d-c2" onclick="">Month</label>
+
+              <input id="d-c3" name="view-d-c" type="radio">
+              <label for="d-c3" onclick="">Year</label>
+
+              <a></a>
             </div>
-
           </div>
 
-        </div>
+          <div class="row toggle-demo">
+            <label class="large-3 columns">Storage</label>
+            <div class="switch-toggle switch-material large-9 columns">
+              <input id="d-h1" name="view-d-h" type="radio" checked>
+              <label for="d-h1" onclick="">MTP</label>
 
-        <div class="row dependency-install">
+              <input id="d-h2" name="view-d-h" type="radio">
+              <label for="d-h2" onclick="">UMS</label>
 
-          <div class="large-12 columns">
-            <pre><code><a href="http://bower.io/">bower</a> install --save css-toggle-switch</code></pre>
-            <pre><code><a href="http://component.io/">component</a> install ghinda/css-toggle-switch</code></pre>
+              <input id="d-h3" name="view-d-h" type="radio">
+              <label for="d-h3" onclick="">PTP</label>
+
+              <a></a>
+            </div>
           </div>
 
-        </div>
+          <div class="row toggle-demo">
+            <label class="large-3 columns">Debug</label>
+            <div class="switch-toggle switch-holo large-9 columns">
+              <input id="d-m1" name="view-d-m" type="radio" checked>
+              <label for="d-m1" onclick="">Disabled</label>
 
-        <div class="nav-bar hero-actions">
-          <ul class="button-group">
-            <li>
-              <a href="https://github.com/ghinda/css-toggle-switch/archive/gh-pages.zip" class="button">
-                <i class="icon-arrow-down"></i>
-                Download
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/ghinda/css-toggle-switch" class="button">
-                <i class="icon-github"></i>
-                Github
-              </a>
-            </li>
-          </ul>
+              <input id="d-m2" name="view-d-m" type="radio">
+              <label for="d-m2" onclick="">ADB</label>
+
+              <input id="d-m3" name="view-d-m" type="radio">
+              <label for="d-m3" onclick="">DevTools</label>
+
+              <a></a>
+            </div>
+          </div>
+
         </div>
 
       </div>
+
+      <div class="row dependency-install">
+
+        <div class="large-12 columns">
+          <pre>
+  <code><a href="https://www.npmjs.com/package/css-toggle-switch">npm</a> install --save css-toggle-switch</code>
+</pre>
+<pre>
+  <code><a href="http://bower.io/">bower</a> install --save css-toggle-switch</code>
+</pre>
+
+        </div>
+
+      </div>
+
+      <div class="nav-bar hero-actions">
+        <ul class="button-group">
+          <li>
+            <a href="https://github.com/ghinda/css-toggle-switch/archive/master.zip" class="button">
+              <i class="icon-arrow-down"></i>
+              Download
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/ghinda/css-toggle-switch" class="button">
+              <i class="icon-github"></i>
+              Github
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="large-12 columns">
+<div class="row">
+  <div class="large-12 columns">
 
-      <h5 class="frameworks text-center">
-        You can use the switches <a href="index.html">standalone</a>, with <a href="bootstrap.html">Bootstrap</a> or with <a href="foundation.html">Foundation</a>.
-      </h5>
+    <h5 class="frameworks text-center">
+      You can use the switches <a href="index.html">standalone</a>, with <a href="bootstrap.html">Bootstrap</a> or with <a href="foundation.html">Foundation</a>.
+    </h5>
 
-    </div>
   </div>
+</div>
 
-  <div class="row">
+<div class="row">
 
-    <div class="large-12 columns">
+  <div class="large-12 columns">
 
-      <h2>Light switch</h2>
-      <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
+    <h2>Light switch</h2>
+    <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
-      <div class="example large-12 columns">
+    <div class="example large-12 columns">
 
-        <label class="switch-light switch-candy large-3" onclick="">
-          <input type="checkbox">
-          <span>
-            Wireless
-            <span>Off</span>
-            <span>On</span>
-          </span>
+      <label class="switch-light switch-candy large-3" onclick="">
+        <input type="checkbox">
 
+        <strong>
+          Wireless
+        </strong>
+
+        <span>
+          <span>Off</span>
+          <span>On</span>
           <a></a>
-        </label>
+        </span>
+      </label>
 
-<pre><code class="language-markup">&lt;label class=&quot;switch-light switch-candy&quot; onclick=&quot;&quot;&gt;
+<pre><code class="language-html">&lt;label class=&quot;switch-light switch-candy&quot; onclick=&quot;&quot;&gt;
   &lt;input type=&quot;checkbox&quot;&gt;
-  &lt;span&gt;
+
+  &lt;strong&gt;
     Wireless
+  &lt;/strong&gt;
+
+  &lt;span&gt;
     &lt;span&gt;Off&lt;/span&gt;
     &lt;span&gt;On&lt;/span&gt;
+    &lt;a&gt;&lt;/a&gt;
   &lt;/span&gt;
+&lt;/label&gt;</code></pre>
 
-  &lt;a&gt;&lt;/a&gt;
-&lt;/label&gt;
-</code></pre>
-
-      </div>
 
     </div>
 
   </div>
 
-  <div class="row">
+</div>
 
-    <div class="large-12 columns">
+<div class="row">
 
-      <h2>Toggle switch</h2>
+  <div class="large-12 columns">
 
-      <p>Use the toggle switches, instead of radio buttons, for two or more specific options. </p>
+    <h2>Toggle switch</h2>
 
-      <div class="example">
+    <p>Use the toggle switches, instead of radio buttons, for two or more specific options. </p>
 
-        <label>View</label>
-        <div class="switch-toggle switch-candy large-5">
-          <input id="week" name="view" type="radio" checked>
-          <label for="week" onclick="">Week</label>
+    <div class="example">
 
-          <input id="month" name="view" type="radio">
-          <label for="month" onclick="">Month</label>
+      <label>View</label>
+      <div class="switch-toggle switch-candy large-5">
+        <input id="week" name="view" type="radio" checked>
+        <label for="week" onclick="">Week</label>
 
-          <a></a>
-        </div>
+        <input id="month" name="view" type="radio">
+        <label for="month" onclick="">Month</label>
 
-<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch-toggle switch-candy&quot;&gt;
+        <input id="day" name="view" type="radio">
+        <label for="day" onclick="">Day</label>
+
+        <a></a>
+      </div>
+
+<pre><code class="language-html">&lt;div class=&quot;switch-toggle switch-candy&quot;&gt;
   &lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
   &lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
   &lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
   &lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
 
+  &lt;input id=&quot;day&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;day&quot; onclick=&quot;&quot;&gt;Day&lt;/label&gt;
+
   &lt;a&gt;&lt;/a&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;</code></pre>
 
+
+    </div>
+
+    <h3>Multiple options</h3>
+    <p>Add up to 6 options. No extra work needed. </p>
+
+    <div class="example">
+
+      <label>View</label>
+      <div class="switch-toggle switch-candy">
+        <input id="hour3" name="view3" type="radio" checked>
+        <label for="hour3" onclick="">Hour</label>
+
+        <input id="day3" name="view3" type="radio">
+        <label for="day3" onclick="">Day</label>
+
+        <input id="week3" name="view3" type="radio">
+        <label for="week3" onclick="">Week</label>
+
+        <input id="month3" name="view3" type="radio">
+        <label for="month3" onclick="">Month</label>
+
+        <input id="year3" name="view3" type="radio">
+        <label for="year3" onclick="">Year</label>
+
+        <input id="decade3" name="view3" type="radio">
+        <label for="decade3" onclick="">Decade</label>
+
+        <a></a>
       </div>
 
-      <h3>Multiple options</h3>
-      <p>You can add up to 5 items by using the <code>.switch-3</code>, <code>.switch-4</code> and <code>.switch-5</code> classes. </p>
+<pre><code class="language-html">&lt;label&gt;View&lt;/label&gt;
+&lt;div class=&quot;switch-toggle switch-candy&quot;&gt;
+  &lt;input id=&quot;hour3&quot; name=&quot;view3&quot; type=&quot;radio&quot; checked&gt;
+  &lt;label for=&quot;hour3&quot; onclick=&quot;&quot;&gt;Hour&lt;/label&gt;
 
-      <div class="example">
+  &lt;input id=&quot;day3&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;day3&quot; onclick=&quot;&quot;&gt;Day&lt;/label&gt;
 
-        <label>View</label>
-        <div class="switch-toggle switch-5 switch-candy yellow">
-          <input id="hour3" name="view3" type="radio" checked>
-          <label for="hour3" onclick="">Hour</label>
+  &lt;input id=&quot;week3&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;week3&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
-          <input id="day4" name="view3" type="radio">
-          <label for="day4" onclick="">Day</label>
+  &lt;input id=&quot;month3&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;month3&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
 
-          <input id="week5" name="view3" type="radio">
-          <label for="week5" onclick="">Week</label>
+  &lt;input id=&quot;year3&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;year3&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
 
-          <input id="month6" name="view3" type="radio">
-          <label for="month6" onclick="">Month</label>
+  &lt;input id=&quot;decade3&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;decade3&quot; onclick=&quot;&quot;&gt;Decade&lt;/label&gt;
 
-          <input id="year7" name="view3" type="radio">
-          <label for="year7" onclick="">Year</label>
+  &lt;a&gt;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
 
-          <a></a>
-        </div>
-
-<pre><code class="language-markup">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch-toggle switch-5 switch-candy yellow&quot;&gt;
-  [&hellip;]
-</code></pre>
-
-      </div>
 
     </div>
 
   </div>
 
-  <div class="row">
+</div>
 
-    <div class="large-12 columns">
+<div class="row">
 
-      <h2>Themes</h2>
+  <div class="large-12 columns">
 
-      <p>There are three themes included with the switches. </p>
+    <h2>Themes</h2>
 
-      <h3>Candy</h3>
+    <p>
+      There are a bunch of themes included with the switches.
+    </p>
 
-      <p>It includes three color schemes: the default green, <code>.switch-candy-blue</code> and <code>.switch-candy-yellow</code>.</p>
+    <h3>
+      Candy
+    </h3>
 
-      <div class="example">
+    <p>It includes three color schemes: the default green, <code>.switch-candy-blue</code> and <code>.switch-candy-yellow</code>.</p>
 
-        <div class="large-4">
-          <label class="switch-light switch-candy" onclick="">
-            <input type="checkbox" />
-            <span>
-              Wireless
-              <span>Off</span>
-              <span>On</span>
-            </span>
+    <div class="example">
 
-            <a></a>
-          </label>
-        </div>
-
-        <label>View</label>
-        <div class="switch-toggle switch-candy large-4">
-          <input id="week41" name="view4" type="radio" checked>
-          <label for="week41" onclick="">Week</label>
-
-          <input id="month42" name="view4" type="radio">
-          <label for="month42" onclick="">Month</label>
-
-          <a></a>
-        </div>
-
-        <label>View</label>
-        <div class="switch-toggle switch-3 switch-candy switch-candy-blue">
-          <input id="week51" name="view5" type="radio" checked>
-          <label for="week51" onclick="">Week</label>
-
-          <input id="month52" name="view5" type="radio">
-          <label for="month52" onclick="">Month</label>
-
-          <input id="month53" name="view5" type="radio">
-          <label for="month53" onclick="">Year</label>
-
-          <a></a>
-        </div>
-
-        <label>View</label>
-        <div class="switch-toggle switch-4 switch-candy switch-candy-yellow">
-          <input id="week61" name="view6" type="radio" checked>
-          <label for="week61" onclick="">Week</label>
-
-          <input id="month62" name="view6" type="radio">
-          <label for="month62" onclick="">Month</label>
-
-          <input id="year63" name="view6" type="radio">
-          <label for="year63" onclick="">Year</label>
-
-          <input id="decade63" name="view6" type="radio">
-          <label for="decade63" onclick="">Decade</label>
-
-          <a></a>
-        </div>
-
-      </div>
-
-      <h3>Android</h3>
-      <div class="example">
-
-        <div class="large-4">
-          <label class="switch-light switch-android" onclick="">
-            <input type="checkbox" />
-            <span>
-              Wireless
-              <span>Off</span>
-              <span>On</span>
-            </span>
-
-            <a></a>
-          </label>
-        </div>
-
-        <label>View</label>
-        <div class="switch-toggle switch-android large-4">
-          <input id="week71" name="view7" type="radio" checked>
-          <label for="week71" onclick="">Week</label>
-
-          <input id="month72" name="view7" type="radio">
-          <label for="month72" onclick="">Month</label>
-
-          <a></a>
-        </div>
-
-        <label>View</label>
-        <div class="switch-toggle switch-3 switch-android">
-          <input id="week81" name="view8" type="radio" checked>
-          <label for="week81" onclick="">Week</label>
-
-          <input id="month82" name="view8" type="radio">
-          <label for="month82" onclick="">Month</label>
-
-          <input id="month83" name="view8" type="radio">
-          <label for="month83" onclick="">Year</label>
-
-          <a></a>
-        </div>
-
-      </div>
-
-      <h3>iOS</h3>
-      <div class="example">
-
-        <label class="switch-light switch-ios" style="width: 100px" onclick="">
+      <div class="large-3">
+        <label class="switch-light switch-candy" onclick="">
           <input type="checkbox" />
-          <span>
+
+          <strong>
             Wireless
+          </strong>
+
+          <span>
             <span>Off</span>
             <span>On</span>
+            <a></a>
           </span>
-
-          <a></a>
         </label>
+      </div>
 
-        <label>View</label>
-        <div class="switch-toggle switch-ios large-4">
-          <input id="week91" name="view9" type="radio" checked>
-          <label for="week91" onclick="">Week</label>
+      <label>View</label>
+      <div class="switch-toggle switch-candy switch-candy-blue">
+        <input id="week51" name="view5" type="radio" checked>
+        <label for="week51" onclick="">Week</label>
 
-          <input id="month92" name="view9" type="radio">
-          <label for="month92" onclick="">Month</label>
+        <input id="month52" name="view5" type="radio">
+        <label for="month52" onclick="">Month</label>
 
-          <a></a>
+        <input id="month53" name="view5" type="radio">
+        <label for="month53" onclick="">Year</label>
+
+        <a></a>
+      </div>
+
+      <label>View</label>
+      <div class="switch-toggle switch-candy switch-candy-yellow">
+        <input id="week61" name="view6" type="radio" checked>
+        <label for="week61" onclick="">Week</label>
+
+        <input id="month62" name="view6" type="radio">
+        <label for="month62" onclick="">Month</label>
+
+        <input id="year63" name="view6" type="radio">
+        <label for="year63" onclick="">Year</label>
+
+        <input id="decade63" name="view6" type="radio">
+        <label for="decade63" onclick="">Decade</label>
+
+        <a></a>
+      </div>
+
+    </div>
+
+    <h3>
+      Material
+    </h3>
+
+    <div class="example example-light">
+
+      <div class="row">
+        <div class="large-3">
+          <label class="switch-light switch-material" onclick="">
+            <input type="checkbox" />
+
+            <strong>
+              Wireless
+            </strong>
+
+            <span>
+              <span>Off</span>
+              <span>On</span>
+              <a></a>
+            </span>
+          </label>
         </div>
+      </div>
 
-        <label>View</label>
-        <div class="switch-toggle switch-3 switch-ios">
-          <input id="week11" name="view10" type="radio" checked>
-          <label for="week11" onclick="">Week</label>
+      <div class="row">
+        <div class="large-4">
+          <label>View</label>
+          <div class="switch-toggle switch-material">
+            <input id="e-m1" name="e-m" type="radio" checked>
+            <label for="e-m1" onclick="">Week</label>
 
-          <input id="month12" name="view10" type="radio">
-          <label for="month12" onclick="">Month</label>
+            <input id="e-m2" name="e-m" type="radio">
+            <label for="e-m2" onclick="">Month</label>
 
-          <input id="month13" name="view10" type="radio">
-          <label for="month13" onclick="">Year</label>
+            <input id="e-m3" name="e-m" type="radio">
+            <label for="e-m3" onclick="">Year</label>
 
-          <a></a>
+            <a></a>
+          </div>
         </div>
+      </div>
 
+    </div>
+
+    <h3>
+      Holo
+    </h3>
+
+    <div class="example">
+
+      <div class="large-2">
+        <label class="switch-light switch-holo" onclick="">
+          <input type="checkbox" />
+
+          <strong>
+            Wireless
+          </strong>
+
+          <span>
+            <span>Off</span>
+            <span>On</span>
+            <a></a>
+          </span>
+        </label>
+      </div>
+
+      <label>View</label>
+      <div class="switch-toggle switch-holo">
+        <input id="week81" name="view8" type="radio" checked>
+        <label for="week81" onclick="">Week</label>
+
+        <input id="month82" name="view8" type="radio">
+        <label for="month82" onclick="">Month</label>
+
+        <input id="month83" name="view8" type="radio">
+        <label for="month83" onclick="">Year</label>
+
+        <a></a>
+      </div>
+
+    </div>
+
+    <h3>iOS</h3>
+    <div class="example">
+
+      <label class="switch-light switch-ios" style="width: 100px" onclick="">
+        <input type="checkbox" />
+
+        <strong>
+          Wireless
+        </strong>
+
+        <span>
+          <span>Off</span>
+          <span>On</span>
+          <a></a>
+        </span>
+      </label>
+
+      <label>View</label>
+      <div class="switch-toggle switch-ios">
+        <input id="week11" name="view10" type="radio" checked>
+        <label for="week11" onclick="">Week</label>
+
+        <input id="month12" name="view10" type="radio">
+        <label for="month12" onclick="">Month</label>
+
+        <input id="month13" name="view10" type="radio">
+        <label for="month13" onclick="">Year</label>
+
+        <a></a>
       </div>
 
     </div>
 
   </div>
 
-  <div class="row">
+</div>
 
-    <div class="large-12 columns">
+<div class="row">
 
-      <h2>Browser support</h2>
+  <div class="large-12 columns">
 
-      <p>The toggle switches work on all modern browsers, including mobile ones(even proxy-browsers like Opera Mini). </p>
+    <h2>Browser support</h2>
 
-      <p><strong>Browsers without support for media-queries, such as IE8 and bellow, get standard form elements. </strong></p>
+    <p>The toggle switches work on all modern browsers, including mobile ones(even proxy-browsers like Opera Mini). </p>
 
-      <p>The <code>onclick=""</code> attribute is required for older iOS and Opera Mini support. </p>
+    <p><strong>Browsers without support for media-queries, such as IE8 and bellow, get standard form elements. </strong></p>
 
-    </div>
-
-  </div>
-
-  <div class="row">
-
-    <div class="large-12 columns">
-
-      <h2>Acknowledgements</h2>
-
-      <ul>
-        <li>
-          Standalone themes are based on <a href="http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/">Sort Switches / Toggles by Orman Clark</a>, <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISwitch.html">iOS</a> and <a href="https://developer.android.com/design/building-blocks/switches.html">Android</a>.
-        </li>
-        <li>
-          iOS label tap issue and fix reported by <a href="https://github.com/scruffian">Ben Dwyer</a>.
-        </li>
-        <li>
-          Refactoring to export the CSS with multiple unit types (px, em, rem) by <a href="https://github.com/hphoeksma">Henjo Hoeksma</a>.
-        </li>
-        <li>
-          <a href="https://github.com/ghinda/css-toggle-switch/graphs/contributors">
-            List of contributors on Github
-          </a>
-        </li>
-      </ul>
-
-    </div>
+    <p>The <code>onclick=""</code> attribute is required for older iOS and Opera Mini support. </p>
 
   </div>
 
-  <footer>
-    <div class="row">
-      <div class="large-12 columns">
-        <p>
-          <a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switch</a> is a project by <a href="http://ghinda.net">Ionuț Colceriu</a>. Follow <a href="https://twitter.com/ghindas">@ghindas</a>.
-        </p>
-      </div>
+</div>
+
+<div class="row">
+
+  <div class="large-12 columns">
+
+    <h2>Acknowledgements</h2>
+
+    <ul>
+      <li>
+        Themes are based on <a href="http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/">Sort Switches/Toggles by Orman Clark</a>, <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISwitch.html">iOS</a>, <a href="http://www.getmdl.io/components/index.html#toggles-section">Material Design</a> and Android Holo.
+      </li>
+      <li>
+        iOS label tap issue and fix reported by <a href="https://github.com/scruffian">Ben Dwyer</a>.
+      </li>
+      <li>
+        Refactoring to export the CSS with multiple unit types (px, em, rem) by <a href="https://github.com/hphoeksma">Henjo Hoeksma</a>.
+      </li>
+      <li>
+        <a href="https://github.com/ghinda/css-toggle-switch/graphs/contributors">
+          List of contributors on Github
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
+
+<footer>
+  <div class="row">
+    <div class="large-12 columns">
+      <p>
+  <a href="https://github.com/ghinda/css-toggle-switch">CSS Toggle Switch</a> is a project by <a href="http://ghinda.net">Ionuț Colceriu</a>. Follow <a href="https://twitter.com/ghindas">@ghindas</a>.
+</p>
+
     </div>
-  </footer>
+  </div>
+</footer>
+
 
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

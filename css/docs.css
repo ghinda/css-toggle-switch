@@ -150,14 +150,6 @@ header {
   .hero-box p a {
     color: #333;
     font-weight: bold; }
-  .hero-box .switch-light {
-    width: 100px; }
-  .hero-box .toggle-demo {
-    width: 95%; }
-    .hero-box .toggle-demo > label {
-      padding-top: 0.5em; }
-  .hero-box .row > label {
-    color: #fff; }
   .hero-box .hero-actions {
     margin: 0 -1.25em -1.25em; }
     .hero-box .hero-actions .button-group {
@@ -189,6 +181,31 @@ header {
     .hero-box .hero-actions li:last-child a {
       border-left: 1px solid #468ac3; }
 
+.hero-box .switch-light .columns {
+  padding: 0; }
+
+label {
+  color: #fff; }
+
+/* bootstrap switch-toggle with .alert
+ */
+.alert label {
+  color: #333; }
+
+.row.toggle-demo {
+  margin: 1.25em 0 0; }
+
+.row.toggle-demo > label, .row.toggle-demo > .switch-light strong {
+  padding-top: 0.375em; }
+
+.row.toggle-demo > .switch-light {
+  padding-top: 0; }
+
+/* foundation switch-toggle
+ */
+.switch-toggle.panel label {
+  color: #333; }
+
 .row.dependency-install {
   overflow: hidden;
   width: auto;
@@ -196,9 +213,10 @@ header {
   margin: 1.25em -1.25em 0;
   background-color: #7faed6; }
   .row.dependency-install pre {
-    text-align: center; }
-    .row.dependency-install pre:first-child {
-      margin-bottom: 1.25em; }
+    text-align: center;
+    margin-bottom: 1.25em; }
+    .row.dependency-install pre:last-child {
+      margin-bottom: 0; }
     .row.dependency-install pre a {
       color: #2f628d; }
       .row.dependency-install pre a:hover {
@@ -218,6 +236,7 @@ body pre[class*="language-"] {
   background-color: transparent; }
 
 .example {
+  margin: 0.5em 0 1.25em;
   padding: 1em;
   background-color: #404040;
   border-radius: 2px; }
@@ -226,6 +245,15 @@ body pre[class*="language-"] {
   .example .switch-toggle, .example .switch-light {
     margin-bottom: 1.25em; }
 
+.example .row {
+  margin: 0; }
+
+.example-light {
+  background: #F3F3F3; }
+
+.example-light label {
+  color: #333; }
+
 /* Footer
 */
 footer {
@@ -233,9 +261,9 @@ footer {
 
 /* Bootstrap
 */
-.well.switch-light > span, .well.switch-toggle > span {
+.switch-light > span, .well.switch-toggle > span {
   color: #fff; }
-.well.switch-light span span, .well.switch-light label, .well.switch-toggle span span, .well.switch-toggle label {
+.switch-light .well span, .switch-light label, .well.switch-toggle .well span, .well.switch-toggle label {
   color: #2b2b2b; }
 
 pre {
@@ -250,3 +278,5 @@ pre {
 code {
   background: transparent;
   font-family: Consolas, 'Liberation Mono', Courier, monospace; }
+
+/*# sourceMappingURL=docs.css.map */
