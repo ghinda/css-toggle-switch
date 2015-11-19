@@ -5,8 +5,8 @@
   "author": "Ionut Colceriu",
   "ignore": [
     "**/*",
-    "!dist/*",
-    "!src/*",
+    "!dist/**",
+    "!src/**",
     "!LICENSE",
     "!README.md"
   ],
