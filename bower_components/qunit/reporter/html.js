@@ -63,6 +63,7 @@ QUnit.init = function() {
 };
 
 var config = QUnit.config,
+	collapseNext = false,
 	hasOwn = Object.prototype.hasOwnProperty,
 	defined = {
 		document: window.document !== undefined,
@@ -459,6 +460,17 @@ function storeFixture() {
 	}
 }
 
+function appendFilteredTest() {
+	var testId = QUnit.config.testId;
+	if ( !testId || testId.length <= 0 ) {
+		return "";
+	}
+	return "<div id='qunit-filteredTest'>Rerunning selected tests: " + testId.join(", ") +
+		" <a id='qunit-clearFilter' href='" +
+		setUrl({ filter: undefined, module: undefined, testId: undefined }) +
+		"'>" + "Run all tests" + "</a></div>";
+}
+
 function appendUserAgent() {
 	var userAgent = id( "qunit-userAgent" );
 
@@ -466,7 +478,7 @@ function appendUserAgent() {
 		userAgent.innerHTML = "";
 		userAgent.appendChild(
 			document.createTextNode(
-				"QUnit " + QUnit.version  + "; " + navigator.userAgent
+				"QUnit " + QUnit.version + "; " + navigator.userAgent
 			)
 		);
 	}
@@ -530,6 +542,7 @@ QUnit.begin(function( details ) {
 			"<h1 id='qunit-header'>" + escapeText( document.title ) + "</h1>" +
 			"<h2 id='qunit-banner'></h2>" +
 			"<div id='qunit-testrunner-toolbar'></div>" +
+			appendFilteredTest() +
 			"<h2 id='qunit-userAgent'></h2>" +
 			"<ol id='qunit-tests'></ol>";
 	}
@@ -746,6 +759,16 @@ QUnit.testDone(function( details ) {
 	}
 
 	if ( bad === 0 ) {
+
+		// Collapse the passing tests
+		addClass( assertList, "qunit-collapsed" );
+	} else if ( bad && config.collapse && !collapseNext ) {
+
+		// Skip collapsing the first failing test
+		collapseNext = true;
+	} else {
+
+		// Collapse remaining tests
 		addClass( assertList, "qunit-collapsed" );
 	}
 
