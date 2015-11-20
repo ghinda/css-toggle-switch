@@ -9,12 +9,16 @@ QUnit.version = "@VERSION";
 extend( QUnit, {
 
 	// call on start of module test to prepend name to all tests
-	module: function( name, testEnvironment ) {
-		var currentModule = {
-			name: name,
-			testEnvironment: testEnvironment,
-			tests: []
-		};
+	module: function( name, testEnvironment, executeNow ) {
+		var module, moduleFns;
+		var currentModule = config.currentModule;
+
+		if ( arguments.length === 2 ) {
+			if ( testEnvironment instanceof Function ) {
+				executeNow = testEnvironment;
+				testEnvironment = undefined;
+			}
+		}
 
 		// DEPRECATED: handles setup/teardown functions,
 		// beforeEach and afterEach should be used instead
@@ -27,8 +31,51 @@ extend( QUnit, {
 			delete testEnvironment.teardown;
 		}
 
-		config.modules.push( currentModule );
-		config.currentModule = currentModule;
+		module = createModule();
+
+		moduleFns = {
+			beforeEach: setHook( module, "beforeEach" ),
+			afterEach: setHook( module, "afterEach" )
+		};
+
+		if ( executeNow instanceof Function ) {
+			config.moduleStack.push( module );
+			setCurrentModule( module );
+			executeNow.call( module.testEnvironment, moduleFns );
+			config.moduleStack.pop();
+			module = module.parentModule || currentModule;
+		}
+
+		setCurrentModule( module );
+
+		function createModule() {
+			var parentModule = config.moduleStack.length ?
+				config.moduleStack.slice( -1 )[ 0 ] : null;
+			var moduleName = parentModule !== null ?
+				[ parentModule.name, name ].join( " > " ) : name;
+			var module = {
+				name: moduleName,
+				parentModule: parentModule,
+				tests: []
+			};
+
+			var env = {};
+			if ( parentModule ) {
+				extend( env, parentModule.testEnvironment );
+				delete env.beforeEach;
+				delete env.afterEach;
+			}
+			extend( env, testEnvironment );
+			module.testEnvironment = env;
+
+			config.modules.push( module );
+			return module;
+		}
+
+		function setCurrentModule( module ) {
+			config.currentModule = module;
+		}
+
 	},
 
 	// DEPRECATED: QUnit.asyncTest() will be removed in QUnit 2.0.
@@ -37,6 +84,8 @@ extend( QUnit, {
 	test: test,
 
 	skip: skip,
+
+	only: only,
 
 	// DEPRECATED: The functionality of QUnit.start() will be altered in QUnit 2.0.
 	// In QUnit 2.0, invoking it will ONLY affect the `QUnit.config.autostart` blocking behavior.
@@ -63,6 +112,17 @@ extend( QUnit, {
 
 			// If a test is running, adjust its semaphore
 			config.current.semaphore -= count || 1;
+
+			// If semaphore is non-numeric, throw error
+			if ( isNaN( config.current.semaphore ) ) {
+				config.current.semaphore = 0;
+
+				QUnit.pushFailure(
+					"Called start() with a non-numeric decrement.",
+					sourceFromStacktrace( 2 )
+				);
+				return;
+			}
 
 			// Don't start until equal number of stop-calls
 			if ( config.current.semaphore > 0 ) {
@@ -261,4 +321,14 @@ function done() {
 		total: config.stats.all,
 		runtime: runtime
 	});
+}
+
+function setHook( module, hookName ) {
+	if ( module.testEnvironment === undefined ) {
+		module.testEnvironment = {};
+	}
+
+	return function( callback ) {
+		module.testEnvironment[ hookName ] = callback;
+	};
 }

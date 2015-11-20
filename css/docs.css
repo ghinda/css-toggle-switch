@@ -135,7 +135,9 @@ header {
       margin: 0; }
     header .top-menu li {
       padding: 0;
-      margin-left: .8em; }
+      padding-left: .8em; }
+    header .top-menu a {
+      padding: 0; }
 
 /* Hero */
 .hero-box {
@@ -151,6 +153,7 @@ header {
     color: #333;
     font-weight: bold; }
   .hero-box .hero-actions {
+    overflow: hidden;
     margin: 0 -1.25em -1.25em; }
     .hero-box .hero-actions .button-group {
       width: 100%; }
@@ -189,7 +192,7 @@ label {
 
 /* bootstrap switch-toggle with .alert
  */
-.alert label {
+.callout label {
   color: #333; }
 
 .row.toggle-demo {
