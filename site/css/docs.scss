@@ -169,11 +169,10 @@ header {
   }
 
   .hero-actions {
-    overflow: hidden;
     margin: 0 -1.25em -1.25em;
 
-    .button-group {
-      width: 100%;
+    .menu {
+      overflow: hidden;
     }
 
     li {
