@@ -17,6 +17,10 @@ var config = {
 	// by default, modify document.title when suite is done
 	altertitle: true,
 
+	// HTML Reporter: collapse every test except the first failing test
+	// If false, all failing tests will be expanded
+	collapse: true,
+
 	// by default, scroll to top of the page when suite is done
 	scrolltop: true,
 
@@ -50,6 +54,9 @@ var config = {
 
 	// Set of all modules.
 	modules: [],
+
+	// Stack of nested modules
+	moduleStack: [],
 
 	// The first unnamed module
 	currentModule: {

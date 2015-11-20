@@ -13,7 +13,7 @@
   "devDependencies": {
     "bootstrap": "^3.3.5",
     "bourbon": "^4.2.5",
-    "foundation": "^5.5.2",
+    "foundation-sites": "~6.0.1",
     "normalize-css": "^3.0.3",
     "prism": "^1.1.0",
     "qunit": "^1.19.0"

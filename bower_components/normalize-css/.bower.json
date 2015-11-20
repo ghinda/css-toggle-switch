@@ -18,7 +18,6 @@
     "commit": "7d0ebab2ffdf2c2046e2b812456f3681f92b5f32"
   },
   "_source": "git://github.com/necolas/normalize.css.git",
-  "_target": "~3.0.3",
-  "_originalSource": "normalize-css",
-  "_direct": true
+  "_target": "^3.0.3",
+  "_originalSource": "normalize-css"
 }

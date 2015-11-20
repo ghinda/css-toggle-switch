@@ -79,6 +79,10 @@ var components = {
 			"title": "AppleScript",
 			"owner": "Golmote"
 		},
+		"asciidoc": {
+			"title": "AsciiDoc",
+			"owner": "Golmote"
+		},
 		"aspnet": {
 			"title": "ASP.NET (C#)",
 			"require": "markup",
@@ -98,6 +102,10 @@ var components = {
 		},
 		"basic": {
 			"title": "BASIC",
+			"owner": "Golmote"
+		},
+		"batch": {
+			"title": "Batch",
 			"owner": "Golmote"
 		},
 		"bison": {
@@ -215,9 +223,18 @@ var components = {
 			"title": "Haskell",
 			"owner": "bholst"
 		},
+		"haxe": {
+			"title": "Haxe",
+			"require": "clike",
+			"owner": "Golmote"
+		},
 		"http": {
 			"title": "HTTP",
 			"owner": "danielgtaylor"
+		},
+		"icon": {
+			"title": "Icon",
+			"owner": "Golmote"
 		},
 		"inform7": {
 			"title": "Inform 7",
@@ -249,6 +266,11 @@ var components = {
 			"title": "Keyman",
 			"owner": "mcdurdin"
 		},
+		"kotlin": {
+			"title": "Kotlin",
+			"require": "clike",
+			"owner": "Golmote"
+		},
 		"latex": {
 			"title": "LaTeX",
 			"owner": "japborst"
@@ -260,6 +282,10 @@ var components = {
 		},
 		"lolcode": {
 			"title": "LOLCODE",
+			"owner": "Golmote"
+		},
+		"lua": {
+			"title": "Lua",
 			"owner": "Golmote"
 		},
 		"makefile": {
@@ -300,6 +326,10 @@ var components = {
 			"title": "Nim",
 			"owner": "Golmote"
 		},
+		"nix": {
+			"title": "Nix",
+			"owner": "Golmote"
+		},
 		"nsis": {
 			"title": "NSIS",
 			"owner": "idleberg"
@@ -311,6 +341,19 @@ var components = {
 		},
 		"ocaml": {
 			"title": "OCaml",
+			"owner": "Golmote"
+		},
+		"oz": {
+			"title": "Oz",
+			"owner": "Golmote"
+		},
+		"parigp": {
+			"title": "PARI/GP",
+			"owner": "Golmote"
+		},
+		"parser": {
+			"title": "Parser",
+			"require": "markup",
 			"owner": "Golmote"
 		},
 		"pascal": {
@@ -342,6 +385,10 @@ var components = {
 		},
 		"prolog": {
 			"title": "Prolog",
+			"owner": "Golmote"
+		},
+		"puppet": {
+			"title": "Puppet",
 			"owner": "Golmote"
 		},
 		"pure": {
@@ -377,6 +424,10 @@ var components = {
 		"rip": {
 			"title": "Rip",
 			"owner": "ravinggenius"
+		},
+		"roboconf": {
+			"title": "Roboconf",
+			"owner": "Golmote"
 		},
 		"ruby": {
 			"title": "Ruby",
@@ -518,8 +569,23 @@ var components = {
 			"require": "previewer-base",
 			"owner": "Golmote"
 		},
+		"previewer-gradient": {
+			"title": "Previewer: Gradient",
+			"require": "previewer-base",
+			"owner": "Golmote"
+		},
 		"previewer-easing": {
 			"title": "Previewer: Easing",
+			"require": "previewer-base",
+			"owner": "Golmote"
+		},
+		"previewer-time": {
+			"title": "Previewer: Time",
+			"require": "previewer-base",
+			"owner": "Golmote"
+		},
+		"previewer-angle": {
+			"title": "Previewer: Angle",
 			"require": "previewer-base",
 			"owner": "Golmote"
 		},

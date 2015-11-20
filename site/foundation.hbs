@@ -13,7 +13,7 @@ title: 'with Foundation'
     <p class="description">Accessible CSS toggle switch using standard form controls</p>
   </div>
   <div class="large-5 columns">
-    <ul class="inline-list right top-menu">
+    <ul class="menu right top-menu">
       {{> menu}}
     </ul>
   </div>
@@ -30,22 +30,22 @@ title: 'with Foundation'
           <p>
             Use the
 
-            <a href="http://foundation.zurb.com/docs/components/switch.html">
+            <a href="http://foundation.zurb.com/sites/docs/switch.html">
             official switch</a>,
 
             provided by Foundation, for for simple <em>&ldquo;On/Off&rdquo;</em> options.
           </p>
 
           <div class="row toggle-demo">
-            <label class="large-3 columns" for="exampleCheckboxSwitch">View</label>
-            <div class="large-5 columns left">
 
-              <div class="switch">
-                <input id="exampleCheckboxSwitch" type="checkbox">
-                <label for="exampleCheckboxSwitch"></label>
-              </div>
-
+            <label class="large-3 columns" for="exampleSwitch">View</label>
+            <div class="switch large-4 columns float-left">
+              <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+              <label class="switch-paddle" for="exampleSwitch">
+                <span class="show-for-sr">Download Kittens</span>
+              </label>
             </div>
+
           </div>
 
         </div>
@@ -56,7 +56,7 @@ title: 'with Foundation'
 
           <div class="row toggle-demo">
             <label class="large-3 columns">View</label>
-            <div class="switch-toggle panel large-9 columns">
+            <div class="switch-toggle callout large-9 columns">
               <input id="week-d1" name="view-d" type="radio" checked>
               <label for="week-d1" onclick="">Week</label>
 
@@ -83,7 +83,7 @@ title: 'with Foundation'
       </div>
 
       <div class="nav-bar hero-actions">
-        <ul class="button-group">
+        <ul class="menu">
           <li>
             <a href="https://github.com/ghinda/css-toggle-switch/archive/master.zip" class="button">
               <i class="icon-arrow-down"></i>
@@ -121,7 +121,7 @@ title: 'with Foundation'
     <p>
       Use the
 
-      <a href="http://foundation.zurb.com/docs/components/switch.html">
+      <a href="http://foundation.zurb.com/sites/docs/switch.html">
         official switch</a>,
 
       provided by Foundation, for for simple <em>&ldquo;On/Off&rdquo;</em> options. The official <em>Switch</em> component was initially based on <a href="https://github.com/zurb/foundation/pull/1414">css-toggle-switch</a>.
@@ -131,12 +131,11 @@ title: 'with Foundation'
 
       <div class="row toggle-demo">
         <label class="large-2 columns" for="exampleCheckboxSwitch2">View</label>
-        <div class="large-3 columns left">
-
-          <div class="switch">
-            <input id="exampleCheckboxSwitch2" type="checkbox">
-            <label for="exampleCheckboxSwitch2"></label>
-          </div>
+        <div class="switch large-4 columns float-left">
+          <input class="switch-input" id="exampleCheckboxSwitch2" type="checkbox" name="exampleCheckboxSwitch2">
+          <label class="switch-paddle" for="exampleCheckboxSwitch2">
+            <span class="show-for-sr">View</span>
+          </label>
         </div>
 
       </div>
@@ -144,8 +143,10 @@ title: 'with Foundation'
 {{#markdown}}
 ``` html
 <div class="switch">
-  <input id="exampleCheckboxSwitch2" type="checkbox">
-  <label for="exampleCheckboxSwitch2"></label>
+  <input class="switch-input" id="switch" type="checkbox" name="switch">
+  <label class="switch-paddle" for="switch">
+    <span class="show-for-sr">View</span>
+  </label>
 </div>
 ```
 {{/markdown}}
@@ -167,7 +168,7 @@ title: 'with Foundation'
     <div class="example">
 
       <label>View</label>
-      <div class="switch-toggle panel large-5">
+      <div class="switch-toggle callout large-5">
         <input id="week" name="view" type="radio" checked>
         <label for="week" onclick="">Week</label>
 
@@ -180,7 +181,7 @@ title: 'with Foundation'
 {{#markdown}}
 ``` html
 <label>View</label>
-<div class="switch-toggle panel">
+<div class="switch-toggle callout large-5">
   <input id="week" name="view" type="radio" checked>
   <label for="week" onclick="">Week</label>
 
@@ -200,7 +201,7 @@ title: 'with Foundation'
     <div class="example">
 
       <label>View</label>
-      <div class="switch-toggle panel">
+      <div class="switch-toggle callout">
         <input id="hour3" name="view3" type="radio" checked>
         <label for="hour3" onclick="">Hour</label>
 
@@ -222,7 +223,7 @@ title: 'with Foundation'
 {{#markdown}}
 ``` html
 <label>View</label>
-<div class="switch-toggle panel">
+<div class="switch-toggle callout">
   <input id="hour3" name="view3" type="radio" checked>
   <label for="hour3" onclick="">Hour</label>
 
@@ -262,14 +263,14 @@ title: 'with Foundation'
     <div class="example">
 
       <label>View</label>
-      <div class="switch-toggle large-4 panel radius">
+      <div class="switch-toggle large-4 callout">
         <input id="week41" name="view4" type="radio" checked>
         <label for="week41" onclick="">Week</label>
 
         <input id="month42" name="view4" type="radio">
         <label for="month42" onclick="">Month</label>
 
-        <a class="button radius"></a>
+        <a class="button hollow"></a>
       </div>
 
       <label>View</label>
@@ -283,11 +284,11 @@ title: 'with Foundation'
         <input id="month53" name="view5" type="radio">
         <label for="month53" onclick="">Year</label>
 
-        <a class="button secondary"></a>
+        <a class="button warning"></a>
       </div>
 
       <label>View</label>
-      <div class="switch-toggle panel">
+      <div class="switch-toggle callout">
         <input id="week61" name="view6" type="radio" checked>
         <label for="week61" onclick="">Week</label>
 
@@ -300,7 +301,7 @@ title: 'with Foundation'
         <input id="decade63" name="view6" type="radio">
         <label for="decade63" onclick="">Decade</label>
 
-        <a class="button success disabled"></a>
+        <a class="button success"></a>
       </div>
 
     </div>
@@ -308,18 +309,18 @@ title: 'with Foundation'
     <div class="example">
 
       <label>View</label>
-      <div class="switch-toggle large-4 alert-box secondary round">
+      <div class="switch-toggle large-4 callout success">
         <input id="week71" name="view7" type="radio" checked>
         <label for="week71" onclick="">Week</label>
 
         <input id="month72" name="view7" type="radio">
         <label for="month72" onclick="">Month</label>
 
-        <a class="button round"></a>
+        <a class="button success"></a>
       </div>
 
       <label>View</label>
-      <div class="switch-toggle alert-box secondary radius">
+      <div class="switch-toggle callout warning">
         <input id="week81" name="view8" type="radio" checked>
         <label for="week81" onclick="">Week</label>
 
@@ -329,7 +330,7 @@ title: 'with Foundation'
         <input id="month83" name="view8" type="radio">
         <label for="month83" onclick="">Year</label>
 
-        <a class="button alert radius disabled"></a>
+        <a class="button alert"></a>
       </div>
 
     </div>

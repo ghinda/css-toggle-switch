@@ -137,7 +137,11 @@ header {
 
     li {
       padding: 0;
-      margin-left: .8em;
+      padding-left: .8em;
+    }
+
+    a {
+      padding: 0;
     }
   }
 
@@ -165,6 +169,7 @@ header {
   }
 
   .hero-actions {
+    overflow: hidden;
     margin: 0 -1.25em -1.25em;
 
     .button-group {
@@ -223,7 +228,7 @@ label {
 
 /* bootstrap switch-toggle with .alert
  */
-.alert label {
+.callout label {
   color: #333;
 }
 
