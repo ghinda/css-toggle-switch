@@ -153,10 +153,9 @@ header {
     color: #333;
     font-weight: bold; }
   .hero-box .hero-actions {
-    overflow: hidden;
     margin: 0 -1.25em -1.25em; }
-    .hero-box .hero-actions .button-group {
-      width: 100%; }
+    .hero-box .hero-actions .menu {
+      overflow: hidden; }
     .hero-box .hero-actions li {
       float: left;
       width: 50%;
