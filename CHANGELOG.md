@@ -1,3 +1,8 @@
+## [4.0.1] - 2015-11-26
+
+- Fix the text jumping to the left on `switch-toggle` bug, happening on Firefox when selecting an item.
+- Fix the ripple animation on Firefox, on the Material Design theme, by using `visibility` instead of `opacity` for the "show only on focus" trick.
+
 ## [4.0.0] - 2015-11-19
 
 - BREAKING: New HTML markup for `switch-light`, more semantic and with more control over the label and switch widths and placement.
