@@ -112,7 +112,7 @@
   height: size(64);
   border-radius: 100%;
   background: #3f51b5;
-  opacity: 0 !important;
+  opacity: .4;
   margin-left: size(-20);
   margin-top: size(-20);
 
@@ -156,8 +156,14 @@
  * when the page loads.
  * the ripples are hidden by default, and shown only when the input is focused.
  */
+.switch-light.switch-material.switch-light input ~ span:before,
+.switch-light.switch-material.switch-light input ~ span:after,
+.switch-material.switch-toggle input + label:after {
+  visibility: hidden;
+}
+
 .switch-light.switch-material.switch-light input:focus:checked ~ span:before,
 .switch-light.switch-material.switch-light input:focus:not(:checked) ~ span:after,
 .switch-material.switch-toggle input:focus:checked + label:after {
-  opacity: .4 !important;
+  visibility: visible;
 }
