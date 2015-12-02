@@ -2,9 +2,9 @@
  */
 
 @mixin switch-shared() {
+  @include clearfix;
   position: relative;
   display: block;
-  overflow: hidden;
 
   *,
   *:before,
@@ -19,16 +19,26 @@
 
   label,
   > span {
-    /* breathing room for bootstrap/foundation classes
+    /* breathing room for bootstrap/foundation classes.
      */
     line-height: 2em;
     vertical-align: middle;
   }
 
-  /* Outline the toggles when the inputs are focused
-  */
+  /* simulate default browser focus outlines on the switch,
+   * when the inputs are focused.
+   */
   input:focus ~ span a,
   input:focus + label {
-    outline: 1px dotted #888;
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: Highlight;
+
+    /* Chrome/Opera gets its native focus styles.
+     */
+    @media (-webkit-min-device-pixel-ratio:0) {
+      outline-color: -webkit-focus-ring-color;
+      outline-style: auto;
+    }
   }
 }
