@@ -1,3 +1,7 @@
+## [4.0.2] - 2015-12-02
+
+- Make the switch focus outline match the native focus styles more closely.
+
 ## [4.0.1] - 2015-11-26
 
 - Fix the text jumping to the left on `switch-toggle` bug, happening on Firefox when selecting an item.
