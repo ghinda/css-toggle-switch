@@ -28,9 +28,13 @@
   .switch-light {
     position: relative;
     display: block;
-    overflow: hidden;
-    /* Outline the toggles when the inputs are focused
-  */ }
+    /* simulate default browser focus outlines on the switch,
+   * when the inputs are focused.
+   */ }
+    .switch-light::after {
+      clear: both;
+      content: "";
+      display: table; }
     .switch-light *, .switch-light *:before, .switch-light *:after {
       box-sizing: border-box; }
     .switch-light a {
@@ -39,12 +43,20 @@
       -moz-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
     .switch-light label, .switch-light > span {
-      /* breathing room for bootstrap/foundation classes
+      /* breathing room for bootstrap/foundation classes.
      */
       line-height: 2em;
       vertical-align: middle; }
     .switch-light input:focus ~ span a, .switch-light input:focus + label {
-      outline: 1px dotted #888; }
+      outline-width: 2px;
+      outline-style: solid;
+      outline-color: Highlight;
+      /* Chrome/Opera gets its native focus styles.
+     */ }
+      @media (-webkit-min-device-pixel-ratio: 0) {
+        .switch-light input:focus ~ span a, .switch-light input:focus + label {
+          outline-color: -webkit-focus-ring-color;
+          outline-style: auto; } }
   /* don't hide the input from screen-readers and keyboard access
  */
   .switch-light input {
@@ -92,9 +104,9 @@
   .switch-toggle {
     position: relative;
     display: block;
-    overflow: hidden;
-    /* Outline the toggles when the inputs are focused
-  */
+    /* simulate default browser focus outlines on the switch,
+   * when the inputs are focused.
+   */
     /* For callout panels in foundation
   */
     padding: 0 !important;
@@ -108,6 +120,10 @@
    */
     /* 6 items
    */ }
+    .switch-toggle::after {
+      clear: both;
+      content: "";
+      display: table; }
     .switch-toggle *, .switch-toggle *:before, .switch-toggle *:after {
       box-sizing: border-box; }
     .switch-toggle a {
@@ -116,12 +132,20 @@
       -moz-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
     .switch-toggle label, .switch-toggle > span {
-      /* breathing room for bootstrap/foundation classes
+      /* breathing room for bootstrap/foundation classes.
      */
       line-height: 2em;
       vertical-align: middle; }
     .switch-toggle input:focus ~ span a, .switch-toggle input:focus + label {
-      outline: 1px dotted #888; }
+      outline-width: 2px;
+      outline-style: solid;
+      outline-color: Highlight;
+      /* Chrome/Opera gets its native focus styles.
+     */ }
+      @media (-webkit-min-device-pixel-ratio: 0) {
+        .switch-toggle input:focus ~ span a, .switch-toggle input:focus + label {
+          outline-color: -webkit-focus-ring-color;
+          outline-style: auto; } }
     .switch-toggle input {
       position: absolute;
       left: 0;
