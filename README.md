@@ -10,9 +10,15 @@ You can use them standalone, or with [Bootstrap](http://getbootstrap.com/) or [F
 
 Download from the [project page](http://ghinda.net/css-toggle-switch/).
 
-Install with [Bower](http://bower.io/): `bower install --save css-toggle-switch`
+With [Bower](http://bower.io/): `bower install --save css-toggle-switch`
 
-Install with [npm](https://www.npmjs.com/package/css-toggle-switch): `npm install --save css-toggle-switch`
+With [npm](https://www.npmjs.com/package/css-toggle-switch): `npm install --save css-toggle-switch`
+
+From [jsDelivr](https://www.jsdelivr.com/projects/css-toggle-switch)
+
+```
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/css-toggle-switch.css" />
+```
 
 
 ## How to use it
