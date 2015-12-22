@@ -1,0 +1,25 @@
+<h2>Tips</h2>
+
+<ul>
+  <li>
+    <p>
+      The <code>onclick=""</code> attribute is required for older iOS and Opera Mini support.
+    </p>
+  </li>
+  <li>
+    <p>
+      If your light switch option labels are <em>"On/Off"</em>, you can prevent screen readers from reading them by using <code>aria-hidden="true"</code>.
+    </p>
+
+{{#markdown}}
+``` html
+<span aria-hidden="true">
+  <span>Off</span>
+  <span>On</span>
+  <a></a>
+</span>
+```
+{{/markdown}}
+
+  </li>
+</ul>

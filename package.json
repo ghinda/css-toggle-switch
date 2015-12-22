@@ -15,7 +15,7 @@
     "grunt-contrib-connect": "~0.9",
     "grunt-contrib-copy": "^0.8.2",
     "grunt-contrib-watch": "~0.6",
-    "grunt-sass": "~0",
+    "grunt-sass": "1.1.0",
     "grunt-saucelabs": "~8",
     "matchdep": "~0.3"
   },
