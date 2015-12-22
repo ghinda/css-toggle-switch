@@ -83,8 +83,8 @@
           <h4>Toggle switch</h4>
           <p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
 
-          <div class="row toggle-demo">
-            <label class="large-3 columns">View</label>
+          <fieldset class="row toggle-demo">
+            <legend class="large-3 columns">View</legend>
             <div class="switch-toggle callout large-9 columns">
               <input id="week-d1" name="view-d" type="radio" checked>
               <label for="week-d1" onclick="">Week</label>
@@ -97,7 +97,7 @@
 
               <a class="button"></a>
             </div>
-          </div>
+          </fieldset>
 
         </div>
 
@@ -199,16 +199,18 @@
 
     <div class="example">
 
-      <label>View</label>
-      <div class="switch-toggle callout large-5">
-        <input id="week" name="view" type="radio" checked>
-        <label for="week" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle callout large-5">
+          <input id="week" name="view" type="radio" checked>
+          <label for="week" onclick="">Week</label>
 
-        <input id="month" name="view" type="radio">
-        <label for="month" onclick="">Month</label>
+          <input id="month" name="view" type="radio">
+          <label for="month" onclick="">Month</label>
 
-        <a class="button"></a>
-      </div>
+          <a class="button"></a>
+        </div>
+      </fieldset>
 
 <pre><code class="language-html">&lt;label&gt;View&lt;/label&gt;
 &lt;div class=&quot;switch-toggle callout large-5&quot;&gt;
@@ -229,45 +231,49 @@
 
     <div class="example">
 
-      <label>View</label>
-      <div class="switch-toggle callout">
-        <input id="hour3" name="view3" type="radio" checked>
-        <label for="hour3" onclick="">Hour</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle callout">
+          <input id="hour3" name="view3" type="radio" checked>
+          <label for="hour3" onclick="">Hour</label>
 
-        <input id="day4" name="view3" type="radio">
-        <label for="day4" onclick="">Day</label>
+          <input id="day4" name="view3" type="radio">
+          <label for="day4" onclick="">Day</label>
 
-        <input id="week5" name="view3" type="radio">
-        <label for="week5" onclick="">Week</label>
+          <input id="week5" name="view3" type="radio">
+          <label for="week5" onclick="">Week</label>
 
-        <input id="month6" name="view3" type="radio">
-        <label for="month6" onclick="">Month</label>
+          <input id="month6" name="view3" type="radio">
+          <label for="month6" onclick="">Month</label>
 
-        <input id="year7" name="view3" type="radio">
-        <label for="year7" onclick="">Year</label>
+          <input id="year7" name="view3" type="radio">
+          <label for="year7" onclick="">Year</label>
 
-        <a class="button"></a>
-      </div>
+          <a class="button"></a>
+        </div>
+      </fieldset>
 
-<pre><code class="language-html">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch-toggle callout&quot;&gt;
-  &lt;input id=&quot;hour3&quot; name=&quot;view3&quot; type=&quot;radio&quot; checked&gt;
-  &lt;label for=&quot;hour3&quot; onclick=&quot;&quot;&gt;Hour&lt;/label&gt;
+<pre><code class="language-html">&lt;fieldset&gt;
+  &lt;legend&gt;View&lt;/legend&gt;
+  &lt;div class=&quot;switch-toggle callout&quot;&gt;
+    &lt;input id=&quot;hour3&quot; name=&quot;view3&quot; type=&quot;radio&quot; checked&gt;
+    &lt;label for=&quot;hour3&quot; onclick=&quot;&quot;&gt;Hour&lt;/label&gt;
 
-  &lt;input id=&quot;day4&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
-  &lt;label for=&quot;day4&quot; onclick=&quot;&quot;&gt;Day&lt;/label&gt;
+    &lt;input id=&quot;day4&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+    &lt;label for=&quot;day4&quot; onclick=&quot;&quot;&gt;Day&lt;/label&gt;
 
-  &lt;input id=&quot;week5&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
-  &lt;label for=&quot;week5&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+    &lt;input id=&quot;week5&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+    &lt;label for=&quot;week5&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
-  &lt;input id=&quot;month6&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
-  &lt;label for=&quot;month6&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+    &lt;input id=&quot;month6&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+    &lt;label for=&quot;month6&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
 
-  &lt;input id=&quot;year7&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
-  &lt;label for=&quot;year7&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
+    &lt;input id=&quot;year7&quot; name=&quot;view3&quot; type=&quot;radio&quot;&gt;
+    &lt;label for=&quot;year7&quot; onclick=&quot;&quot;&gt;Year&lt;/label&gt;
 
-  &lt;a class=&quot;button&quot;&gt;&lt;/a&gt;
-&lt;/div&gt;</code></pre>
+    &lt;a class=&quot;button&quot;&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
 
 
     </div>
@@ -288,76 +294,86 @@
 
     <div class="example">
 
-      <label>View</label>
-      <div class="switch-toggle large-4 callout">
-        <input id="week41" name="view4" type="radio" checked>
-        <label for="week41" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle large-4 callout">
+          <input id="week41" name="view4" type="radio" checked>
+          <label for="week41" onclick="">Week</label>
 
-        <input id="month42" name="view4" type="radio">
-        <label for="month42" onclick="">Month</label>
+          <input id="month42" name="view4" type="radio">
+          <label for="month42" onclick="">Month</label>
 
-        <a class="button hollow"></a>
-      </div>
+          <a class="button hollow"></a>
+        </div>
+      </fieldset>
 
-      <label>View</label>
-      <div class="switch-toggle panel callout">
-        <input id="week51" name="view5" type="radio" checked>
-        <label for="week51" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle panel callout">
+          <input id="week51" name="view5" type="radio" checked>
+          <label for="week51" onclick="">Week</label>
 
-        <input id="month52" name="view5" type="radio">
-        <label for="month52" onclick="">Month</label>
+          <input id="month52" name="view5" type="radio">
+          <label for="month52" onclick="">Month</label>
 
-        <input id="month53" name="view5" type="radio">
-        <label for="month53" onclick="">Year</label>
+          <input id="month53" name="view5" type="radio">
+          <label for="month53" onclick="">Year</label>
 
-        <a class="button warning"></a>
-      </div>
+          <a class="button warning"></a>
+        </div>
+      </fieldset>
 
-      <label>View</label>
-      <div class="switch-toggle callout">
-        <input id="week61" name="view6" type="radio" checked>
-        <label for="week61" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle callout">
+          <input id="week61" name="view6" type="radio" checked>
+          <label for="week61" onclick="">Week</label>
 
-        <input id="month62" name="view6" type="radio">
-        <label for="month62" onclick="">Month</label>
+          <input id="month62" name="view6" type="radio">
+          <label for="month62" onclick="">Month</label>
 
-        <input id="year63" name="view6" type="radio">
-        <label for="year63" onclick="">Year</label>
+          <input id="year63" name="view6" type="radio">
+          <label for="year63" onclick="">Year</label>
 
-        <input id="decade63" name="view6" type="radio">
-        <label for="decade63" onclick="">Decade</label>
+          <input id="decade63" name="view6" type="radio">
+          <label for="decade63" onclick="">Decade</label>
 
-        <a class="button success"></a>
-      </div>
+          <a class="button success"></a>
+        </div>
+      </fieldset>
 
     </div>
 
     <div class="example">
 
-      <label>View</label>
-      <div class="switch-toggle large-4 callout success">
-        <input id="week71" name="view7" type="radio" checked>
-        <label for="week71" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle large-4 callout success">
+          <input id="week71" name="view7" type="radio" checked>
+          <label for="week71" onclick="">Week</label>
 
-        <input id="month72" name="view7" type="radio">
-        <label for="month72" onclick="">Month</label>
+          <input id="month72" name="view7" type="radio">
+          <label for="month72" onclick="">Month</label>
 
-        <a class="button success"></a>
-      </div>
+          <a class="button success"></a>
+        </div>
+      </fieldset>
 
-      <label>View</label>
-      <div class="switch-toggle callout warning">
-        <input id="week81" name="view8" type="radio" checked>
-        <label for="week81" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle callout warning">
+          <input id="week81" name="view8" type="radio" checked>
+          <label for="week81" onclick="">Week</label>
 
-        <input id="month82" name="view8" type="radio">
-        <label for="month82" onclick="">Month</label>
+          <input id="month82" name="view8" type="radio">
+          <label for="month82" onclick="">Month</label>
 
-        <input id="month83" name="view8" type="radio">
-        <label for="month83" onclick="">Year</label>
+          <input id="month83" name="view8" type="radio">
+          <label for="month83" onclick="">Year</label>
 
-        <a class="button alert"></a>
-      </div>
+          <a class="button alert"></a>
+        </div>
+      </fieldset>
 
     </div>
 

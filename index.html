@@ -118,8 +118,8 @@
           <h4>Toggle switch</h4>
           <p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
 
-          <div class="row toggle-demo">
-            <label class="large-3 columns">View</label>
+          <fieldset class="row toggle-demo">
+            <legend class="large-3 columns">View</legend>
             <div class="switch-toggle switch-candy large-9 columns">
               <input id="d-c1" name="view-d-c" type="radio" checked>
               <label for="d-c1" onclick="">Week</label>
@@ -132,10 +132,10 @@
 
               <a></a>
             </div>
-          </div>
+          </fieldset>
 
-          <div class="row toggle-demo">
-            <label class="large-3 columns">Storage</label>
+          <fieldset class="row toggle-demo">
+            <legend class="large-3 columns">Storage</legend>
             <div class="switch-toggle switch-material large-9 columns">
               <input id="d-h1" name="view-d-h" type="radio" checked>
               <label for="d-h1" onclick="">MTP</label>
@@ -148,10 +148,10 @@
 
               <a></a>
             </div>
-          </div>
+          </fieldset>
 
-          <div class="row toggle-demo">
-            <label class="large-3 columns">Debug</label>
+          <fieldset class="row toggle-demo">
+            <legend class="large-3 columns">Debug</legend>
             <div class="switch-toggle switch-holo large-9 columns">
               <input id="d-m1" name="view-d-m" type="radio" checked>
               <label for="d-m1" onclick="">Disabled</label>
@@ -164,7 +164,7 @@
 
               <a></a>
             </div>
-          </div>
+          </fieldset>
 
         </div>
 
@@ -222,7 +222,7 @@
     <h2>Light switch</h2>
     <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
-    <div class="example large-12 columns">
+    <div class="example">
 
       <label class="switch-light switch-candy large-3" onclick="">
         <input type="checkbox">
@@ -269,32 +269,37 @@
 
     <div class="example">
 
-      <label>View</label>
-      <div class="switch-toggle switch-candy large-5">
-        <input id="week" name="view" type="radio" checked>
-        <label for="week" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle switch-candy large-5">
+          <input id="week" name="view" type="radio" checked>
+          <label for="week" onclick="">Week</label>
 
-        <input id="month" name="view" type="radio">
-        <label for="month" onclick="">Month</label>
+          <input id="month" name="view" type="radio">
+          <label for="month" onclick="">Month</label>
 
-        <input id="day" name="view" type="radio">
-        <label for="day" onclick="">Day</label>
+          <input id="day" name="view" type="radio">
+          <label for="day" onclick="">Day</label>
 
-        <a></a>
-      </div>
+          <a></a>
+        </div>
+      </fieldset>
 
-<pre><code class="language-html">&lt;div class=&quot;switch-toggle switch-candy&quot;&gt;
-  &lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
-  &lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+<pre><code class="language-html">&lt;fieldset&gt;
+  &lt;legend&gt;View&lt;/legend&gt;
+  &lt;div class=&quot;switch-toggle switch-candy&quot;&gt;
+    &lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
+    &lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
-  &lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-  &lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+    &lt;input id=&quot;month&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
+    &lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
 
-  &lt;input id=&quot;day&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
-  &lt;label for=&quot;day&quot; onclick=&quot;&quot;&gt;Day&lt;/label&gt;
+    &lt;input id=&quot;day&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
+    &lt;label for=&quot;day&quot; onclick=&quot;&quot;&gt;Day&lt;/label&gt;
 
-  &lt;a&gt;&lt;/a&gt;
-&lt;/div&gt;</code></pre>
+    &lt;a&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
 
 
     </div>
@@ -304,31 +309,32 @@
 
     <div class="example">
 
-      <label>View</label>
-      <div class="switch-toggle switch-candy">
-        <input id="hour3" name="view3" type="radio" checked>
-        <label for="hour3" onclick="">Hour</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle switch-candy">
+          <input id="hour3" name="view3" type="radio" checked>
+          <label for="hour3" onclick="">Hour</label>
 
-        <input id="day3" name="view3" type="radio">
-        <label for="day3" onclick="">Day</label>
+          <input id="day3" name="view3" type="radio">
+          <label for="day3" onclick="">Day</label>
 
-        <input id="week3" name="view3" type="radio">
-        <label for="week3" onclick="">Week</label>
+          <input id="week3" name="view3" type="radio">
+          <label for="week3" onclick="">Week</label>
 
-        <input id="month3" name="view3" type="radio">
-        <label for="month3" onclick="">Month</label>
+          <input id="month3" name="view3" type="radio">
+          <label for="month3" onclick="">Month</label>
 
-        <input id="year3" name="view3" type="radio">
-        <label for="year3" onclick="">Year</label>
+          <input id="year3" name="view3" type="radio">
+          <label for="year3" onclick="">Year</label>
 
-        <input id="decade3" name="view3" type="radio">
-        <label for="decade3" onclick="">Decade</label>
+          <input id="decade3" name="view3" type="radio">
+          <label for="decade3" onclick="">Decade</label>
 
-        <a></a>
-      </div>
+          <a></a>
+        </div>
+      </fieldset>
 
-<pre><code class="language-html">&lt;label&gt;View&lt;/label&gt;
-&lt;div class=&quot;switch-toggle switch-candy&quot;&gt;
+<pre><code class="language-html">&lt;div class=&quot;switch-toggle switch-candy&quot;&gt;
   &lt;input id=&quot;hour3&quot; name=&quot;view3&quot; type=&quot;radio&quot; checked&gt;
   &lt;label for=&quot;hour3&quot; onclick=&quot;&quot;&gt;Hour&lt;/label&gt;
 
@@ -391,36 +397,40 @@
         </label>
       </div>
 
-      <label>View</label>
-      <div class="switch-toggle switch-candy switch-candy-blue">
-        <input id="week51" name="view5" type="radio" checked>
-        <label for="week51" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle switch-candy switch-candy-blue">
+          <input id="week51" name="view5" type="radio" checked>
+          <label for="week51" onclick="">Week</label>
 
-        <input id="month52" name="view5" type="radio">
-        <label for="month52" onclick="">Month</label>
+          <input id="month52" name="view5" type="radio">
+          <label for="month52" onclick="">Month</label>
 
-        <input id="month53" name="view5" type="radio">
-        <label for="month53" onclick="">Year</label>
+          <input id="month53" name="view5" type="radio">
+          <label for="month53" onclick="">Year</label>
 
-        <a></a>
-      </div>
+          <a></a>
+        </div>
+      </fieldset>
 
-      <label>View</label>
-      <div class="switch-toggle switch-candy switch-candy-yellow">
-        <input id="week61" name="view6" type="radio" checked>
-        <label for="week61" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle switch-candy switch-candy-yellow">
+          <input id="week61" name="view6" type="radio" checked>
+          <label for="week61" onclick="">Week</label>
 
-        <input id="month62" name="view6" type="radio">
-        <label for="month62" onclick="">Month</label>
+          <input id="month62" name="view6" type="radio">
+          <label for="month62" onclick="">Month</label>
 
-        <input id="year63" name="view6" type="radio">
-        <label for="year63" onclick="">Year</label>
+          <input id="year63" name="view6" type="radio">
+          <label for="year63" onclick="">Year</label>
 
-        <input id="decade63" name="view6" type="radio">
-        <label for="decade63" onclick="">Decade</label>
+          <input id="decade63" name="view6" type="radio">
+          <label for="decade63" onclick="">Decade</label>
 
-        <a></a>
-      </div>
+          <a></a>
+        </div>
+      </fieldset>
 
     </div>
 
@@ -450,19 +460,23 @@
 
       <div class="row">
         <div class="large-4">
-          <label>View</label>
-          <div class="switch-toggle switch-material">
-            <input id="e-m1" name="e-m" type="radio" checked>
-            <label for="e-m1" onclick="">Week</label>
 
-            <input id="e-m2" name="e-m" type="radio">
-            <label for="e-m2" onclick="">Month</label>
+          <fieldset>
+            <legend>View</legend>
+            <div class="switch-toggle switch-material">
+              <input id="e-m1" name="e-m" type="radio" checked>
+              <label for="e-m1" onclick="">Week</label>
 
-            <input id="e-m3" name="e-m" type="radio">
-            <label for="e-m3" onclick="">Year</label>
+              <input id="e-m2" name="e-m" type="radio">
+              <label for="e-m2" onclick="">Month</label>
 
-            <a></a>
-          </div>
+              <input id="e-m3" name="e-m" type="radio">
+              <label for="e-m3" onclick="">Year</label>
+
+              <a></a>
+            </div>
+          </fieldset>
+
         </div>
       </div>
 
@@ -490,19 +504,21 @@
         </label>
       </div>
 
-      <label>View</label>
-      <div class="switch-toggle switch-holo">
-        <input id="week81" name="view8" type="radio" checked>
-        <label for="week81" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle switch-holo">
+          <input id="week81" name="view8" type="radio" checked>
+          <label for="week81" onclick="">Week</label>
 
-        <input id="month82" name="view8" type="radio">
-        <label for="month82" onclick="">Month</label>
+          <input id="month82" name="view8" type="radio">
+          <label for="month82" onclick="">Month</label>
 
-        <input id="month83" name="view8" type="radio">
-        <label for="month83" onclick="">Year</label>
+          <input id="month83" name="view8" type="radio">
+          <label for="month83" onclick="">Year</label>
 
-        <a></a>
-      </div>
+          <a></a>
+        </div>
+      </fieldset>
 
     </div>
 
@@ -523,19 +539,21 @@
         </span>
       </label>
 
-      <label>View</label>
-      <div class="switch-toggle switch-ios">
-        <input id="week11" name="view10" type="radio" checked>
-        <label for="week11" onclick="">Week</label>
+      <fieldset>
+        <legend>View</legend>
+        <div class="switch-toggle switch-ios">
+          <input id="week11" name="view10" type="radio" checked>
+          <label for="week11" onclick="">Week</label>
 
-        <input id="month12" name="view10" type="radio">
-        <label for="month12" onclick="">Month</label>
+          <input id="month12" name="view10" type="radio">
+          <label for="month12" onclick="">Month</label>
 
-        <input id="month13" name="view10" type="radio">
-        <label for="month13" onclick="">Year</label>
+          <input id="month13" name="view10" type="radio">
+          <label for="month13" onclick="">Year</label>
 
-        <a></a>
-      </div>
+          <a></a>
+        </div>
+      </fieldset>
 
     </div>
 
@@ -553,10 +571,36 @@
 
     <p><strong>Browsers without support for media-queries, such as IE8 and below, get standard form elements. </strong></p>
 
-    <p>The <code>onclick=""</code> attribute is required for older iOS and Opera Mini support. </p>
-
   </div>
 
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h2>Tips</h2>
+
+<ul>
+  <li>
+    <p>
+      The <code>onclick=""</code> attribute is required for older iOS and Opera Mini support.
+    </p>
+  </li>
+  <li>
+    <p>
+      If your light switch option labels are <em>"On/Off"</em>, you can prevent screen readers from reading them by using <code>aria-hidden="true"</code>.
+    </p>
+
+<pre><code class="language-html">&lt;span aria-hidden=&quot;true&quot;&gt;
+  &lt;span&gt;Off&lt;/span&gt;
+  &lt;span&gt;On&lt;/span&gt;
+  &lt;a&gt;&lt;/a&gt;
+&lt;/span&gt;</code></pre>
+
+
+  </li>
+</ul>
+
+  </div>
 </div>
 
 <div class="row">
