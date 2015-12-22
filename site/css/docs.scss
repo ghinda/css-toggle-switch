@@ -221,12 +221,20 @@ header {
   padding: 0;
 }
 
-label {
+label,
+legend {
   color: $white;
+  font-size: 14px;
+}
+
+legend {
+  margin-bottom: 0;
+  border: 0;
 }
 
 /* bootstrap switch-toggle with .alert
  */
+.alert label,
 .callout label {
   color: #333;
 }
@@ -235,9 +243,9 @@ label {
   margin: emCalc(20) 0 0;
 }
 
-.row.toggle-demo > label,
+.row.toggle-demo > legend,
 .row.toggle-demo > .switch-light strong {
-  padding-top: emCalc(6);
+  padding-top: emCalc(5);
 }
 
 .row.toggle-demo > .switch-light {
@@ -319,7 +327,8 @@ body pre[class*="language-"] {
   background: #F3F3F3;
 }
 
-.example-light label {
+.example-light label,
+.example-light legend {
   color: #333;
 }
 
