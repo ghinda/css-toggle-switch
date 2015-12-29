@@ -17,7 +17,7 @@ With [npm](https://www.npmjs.com/package/css-toggle-switch): `npm install --save
 From [jsDelivr](https://www.jsdelivr.com/projects/css-toggle-switch)
 
 ```
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/css-toggle-switch.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" />
 ```
 
 
