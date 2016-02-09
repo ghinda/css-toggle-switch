@@ -1,0 +1,40 @@
+/* BUIAC promo
+*/
+
+.promo-buiac {
+  width: 16em;
+  margin: 1em auto;
+  padding: 1em;
+  background: #222;
+
+  font-size: .8em;
+}
+
+.promo-buiac p {
+  margin: 0;
+}
+
+.promo-buiac img {
+  margin-bottom: 1em;
+  width: 8em;
+}
+
+@media (min-width: 40em) {
+  .promo-buiac {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
+}
+
+@media (min-width: 64em) {
+  .promo-buiac {
+    position: relative;
+  }
+}
+
+@media (min-width: 76em) {
+  .promo-buiac {
+    position: absolute;
+  }
+}

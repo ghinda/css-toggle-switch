@@ -41,6 +41,7 @@ module.exports = function (grunt) {
             return [
               lrSnippet,
               mountFolder(connect, './build/'),
+              mountFolder(connect, './site/'),
               mountFolder(connect, './')
             ];
           }
@@ -151,6 +152,14 @@ module.exports = function (grunt) {
               'bower_components/**',
               'test/**',
               'dist/**'
+            ],
+            dest: 'build/'
+          },
+          {
+            expand: true,
+            cwd: 'site/',
+            src: [
+              'images/**'
             ],
             dest: 'build/'
           }
