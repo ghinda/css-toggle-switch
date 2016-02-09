@@ -51,6 +51,36 @@ you can use the generic selector below, but it's slower:
 .icon-arrow-down:before {
   content: "\e002"; }
 
+/* BUIAC promo
+*/
+.promo-buiac {
+  width: 16em;
+  margin: 1em auto;
+  padding: 1em;
+  background: #222;
+  font-size: .8em; }
+
+.promo-buiac p {
+  margin: 0; }
+
+.promo-buiac img {
+  margin-bottom: 1em;
+  width: 8em; }
+
+@media (min-width: 40em) {
+  .promo-buiac {
+    position: absolute;
+    top: 1em;
+    right: 1em; } }
+
+@media (min-width: 64em) {
+  .promo-buiac {
+    position: relative; } }
+
+@media (min-width: 76em) {
+  .promo-buiac {
+    position: absolute; } }
+
 body {
   font-size: 16px;
   margin: 1.75em 0;
