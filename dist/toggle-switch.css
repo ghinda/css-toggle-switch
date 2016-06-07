@@ -425,9 +425,9 @@
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    -webkit-transition: -webkit-transform;
-    -moz-transition: -moz-transform;
-    transition: transform; }
+    -webkit-transition: -webkit-transform 0.4s ease-in;
+    -moz-transition: -moz-transform 0.4s ease-in;
+    transition: transform 0.4s ease-in; }
   .switch-toggle.switch-material label {
     color: rgba(0, 0, 0, 0.54);
     font-size: 1em; }
