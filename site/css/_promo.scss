@@ -1,27 +1,2 @@
 /* promo
 */
-
-.promo-affiliate {
-  display: none;
-}
-
-@media (min-width: 64em) {
-  .promo-affiliate {
-    display: block;
-
-    position: fixed;
-    top: 1em;
-    right: 1em;
-  }
-
-  .promo-affiliate img {
-    width: 6em;
-    height: auto;
-  }
-}
-
-@media (min-width: 76em) {
-  .promo-affiliate img {
-    width: auto;
-  }
-}
