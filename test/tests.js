@@ -78,7 +78,7 @@ window.onload = function() {
     testSwitchTheme('Bootstrap', 'bootstrap');
     testSwitchTheme('Foundation', 'foundation');
 
-  }, 1000);
+  }, 2000);
 
 };
 
