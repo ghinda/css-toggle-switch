@@ -3,7 +3,6 @@ var LIVERELOAD_PORT = 35729;
 
 module.exports = function (grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  grunt.loadNpmTasks('assemble');
 
   grunt.initConfig({
     watch: {
