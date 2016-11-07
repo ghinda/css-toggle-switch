@@ -1,6 +1,8 @@
 # CSS Toggle Switch
 
 [![Build Status](https://travis-ci.org/ghinda/css-toggle-switch.png)](https://travis-ci.org/ghinda/css-toggle-switch)
+[![Downloads](https://img.shields.io/npm/dt/css-toggle-switch.svg)](https://www.npmjs.com/package/css-toggle-switch)
+[![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/ionutcolceriu?utm_source=github&utm_medium=button&utm_term=ionutcolceriu&utm_campaign=github)
 
 CSS Toggle Switches are a set of accessible CSS-only *switch* components, created from standard form controls in the markup.
 
