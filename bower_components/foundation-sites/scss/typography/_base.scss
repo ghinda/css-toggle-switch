@@ -36,7 +36,7 @@ $header-font-style: normal !default;
 
 /// Font stack used for elements that use monospaced type, such as code samples
 /// @type String | List
-$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
+$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace !default;
 
 /// Sizes of headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading sizes.
 /// @type Map
@@ -141,7 +141,7 @@ $hr-width: $global-width !default;
 
 /// Default border for a divider.
 /// @type List
-$hr-border: 1px solid $medium-gray;
+$hr-border: 1px solid $medium-gray !default;
 
 /// Default margin for a divider.
 /// @type Number | List
@@ -306,7 +306,9 @@ $abbr-underline: 1px dotted $black !default;
   @each $size, $headers in $header-sizes {
     @include breakpoint($size) {
       @each $header, $font-size in $headers {
-        #{$header} { font-size: rem-calc($font-size); }
+        #{$header} {
+          font-size: rem-calc($font-size);
+        }
       }
     }
   }
@@ -335,8 +337,10 @@ $abbr-underline: 1px dotted $black !default;
   hr {
     max-width: $hr-width;
     height: 0;
+    border-right: 0;
     border-top: 0;
     border-bottom: $hr-border;
+    border-left: 0;
     margin: $hr-margin;
     clear: both;
   }
@@ -371,7 +375,6 @@ $abbr-underline: 1px dotted $black !default;
     & & {
       margin-#{$global-left}: $list-nested-side-margin;
       margin-bottom: 0;
-      list-style-type: inherit;
     }
   }
 
@@ -432,5 +435,9 @@ $abbr-underline: 1px dotted $black !default;
     background-color: $keystroke-background;
     color: $keystroke-color;
     font-family: $keystroke-font;
+
+    @if has-value($keystroke-radius) {
+      border-radius: $keystroke-radius;
+    }
   }
 }

@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/jquery/qunit.svg?branch=master)](https://travis-ci.org/jquery/qunit) [![Coverage Status](https://coveralls.io/repos/jquery/qunit/badge.svg)](https://coveralls.io/github/jquery/qunit)
+[![Travis Build Status](https://travis-ci.org/jquery/qunit.svg?branch=master)](https://travis-ci.org/jquery/qunit) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jquery/qunit?svg=true&branch=master)](https://ci.appveyor.com/project/leobalter/qunit) [![Coverage Status](https://coveralls.io/repos/jquery/qunit/badge.svg)](https://coveralls.io/github/jquery/qunit)
 
-# [QUnit](http://qunitjs.com) - A JavaScript Unit Testing Framework.
+# [QUnit](https://qunitjs.com) - A JavaScript Unit Testing Framework.
 
 QUnit is a powerful, easy-to-use, JavaScript unit testing framework. It's used by the jQuery
 project to test its code and plugins but is capable of testing any generic
@@ -22,17 +22,17 @@ with its stop/start facilities for testing asynchronous code.
 
 If you are interested in helping developing QUnit, you are in the right place.
 For related discussions, visit the
-[QUnit and Testing forum](http://forum.jquery.com/qunit-and-testing).
+[QUnit and Testing forum](https://forum.jquery.com/qunit-and-testing).
 
 ## Development
 
 To submit patches, fork the repository, create a branch for the change. Then implement
-the change, run `grunt` to lint and test it, then commit, push and create a pull request.
+the change, run `npm test` to lint and test it, then commit, push and create a pull request.
 
 Include some background for the change in the commit message and `Fixes #nnn`, referring
 to the issue number you're addressing.
 
-To run `grunt`, you need [Node.js](http://nodejs.org/download/), which includes `npm`, then `npm install -g grunt-cli`. That gives you a global grunt binary. For additional grunt tasks, also run `npm install`.
+To run `npm test`, you need [Node.js](https://nodejs.org/download/), which includes `npm`.
 
 ## Releases
 

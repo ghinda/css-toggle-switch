@@ -1,7 +1,7 @@
 var toString = Object.prototype.toString,
 	hasOwn = Object.prototype.hasOwnProperty;
 
-// returns a new Array with the elements that are in a but not in b
+// Returns a new Array with the elements that are in a but not in b
 function diff( a, b ) {
 	var i, j,
 		result = a.slice();
@@ -18,7 +18,7 @@ function diff( a, b ) {
 	return result;
 }
 
-// from jquery.js
+// From jquery.js
 function inArray( elem, array ) {
 	if ( array.indexOf ) {
 		return array.indexOf( elem );
@@ -55,16 +55,10 @@ function objectValues ( obj ) {
 function extend( a, b, undefOnly ) {
 	for ( var prop in b ) {
 		if ( hasOwn.call( b, prop ) ) {
-
-			// Avoid "Member not found" error in IE8 caused by messing with window.constructor
-			// This block runs on every environment, so `global` is being used instead of `window`
-			// to avoid errors on node.
-			if ( prop !== "constructor" || a !== global ) {
-				if ( b[ prop ] === undefined ) {
-					delete a[ prop ];
-				} else if ( !( undefOnly && typeof a[ prop ] !== "undefined" ) ) {
-					a[ prop ] = b[ prop ];
-				}
+			if ( b[ prop ] === undefined ) {
+				delete a[ prop ];
+			} else if ( !( undefOnly && typeof a[ prop ] !== "undefined" ) ) {
+				a[ prop ] = b[ prop ];
 			}
 		}
 	}
@@ -111,28 +105,3 @@ function objectType( obj ) {
 function is( type, obj ) {
 	return QUnit.objectType( obj ) === type;
 }
-
-var getUrlParams = function() {
-	var i, current;
-	var urlParams = {};
-	var location = window.location;
-	var params = location.search.slice( 1 ).split( "&" );
-	var length = params.length;
-
-	if ( params[ 0 ] ) {
-		for ( i = 0; i < length; i++ ) {
-			current = params[ i ].split( "=" );
-			current[ 0 ] = decodeURIComponent( current[ 0 ] );
-
-			// allow just a key to turn on a flag, e.g., test.html?noglobals
-			current[ 1 ] = current[ 1 ] ? decodeURIComponent( current[ 1 ] ) : true;
-			if ( urlParams[ current[ 0 ] ] ) {
-				urlParams[ current[ 0 ] ] = [].concat( urlParams[ current[ 0 ] ], current[ 1 ] );
-			} else {
-				urlParams[ current[ 0 ] ] = current[ 1 ];
-			}
-		}
-	}
-
-	return urlParams;
-};

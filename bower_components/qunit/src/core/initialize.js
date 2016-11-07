@@ -14,7 +14,7 @@ var window = global.window;
 var defined = {
 	document: window && window.document !== undefined,
 	setTimeout: setTimeout !== undefined,
-	sessionStorage: (function() {
+	sessionStorage: ( function() {
 		var x = "qunit-test-string";
 		try {
 			sessionStorage.setItem( x, x );
@@ -29,3 +29,5 @@ var defined = {
 var fileName = ( sourceFromStacktrace( 0 ) || "" ).replace( /(:\d+)+\)?/, "" ).replace( /.+\//, "" );
 var globalStartCalled = false;
 var runStarted = false;
+
+var autorun = false;
