@@ -1,5 +1,3 @@
-QUnit.urlParams = urlParams;
-
 // Figure out if we're running the tests from a server or not
 QUnit.isLocal = !( defined.document && window.location.protocol !== "file:" );
 
@@ -8,37 +6,36 @@ QUnit.version = "@VERSION";
 
 extend( QUnit, {
 
-	// call on start of module test to prepend name to all tests
+	// Call on start of module test to prepend name to all tests
 	module: function( name, testEnvironment, executeNow ) {
 		var module, moduleFns;
 		var currentModule = config.currentModule;
 
 		if ( arguments.length === 2 ) {
-			if ( testEnvironment instanceof Function ) {
+			if ( objectType( testEnvironment ) === "function" ) {
 				executeNow = testEnvironment;
 				testEnvironment = undefined;
 			}
 		}
 
-		// DEPRECATED: handles setup/teardown functions,
-		// beforeEach and afterEach should be used instead
-		if ( testEnvironment && testEnvironment.setup ) {
-			testEnvironment.beforeEach = testEnvironment.setup;
-			delete testEnvironment.setup;
-		}
-		if ( testEnvironment && testEnvironment.teardown ) {
-			testEnvironment.afterEach = testEnvironment.teardown;
-			delete testEnvironment.teardown;
-		}
-
 		module = createModule();
 
+		if ( testEnvironment && ( testEnvironment.setup || testEnvironment.teardown ) ) {
+			console.warn(
+				"Module's `setup` and `teardown` are not hooks anymore on QUnit 2.0, use " +
+				"`beforeEach` and `afterEach` instead\n" +
+				"Details in our upgrade guide at https://qunitjs.com/upgrade-guide-2.x/"
+			);
+		}
+
 		moduleFns = {
+			before: setHook( module, "before" ),
 			beforeEach: setHook( module, "beforeEach" ),
-			afterEach: setHook( module, "afterEach" )
+			afterEach: setHook( module, "afterEach" ),
+			after: setHook( module, "after" )
 		};
 
-		if ( executeNow instanceof Function ) {
+		if ( objectType( executeNow ) === "function" ) {
 			config.moduleStack.push( module );
 			setCurrentModule( module );
 			executeNow.call( module.testEnvironment, moduleFns );
@@ -56,11 +53,14 @@ extend( QUnit, {
 			var module = {
 				name: moduleName,
 				parentModule: parentModule,
-				tests: []
+				tests: [],
+				moduleId: generateHash( moduleName ),
+				testsRun: 0
 			};
 
 			var env = {};
 			if ( parentModule ) {
+				parentModule.childModule = module;
 				extend( env, parentModule.testEnvironment );
 				delete env.beforeEach;
 				delete env.afterEach;
@@ -78,17 +78,12 @@ extend( QUnit, {
 
 	},
 
-	// DEPRECATED: QUnit.asyncTest() will be removed in QUnit 2.0.
-	asyncTest: asyncTest,
-
 	test: test,
 
 	skip: skip,
 
 	only: only,
 
-	// DEPRECATED: The functionality of QUnit.start() will be altered in QUnit 2.0.
-	// In QUnit 2.0, invoking it will ONLY affect the `QUnit.config.autostart` blocking behavior.
 	start: function( count ) {
 		var globalStartAlreadyCalled = globalStartCalled;
 
@@ -96,7 +91,7 @@ extend( QUnit, {
 			globalStartCalled = true;
 
 			if ( runStarted ) {
-				throw new Error( "Called start() outside of a test context while already started" );
+				throw new Error( "Called start() while test already started running" );
 			} else if ( globalStartAlreadyCalled || count > 1 ) {
 				throw new Error( "Called start() outside of a test context too many times" );
 			} else if ( config.autostart ) {
@@ -109,53 +104,14 @@ extend( QUnit, {
 				return;
 			}
 		} else {
-
-			// If a test is running, adjust its semaphore
-			config.current.semaphore -= count || 1;
-
-			// If semaphore is non-numeric, throw error
-			if ( isNaN( config.current.semaphore ) ) {
-				config.current.semaphore = 0;
-
-				QUnit.pushFailure(
-					"Called start() with a non-numeric decrement.",
-					sourceFromStacktrace( 2 )
-				);
-				return;
-			}
-
-			// Don't start until equal number of stop-calls
-			if ( config.current.semaphore > 0 ) {
-				return;
-			}
-
-			// throw an Error if start is called more often than stop
-			if ( config.current.semaphore < 0 ) {
-				config.current.semaphore = 0;
-
-				QUnit.pushFailure(
-					"Called start() while already started (test's semaphore was 0 already)",
-					sourceFromStacktrace( 2 )
-				);
-				return;
-			}
+			throw new Error(
+				"QUnit.start cannot be called inside a test context. This feature is removed in " +
+				"QUnit 2.0. For async tests, use QUnit.test() with assert.async() instead.\n" +
+				"Details in our upgrade guide at https://qunitjs.com/upgrade-guide-2.x/"
+			);
 		}
 
-		resumeProcessing();
-	},
-
-	// DEPRECATED: QUnit.stop() will be removed in QUnit 2.0.
-	stop: function( count ) {
-
-		// If there isn't a test running, don't allow QUnit.stop() to be called
-		if ( !config.current ) {
-			throw new Error( "Called stop() outside of a test context" );
-		}
-
-		// If a test is running, adjust its semaphore
-		config.current.semaphore += count || 1;
-
-		pauseProcessing();
+		scheduleBegin();
 	},
 
 	config: config,
@@ -179,10 +135,12 @@ extend( QUnit, {
 			filter: ""
 		}, true );
 
-		config.blocking = false;
+		if ( !runStarted ) {
+			config.blocking = false;
 
-		if ( config.autostart ) {
-			resumeProcessing();
+			if ( config.autostart ) {
+				scheduleBegin();
+			}
 		}
 	},
 
@@ -190,9 +148,23 @@ extend( QUnit, {
 		offset = ( offset || 0 ) + 2;
 		return sourceFromStacktrace( offset );
 	}
-});
+} );
 
 registerLoggingCallbacks( QUnit );
+
+function scheduleBegin() {
+
+	runStarted = true;
+
+	// Add a slight delay to allow definition of more modules and tests.
+	if ( defined.setTimeout ) {
+		setTimeout( function() {
+			begin();
+		}, 13 );
+	} else {
+		begin();
+	}
+}
 
 function begin() {
 	var i, l,
@@ -204,8 +176,6 @@ function begin() {
 		// Record the time of the test run's beginning
 		config.started = now();
 
-		verifyLoggingCallbacks();
-
 		// Delete the loose unnamed module if unused.
 		if ( config.modules[ 0 ].name === "" && config.modules[ 0 ].tests.length === 0 ) {
 			config.modules.shift();
@@ -213,17 +183,17 @@ function begin() {
 
 		// Avoid unnecessary information by not logging modules' test environments
 		for ( i = 0, l = config.modules.length; i < l; i++ ) {
-			modulesLog.push({
+			modulesLog.push( {
 				name: config.modules[ i ].name,
 				tests: config.modules[ i ].tests
-			});
+			} );
 		}
 
 		// The test run is officially beginning now
 		runLoggingCallbacks( "begin", {
 			totalTests: Test.count,
 			modules: modulesLog
-		});
+		} );
 	}
 
 	config.blocking = false;
@@ -257,47 +227,10 @@ function process( last ) {
 	}
 }
 
-function pauseProcessing() {
-	config.blocking = true;
-
-	if ( config.testTimeout && defined.setTimeout ) {
-		clearTimeout( config.timeout );
-		config.timeout = setTimeout(function() {
-			if ( config.current ) {
-				config.current.semaphore = 0;
-				QUnit.pushFailure( "Test timed out", sourceFromStacktrace( 2 ) );
-			} else {
-				throw new Error( "Test timed out" );
-			}
-			resumeProcessing();
-		}, config.testTimeout );
-	}
-}
-
-function resumeProcessing() {
-	runStarted = true;
-
-	// A slight delay to allow this iteration of the event loop to finish (more assertions, etc.)
-	if ( defined.setTimeout ) {
-		setTimeout(function() {
-			if ( config.current && config.current.semaphore > 0 ) {
-				return;
-			}
-			if ( config.timeout ) {
-				clearTimeout( config.timeout );
-			}
-
-			begin();
-		}, 13 );
-	} else {
-		begin();
-	}
-}
-
 function done() {
 	var runtime, passed;
 
-	config.autorun = true;
+	autorun = true;
 
 	// Log the last module results
 	if ( config.previousModule ) {
@@ -308,7 +241,7 @@ function done() {
 			passed: config.moduleStats.all - config.moduleStats.bad,
 			total: config.moduleStats.all,
 			runtime: now() - config.moduleStats.started
-		});
+		} );
 	}
 	delete config.previousModule;
 
@@ -320,7 +253,7 @@ function done() {
 		passed: passed,
 		total: config.stats.all,
 		runtime: runtime
-	});
+	} );
 }
 
 function setHook( module, hookName ) {

@@ -4,24 +4,17 @@
 	"test_framework": "qunit",
 	"test_path": [
 		"test/index.html",
-		"test/logs.html"
+		"test/logs.html",
+		"test/seed.html"
 	],
 	"browsers": [
 		"chrome_previous",
 		"firefox_previous",
 		"opera_previous",
-		"safari_5_1",
-		{
-			"browser": "safari",
-			"browser_version": "6.0"
-		},
 		{
 			"browser": "safari",
 			"browser_version": "8.0"
 		},
-		"ie_6",
-		"ie_7",
-		"ie_8",
 		"ie_9",
 		"ie_10",
 		{

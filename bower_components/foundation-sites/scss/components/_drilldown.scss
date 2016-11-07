@@ -12,34 +12,46 @@ $drilldown-transition: transform 0.15s linear !default;
 
 /// Adds arrows to drilldown items with submenus, as well as the back button.
 /// @type Boolean
-$drilldown-arrows: true;
+$drilldown-arrows: true !default;
+
+/// Sets drilldown arrow color if arrow is used.
+/// @type Color
+$drilldown-arrow-color: $primary-color !default;
+
+/// Background color for drilldown submenus.
+/// @type Color
+$drilldown-background: $white !default;
 
 @mixin foundation-drilldown-menu {
   // Applied to the Menu container
   .is-drilldown {
     position: relative;
     overflow: hidden;
+
+    li {
+      display: block !important;
+    }
   }
 
   // Applied to nested <ul>s
-  .is-drilldown-sub {
+  .is-drilldown-submenu {
     position: absolute;
     top: 0;
-    left: 100%;
+    #{$global-left}: 100%;
     z-index: -1;
-    height: 100%;
+    // height: 100%;
     width: 100%;
-    background: $white;
+    background: $drilldown-background;
     transition: $drilldown-transition;
 
     &.is-active {
       z-index: 1;
       display: block;
-      transform: translateX(-100%);
+      transform: translateX(if($global-text-direction == ltr, -100%, 100%));
     }
 
     &.is-closing {
-      transform: translateX(100%);
+      transform: translateX(if($global-text-direction == ltr, 100%, -100%));
     }
   }
 
@@ -48,20 +60,20 @@ $drilldown-arrows: true;
       position: relative;
 
       &::after {
-        @include css-triangle(6px, $primary-color, right);
+        @include css-triangle(6px, $drilldown-arrow-color, $global-right);
         position: absolute;
         top: 50%;
         margin-top: -6px;
-        right: 1rem;
+        #{$global-right}: 1rem;
       }
     }
 
-    .js-drilldown-back::before {
-      @include css-triangle(6px, $primary-color, left);
-      float: left;
-      margin-right: 0.75rem; // Creates space between the arrow and the text
-      margin-left: 0.6rem; // Lines the tip of the arrow with the items below
-      margin-top: 14px; // Aligns the arrow with the text
+    .js-drilldown-back > a::before {
+      @include css-triangle(6px, $drilldown-arrow-color, $global-left);
+      border-#{$global-left}-width: 0;
+      display: inline-block;
+      vertical-align: middle;
+      margin-#{$global-right}: 0.75rem; // Creates space between the arrow and the text
     }
   }
 }
