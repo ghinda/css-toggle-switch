@@ -1,6 +1,6 @@
 // Test for equality any JavaScript type.
 // Author: Philippe Rathé <prathe@gmail.com>
-QUnit.equiv = (function() {
+QUnit.equiv = ( function() {
 
 	// Stack to decide between skip/abort functions
 	var callers = [];
@@ -9,26 +9,28 @@ QUnit.equiv = (function() {
 	var parents = [];
 	var parentsB = [];
 
+	var getProto = Object.getPrototypeOf || function( obj ) {
+
+		/*jshint proto: true */
+		return obj.__proto__;
+	};
+
 	function useStrictEquality( b, a ) {
 
-		/*jshint eqeqeq:false */
-		if ( b instanceof a.constructor || a instanceof b.constructor ) {
-
-			// To catch short annotation VS 'new' annotation of a declaration. e.g.:
-			// `var i = 1;`
-			// `var j = new Number(1);`
-			return a == b;
-		} else {
-			return a === b;
+		// To catch short annotation VS 'new' annotation of a declaration. e.g.:
+		// `var i = 1;`
+		// `var j = new Number(1);`
+		if ( typeof a === "object" ) {
+			a = a.valueOf();
 		}
+		if ( typeof b === "object" ) {
+			b = b.valueOf();
+		}
+
+		return a === b;
 	}
 
 	function compareConstructors( a, b ) {
-		var getProto = Object.getPrototypeOf || function( obj ) {
-
-			/*jshint proto: true */
-			return obj.__proto__;
-		};
 		var protoA = getProto( a );
 		var protoB = getProto( b );
 
@@ -57,6 +59,10 @@ QUnit.equiv = (function() {
 		return false;
 	}
 
+	function getRegExpFlags( regexp ) {
+		return "flags" in regexp ? regexp.flags : regexp.toString().match( /[gimuy]*$/ )[ 0 ];
+	}
+
 	var callbacks = {
 		"string": useStrictEquality,
 		"boolean": useStrictEquality,
@@ -64,28 +70,17 @@ QUnit.equiv = (function() {
 		"null": useStrictEquality,
 		"undefined": useStrictEquality,
 		"symbol": useStrictEquality,
+		"date": useStrictEquality,
 
-		"nan": function( b ) {
-			return isNaN( b );
-		},
-
-		"date": function( b, a ) {
-			return QUnit.objectType( b ) === "date" && a.valueOf() === b.valueOf();
+		"nan": function() {
+			return true;
 		},
 
 		"regexp": function( b, a ) {
-			return QUnit.objectType( b ) === "regexp" &&
+			return a.source === b.source &&
 
-				// The regex itself
-				a.source === b.source &&
-
-				// And its modifiers
-				a.global === b.global &&
-
-				// (gmi) ...
-				a.ignoreCase === b.ignoreCase &&
-				a.multiline === b.multiline &&
-				a.sticky === b.sticky;
+				// Include flags in the comparison
+				getRegExpFlags( a ) === getRegExpFlags( b );
 		},
 
 		// - skip when the property is a method of an instance (OOP)
@@ -99,14 +94,10 @@ QUnit.equiv = (function() {
 		"array": function( b, a ) {
 			var i, j, len, loop, aCircular, bCircular;
 
-			// b could be an object literal here
-			if ( QUnit.objectType( b ) !== "array" ) {
-				return false;
-			}
-
 			len = a.length;
 			if ( len !== b.length ) {
-				// safe and faster
+
+				// Safe and faster
 				return false;
 			}
 
@@ -140,43 +131,53 @@ QUnit.equiv = (function() {
 		},
 
 		"set": function( b, a ) {
-			var aArray, bArray;
+			var innerEq,
+				outerEq = true;
 
-			// `b` could be any object here
-			if ( QUnit.objectType( b ) !== "set" ) {
+			if ( a.size !== b.size ) {
 				return false;
 			}
 
-			aArray = [];
-			a.forEach( function( v ) {
-				aArray.push( v );
-			});
-			bArray = [];
-			b.forEach( function( v ) {
-				bArray.push( v );
-			});
+			a.forEach( function( aVal ) {
+				innerEq = false;
 
-			return innerEquiv( bArray, aArray );
+				b.forEach( function( bVal ) {
+					if ( innerEquiv( bVal, aVal ) ) {
+						innerEq = true;
+					}
+				} );
+
+				if ( !innerEq ) {
+					outerEq = false;
+				}
+			} );
+
+			return outerEq;
 		},
 
 		"map": function( b, a ) {
-			var aArray, bArray;
+			var innerEq,
+				outerEq = true;
 
-			// `b` could be any object here
-			if ( QUnit.objectType( b ) !== "map" ) {
+			if ( a.size !== b.size ) {
 				return false;
 			}
 
-			aArray = [];
-			a.forEach( function( v, k ) {
-				aArray.push( [ k, v ] );
-			});
-			bArray = [];
-			b.forEach( function( v, k ) {
-				bArray.push( [ k, v ] );
-			});
+			a.forEach( function( aVal, aKey ) {
+				innerEq = false;
 
-			return innerEquiv( bArray, aArray );
+				b.forEach( function( bVal, bKey ) {
+					if ( innerEquiv( [ bVal, bKey ], [ aVal, aKey ] ) ) {
+						innerEq = true;
+					}
+				} );
+
+				if ( !innerEq ) {
+					outerEq = false;
+				}
+			} );
+
+			return outerEq;
 		},
 
 		"object": function( b, a ) {
@@ -238,38 +239,24 @@ QUnit.equiv = (function() {
 	};
 
 	function typeEquiv( a, b ) {
-		var prop = QUnit.objectType( a );
-		return callbacks[ prop ]( b, a );
+		var type = QUnit.objectType( a );
+		return QUnit.objectType( b ) === type && callbacks[ type ]( b, a );
 	}
 
 	// The real equiv function
-	function innerEquiv() {
-		var args = [].slice.apply( arguments );
-		if ( args.length < 2 ) {
+	function innerEquiv( a, b ) {
 
-			// End transition
+		// We're done when there's nothing more to compare
+		if ( arguments.length < 2 ) {
 			return true;
 		}
 
-		return ( (function( a, b ) {
-			if ( a === b ) {
+		// Require type-specific equality
+		return ( a === b || typeEquiv( a, b ) ) &&
 
-				// Catch the most you can
-				return true;
-			} else if ( a === null || b === null || typeof a === "undefined" ||
-					typeof b === "undefined" ||
-					QUnit.objectType( a ) !== QUnit.objectType( b ) ) {
-
-				// Don't lose time with error prone cases
-				return false;
-			} else {
-				return typeEquiv( a, b );
-			}
-
-		// Apply transition with (1..n) arguments
-		}( args[ 0 ], args[ 1 ] ) ) &&
-			innerEquiv.apply( this, args.splice( 1, args.length - 1 ) ) );
+			// ...across all consecutive argument pairs
+			( arguments.length === 2 || innerEquiv.apply( this, [].slice.call( arguments, 1 ) ) );
 	}
 
 	return innerEquiv;
-}());
+}() );

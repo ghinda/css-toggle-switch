@@ -32,7 +32,7 @@ $switch-height-large: 2.5rem !default;
 
 /// Border radius of the switch
 /// @type Number
-$switch-radius: $global-radius;
+$switch-radius: $global-radius !default;
 
 /// border around a modal.
 /// @type Number
@@ -75,6 +75,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 @mixin switch-input {
   opacity: 0;
   position: absolute;
+  margin-bottom: 0;
 }
 
 /// Adds styles for the background and paddle of a switch. Apply this to a `<label>` within a switch.
@@ -109,6 +110,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     width: 1.5rem;
     transition: $switch-paddle-transition;
     transform: translate3d(0, 0, 0);
+    border-radius: $switch-paddle-radius;
   }
 
   // Change the visual style when the switch is active
@@ -167,6 +169,8 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   $paddle-height: $height - ($paddle-offset * 2);
   $paddle-left-active: $width - $paddle-width - $paddle-offset;
 
+  height: $height;
+  
   .switch-paddle {
     width: $width;
     height: $height;
@@ -178,7 +182,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     height: $paddle-height;
   }
 
-  input:checked ~ .switch-paddle:after {
+  input:checked ~ .switch-paddle::after {
     #{$global-left}: $paddle-left-active;
   }
 }
@@ -186,6 +190,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 @mixin foundation-switch {
   // Container class
   .switch {
+    height: $switch-height;
     @include switch-container;
   }
 

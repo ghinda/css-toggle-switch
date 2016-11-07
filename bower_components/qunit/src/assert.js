@@ -15,10 +15,10 @@ QUnit.assert = Assert.prototype = {
 		}
 	},
 
-	// Increment this Test's semaphore counter, then return a function that
-	// decrements that counter a maximum of once.
+	// Put a hold on processing and return a function that will release it a maximum of once.
 	async: function( count ) {
-		var test = this.test,
+		var resume,
+			test = this.test,
 			popped = false,
 			acceptCallCount = count;
 
@@ -26,9 +26,8 @@ QUnit.assert = Assert.prototype = {
 			acceptCallCount = 1;
 		}
 
-		test.semaphore += 1;
 		test.usedAsync = true;
-		pauseProcessing();
+		resume = internalStop( test );
 
 		return function done() {
 
@@ -42,14 +41,27 @@ QUnit.assert = Assert.prototype = {
 				return;
 			}
 
-			test.semaphore -= 1;
 			popped = true;
-			resumeProcessing();
+			resume();
 		};
 	},
 
 	// Exports test.push() to the user API
-	push: function( /* result, actual, expected, message, negative */ ) {
+	// Alias of pushResult.
+	push: function( result, actual, expected, message, negative ) {
+		var currentAssert = this instanceof Assert ? this : QUnit.config.current.assert;
+		return currentAssert.pushResult( {
+			result: result,
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: negative
+		} );
+	},
+
+	pushResult: function( resultInfo ) {
+
+		// Destructure of resultInfo = { result, actual, expected, message, negative }
 		var assert = this,
 			currentTest = ( assert instanceof Assert && assert.test ) || QUnit.config.current;
 
@@ -72,57 +84,112 @@ QUnit.assert = Assert.prototype = {
 		if ( !( assert instanceof Assert ) ) {
 			assert = currentTest.assert;
 		}
-		return assert.test.push.apply( assert.test, arguments );
+
+		return assert.test.pushResult( resultInfo );
 	},
 
 	ok: function( result, message ) {
 		message = message || ( result ? "okay" : "failed, expected argument to be truthy, was: " +
 			QUnit.dump.parse( result ) );
-		this.push( !!result, result, true, message );
+		this.pushResult( {
+			result: !!result,
+			actual: result,
+			expected: true,
+			message: message
+		} );
 	},
 
 	notOk: function( result, message ) {
 		message = message || ( !result ? "okay" : "failed, expected argument to be falsy, was: " +
 			QUnit.dump.parse( result ) );
-		this.push( !result, result, false, message, true );
+		this.pushResult( {
+			result: !result,
+			actual: result,
+			expected: false,
+			message: message
+		} );
 	},
 
 	equal: function( actual, expected, message ) {
 		/*jshint eqeqeq:false */
-		this.push( expected == actual, actual, expected, message );
+		this.pushResult( {
+			result: expected == actual,
+			actual: actual,
+			expected: expected,
+			message: message
+		} );
 	},
 
 	notEqual: function( actual, expected, message ) {
 		/*jshint eqeqeq:false */
-		this.push( expected != actual, actual, expected, message, true );
+		this.pushResult( {
+			result: expected != actual,
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: true
+		} );
 	},
 
 	propEqual: function( actual, expected, message ) {
 		actual = objectValues( actual );
 		expected = objectValues( expected );
-		this.push( QUnit.equiv( actual, expected ), actual, expected, message );
+		this.pushResult( {
+			result: QUnit.equiv( actual, expected ),
+			actual: actual,
+			expected: expected,
+			message: message
+		} );
 	},
 
 	notPropEqual: function( actual, expected, message ) {
 		actual = objectValues( actual );
 		expected = objectValues( expected );
-		this.push( !QUnit.equiv( actual, expected ), actual, expected, message, true );
+		this.pushResult( {
+			result: !QUnit.equiv( actual, expected ),
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: true
+		} );
 	},
 
 	deepEqual: function( actual, expected, message ) {
-		this.push( QUnit.equiv( actual, expected ), actual, expected, message );
+		this.pushResult( {
+			result: QUnit.equiv( actual, expected ),
+			actual: actual,
+			expected: expected,
+			message: message
+		} );
 	},
 
 	notDeepEqual: function( actual, expected, message ) {
-		this.push( !QUnit.equiv( actual, expected ), actual, expected, message, true );
+		this.pushResult( {
+			result: !QUnit.equiv( actual, expected ),
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: true
+		} );
 	},
 
 	strictEqual: function( actual, expected, message ) {
-		this.push( expected === actual, actual, expected, message );
+		this.pushResult( {
+			result: expected === actual,
+			actual: actual,
+			expected: expected,
+			message: message
+		} );
 	},
 
 	notStrictEqual: function( actual, expected, message ) {
-		this.push( expected !== actual, actual, expected, message, true );
+		this.pushResult( {
+			result: expected !== actual,
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: true
+		} );
 	},
 
 	"throws": function( block, expected, message ) {
@@ -132,15 +199,23 @@ QUnit.assert = Assert.prototype = {
 			currentTest = ( this instanceof Assert && this.test ) || QUnit.config.current;
 
 		// 'expected' is optional unless doing string comparison
-		if ( message == null && typeof expected === "string" ) {
-			message = expected;
-			expected = null;
+		if ( QUnit.objectType( expected ) === "string" ) {
+			if ( message == null ) {
+				message = expected;
+				expected = null;
+			} else {
+				throw new Error(
+					"throws/raises does not accept a string value for the expected argument.\n" +
+					"Use a non-string object value (e.g. regExp) instead if it's necessary." +
+					"Details in our upgrade guide at https://qunitjs.com/upgrade-guide-2.x/"
+				);
+			}
 		}
 
 		currentTest.ignoreGlobalErrors = true;
 		try {
 			block.call( currentTest.testEnvironment );
-		} catch (e) {
+		} catch ( e ) {
 			actual = e;
 		}
 		currentTest.ignoreGlobalErrors = false;
@@ -148,46 +223,47 @@ QUnit.assert = Assert.prototype = {
 		if ( actual ) {
 			expectedType = QUnit.objectType( expected );
 
-			// we don't want to validate thrown error
+			// We don't want to validate thrown error
 			if ( !expected ) {
 				ok = true;
 				expectedOutput = null;
 
-			// expected is a regexp
+			// Expected is a regexp
 			} else if ( expectedType === "regexp" ) {
 				ok = expected.test( errorString( actual ) );
 
-			// expected is a string
-			} else if ( expectedType === "string" ) {
-				ok = expected === errorString( actual );
-
-			// expected is a constructor, maybe an Error constructor
+			// Expected is a constructor, maybe an Error constructor
 			} else if ( expectedType === "function" && actual instanceof expected ) {
 				ok = true;
 
-			// expected is an Error object
+			// Expected is an Error object
 			} else if ( expectedType === "object" ) {
 				ok = actual instanceof expected.constructor &&
 					actual.name === expected.name &&
 					actual.message === expected.message;
 
-			// expected is a validation function which returns true if validation passed
+			// Expected is a validation function which returns true if validation passed
 			} else if ( expectedType === "function" && expected.call( {}, actual ) === true ) {
 				expectedOutput = null;
 				ok = true;
 			}
 		}
 
-		currentTest.assert.push( ok, actual, expectedOutput, message );
+		currentTest.assert.pushResult( {
+			result: ok,
+			actual: actual,
+			expected: expectedOutput,
+			message: message
+		} );
 	}
 };
 
 // Provide an alternative to assert.throws(), for environments that consider throws a reserved word
 // Known to us are: Closure Compiler, Narwhal
-(function() {
+( function() {
 	/*jshint sub:true */
-	Assert.prototype.raises = Assert.prototype[ "throws" ];
-}());
+	Assert.prototype.raises = Assert.prototype [ "throws" ]; //jscs:ignore requireDotNotation
+}() );
 
 function errorString( error ) {
 	var name, message,

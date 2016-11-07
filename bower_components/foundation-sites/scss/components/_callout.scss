@@ -6,7 +6,7 @@
 /// @group callout
 ////
 
-/// Defualt background color.
+/// Default background color.
 /// @type Color
 $callout-background: $white !default;
 
@@ -14,7 +14,7 @@ $callout-background: $white !default;
 /// @type Number
 $callout-background-fade: 85% !default;
 
-/// Defualt border style for callouts.
+/// Default border style for callouts.
 /// @type List
 $callout-border: 1px solid rgba($black, 0.25) !default;
 
@@ -40,7 +40,7 @@ $callout-radius: $global-radius !default;
 
 /// Amount to tint links used within colored panels. Set to `false` to disable this feature.
 /// @type Number | Boolean
-$callout-link-tint: 30%;
+$callout-link-tint: 30% !default;
 
 /// Adds basic styles for a callout, including padding and margin.
 @mixin callout-base() {
@@ -49,6 +49,7 @@ $callout-link-tint: 30%;
   border: $callout-border;
   border-radius: $callout-radius;
   position: relative;
+  color: $callout-font-color;
 
   // Respect the padding, fool.
   > :first-child {
@@ -60,23 +61,12 @@ $callout-link-tint: 30%;
   }
 }
 
-/// Generate quick styles for a callout using a single color as a baseline. If `$callout-link-tint` is enabled, links within colored panels will be a darker version of the background.
+/// Generate quick styles for a callout using a single color as a baseline.
 /// @param {Color} $color [$callout-background] - Color to use.
 @mixin callout-style($color: $callout-background) {
   $background: scale-color($color, $lightness: $callout-background-fade);
-  $link-color: scale-color($color, $lightness: -$callout-link-tint);
 
   background-color: $background;
-
-  @if $callout-link-tint and hue($background) > 0deg {
-    a {
-      color: $link-color;
-
-      &:hover {
-        color: darken($link-color, 15%);
-      }
-    }
-  }
 }
 
 @mixin callout-size($padding) {
@@ -98,14 +88,14 @@ $callout-link-tint: 30%;
   .callout {
     @include callout;
 
-    @each $name, $color in $foundation-colors {
+    @each $name, $color in $foundation-palette {
       &.#{$name} {
         @include callout-style($color);
       }
     }
 
     &.small {
-      @include callout-size(.5rem);
+      @include callout-size(0.5rem);
     }
 
     &.large {

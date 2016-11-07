@@ -14,7 +14,7 @@
 ///   - A single digit will make the column span that number of columns wide, taking into account the column count of the parent row.
 ///   - A string of the format "x of y" will make a column that is *x* columns wide, assuming *y* total columns for the parent.
 ///
-/// @return {Number} A calculated percentage value.
+/// @returns {Number} A calculated percentage value.
 @function grid-column($columns) {
   $width: 0%;
 
@@ -57,29 +57,43 @@
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
-  @if ($columns <= $grid-column-count) {
-    @include grid-column-size($columns);
+  @include grid-column-size($columns);
+  float: $global-left;
+
+  // Gutters
+  @if type-of($gutter) == 'map' {
+    @each $breakpoint, $value in $gutter {
+      $padding: rem-calc($value) / 2;
+
+      @include breakpoint($breakpoint) {
+        padding-left: $padding;
+        padding-right: $padding;
+      }
+    }
+  }
+  @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
+    $padding: rem-calc($gutter) / 2;
+    padding-left: $padding;
+    padding-right: $padding;
   }
 
-  $gutter: rem-calc($gutter) / 2;
-
-  float: $global-left;
-  padding-left: $gutter;
-  padding-right: $gutter;
-
-  &:last-child:not(:first-child) {
-    float: $global-right;
+  // Last column alignment
+  @if $grid-column-align-edge {
+    &:last-child:not(:first-child) {
+      float: $global-right;
+    }
   }
 }
 
 /// Creates a grid column row. This is the equivalent of adding `.row` and `.column` to the same element.
+///
 /// @param {Number} $gutter [$grid-column-gutter] - Width of the gutters on either side of the column row.
 @mixin grid-column-row(
   $gutter: $grid-column-gutter
 ) {
   @include grid-row;
   @include grid-column($gutter: $gutter);
-  
+
   &,
   &:last-child {
     float: none;

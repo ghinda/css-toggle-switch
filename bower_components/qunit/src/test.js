@@ -1,10 +1,13 @@
-var focused = false;
+var unitSampler,
+	focused = false,
+	priorityCount = 0;
 
 function Test( settings ) {
 	var i, l;
 
 	++Test.count;
 
+	this.expected = null;
 	extend( this, settings );
 	this.assertions = [];
 	this.semaphore = 0;
@@ -21,10 +24,10 @@ function Test( settings ) {
 
 	this.testId = generateHash( this.module.name, this.testName );
 
-	this.module.tests.push({
+	this.module.tests.push( {
 		name: this.testName,
 		testId: this.testId
-	});
+	} );
 
 	if ( settings.skip ) {
 
@@ -60,21 +63,23 @@ Test.prototype = {
 					passed: config.moduleStats.all - config.moduleStats.bad,
 					total: config.moduleStats.all,
 					runtime: now() - config.moduleStats.started
-				});
+				} );
 			}
 			config.previousModule = this.module;
 			config.moduleStats = { all: 0, bad: 0, started: now() };
 			runLoggingCallbacks( "moduleStart", {
 				name: this.module.name,
 				tests: this.module.tests
-			});
+			} );
 		}
 
 		config.current = this;
 
 		if ( this.module.testEnvironment ) {
+			delete this.module.testEnvironment.before;
 			delete this.module.testEnvironment.beforeEach;
 			delete this.module.testEnvironment.afterEach;
+			delete this.module.testEnvironment.after;
 		}
 		this.testEnvironment = extend( {}, this.module.testEnvironment );
 
@@ -83,7 +88,7 @@ Test.prototype = {
 			name: this.testName,
 			module: this.module.name,
 			testId: this.testId
-		});
+		} );
 
 		if ( !config.pollution ) {
 			saveGlobal();
@@ -94,10 +99,6 @@ Test.prototype = {
 		var promise;
 
 		config.current = this;
-
-		if ( this.async ) {
-			QUnit.stop();
-		}
 
 		this.callbackStarted = now();
 
@@ -112,12 +113,12 @@ Test.prototype = {
 			this.pushFailure( "Died on test #" + ( this.assertions.length + 1 ) + " " +
 				this.stack + ": " + ( e.message || e ), extractStacktrace( e, 0 ) );
 
-			// else next test will carry the responsibility
+			// Else next test will carry the responsibility
 			saveGlobal();
 
 			// Restart the tests if they're blocking
 			if ( config.blocking ) {
-				QUnit.start();
+				internalRecover( this );
 			}
 		}
 
@@ -131,10 +132,22 @@ Test.prototype = {
 		checkPollution();
 	},
 
-	queueHook: function( hook, hookName ) {
+	queueHook: function( hook, hookName, hookOwner ) {
 		var promise,
 			test = this;
 		return function runHook() {
+			if ( hookName === "before" ) {
+				if ( hookOwner.testsRun !== 0 ) {
+					return;
+				}
+
+				test.preserveEnvironment = true;
+			}
+
+			if ( hookName === "after" && hookOwner.testsRun !== numberOfTests( hookOwner ) - 1 ) {
+				return;
+			}
+
 			config.current = test;
 			if ( config.notrycatch ) {
 				callHook();
@@ -164,7 +177,7 @@ Test.prototype = {
 			}
 			if ( module.testEnvironment &&
 				QUnit.objectType( module.testEnvironment[ handler ] ) === "function" ) {
-				hooks.push( test.queueHook( module.testEnvironment[ handler ], handler ) );
+				hooks.push( test.queueHook( module.testEnvironment[ handler ], handler, module ) );
 			}
 		}
 
@@ -189,9 +202,11 @@ Test.prototype = {
 		}
 
 		var i,
+			skipped = !!this.skip,
 			bad = 0;
 
 		this.runtime = now() - this.started;
+
 		config.stats.all += this.assertions.length;
 		config.moduleStats.all += this.assertions.length;
 
@@ -203,32 +218,32 @@ Test.prototype = {
 			}
 		}
 
+		notifyTestsRan( this.module );
 		runLoggingCallbacks( "testDone", {
 			name: this.testName,
 			module: this.module.name,
-			skipped: !!this.skip,
+			skipped: skipped,
 			failed: bad,
 			passed: this.assertions.length - bad,
 			total: this.assertions.length,
-			runtime: this.runtime,
+			runtime: skipped ? 0 : this.runtime,
 
 			// HTML Reporter use
 			assertions: this.assertions,
 			testId: this.testId,
 
 			// Source of Test
-			source: this.stack,
-
-			// DEPRECATED: this property will be removed in 2.0.0, use runtime instead
-			duration: this.runtime
-		});
-
-		// QUnit.reset() is deprecated and will be replaced for a new
-		// fixture reset function on QUnit 2.0/2.1.
-		// It's still called here for backwards compatibility handling
-		QUnit.reset();
+			source: this.stack
+		} );
 
 		config.current = undefined;
+	},
+
+	preserveTestEnvironment: function() {
+		if ( this.preserveEnvironment ) {
+			this.module.testEnvironment = this.testEnvironment;
+			this.testEnvironment = extend( {}, this.module.testEnvironment );
+		}
 	},
 
 	queue: function() {
@@ -241,50 +256,61 @@ Test.prototype = {
 
 		function run() {
 
-			// each of these can by async
-			synchronize([
+			// Each of these can by async
+			synchronize( [
 				function() {
 					test.before();
 				},
 
+				test.hooks( "before" ),
+
+				function() {
+					test.preserveTestEnvironment();
+				},
+
 				test.hooks( "beforeEach" ),
+
 				function() {
 					test.run();
 				},
 
 				test.hooks( "afterEach" ).reverse(),
+				test.hooks( "after" ).reverse(),
 
 				function() {
 					test.after();
 				},
+
 				function() {
 					test.finish();
 				}
-			]);
+			] );
 		}
 
 		// Prioritize previously failed tests, detected from sessionStorage
 		priority = QUnit.config.reorder && defined.sessionStorage &&
 				+sessionStorage.getItem( "qunit-test-" + this.module.name + "-" + this.testName );
 
-		return synchronize( run, priority );
+		return synchronize( run, priority, config.seed );
 	},
 
-	push: function( result, actual, expected, message, negative ) {
+	pushResult: function( resultInfo ) {
+
+		// Destructure of resultInfo = { result, actual, expected, message, negative }
 		var source,
 			details = {
 				module: this.module.name,
 				name: this.testName,
-				result: result,
-				message: message,
-				actual: actual,
-				expected: expected,
+				result: resultInfo.result,
+				message: resultInfo.message,
+				actual: resultInfo.actual,
+				expected: resultInfo.expected,
 				testId: this.testId,
-				negative: negative || false,
+				negative: resultInfo.negative || false,
 				runtime: now() - this.started
 			};
 
-		if ( !result ) {
+		if ( !resultInfo.result ) {
 			source = sourceFromStacktrace();
 
 			if ( source ) {
@@ -294,10 +320,10 @@ Test.prototype = {
 
 		runLoggingCallbacks( "log", details );
 
-		this.assertions.push({
-			result: !!result,
-			message: message
-		});
+		this.assertions.push( {
+			result: !!resultInfo.result,
+			message: resultInfo.message
+		} );
 	},
 
 	pushFailure: function( message, source, actual ) {
@@ -322,33 +348,33 @@ Test.prototype = {
 
 		runLoggingCallbacks( "log", details );
 
-		this.assertions.push({
+		this.assertions.push( {
 			result: false,
 			message: message
-		});
+		} );
 	},
 
 	resolvePromise: function( promise, phase ) {
-		var then, message,
+		var then, resume, message,
 			test = this;
 		if ( promise != null ) {
 			then = promise.then;
 			if ( QUnit.objectType( then ) === "function" ) {
-				QUnit.stop();
+				resume = internalStop( test );
 				then.call(
 					promise,
-					function() { QUnit.start(); },
+					function() { resume(); },
 					function( error ) {
 						message = "Promise rejected " +
 							( !phase ? "during" : phase.replace( /Each$/, "" ) ) +
 							" " + test.testName + ": " + ( error.message || error );
 						test.pushFailure( message, extractStacktrace( error, 0 ) );
 
-						// else next test will carry the responsibility
+						// Else next test will carry the responsibility
 						saveGlobal();
 
 						// Unblock
-						QUnit.start();
+						resume();
 					}
 				);
 			}
@@ -356,20 +382,25 @@ Test.prototype = {
 	},
 
 	valid: function() {
-		var include,
-			filter = config.filter && config.filter.toLowerCase(),
-			module = QUnit.urlParams.module && QUnit.urlParams.module.toLowerCase(),
-			fullName = ( this.module.name + ": " + this.testName ).toLowerCase();
+		var filter = config.filter,
+			regexFilter = /^(!?)\/([\w\W]*)\/(i?$)/.exec( filter ),
+			module = config.module && config.module.toLowerCase(),
+			fullName = ( this.module.name + ": " + this.testName );
 
-		function testInModuleChain( testModule ) {
+		function moduleChainNameMatch( testModule ) {
 			var testModuleName = testModule.name ? testModule.name.toLowerCase() : null;
 			if ( testModuleName === module ) {
 				return true;
 			} else if ( testModule.parentModule ) {
-				return testInModuleChain( testModule.parentModule );
+				return moduleChainNameMatch( testModule.parentModule );
 			} else {
 				return false;
 			}
+		}
+
+		function moduleChainIdMatch( testModule ) {
+			return inArray( testModule.moduleId, config.moduleId ) > -1 ||
+				testModule.parentModule && moduleChainIdMatch( testModule.parentModule );
 		}
 
 		// Internally-generated tests are always valid
@@ -377,11 +408,19 @@ Test.prototype = {
 			return true;
 		}
 
-		if ( config.testId.length > 0 && inArray( this.testId, config.testId ) < 0 ) {
+		if ( config.moduleId && config.moduleId.length > 0 &&
+			!moduleChainIdMatch( this.module ) ) {
+
 			return false;
 		}
 
-		if ( module && !testInModuleChain( this.module ) ) {
+		if ( config.testId && config.testId.length > 0 &&
+			inArray( this.testId, config.testId ) < 0 ) {
+
+			return false;
+		}
+
+		if ( module && !moduleChainNameMatch( this.module ) ) {
 			return false;
 		}
 
@@ -389,7 +428,23 @@ Test.prototype = {
 			return true;
 		}
 
-		include = filter.charAt( 0 ) !== "!";
+		return regexFilter ?
+			this.regexFilter( !!regexFilter[ 1 ], regexFilter[ 2 ], regexFilter[ 3 ], fullName ) :
+			this.stringFilter( filter, fullName );
+	},
+
+	regexFilter: function( exclude, pattern, flags, fullName ) {
+		var regex = new RegExp( pattern, flags );
+		var match = regex.test( fullName );
+
+		return match !== exclude;
+	},
+
+	stringFilter: function( filter, fullName ) {
+		filter = filter.toLowerCase();
+		fullName = fullName.toLowerCase();
+
+		var include = filter.charAt( 0 ) !== "!";
 		if ( !include ) {
 			filter = filter.slice( 1 );
 		}
@@ -401,28 +456,6 @@ Test.prototype = {
 
 		// Otherwise, do the opposite
 		return !include;
-	}
-};
-
-// Resets the test setup. Useful for tests that modify the DOM.
-/*
-DEPRECATED: Use multiple tests instead of resetting inside a test.
-Use testStart or testDone for custom cleanup.
-This method will throw an error in 2.0, and will be removed in 2.1
-*/
-QUnit.reset = function() {
-
-	// Return on non-browser environments
-	// This is necessary to not break on node tests
-	if ( !defined.document ) {
-		return;
-	}
-
-	var fixture = defined.document && document.getElementById &&
-			document.getElementById( "qunit-fixture" );
-
-	if ( fixture ) {
-		fixture.innerHTML = config.fixture;
 	}
 };
 
@@ -462,8 +495,9 @@ function generateHash( module, testName ) {
 	return hex.slice( -8 );
 }
 
-function synchronize( callback, priority ) {
-	var last = !priority;
+function synchronize( callback, priority, seed ) {
+	var last = !priority,
+		index;
 
 	if ( QUnit.objectType( callback ) === "array" ) {
 		while ( callback.length ) {
@@ -473,31 +507,42 @@ function synchronize( callback, priority ) {
 	}
 
 	if ( priority ) {
-		priorityFill( callback );
+		config.queue.splice( priorityCount++, 0, callback );
+	} else if ( seed ) {
+		if ( !unitSampler ) {
+			unitSampler = unitSamplerGenerator( seed );
+		}
+
+		// Insert into a random position after all priority items
+		index = Math.floor( unitSampler() * ( config.queue.length - priorityCount + 1 ) );
+		config.queue.splice( priorityCount + index, 0, callback );
 	} else {
 		config.queue.push( callback );
 	}
 
-	if ( config.autorun && !config.blocking ) {
+	if ( autorun && !config.blocking ) {
 		process( last );
 	}
 }
 
-// Place previously failed tests on a queue priority line, respecting the order they get assigned.
-function priorityFill( callback ) {
-	var queue, prioritizedQueue;
+function unitSamplerGenerator( seed ) {
 
-	queue = config.queue.slice( priorityFill.pos );
-	prioritizedQueue = config.queue.slice( 0, -config.queue.length + priorityFill.pos );
+	// 32-bit xorshift, requires only a nonzero seed
+	// http://excamera.com/sphinx/article-xorshift.html
+	var sample = parseInt( generateHash( seed ), 16 ) || -1;
+	return function() {
+		sample ^= sample << 13;
+		sample ^= sample >>> 17;
+		sample ^= sample << 5;
 
-	queue.unshift( callback );
-	queue.unshift.apply( queue, prioritizedQueue );
+		// ECMAScript has no unsigned number type
+		if ( sample < 0 ) {
+			sample += 0x100000000;
+		}
 
-	config.queue = queue;
-
-	priorityFill.pos += 1;
+		return sample / 0x100000000;
+	};
 }
-priorityFill.pos = 0;
 
 function saveGlobal() {
 	config.pollution = [];
@@ -506,7 +551,7 @@ function saveGlobal() {
 		for ( var key in global ) {
 			if ( hasOwn.call( global, key ) ) {
 
-				// in Opera sometimes DOM element ids show up here, ignore them
+				// In Opera sometimes DOM element ids show up here, ignore them
 				if ( /^qunit-test-output/.test( key ) ) {
 					continue;
 				}
@@ -534,33 +579,16 @@ function checkPollution() {
 	}
 }
 
-// Will be exposed as QUnit.asyncTest
-function asyncTest( testName, expected, callback ) {
-	if ( arguments.length === 2 ) {
-		callback = expected;
-		expected = null;
-	}
-
-	QUnit.test( testName, expected, callback, true );
-}
-
 // Will be exposed as QUnit.test
-function test( testName, expected, callback, async ) {
+function test( testName, callback ) {
 	if ( focused )  { return; }
 
 	var newTest;
 
-	if ( arguments.length === 2 ) {
-		callback = expected;
-		expected = null;
-	}
-
-	newTest = new Test({
+	newTest = new Test( {
 		testName: testName,
-		expected: expected,
-		async: async,
 		callback: callback
-	});
+	} );
 
 	newTest.queue();
 }
@@ -569,16 +597,16 @@ function test( testName, expected, callback, async ) {
 function skip( testName ) {
 	if ( focused )  { return; }
 
-	var test = new Test({
+	var test = new Test( {
 		testName: testName,
 		skip: true
-	});
+	} );
 
 	test.queue();
 }
 
 // Will be exposed as QUnit.only
-function only( testName, expected, callback, async ) {
+function only( testName, callback ) {
 	var newTest;
 
 	if ( focused )  { return; }
@@ -586,17 +614,109 @@ function only( testName, expected, callback, async ) {
 	QUnit.config.queue.length = 0;
 	focused = true;
 
-	if ( arguments.length === 2 ) {
-		callback = expected;
-		expected = null;
-	}
-
-	newTest = new Test({
+	newTest = new Test( {
 		testName: testName,
-		expected: expected,
-		async: async,
 		callback: callback
-	});
+	} );
 
 	newTest.queue();
+}
+
+// Put a hold on processing and return a function that will release it.
+function internalStop( test ) {
+	var released = false;
+
+	test.semaphore += 1;
+	config.blocking = true;
+
+	// Set a recovery timeout, if so configured.
+	if ( config.testTimeout && defined.setTimeout ) {
+		clearTimeout( config.timeout );
+		config.timeout = setTimeout( function() {
+			QUnit.pushFailure( "Test timed out", sourceFromStacktrace( 2 ) );
+			internalRecover( test );
+		}, config.testTimeout );
+	}
+
+	return function resume() {
+		if ( released ) {
+			return;
+		}
+
+		released = true;
+		test.semaphore -= 1;
+		internalStart( test );
+	};
+}
+
+// Forcefully release all processing holds.
+function internalRecover( test ) {
+	test.semaphore = 0;
+	internalStart( test );
+}
+
+// Release a processing hold, scheduling a resumption attempt if no holds remain.
+function internalStart( test ) {
+
+	// If semaphore is non-numeric, throw error
+	if ( isNaN( test.semaphore ) ) {
+		test.semaphore = 0;
+
+		QUnit.pushFailure(
+			"Invalid value on test.semaphore",
+			sourceFromStacktrace( 2 )
+		);
+		return;
+	}
+
+	// Don't start until equal number of stop-calls
+	if ( test.semaphore > 0 ) {
+		return;
+	}
+
+	// Throw an Error if start is called more often than stop
+	if ( test.semaphore < 0 ) {
+		test.semaphore = 0;
+
+		QUnit.pushFailure(
+			"Tried to restart test while already started (test's semaphore was 0 already)",
+			sourceFromStacktrace( 2 )
+		);
+		return;
+	}
+
+	// Add a slight delay to allow more assertions etc.
+	if ( defined.setTimeout ) {
+		if ( config.timeout ) {
+			clearTimeout( config.timeout );
+		}
+		config.timeout = setTimeout( function() {
+			if ( test.semaphore > 0 ) {
+				return;
+			}
+
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+
+			begin();
+		}, 13 );
+	} else {
+		begin();
+	}
+}
+
+function numberOfTests( module ) {
+	var count = module.tests.length;
+	while ( module = module.childModule ) {
+		count += module.tests.length;
+	}
+	return count;
+}
+
+function notifyTestsRan( module ) {
+	module.testsRun++;
+	while ( module = module.parentModule ) {
+		module.testsRun++;
+	}
 }

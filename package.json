@@ -5,26 +5,25 @@
     "type": "git",
     "url": "https://github.com/ghinda/css-toggle-switch.git"
   },
-  "dependencies": {},
   "devDependencies": {
-    "assemble": "^0.4.42",
-    "connect-livereload": "~0.5",
-    "grunt": "~0.4",
-    "grunt-build-control": "^0.6.1",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-connect": "~0.9",
-    "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-watch": "~0.6",
-    "grunt-sass": "1.1.0",
-    "grunt-saucelabs": "~9",
-    "matchdep": "~0.3"
+    "connect-livereload": "^0.6.0",
+    "grunt": "^1.0.1",
+    "grunt-assemble": "^0.5.0",
+    "grunt-build-control": "^0.7.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-sass": "1.2.1",
+    "grunt-saucelabs": "^9.0.0",
+    "matchdep": "1.0.1"
   },
   "peerDependencies": {},
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
-    "test": "node -e \"require('grunt').tasks(['test']);\""
+    "test": "grunt test"
   },
   "description": "Accessible CSS toggle switch using standard form controls",
   "bugs": {
