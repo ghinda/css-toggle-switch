@@ -2,7 +2,6 @@
 * CSS Toggle Switch
 */
 
-@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "utils";
 @import "icons";
 @import "promo";
@@ -259,7 +258,7 @@ legend {
   color: #333;
 }
 
-.row.dependency-install {
+.dependency-install {
   overflow: hidden;
   width: auto;
   padding: emCalc(20);
@@ -267,8 +266,9 @@ legend {
   background-color: lighten($color3, 10%);
 
   pre {
-    text-align: center;
     margin-bottom: emCalc(20);
+
+    text-align: center;
 
     &:last-child {
       margin-bottom: 0;
@@ -281,10 +281,12 @@ legend {
         text-decoration: underline;
       }
     }
+  }
 
-    code {
-      color: #333;
-    }
+  code {
+    padding: 0;
+
+    color: #333;
   }
 }
 

@@ -11,7 +11,13 @@
 $size-unit: em !default;
 $em-base: 16 !default;
 
-@import '../bower_components/bourbon/app/assets/stylesheets/bourbon';
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
 
 /* imports
  */

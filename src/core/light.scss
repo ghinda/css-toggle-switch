@@ -45,7 +45,7 @@
 
   text-align: center;
 
-  @include user-select(none);
+  user-select: none;
 }
 
 .switch-light a {

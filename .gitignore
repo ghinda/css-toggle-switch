@@ -2,7 +2,9 @@ _*.swp
 .DS_Store
 Thumbs.db
 npm-debug.log
+package-lock.json
 node_modules
 .tmp
 .sass-cache
 build/
+

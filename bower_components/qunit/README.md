@@ -1,4 +1,8 @@
-[![Travis Build Status](https://travis-ci.org/jquery/qunit.svg?branch=master)](https://travis-ci.org/jquery/qunit) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jquery/qunit?svg=true&branch=master)](https://ci.appveyor.com/project/leobalter/qunit) [![Coverage Status](https://coveralls.io/repos/jquery/qunit/badge.svg)](https://coveralls.io/github/jquery/qunit)
+[![Travis Build Status](https://travis-ci.org/qunitjs/qunit.svg?branch=master)](https://travis-ci.org/qunitjs/qunit)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/qunitjs/qunit?svg=true&branch=master)](https://ci.appveyor.com/project/leobalter/qunit)
+[![Coverage Status](https://coveralls.io/repos/qunitjs/qunit/badge.svg)](https://coveralls.io/github/qunitjs/qunit)
+[![Chat on Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/qunitjs/qunit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fqunitjs%2Fqunit.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fqunitjs%2Fqunit?ref=badge_shield)
 
 # [QUnit](https://qunitjs.com) - A JavaScript Unit Testing Framework.
 
@@ -17,46 +21,14 @@ run the tests after each small refactoring step and always know what change
 broke something.
 
 QUnit is similar to other unit testing frameworks like JUnit, but makes use of
-the features JavaScript provides and helps with testing code in the browser, e.g.
-with its stop/start facilities for testing asynchronous code.
+the features JavaScript provides and helps with testing code in the browser, such as built in support for asynchronicity and exception handling.
 
-If you are interested in helping developing QUnit, you are in the right place.
-For related discussions, visit the
-[QUnit and Testing forum](https://forum.jquery.com/qunit-and-testing).
+## Support
 
-## Development
+If you need help using QUnit, visit the [QUnit and Testing forum](https://forum.jquery.com/qunit-and-testing) or chat with us on [Gitter](https://gitter.im/qunitjs/qunit).
 
-To submit patches, fork the repository, create a branch for the change. Then implement
-the change, run `npm test` to lint and test it, then commit, push and create a pull request.
+If you believe there is a bug with QUnit or would like to request a new feature, [open an issue](https://github.com/qunitjs/qunit/issues).
 
-Include some background for the change in the commit message and `Fixes #nnn`, referring
-to the issue number you're addressing.
+## Development / Contributions
 
-To run `npm test`, you need [Node.js](https://nodejs.org/download/), which includes `npm`.
-
-## Releases
-
-Use [jquery-release](https://github.com/jquery/jquery-release). The following aren't handled there, do that first:
-
-* Install [git-extras](https://github.com/visionmedia/git-extras) and run `git changelog` to update `History.md`. Clean up the changelog, removing merge commits, whitespace cleanups or other irrelevant commits.
-* Run `grunt authors` and add any new authors to AUTHORS.txt
-* Update the version property in `package.json` to have the right -pre version. Not necessary for patch releases.
-
-Commit these:
-
-	Build: Prepare @VERSION release, including authors and history update
-
-Then run the script:
-
-	node release.js --remote=jquery/qunit
-
-Update `jquery/qunitjs.com`, replacing previous versions with new ones:
-
-* pages/index.html
-* resources/*.html
-
-Update [GitHub releases](https://github.com/jquery/qunit/releases), use the changelog from `History.md`.
-
-Finally announce on Twitter @qunitjs (add highlights if possible, otherwise a 2nd tweet might do):
-
-	Released @VERSION: https://github.com/jquery/qunit/releases/tag/1.17.0
+If you are interested in helping develop QUnit, check out our [contributing guide](./CONTRIBUTING.md).

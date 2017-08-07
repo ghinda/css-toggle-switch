@@ -1,41 +1,78 @@
-function Assert( testContext ) {
-	this.test = testContext;
-}
+import dump from "./dump";
+import equiv from "./equiv";
+import { internalStop } from "./test";
+import Logger from "./logger";
 
-// Assert helpers
-QUnit.assert = Assert.prototype = {
+import config from "./core/config";
+import { objectType, objectValues } from "./core/utilities";
+import { sourceFromStacktrace } from "./core/stacktrace";
+
+class Assert {
+	constructor( testContext ) {
+		this.test = testContext;
+	}
+
+	// Assert helpers
+
+	timeout( duration ) {
+		if ( typeof duration !== "number" ) {
+			throw new Error( "You must pass a number as the duration to assert.timeout" );
+		}
+
+		this.test.timeout = duration;
+	}
+
+	// Documents a "step", which is a string value, in a test as a passing assertion
+	step( message ) {
+		const result = !!message;
+
+		this.test.steps.push( message );
+
+		return this.pushResult( {
+			result,
+			message: message || "You must provide a message to assert.step"
+		} );
+	}
+
+	// Verifies the steps in a test match a given array of string values
+	verifySteps( steps, message ) {
+		this.deepEqual( this.test.steps, steps, message );
+	}
 
 	// Specify the number of expected assertions to guarantee that failed test
 	// (no assertions are run at all) don't slip through.
-	expect: function( asserts ) {
+	expect( asserts ) {
 		if ( arguments.length === 1 ) {
 			this.test.expected = asserts;
 		} else {
 			return this.test.expected;
 		}
-	},
+	}
 
 	// Put a hold on processing and return a function that will release it a maximum of once.
-	async: function( count ) {
-		var resume,
-			test = this.test,
-			popped = false,
+	async( count ) {
+		const test = this.test;
+
+		let popped = false,
 			acceptCallCount = count;
 
 		if ( typeof acceptCallCount === "undefined" ) {
 			acceptCallCount = 1;
 		}
 
-		test.usedAsync = true;
-		resume = internalStop( test );
+		const resume = internalStop( test );
 
 		return function done() {
+			if ( config.current !== test ) {
+				throw Error( "assert.async callback called after test finished." );
+			}
 
 			if ( popped ) {
 				test.pushFailure( "Too many calls to the `assert.async` callback",
 					sourceFromStacktrace( 2 ) );
 				return;
 			}
+
 			acceptCallCount -= 1;
 			if ( acceptCallCount > 0 ) {
 				return;
@@ -44,26 +81,29 @@ QUnit.assert = Assert.prototype = {
 			popped = true;
 			resume();
 		};
-	},
+	}
 
 	// Exports test.push() to the user API
 	// Alias of pushResult.
-	push: function( result, actual, expected, message, negative ) {
-		var currentAssert = this instanceof Assert ? this : QUnit.config.current.assert;
-		return currentAssert.pushResult( {
-			result: result,
-			actual: actual,
-			expected: expected,
-			message: message,
-			negative: negative
-		} );
-	},
+	push( result, actual, expected, message, negative ) {
+		Logger.warn( "assert.push is deprecated and will be removed in QUnit 3.0." +
+			" Please use assert.pushResult instead (https://api.qunitjs.com/assert/pushResult)." );
 
-	pushResult: function( resultInfo ) {
+		const currentAssert = this instanceof Assert ? this : config.current.assert;
+		return currentAssert.pushResult( {
+			result,
+			actual,
+			expected,
+			message,
+			negative
+		} );
+	}
+
+	pushResult( resultInfo ) {
 
 		// Destructure of resultInfo = { result, actual, expected, message, negative }
-		var assert = this,
-			currentTest = ( assert instanceof Assert && assert.test ) || QUnit.config.current;
+		let assert = this;
+		const currentTest = ( assert instanceof Assert && assert.test ) || config.current;
 
 		// Backwards compatibility fix.
 		// Allows the direct use of global exported assertions and QUnit.assert.*
@@ -74,140 +114,148 @@ QUnit.assert = Assert.prototype = {
 			throw new Error( "assertion outside test context, in " + sourceFromStacktrace( 2 ) );
 		}
 
-		if ( currentTest.usedAsync === true && currentTest.semaphore === 0 ) {
-			currentTest.pushFailure( "Assertion after the final `assert.async` was resolved",
-				sourceFromStacktrace( 2 ) );
-
-			// Allow this assertion to continue running anyway...
-		}
-
 		if ( !( assert instanceof Assert ) ) {
 			assert = currentTest.assert;
 		}
 
 		return assert.test.pushResult( resultInfo );
-	},
+	}
 
-	ok: function( result, message ) {
-		message = message || ( result ? "okay" : "failed, expected argument to be truthy, was: " +
-			QUnit.dump.parse( result ) );
+	ok( result, message ) {
+		if ( !message ) {
+			message = result ?
+				"okay" :
+				`failed, expected argument to be truthy, was: ${dump.parse( result )}`;
+		}
+
 		this.pushResult( {
 			result: !!result,
 			actual: result,
 			expected: true,
-			message: message
+			message
 		} );
-	},
+	}
 
-	notOk: function( result, message ) {
-		message = message || ( !result ? "okay" : "failed, expected argument to be falsy, was: " +
-			QUnit.dump.parse( result ) );
+	notOk( result, message ) {
+		if ( !message ) {
+			message = !result ?
+				"okay" :
+				`failed, expected argument to be falsy, was: ${dump.parse( result )}`;
+		}
+
 		this.pushResult( {
 			result: !result,
 			actual: result,
 			expected: false,
-			message: message
+			message
 		} );
-	},
+	}
 
-	equal: function( actual, expected, message ) {
-		/*jshint eqeqeq:false */
+	equal( actual, expected, message ) {
+
+		// eslint-disable-next-line eqeqeq
+		const result = expected == actual;
+
 		this.pushResult( {
-			result: expected == actual,
-			actual: actual,
-			expected: expected,
-			message: message
+			result,
+			actual,
+			expected,
+			message
 		} );
-	},
+	}
 
-	notEqual: function( actual, expected, message ) {
-		/*jshint eqeqeq:false */
+	notEqual( actual, expected, message ) {
+
+		// eslint-disable-next-line eqeqeq
+		const result = expected != actual;
+
 		this.pushResult( {
-			result: expected != actual,
-			actual: actual,
-			expected: expected,
-			message: message,
+			result,
+			actual,
+			expected,
+			message,
 			negative: true
 		} );
-	},
+	}
 
-	propEqual: function( actual, expected, message ) {
+	propEqual( actual, expected, message ) {
 		actual = objectValues( actual );
 		expected = objectValues( expected );
-		this.pushResult( {
-			result: QUnit.equiv( actual, expected ),
-			actual: actual,
-			expected: expected,
-			message: message
-		} );
-	},
 
-	notPropEqual: function( actual, expected, message ) {
+		this.pushResult( {
+			result: equiv( actual, expected ),
+			actual,
+			expected,
+			message
+		} );
+	}
+
+	notPropEqual( actual, expected, message ) {
 		actual = objectValues( actual );
 		expected = objectValues( expected );
+
 		this.pushResult( {
-			result: !QUnit.equiv( actual, expected ),
-			actual: actual,
-			expected: expected,
-			message: message,
+			result: !equiv( actual, expected ),
+			actual,
+			expected,
+			message,
 			negative: true
 		} );
-	},
+	}
 
-	deepEqual: function( actual, expected, message ) {
+	deepEqual( actual, expected, message ) {
 		this.pushResult( {
-			result: QUnit.equiv( actual, expected ),
-			actual: actual,
-			expected: expected,
-			message: message
+			result: equiv( actual, expected ),
+			actual,
+			expected,
+			message
 		} );
-	},
+	}
 
-	notDeepEqual: function( actual, expected, message ) {
+	notDeepEqual( actual, expected, message ) {
 		this.pushResult( {
-			result: !QUnit.equiv( actual, expected ),
-			actual: actual,
-			expected: expected,
-			message: message,
+			result: !equiv( actual, expected ),
+			actual,
+			expected,
+			message,
 			negative: true
 		} );
-	},
+	}
 
-	strictEqual: function( actual, expected, message ) {
+	strictEqual( actual, expected, message ) {
 		this.pushResult( {
 			result: expected === actual,
-			actual: actual,
-			expected: expected,
-			message: message
+			actual,
+			expected,
+			message
 		} );
-	},
+	}
 
-	notStrictEqual: function( actual, expected, message ) {
+	notStrictEqual( actual, expected, message ) {
 		this.pushResult( {
 			result: expected !== actual,
-			actual: actual,
-			expected: expected,
-			message: message,
+			actual,
+			expected,
+			message,
 			negative: true
 		} );
-	},
+	}
 
-	"throws": function( block, expected, message ) {
-		var actual, expectedType,
-			expectedOutput = expected,
-			ok = false,
-			currentTest = ( this instanceof Assert && this.test ) || QUnit.config.current;
+	[ "throws" ]( block, expected, message ) {
+		let actual,
+			result = false;
+
+		const currentTest = ( this instanceof Assert && this.test ) || config.current;
 
 		// 'expected' is optional unless doing string comparison
-		if ( QUnit.objectType( expected ) === "string" ) {
+		if ( objectType( expected ) === "string" ) {
 			if ( message == null ) {
 				message = expected;
 				expected = null;
 			} else {
 				throw new Error(
 					"throws/raises does not accept a string value for the expected argument.\n" +
-					"Use a non-string object value (e.g. regExp) instead if it's necessary." +
-					"Details in our upgrade guide at https://qunitjs.com/upgrade-guide-2.x/"
+					"Use a non-string object value (e.g. regExp) instead if it's necessary."
 				);
 			}
 		}
@@ -221,58 +269,63 @@ QUnit.assert = Assert.prototype = {
 		currentTest.ignoreGlobalErrors = false;
 
 		if ( actual ) {
-			expectedType = QUnit.objectType( expected );
+			const expectedType = objectType( expected );
 
 			// We don't want to validate thrown error
 			if ( !expected ) {
-				ok = true;
-				expectedOutput = null;
+				result = true;
+				expected = null;
 
 			// Expected is a regexp
 			} else if ( expectedType === "regexp" ) {
-				ok = expected.test( errorString( actual ) );
+				result = expected.test( errorString( actual ) );
 
 			// Expected is a constructor, maybe an Error constructor
 			} else if ( expectedType === "function" && actual instanceof expected ) {
-				ok = true;
+				result = true;
 
 			// Expected is an Error object
 			} else if ( expectedType === "object" ) {
-				ok = actual instanceof expected.constructor &&
+				result = actual instanceof expected.constructor &&
 					actual.name === expected.name &&
 					actual.message === expected.message;
 
 			// Expected is a validation function which returns true if validation passed
 			} else if ( expectedType === "function" && expected.call( {}, actual ) === true ) {
-				expectedOutput = null;
-				ok = true;
+				expected = null;
+				result = true;
 			}
 		}
 
 		currentTest.assert.pushResult( {
-			result: ok,
-			actual: actual,
-			expected: expectedOutput,
-			message: message
+			result,
+			actual,
+			expected,
+			message
 		} );
 	}
-};
+}
 
 // Provide an alternative to assert.throws(), for environments that consider throws a reserved word
 // Known to us are: Closure Compiler, Narwhal
-( function() {
-	/*jshint sub:true */
-	Assert.prototype.raises = Assert.prototype [ "throws" ]; //jscs:ignore requireDotNotation
-}() );
+// eslint-disable-next-line dot-notation
+Assert.prototype.raises = Assert.prototype[ "throws" ];
 
+/**
+ * Converts an error into a simple string for comparisons.
+ *
+ * @param {Error} error
+ * @return {String}
+ */
 function errorString( error ) {
-	var name, message,
-		resultErrorString = error.toString();
+	const resultErrorString = error.toString();
+
 	if ( resultErrorString.substring( 0, 7 ) === "[object" ) {
-		name = error.name ? error.name.toString() : "Error";
-		message = error.message ? error.message.toString() : "";
+		const name = error.name ? error.name.toString() : "Error";
+		const message = error.message ? error.message.toString() : "";
+
 		if ( name && message ) {
-			return name + ": " + message;
+			return `${name}: ${message}`;
 		} else if ( name ) {
 			return name;
 		} else if ( message ) {
@@ -284,3 +337,5 @@ function errorString( error ) {
 		return resultErrorString;
 	}
 }
+
+export default Assert;
