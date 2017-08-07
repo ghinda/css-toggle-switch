@@ -1,3 +1,8 @@
+## [4.0.3] - 2017-08-07
+
+- Remove the `bourbon` dev dependency. Removes most CSS prefixes.
+- Upgrade Foundation and all dev dependencies.
+
 ## [4.0.2] - 2015-12-02
 
 - Make the switch focus outline match the native focus styles more closely.
