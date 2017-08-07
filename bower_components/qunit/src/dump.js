@@ -1,6 +1,9 @@
+import config from "./core/config";
+import { inArray, toString, is } from "./core/utilities";
+
 // Based on jsDump by Ariel Flesler
 // http://flesler.blogspot.com/2008/05/jsdump-pretty-dump-of-any-javascript.html
-QUnit.dump = ( function() {
+export default ( function() {
 	function quote( str ) {
 		return "\"" + str.toString().replace( /\\/g, "\\\\" ).replace( /"/g, "\\\"" ) + "\"";
 	}
@@ -57,10 +60,10 @@ QUnit.dump = ( function() {
 			parse: function( obj, objType, stack ) {
 				stack = stack || [];
 				var res, parser, parserType,
-					inStack = inArray( obj, stack );
+					objIndex = stack.indexOf( obj );
 
-				if ( inStack !== -1 ) {
-					return "recursion(" + ( inStack - stack.length ) + ")";
+				if ( objIndex !== -1 ) {
+					return `recursion(${objIndex - stack.length})`;
 				}
 
 				objType = objType || this.typeOf( obj  );
@@ -82,11 +85,11 @@ QUnit.dump = ( function() {
 					type = "null";
 				} else if ( typeof obj === "undefined" ) {
 					type = "undefined";
-				} else if ( QUnit.is( "regexp", obj ) ) {
+				} else if ( is( "regexp", obj ) ) {
 					type = "regexp";
-				} else if ( QUnit.is( "date", obj ) ) {
+				} else if ( is( "date", obj ) ) {
 					type = "date";
-				} else if ( QUnit.is( "function", obj ) ) {
+				} else if ( is( "function", obj ) ) {
 					type = "function";
 				} else if ( obj.setInterval !== undefined &&
 						obj.document !== undefined &&
@@ -107,7 +110,11 @@ QUnit.dump = ( function() {
 			},
 
 			separator: function() {
-				return this.multiline ? this.HTML ? "<br />" : "\n" : this.HTML ? "&#160;" : " ";
+				if ( this.multiline ) {
+					return this.HTML ? "<br />" : "\n";
+				} else {
+					return this.HTML ? "&#160;" : " ";
+				}
 			},
 
 			// Extra can be a number, shortcut for increasing-calling-decreasing
@@ -136,7 +143,7 @@ QUnit.dump = ( function() {
 			literal: literal,
 			join: join,
 			depth: 1,
-			maxDepth: QUnit.config.maxDepth,
+			maxDepth: config.maxDepth,
 
 			// This is the list of parsers, to modify them, use dump.setParser
 			parsers: {
@@ -183,7 +190,7 @@ QUnit.dump = ( function() {
 					nonEnumerableProperties = [ "message", "name" ];
 					for ( i in nonEnumerableProperties ) {
 						key = nonEnumerableProperties[ i ];
-						if ( key in map && inArray( key, keys ) < 0 ) {
+						if ( key in map && !inArray( key, keys ) ) {
 							keys.push( key );
 						}
 					}
@@ -275,7 +282,4 @@ QUnit.dump = ( function() {
 		};
 
 	return dump;
-}() );
-
-// Back compat
-QUnit.jsDump = QUnit.dump;
+} )();

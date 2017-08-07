@@ -222,23 +222,24 @@ legend {
 .switch-toggle.panel label {
   color: #333; }
 
-.row.dependency-install {
+.dependency-install {
   overflow: hidden;
   width: auto;
   padding: 1.25em;
   margin: 1.25em -1.25em 0;
   background-color: #7faed6; }
-  .row.dependency-install pre {
-    text-align: center;
-    margin-bottom: 1.25em; }
-    .row.dependency-install pre:last-child {
+  .dependency-install pre {
+    margin-bottom: 1.25em;
+    text-align: center; }
+    .dependency-install pre:last-child {
       margin-bottom: 0; }
-    .row.dependency-install pre a {
+    .dependency-install pre a {
       color: #2f628d; }
-      .row.dependency-install pre a:hover {
+      .dependency-install pre a:hover {
         text-decoration: underline; }
-    .row.dependency-install pre code {
-      color: #333; }
+  .dependency-install code {
+    padding: 0;
+    color: #333; }
 
 .frameworks {
   margin-bottom: 2em; }

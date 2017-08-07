@@ -1,9 +1,12 @@
+import { window, localSessionStorage } from "../globals";
+import { extend } from "./utilities";
+
 /**
  * Config object: Maintain internal state
  * Later exposed as QUnit.config
  * `config` initialized at top of scope
  */
-var config = {
+const config = {
 
 	// The queue of tests to run
 	queue: [],
@@ -37,17 +40,36 @@ var config = {
 	// Set of all modules.
 	modules: [],
 
-	// Stack of nested modules
-	moduleStack: [],
-
 	// The first unnamed module
 	currentModule: {
 		name: "",
-		tests: []
+		tests: [],
+		childModules: [],
+		testsRun: 0,
+		unskippedTestsRun: 0,
+		hooks: {
+			before: [],
+			beforeEach: [],
+			afterEach: [],
+			after: []
+		}
 	},
 
-	callbacks: {}
+	callbacks: {},
+
+	// The storage module to use for reordering tests
+	storage: localSessionStorage
 };
+
+// take a predefined QUnit.config and extend the defaults
+var globalConfig = window && window.QUnit && window.QUnit.config;
+
+// only extend the global config if there is no QUnit overload
+if ( window && window.QUnit && !window.QUnit.version ) {
+	extend( config, globalConfig );
+}
 
 // Push a loose unnamed module to the modules collection
 config.modules.push( config.currentModule );
+
+export default config;
