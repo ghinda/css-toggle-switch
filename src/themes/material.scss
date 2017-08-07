@@ -15,7 +15,7 @@
     0 size(3) size(2) size(-2) rgba(0, 0, 0, .2),
     0 size(2) size(4) 0 rgba(0, 0, 0, .12);
 
-  @include transition(right .28s cubic-bezier(.4, 0, .2, 1));
+  transition: right .28s cubic-bezier(.4, 0, .2, 1);
 }
 
 .switch-material.switch-light {
@@ -69,8 +69,8 @@
   background: #3f51b5;
   border-radius: 100%;
 
-  @include transform(translateY(-50%));
-  @include transition(transform .4s ease-in);
+  transform: translateY(-50%);
+  transition: transform .4s ease-in;
 }
 
 .switch-toggle.switch-material label {
@@ -89,7 +89,7 @@
   border-radius: 100%;
   border: size(2) solid rgba(0, 0, 0, .54);
 
-  @include transform(translateY(-50%));
+  transform: translateY(-50%);
 }
 
 .switch-toggle.switch-material input:checked + label:before {
@@ -116,8 +116,8 @@
   margin-left: size(-20);
   margin-top: size(-20);
 
-  @include transform(scale(0));
-  @include transition(opacity .4s ease-in);
+  transform: scale(0);
+  transition: opacity .4s ease-in;
 }
 
 .switch-light.switch-material > span:after {
@@ -133,23 +133,23 @@
   margin-top: size(-12);
 }
 
-@include keyframes(materialRipple) {
+@keyframes materialRipple {
   0% {
-    @include transform(scale(0));
+    transform: scale(0);
   }
   20% {
-    @include transform(scale(1));
+    transform: scale(1);
   }
   100% {
     opacity: 0;
-    @include transform(scale(1));
+    transform: scale(1);
   }
 }
 
 .switch-material.switch-light input:not(:checked) ~ span:after,
 .switch-material.switch-light input:checked ~ span:before,
 .switch-toggle.switch-material input:checked + label:after {
-  @include animation(materialRipple .4s ease-in);
+  animation: materialRipple .4s ease-in;
 }
 
 /* trick to prevent the default checked ripple animation from showing

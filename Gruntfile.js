@@ -65,23 +65,18 @@ module.exports = function (grunt) {
       all: {
         options: {
           urls: [ 'http://127.0.0.1:9000/test' ],
+          detailedError: true,
           browsers: [
             {
               browserName: 'chrome',
-              platform: 'Windows 10'
-            }, {
-              browserName: 'microsoftedge',
-              platform: 'Windows 10'
+              platform: 'Linux'
             }, {
               browserName: 'firefox',
-              platform: 'Windows 10'
-            }, {
-              browserName: 'opera',
-              platform: 'Windows 7'
+              platform: 'Linux'
             }, {
               browserName: 'android',
               platform: 'Linux',
-              version: '4'
+              version: '5.1'
             }, {
               browserName: 'internet explorer',
               platform: 'Windows 7',
@@ -90,6 +85,10 @@ module.exports = function (grunt) {
               browserName: 'internet explorer',
               platform: 'Windows 8',
               version: '10'
+            }, {
+              browserName: 'internet explorer',
+              platform: 'Windows 10',
+              version: '11'
             }, {
               browserName: 'safari',
               platform: 'OS X 10.10',

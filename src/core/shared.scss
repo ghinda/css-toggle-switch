@@ -14,7 +14,7 @@
 
   a {
     display: block;
-    @include transition(all 0.2s ease-out);
+    transition: all 0.2s ease-out;
   }
 
   label,
@@ -22,7 +22,6 @@
     /* breathing room for bootstrap/foundation classes.
      */
     line-height: 2em;
-    vertical-align: middle;
   }
 
   /* simulate default browser focus outlines on the switch,

@@ -17,7 +17,7 @@
       border-radius: 100%;
       border: size(4) solid #D8D9DB;
 
-      @include transition(all .2s ease-out);
+      transition: all .2s ease-out;
     }
 
     > span {
@@ -27,7 +27,7 @@
       background-color: #D8D9DB;
       border-radius: size(28);
 
-      @include transition(all .4s ease-out);
+      transition: all .4s ease-out;
     }
 
     > span span {
@@ -40,7 +40,7 @@
       line-height: size(30);
       vertical-align: middle;
 
-      @include transition(all .2s ease-out);
+      transition: all .2s ease-out;
 
       &:first-of-type {
         opacity: 1;
@@ -87,7 +87,7 @@
       border: size(2) solid #D8D9DB;
       border-radius: size(28);
 
-      @include transition(all 0.12s ease-out);
+      transition: all 0.12s ease-out;
     }
 
     label {

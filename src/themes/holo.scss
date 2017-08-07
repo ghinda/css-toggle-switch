@@ -18,7 +18,7 @@
 .switch-holo > span span {
   opacity: 0;
 
-  @include transition(all 0.1s);
+  transition: all 0.1s;
 
   &:first-of-type {
     opacity: 1;
@@ -35,7 +35,7 @@
   background-color: #666;
   border-radius: 1px;
   box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0,
-  inset rgba(0, 0, 0, 0.3) 0 -1px 0;
+    inset rgba(0, 0, 0, 0.3) 0 -1px 0;
 }
 
 /* Selected ON switch-light

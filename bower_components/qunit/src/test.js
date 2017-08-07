@@ -1,19 +1,65 @@
-var unitSampler,
-	focused = false,
-	priorityCount = 0;
+import global from "global";
 
-function Test( settings ) {
+import { begin } from "./core";
+import { setTimeout, clearTimeout } from "./globals";
+import { emit } from "./events";
+import Assert from "./assert";
+
+import config from "./core/config";
+import {
+	defined,
+	diff,
+	extend,
+	generateHash,
+	hasOwn,
+	inArray,
+	now,
+	objectType
+} from "./core/utilities";
+import { runLoggingCallbacks } from "./core/logging";
+import { extractStacktrace, sourceFromStacktrace } from "./core/stacktrace";
+import ProcessingQueue from "./core/processing-queue";
+
+import TestReport from "./reports/test";
+
+let focused = false;
+
+export default function Test( settings ) {
 	var i, l;
 
 	++Test.count;
 
 	this.expected = null;
-	extend( this, settings );
 	this.assertions = [];
 	this.semaphore = 0;
-	this.usedAsync = false;
 	this.module = config.currentModule;
 	this.stack = sourceFromStacktrace( 3 );
+	this.steps = [];
+	this.timeout = undefined;
+
+	// If a module is skipped, all its tests and the tests of the child suites
+	// should be treated as skipped even if they are defined as `only` or `todo`.
+	// As for `todo` module, all its tests will be treated as `todo` except for
+	// tests defined as `skip` which will be left intact.
+	//
+	// So, if a test is defined as `todo` and is inside a skipped module, we should
+	// then treat that test as if was defined as `skip`.
+	if ( this.module.skip ) {
+		settings.skip = true;
+		settings.todo = false;
+
+	// Skipped tests should be left intact
+	} else	if ( this.module.todo  && !settings.skip ) {
+		settings.todo = true;
+	}
+
+	extend( this, settings );
+
+	this.testReport = new TestReport( settings.testName, this.module.suiteReport, {
+		todo: settings.todo,
+		skip: settings.skip,
+		valid: this.valid()
+	} );
 
 	// Register unique strings
 	for ( i = 0, l = this.module.tests; i < l.length; i++ ) {
@@ -26,7 +72,8 @@ function Test( settings ) {
 
 	this.module.tests.push( {
 		name: this.testName,
-		testId: this.testId
+		testId: this.testId,
+		skip: !!settings.skip
 	} );
 
 	if ( settings.skip ) {
@@ -42,52 +89,45 @@ function Test( settings ) {
 
 Test.count = 0;
 
+function getNotStartedModules( startModule ) {
+	var module = startModule,
+		modules = [];
+
+	while ( module && module.testsRun === 0 ) {
+		modules.push( module );
+		module = module.parentModule;
+	}
+
+	return modules;
+}
+
 Test.prototype = {
 	before: function() {
-		if (
+		var i, startModule,
+			module = this.module,
+			notStartedModules = getNotStartedModules( module );
 
-			// Emit moduleStart when we're switching from one module to another
-			this.module !== config.previousModule ||
-
-				// They could be equal (both undefined) but if the previousModule property doesn't
-				// yet exist it means this is the first test in a suite that isn't wrapped in a
-				// module, in which case we'll just emit a moduleStart event for 'undefined'.
-				// Without this, reporters can get testStart before moduleStart  which is a problem.
-				!hasOwn.call( config, "previousModule" )
-		) {
-			if ( hasOwn.call( config, "previousModule" ) ) {
-				runLoggingCallbacks( "moduleDone", {
-					name: config.previousModule.name,
-					tests: config.previousModule.tests,
-					failed: config.moduleStats.bad,
-					passed: config.moduleStats.all - config.moduleStats.bad,
-					total: config.moduleStats.all,
-					runtime: now() - config.moduleStats.started
-				} );
-			}
-			config.previousModule = this.module;
-			config.moduleStats = { all: 0, bad: 0, started: now() };
+		for ( i = notStartedModules.length - 1; i >= 0; i-- ) {
+			startModule = notStartedModules[ i ];
+			startModule.stats = { all: 0, bad: 0, started: now() };
+			emit( "suiteStart", startModule.suiteReport.start( true ) );
 			runLoggingCallbacks( "moduleStart", {
-				name: this.module.name,
-				tests: this.module.tests
+				name: startModule.name,
+				tests: startModule.tests
 			} );
 		}
 
 		config.current = this;
 
-		if ( this.module.testEnvironment ) {
-			delete this.module.testEnvironment.before;
-			delete this.module.testEnvironment.beforeEach;
-			delete this.module.testEnvironment.afterEach;
-			delete this.module.testEnvironment.after;
-		}
-		this.testEnvironment = extend( {}, this.module.testEnvironment );
+		this.testEnvironment = extend( {}, module.testEnvironment );
 
 		this.started = now();
+		emit( "testStart", this.testReport.start( true ) );
 		runLoggingCallbacks( "testStart", {
 			name: this.testName,
-			module: this.module.name,
-			testId: this.testId
+			module: module.name,
+			testId: this.testId,
+			previousFailure: this.previousFailure
 		} );
 
 		if ( !config.pollution ) {
@@ -125,6 +165,15 @@ Test.prototype = {
 		function runTest( test ) {
 			promise = test.callback.call( test.testEnvironment, test.assert );
 			test.resolvePromise( promise );
+
+			// If the test has a "lock" on it, but the timeout is 0, then we push a
+			// failure as the test should be synchronous.
+			if ( test.timeout === 0 && test.semaphore !== 0 ) {
+				pushFailure(
+					"Test did not finish synchronously even though assert.timeout( 0 ) was used.",
+					sourceFromStacktrace( 2 )
+				);
+			}
 		}
 	},
 
@@ -132,23 +181,28 @@ Test.prototype = {
 		checkPollution();
 	},
 
-	queueHook: function( hook, hookName, hookOwner ) {
-		var promise,
-			test = this;
-		return function runHook() {
+	queueHook( hook, hookName, hookOwner ) {
+		const callHook = () => {
+			const promise = hook.call( this.testEnvironment, this.assert );
+			this.resolvePromise( promise, hookName );
+		};
+
+		const runHook = () => {
 			if ( hookName === "before" ) {
-				if ( hookOwner.testsRun !== 0 ) {
+				if ( hookOwner.unskippedTestsRun !== 0 ) {
 					return;
 				}
 
-				test.preserveEnvironment = true;
+				this.preserveEnvironment = true;
 			}
 
-			if ( hookName === "after" && hookOwner.testsRun !== numberOfTests( hookOwner ) - 1 ) {
+			if ( hookName === "after" &&
+				hookOwner.unskippedTestsRun !== numberOfUnskippedTests( hookOwner ) - 1 &&
+				config.queue.length > 2 ) {
 				return;
 			}
 
-			config.current = test;
+			config.current = this;
 			if ( config.notrycatch ) {
 				callHook();
 				return;
@@ -156,28 +210,27 @@ Test.prototype = {
 			try {
 				callHook();
 			} catch ( error ) {
-				test.pushFailure( hookName + " failed on " + test.testName + ": " +
+				this.pushFailure( hookName + " failed on " + this.testName + ": " +
 				( error.message || error ), extractStacktrace( error, 0 ) );
 			}
-
-			function callHook() {
-				promise = hook.call( test.testEnvironment, test.assert );
-				test.resolvePromise( promise, hookName );
-			}
 		};
+
+		return runHook;
 	},
 
 	// Currently only used for module level hooks, can be used to add global level ones
-	hooks: function( handler ) {
-		var hooks = [];
+	hooks( handler ) {
+		const hooks = [];
 
 		function processHooks( test, module ) {
 			if ( module.parentModule ) {
 				processHooks( test, module.parentModule );
 			}
-			if ( module.testEnvironment &&
-				QUnit.objectType( module.testEnvironment[ handler ] ) === "function" ) {
-				hooks.push( test.queueHook( module.testEnvironment[ handler ], handler, module ) );
+
+			if ( module.hooks[ handler ].length ) {
+				for ( let i = 0; i < module.hooks[ handler ].length; i++ ) {
+					hooks.push( test.queueHook( module.hooks[ handler ][ i ], handler, module ) );
+				}
 			}
 		}
 
@@ -185,6 +238,7 @@ Test.prototype = {
 		if ( !this.skip ) {
 			processHooks( this, this.module );
 		}
+
 		return hooks;
 	},
 
@@ -202,27 +256,48 @@ Test.prototype = {
 		}
 
 		var i,
+			module = this.module,
+			moduleName = module.name,
+			testName = this.testName,
 			skipped = !!this.skip,
-			bad = 0;
+			todo = !!this.todo,
+			bad = 0,
+			storage = config.storage;
 
 		this.runtime = now() - this.started;
 
 		config.stats.all += this.assertions.length;
-		config.moduleStats.all += this.assertions.length;
+		module.stats.all += this.assertions.length;
 
 		for ( i = 0; i < this.assertions.length; i++ ) {
 			if ( !this.assertions[ i ].result ) {
 				bad++;
 				config.stats.bad++;
-				config.moduleStats.bad++;
+				module.stats.bad++;
 			}
 		}
 
-		notifyTestsRan( this.module );
+		notifyTestsRan( module, skipped );
+
+		// Store result when possible
+		if ( storage ) {
+			if ( bad ) {
+				storage.setItem( "qunit-test-" + moduleName + "-" + testName, bad );
+			} else {
+				storage.removeItem( "qunit-test-" + moduleName + "-" + testName );
+			}
+		}
+
+		// After emitting the js-reporters event we cleanup the assertion data to
+		// avoid leaking it. It is not used by the legacy testDone callbacks.
+		emit( "testEnd", this.testReport.end( true ) );
+		this.testReport.slimAssertions();
+
 		runLoggingCallbacks( "testDone", {
-			name: this.testName,
-			module: this.module.name,
+			name: testName,
+			module: moduleName,
 			skipped: skipped,
+			todo: todo,
 			failed: bad,
 			passed: this.assertions.length - bad,
 			total: this.assertions.length,
@@ -236,7 +311,31 @@ Test.prototype = {
 			source: this.stack
 		} );
 
+		if ( module.testsRun === numberOfTests( module ) ) {
+			logSuiteEnd( module );
+
+			// Check if the parent modules, iteratively, are done. If that the case,
+			// we emit the `suiteEnd` event and trigger `moduleDone` callback.
+			let parent = module.parentModule;
+			while ( parent && parent.testsRun === numberOfTests( parent ) ) {
+				logSuiteEnd( parent );
+				parent = parent.parentModule;
+			}
+		}
+
 		config.current = undefined;
+
+		function logSuiteEnd( module ) {
+			emit( "suiteEnd", module.suiteReport.end( true ) );
+			runLoggingCallbacks( "moduleDone", {
+				name: module.name,
+				tests: module.tests,
+				failed: module.stats.bad,
+				passed: module.stats.all - module.stats.bad,
+				total: module.stats.all,
+				runtime: now() - module.stats.started
+			} );
+		}
 	},
 
 	preserveTestEnvironment: function() {
@@ -246,18 +345,17 @@ Test.prototype = {
 		}
 	},
 
-	queue: function() {
-		var priority,
-			test = this;
+	queue() {
+		const test = this;
 
 		if ( !this.valid() ) {
 			return;
 		}
 
-		function run() {
+		function runTest() {
 
 			// Each of these can by async
-			synchronize( [
+			ProcessingQueue.addImmediate( [
 				function() {
 					test.before();
 				},
@@ -287,14 +385,26 @@ Test.prototype = {
 			] );
 		}
 
-		// Prioritize previously failed tests, detected from sessionStorage
-		priority = QUnit.config.reorder && defined.sessionStorage &&
-				+sessionStorage.getItem( "qunit-test-" + this.module.name + "-" + this.testName );
+		const previousFailCount = config.storage &&
+				+config.storage.getItem( "qunit-test-" + this.module.name + "-" + this.testName );
 
-		return synchronize( run, priority, config.seed );
+		// Prioritize previously failed tests, detected from storage
+		const prioritize = config.reorder && !!previousFailCount;
+
+		this.previousFailure = !!previousFailCount;
+
+		ProcessingQueue.add( runTest, prioritize, config.seed );
+
+		// If the queue has already finished, we manually process the new test
+		if ( ProcessingQueue.finished ) {
+			ProcessingQueue.advance();
+		}
 	},
 
 	pushResult: function( resultInfo ) {
+		if ( this !== config.current ) {
+			throw new Error( "Assertion occured after test had finished." );
+		}
 
 		// Destructure of resultInfo = { result, actual, expected, message, negative }
 		var source,
@@ -307,18 +417,19 @@ Test.prototype = {
 				expected: resultInfo.expected,
 				testId: this.testId,
 				negative: resultInfo.negative || false,
-				runtime: now() - this.started
+				runtime: now() - this.started,
+				todo: !!this.todo
 			};
 
 		if ( !resultInfo.result ) {
-			source = sourceFromStacktrace();
+			source = resultInfo.source || sourceFromStacktrace();
 
 			if ( source ) {
 				details.source = source;
 			}
 		}
 
-		runLoggingCallbacks( "log", details );
+		this.logAssertion( details );
 
 		this.assertions.push( {
 			result: !!resultInfo.result,
@@ -332,26 +443,34 @@ Test.prototype = {
 				sourceFromStacktrace( 2 ) );
 		}
 
-		var details = {
-				module: this.module.name,
-				name: this.testName,
-				result: false,
-				message: message || "error",
-				actual: actual || null,
-				testId: this.testId,
-				runtime: now() - this.started
-			};
+		this.pushResult( {
+			result: false,
+			message: message || "error",
+			actual: actual || null,
+			expected: null,
+			source
+		} );
+	},
 
-		if ( source ) {
-			details.source = source;
-		}
-
+	/**
+	 * Log assertion details using both the old QUnit.log interface and
+	 * QUnit.on( "assertion" ) interface.
+	 *
+	 * @private
+	 */
+	logAssertion( details ) {
 		runLoggingCallbacks( "log", details );
 
-		this.assertions.push( {
-			result: false,
-			message: message
-		} );
+		const assertion = {
+			passed: details.result,
+			actual: details.actual,
+			expected: details.expected,
+			message: details.message,
+			stack: details.source,
+			todo: details.todo
+		};
+		this.testReport.pushAssertion( assertion );
+		emit( "assertion", assertion );
 	},
 
 	resolvePromise: function( promise, phase ) {
@@ -359,7 +478,7 @@ Test.prototype = {
 			test = this;
 		if ( promise != null ) {
 			then = promise.then;
-			if ( QUnit.objectType( then ) === "function" ) {
+			if ( objectType( then ) === "function" ) {
 				resume = internalStop( test );
 				then.call(
 					promise,
@@ -367,7 +486,8 @@ Test.prototype = {
 					function( error ) {
 						message = "Promise rejected " +
 							( !phase ? "during" : phase.replace( /Each$/, "" ) ) +
-							" " + test.testName + ": " + ( error.message || error );
+							" \"" + test.testName + "\": " +
+							( ( error && error.message ) || error );
 						test.pushFailure( message, extractStacktrace( error, 0 ) );
 
 						// Else next test will carry the responsibility
@@ -399,7 +519,7 @@ Test.prototype = {
 		}
 
 		function moduleChainIdMatch( testModule ) {
-			return inArray( testModule.moduleId, config.moduleId ) > -1 ||
+			return inArray( testModule.moduleId, config.moduleId ) ||
 				testModule.parentModule && moduleChainIdMatch( testModule.parentModule );
 		}
 
@@ -415,7 +535,7 @@ Test.prototype = {
 		}
 
 		if ( config.testId && config.testId.length > 0 &&
-			inArray( this.testId, config.testId ) < 0 ) {
+			!inArray( this.testId, config.testId ) ) {
 
 			return false;
 		}
@@ -459,89 +579,16 @@ Test.prototype = {
 	}
 };
 
-QUnit.pushFailure = function() {
-	if ( !QUnit.config.current ) {
+export function pushFailure() {
+	if ( !config.current ) {
 		throw new Error( "pushFailure() assertion outside test context, in " +
 			sourceFromStacktrace( 2 ) );
 	}
 
 	// Gets current test obj
-	var currentTest = QUnit.config.current;
+	var currentTest = config.current;
 
 	return currentTest.pushFailure.apply( currentTest, arguments );
-};
-
-// Based on Java's String.hashCode, a simple but not
-// rigorously collision resistant hashing function
-function generateHash( module, testName ) {
-	var hex,
-		i = 0,
-		hash = 0,
-		str = module + "\x1C" + testName,
-		len = str.length;
-
-	for ( ; i < len; i++ ) {
-		hash  = ( ( hash << 5 ) - hash ) + str.charCodeAt( i );
-		hash |= 0;
-	}
-
-	// Convert the possibly negative integer hash code into an 8 character hex string, which isn't
-	// strictly necessary but increases user understanding that the id is a SHA-like hash
-	hex = ( 0x100000000 + hash ).toString( 16 );
-	if ( hex.length < 8 ) {
-		hex = "0000000" + hex;
-	}
-
-	return hex.slice( -8 );
-}
-
-function synchronize( callback, priority, seed ) {
-	var last = !priority,
-		index;
-
-	if ( QUnit.objectType( callback ) === "array" ) {
-		while ( callback.length ) {
-			synchronize( callback.shift() );
-		}
-		return;
-	}
-
-	if ( priority ) {
-		config.queue.splice( priorityCount++, 0, callback );
-	} else if ( seed ) {
-		if ( !unitSampler ) {
-			unitSampler = unitSamplerGenerator( seed );
-		}
-
-		// Insert into a random position after all priority items
-		index = Math.floor( unitSampler() * ( config.queue.length - priorityCount + 1 ) );
-		config.queue.splice( priorityCount + index, 0, callback );
-	} else {
-		config.queue.push( callback );
-	}
-
-	if ( autorun && !config.blocking ) {
-		process( last );
-	}
-}
-
-function unitSamplerGenerator( seed ) {
-
-	// 32-bit xorshift, requires only a nonzero seed
-	// http://excamera.com/sphinx/article-xorshift.html
-	var sample = parseInt( generateHash( seed ), 16 ) || -1;
-	return function() {
-		sample ^= sample << 13;
-		sample ^= sample >>> 17;
-		sample ^= sample << 5;
-
-		// ECMAScript has no unsigned number type
-		if ( sample < 0 ) {
-			sample += 0x100000000;
-		}
-
-		return sample / 0x100000000;
-	};
 }
 
 function saveGlobal() {
@@ -570,22 +617,22 @@ function checkPollution() {
 
 	newGlobals = diff( config.pollution, old );
 	if ( newGlobals.length > 0 ) {
-		QUnit.pushFailure( "Introduced global variable(s): " + newGlobals.join( ", " ) );
+		pushFailure( "Introduced global variable(s): " + newGlobals.join( ", " ) );
 	}
 
 	deletedGlobals = diff( old, config.pollution );
 	if ( deletedGlobals.length > 0 ) {
-		QUnit.pushFailure( "Deleted global variable(s): " + deletedGlobals.join( ", " ) );
+		pushFailure( "Deleted global variable(s): " + deletedGlobals.join( ", " ) );
 	}
 }
 
 // Will be exposed as QUnit.test
-function test( testName, callback ) {
-	if ( focused )  { return; }
+export function test( testName, callback ) {
+	if ( focused ) {
+		return;
+	}
 
-	var newTest;
-
-	newTest = new Test( {
+	const newTest = new Test( {
 		testName: testName,
 		callback: callback
 	} );
@@ -593,11 +640,27 @@ function test( testName, callback ) {
 	newTest.queue();
 }
 
-// Will be exposed as QUnit.skip
-function skip( testName ) {
-	if ( focused )  { return; }
+export function todo( testName, callback ) {
+	if ( focused ) {
+		return;
+	}
 
-	var test = new Test( {
+	const newTest = new Test( {
+		testName,
+		callback,
+		todo: true
+	} );
+
+	newTest.queue();
+}
+
+// Will be exposed as QUnit.skip
+export function skip( testName ) {
+	if ( focused ) {
+		return;
+	}
+
+	const test = new Test( {
 		testName: testName,
 		skip: true
 	} );
@@ -606,15 +669,15 @@ function skip( testName ) {
 }
 
 // Will be exposed as QUnit.only
-function only( testName, callback ) {
-	var newTest;
+export function only( testName, callback ) {
+	if ( focused ) {
+		return;
+	}
 
-	if ( focused )  { return; }
-
-	QUnit.config.queue.length = 0;
+	config.queue.length = 0;
 	focused = true;
 
-	newTest = new Test( {
+	const newTest = new Test( {
 		testName: testName,
 		callback: callback
 	} );
@@ -623,21 +686,34 @@ function only( testName, callback ) {
 }
 
 // Put a hold on processing and return a function that will release it.
-function internalStop( test ) {
-	var released = false;
-
+export function internalStop( test ) {
 	test.semaphore += 1;
 	config.blocking = true;
 
 	// Set a recovery timeout, if so configured.
-	if ( config.testTimeout && defined.setTimeout ) {
-		clearTimeout( config.timeout );
-		config.timeout = setTimeout( function() {
-			QUnit.pushFailure( "Test timed out", sourceFromStacktrace( 2 ) );
-			internalRecover( test );
-		}, config.testTimeout );
+	if ( defined.setTimeout ) {
+		let timeoutDuration;
+
+		if ( typeof test.timeout === "number" ) {
+			timeoutDuration = test.timeout;
+		} else if ( typeof config.testTimeout === "number" ) {
+			timeoutDuration = config.testTimeout;
+		}
+
+		if ( typeof timeoutDuration === "number" && timeoutDuration > 0 ) {
+			clearTimeout( config.timeout );
+			config.timeout = setTimeout( function() {
+				pushFailure(
+					`Test took longer than ${timeoutDuration}ms; test timed out.`,
+					sourceFromStacktrace( 2 )
+				);
+				internalRecover( test );
+			}, timeoutDuration );
+		}
+
 	}
 
+	let released = false;
 	return function resume() {
 		if ( released ) {
 			return;
@@ -662,7 +738,7 @@ function internalStart( test ) {
 	if ( isNaN( test.semaphore ) ) {
 		test.semaphore = 0;
 
-		QUnit.pushFailure(
+		pushFailure(
 			"Invalid value on test.semaphore",
 			sourceFromStacktrace( 2 )
 		);
@@ -678,7 +754,7 @@ function internalStart( test ) {
 	if ( test.semaphore < 0 ) {
 		test.semaphore = 0;
 
-		QUnit.pushFailure(
+		pushFailure(
 			"Tried to restart test while already started (test's semaphore was 0 already)",
 			sourceFromStacktrace( 2 )
 		);
@@ -706,17 +782,37 @@ function internalStart( test ) {
 	}
 }
 
-function numberOfTests( module ) {
-	var count = module.tests.length;
-	while ( module = module.childModule ) {
-		count += module.tests.length;
+function collectTests( module ) {
+	const tests = [].concat( module.tests );
+	const modules = [ ...module.childModules ];
+
+	// Do a breadth-first traversal of the child modules
+	while ( modules.length ) {
+		const nextModule =  modules.shift();
+		tests.push.apply( tests, nextModule.tests );
+		modules.push( ...nextModule.childModules );
 	}
-	return count;
+
+	return tests;
 }
 
-function notifyTestsRan( module ) {
+function numberOfTests( module ) {
+	return collectTests( module ).length;
+}
+
+function numberOfUnskippedTests( module ) {
+	return collectTests( module ).filter( test => !test.skip ).length;
+}
+
+function notifyTestsRan( module, skipped ) {
 	module.testsRun++;
-	while ( module = module.parentModule ) {
+	if ( !skipped ) {
+		module.unskippedTestsRun++;
+	}
+	while ( ( module = module.parentModule ) ) {
 		module.testsRun++;
+		if ( !skipped ) {
+			module.unskippedTestsRun++;
+		}
 	}
 }

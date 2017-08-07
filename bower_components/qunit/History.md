@@ -1,3 +1,166 @@
+2.4.0 / 2017-07-08
+==================
+
+  * Build: Disable max-len ESLint rule for tests
+  * Docs: Document assert.timeout
+  * Tests: Add tests for assert.timeout
+  * Assert: Introduce timeout to set per-test timeout durations
+  * Core: Release objects from memory in equiv
+  * Assert: Fix assert.push deprecation link
+  * Docs: Fix typo in docs for QUnit.module
+  * Docs: Document QUnit.module.{only,skip,todo} (#1194)
+  * Test: Add tests for QUnit.module.todo()
+  * Core: Implement QUnit.module.todo()
+  * Test: Add tests for QUnit.module.skip()
+  * Core: Implement QUnit.module.skip()
+  * Core: Fallback to `typeof obj` in `QUnit.objectType`.
+  * Tests: Add tests using native async functions.
+  * CLI: Better messaging on early exits
+  * CLI: Default to non-zero exit code
+  * CLI: Exit with non-zero status when no tests are run
+  * Build: Register events after requiring test file in test-on-node task
+  * Docs: Add note about defining multiple hooks for modules
+  * Tests: Add tests for multiple module hooks
+  * Core: Add support for multiple hooks
+  * Test: Add tests for QUnit.module.only()
+  * Core: Implement QUnit.module.only()
+  * Build: Include bin file in eslint
+
+2.3.3 / 2017-06-02
+==================
+
+  * Core: Updates for Node.js version 8 compatibility and testing
+  * Docs: Update README/CONTRIBUTING with more recent/relevant information
+  * Docs: Move CONTRIBUTING.md from docs to root
+  * Build: Let grunt watch live-reload the test suite
+  * Build: Only start one web server for grunt watch
+  * Core: Support running in WorkerGlobalScope
+  * Docs: Add license status (#1175)
+  * Docs: delete note about QUnit.jsDump's removal
+  * Docs: Document 'todo' in log details object
+  * Docs: Document 'todo' in testDone details object
+  * Tests: Add requireQUnit tests
+  * CLI: Prefer local version of QUnit
+
+2.3.2 / 2017-04-17
+==================
+
+  * HTML Reporter: Add specific diff for number types instead of str-diff. (#1155)
+  * Core: Fix bug calling hooks with skipped tests (#1156)
+  * Docs: Fix title and index link
+
+2.3.1 / 2017-04-10
+==================
+
+  * Tests: Emit `suiteEnd` and trigger `moduleDone` for parent modules
+  * Docs: Remove trailing slash from some urls
+  * All: Enable ESLint indent rule (#1143)
+  * Docs: Update assert.async documentation
+  * Assert: Allow assertions after async
+  * Docs: Copy styles from jquery-wp-content
+  * Docs: Render markdown inside HTML blocks
+  * Core: Ensure assertions occur while test is running
+  * Assert: Throw if async callback invoked after test finishes
+  * Tests: Add additional events test
+  * Tests: Re-order events test
+  * Core: Slim assertions after reporting them
+  * Core: Fix test instance memory leak (#1138)
+  * Docs: Remove baseurl as github is inserting an automatic value (#1136)
+  * Docs: Migrate api docs (#1135)
+  * Readme: Added Gitter badge (#1134)
+
+2.3.0 / 2017-03-29
+==================
+
+  * Core: Test#pushFailure now calls Test#pushResult
+  * HTML Reporter: Display todo tests on hidepassed
+  * CLI: Add support for custom reporters
+  * CLI: Properly support aborting and restarting tests
+  * CLI: Add file watching option
+  * Core: Revamp processing order to one test at a time
+  * Core: Remove parameter from ProcessingQueue#advance
+  * CLI: Add description to help command
+  * CLI: Add seed option
+  * Core: Account for validity of test in test counts
+  * CLI: Support filtering tests
+  * Core: Extract processing logic into ProcessingQueue
+  * Tests: Add CLI tests
+  * CLI: Introduce QUnit CLI
+  * Readme: Add detailed release instructions
+  * All: Enable ESLint prefer-const rule (#1109)
+
+2.2.1 / 2017-03-19
+==================
+
+  * Test: Add basic reorder test
+  * Core: Fix sessionStorage feature detection
+  * Tests: Ensure onError tests are included in test/index.html (#1111)
+
+2.2.0 / 2017-03-11
+==================
+
+  * Core: QUnit.onError now expects error or error-like object
+  * HTML Reporter: Use QUnit.onError
+  * HTML Reporter: Ensure window.onerror return values are correct
+  * HTML Reporter: Moving window.onerror to HTML Reporter
+  * Core: Extract main onError logic into exported function and add tests
+  * Core: Fix start on Node when autostart is not set to true (#1105)
+  * Core: Add todo to assertion event data
+  * Core: Add remaining js-reporter events
+  * Core: Fix double begin when calling start in Node
+  * Core: Rewrite QUnit.equiv to be breadth-first
+  * Core: Optimize and document the "set" and "map" callbacks
+  * Core: Implement QUnit.todo
+  * Core: Add assertion event
+  * Assert: Use actual values for verifySteps on failed steps
+  * Assert: Add assert.verifySteps
+  * Assert: Add assert.step
+  * Core: Fix console error in IE9 (#1093)
+  * Core: Ability to run in sandboxed iframe
+  * Core: Implement event emitter (#1087)
+
+2.1.1 / 2017-01-05
+==================
+
+ * All: Remove deprecated 1.x features
+ * Assert: Deprecate assert.push
+ * Build: Remove unnecessary QUnit.load call
+ * Core: QUnit.start does not require calling QUnit.load
+ * HTML Reporter: Add an abort button
+
+2.1.0 / 2016-12-05
+==================
+
+ * All: Using eslint-plugin-html to lint HTML files
+ * All: Removed JSHint/JSCS config & comment leftovers
+ * All: Update License to JSFoundation
+ * All: Fix some outstanding indentation issues in files
+ * All: Use Rollup and Babel to build
+ * Core: Support a predefined QUnit.config
+ * Core: Fix clearing of storage on done
+ * Core: Always report if test previously failed
+ * Core: Introduce config.storage option
+ * Core: Load the onerror module
+ * Core: Fix QUnit.equiv object methods comparison
+ * Core: Support multiple nested modules hooks properly
+ * Core: Blacklist jsDump-1034
+ * Core: Fire moduleStart only when starting module for the first time
+ * Core: Fire moduleDone when actually finished with module
+ * HTML Reporter: Decouple from sessionStorage reordering logic
+ * HTML Reporter: Fix expanding failed tests when collapse is false.
+ * HTML Reporter: Handle URL params named like Object.prototype properties
+ * Test: Properly handle Promises rejected without an error
+ * Tests: Fixing lint errors caught by eslint-plugin-html
+ * Tests: HTML files should end with LF
+ * Tests: Add tests for Storage interface
+ * Tests: Add tests for logging callback/module hooks order
+ * Tests: Add expects to latest Promise tests
+ * Build: Update Node support versions
+ * Build: Consume eslint-plugin-qunit, use "two" configuration (#1052)
+ * Build: Use ESLint
+ * Build: Use SPDX format in bower.json's license
+ * Build: Remove dependency on es2015-rollup preset
+ * Build: Build with recent Node version but test against support matrix
 
 2.0.1 / 2016-07-23
 ==================

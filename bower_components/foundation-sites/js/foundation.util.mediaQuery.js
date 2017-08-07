@@ -1,6 +1,6 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
 
 // Default set of media queries
 const defaultQueries = {
@@ -13,121 +13,12 @@ const defaultQueries = {
     'only screen and (min-device-pixel-ratio: 2),' +
     'only screen and (min-resolution: 192dpi),' +
     'only screen and (min-resolution: 2dppx)'
-};
+  };
 
-var MediaQuery = {
-  queries: [],
-
-  current: '',
-
-  /**
-   * Initializes the media query helper, by extracting the breakpoint list from the CSS and activating the breakpoint watcher.
-   * @function
-   * @private
-   */
-  _init() {
-    var self = this;
-    var extractedStyles = $('.foundation-mq').css('font-family');
-    var namedQueries;
-
-    namedQueries = parseStyleToObject(extractedStyles);
-
-    for (var key in namedQueries) {
-      if(namedQueries.hasOwnProperty(key)) {
-        self.queries.push({
-          name: key,
-          value: `only screen and (min-width: ${namedQueries[key]})`
-        });
-      }
-    }
-
-    this.current = this._getCurrentSize();
-
-    this._watcher();
-  },
-
-  /**
-   * Checks if the screen is at least as wide as a breakpoint.
-   * @function
-   * @param {String} size - Name of the breakpoint to check.
-   * @returns {Boolean} `true` if the breakpoint matches, `false` if it's smaller.
-   */
-  atLeast(size) {
-    var query = this.get(size);
-
-    if (query) {
-      return window.matchMedia(query).matches;
-    }
-
-    return false;
-  },
-
-  /**
-   * Gets the media query of a breakpoint.
-   * @function
-   * @param {String} size - Name of the breakpoint to get.
-   * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
-   */
-  get(size) {
-    for (var i in this.queries) {
-      if(this.queries.hasOwnProperty(i)) {
-        var query = this.queries[i];
-        if (size === query.name) return query.value;
-      }
-    }
-
-    return null;
-  },
-
-  /**
-   * Gets the current breakpoint name by testing every breakpoint and returning the last one to match (the biggest one).
-   * @function
-   * @private
-   * @returns {String} Name of the current breakpoint.
-   */
-  _getCurrentSize() {
-    var matched;
-
-    for (var i = 0; i < this.queries.length; i++) {
-      var query = this.queries[i];
-
-      if (window.matchMedia(query.value).matches) {
-        matched = query;
-      }
-    }
-
-    if (typeof matched === 'object') {
-      return matched.name;
-    } else {
-      return matched;
-    }
-  },
-
-  /**
-   * Activates the breakpoint watcher, which fires an event on the window whenever the breakpoint changes.
-   * @function
-   * @private
-   */
-  _watcher() {
-    $(window).on('resize.zf.mediaquery', () => {
-      var newSize = this._getCurrentSize(), currentSize = this.current;
-
-      if (newSize !== currentSize) {
-        // Change the current media query
-        this.current = newSize;
-
-        // Broadcast the media query change on the window
-        $(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
-      }
-    });
-  }
-};
-
-Foundation.MediaQuery = MediaQuery;
 
 // matchMedia() polyfill - Test a CSS media type/query in JS.
 // Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license
-window.matchMedia || (window.matchMedia = function() {
+let matchMedia = window.matchMedia || (function() {
   'use strict';
 
   // For browsers that support matchMedium api such as IE 9 and webkit
@@ -170,7 +61,138 @@ window.matchMedia || (window.matchMedia = function() {
       media: media || 'all'
     };
   }
-}());
+})();
+
+var MediaQuery = {
+  queries: [],
+
+  current: '',
+
+  /**
+   * Initializes the media query helper, by extracting the breakpoint list from the CSS and activating the breakpoint watcher.
+   * @function
+   * @private
+   */
+  _init() {
+    var self = this;
+    var $meta = $('meta.foundation-mq');
+    if(!$meta.length){
+      $('<meta class="foundation-mq">').appendTo(document.head);
+    }
+
+    var extractedStyles = $('.foundation-mq').css('font-family');
+    var namedQueries;
+
+    namedQueries = parseStyleToObject(extractedStyles);
+
+    for (var key in namedQueries) {
+      if(namedQueries.hasOwnProperty(key)) {
+        self.queries.push({
+          name: key,
+          value: `only screen and (min-width: ${namedQueries[key]})`
+        });
+      }
+    }
+
+    this.current = this._getCurrentSize();
+
+    this._watcher();
+  },
+
+  /**
+   * Checks if the screen is at least as wide as a breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint to check.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if it's smaller.
+   */
+  atLeast(size) {
+    var query = this.get(size);
+
+    if (query) {
+      return matchMedia(query).matches;
+    }
+
+    return false;
+  },
+
+  /**
+   * Checks if the screen matches to a breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint to check, either 'small only' or 'small'. Omitting 'only' falls back to using atLeast() method.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if it does not.
+   */
+  is(size) {
+    size = size.trim().split(' ');
+    if(size.length > 1 && size[1] === 'only') {
+      if(size[0] === this._getCurrentSize()) return true;
+    } else {
+      return this.atLeast(size[0]);
+    }
+    return false;
+  },
+
+  /**
+   * Gets the media query of a breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint to get.
+   * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
+   */
+  get(size) {
+    for (var i in this.queries) {
+      if(this.queries.hasOwnProperty(i)) {
+        var query = this.queries[i];
+        if (size === query.name) return query.value;
+      }
+    }
+
+    return null;
+  },
+
+  /**
+   * Gets the current breakpoint name by testing every breakpoint and returning the last one to match (the biggest one).
+   * @function
+   * @private
+   * @returns {String} Name of the current breakpoint.
+   */
+  _getCurrentSize() {
+    var matched;
+
+    for (var i = 0; i < this.queries.length; i++) {
+      var query = this.queries[i];
+
+      if (matchMedia(query.value).matches) {
+        matched = query;
+      }
+    }
+
+    if (typeof matched === 'object') {
+      return matched.name;
+    } else {
+      return matched;
+    }
+  },
+
+  /**
+   * Activates the breakpoint watcher, which fires an event on the window whenever the breakpoint changes.
+   * @function
+   * @private
+   */
+  _watcher() {
+    $(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', () => {
+      var newSize = this._getCurrentSize(), currentSize = this.current;
+
+      if (newSize !== currentSize) {
+        // Change the current media query
+        this.current = newSize;
+
+        // Broadcast the media query change on the window
+        $(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
+      }
+    });
+  }
+};
+
+
 
 // Thank you: https://github.com/sindresorhus/query-string
 function parseStyleToObject(str) {
@@ -209,6 +231,4 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-Foundation.MediaQuery = MediaQuery;
-
-}(jQuery);
+export {MediaQuery};

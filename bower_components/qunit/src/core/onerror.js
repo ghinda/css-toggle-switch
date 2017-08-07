@@ -1,37 +1,23 @@
-( function() {
-	if ( !defined.document ) {
-		return;
+import { pushFailure, test } from "../test";
+
+import config from "./config";
+import { extend } from "./utilities";
+
+// Handle an unhandled exception. By convention, returns true if further
+// error handling should be suppressed and false otherwise.
+// In this case, we will only suppress further error handling if the
+// "ignoreGlobalErrors" configuration option is enabled.
+export default function onError( error, ...args ) {
+	if ( config.current ) {
+		if ( config.current.ignoreGlobalErrors ) {
+			return true;
+		}
+		pushFailure( error.message, error.fileName + ":" + error.lineNumber, ...args );
+	} else {
+		test( "global failure", extend( function() {
+			pushFailure( error.message, error.fileName + ":" + error.lineNumber, ...args );
+		}, { validTest: true } ) );
 	}
 
-	// `onErrorFnPrev` initialized at top of scope
-	// Preserve other handlers
-	var onErrorFnPrev = window.onerror;
-
-	// Cover uncaught exceptions
-	// Returning true will suppress the default browser handler,
-	// returning false will let it run.
-	window.onerror = function( error, filePath, linerNr ) {
-		var ret = false;
-		if ( onErrorFnPrev ) {
-			ret = onErrorFnPrev( error, filePath, linerNr );
-		}
-
-		// Treat return value as window.onerror itself does,
-		// Only do our handling if not suppressed.
-		if ( ret !== true ) {
-			if ( QUnit.config.current ) {
-				if ( QUnit.config.current.ignoreGlobalErrors ) {
-					return true;
-				}
-				QUnit.pushFailure( error, filePath + ":" + linerNr );
-			} else {
-				QUnit.test( "global failure", extend( function() {
-					QUnit.pushFailure( error, filePath + ":" + linerNr );
-				}, { validTest: true } ) );
-			}
-			return false;
-		}
-
-		return ret;
-	};
-}() );
+	return false;
+}
