@@ -147,8 +147,10 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: 'site/',
+            dot: true,
             src: [
-              'images/**'
+              'images/**',
+              '.nojekyll'
             ],
             dest: 'build/'
           }
