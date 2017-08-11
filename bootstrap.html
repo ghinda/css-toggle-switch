@@ -37,9 +37,9 @@
   </div>
   <div class="col-lg-5">
     <ul class="list-inline top-menu">
-      <li><a href="index.html" class="">Standalone</a></li>
-      <li><a href="bootstrap.html" class="active">Bootstrap</a></li>
-      <li><a href="foundation.html" class="">Foundation</a></li>
+      <li class="list-inline-item"><a href="index.html" class="">Standalone</a></li>
+      <li class="list-inline-item"><a href="bootstrap.html" class="active">Bootstrap</a></li>
+      <li class="list-inline-item"><a href="foundation.html" class="">Foundation</a></li>
     </ul>
   </div>
 </header>
@@ -54,15 +54,15 @@
           <h4>Light switch</h4>
           <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
-          <div class="row toggle-demo">
+          <div class="toggle-demo">
 
-            <label class="switch-light" onclick="">
+            <label class="switch-light row" onclick="">
               <input type="checkbox">
-              <strong class="col-sm-4">
+              <strong class="col col-sm-4">
                 Wireless
               </strong>
 
-              <span class="col-sm-4 well">
+              <span class="alert alert-light col col-sm-4">
                 <span>Off</span>
                 <span>On</span>
                 <a class="btn btn-primary"></a>
@@ -77,9 +77,9 @@
           <h4>Toggle switch</h4>
           <p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
 
-          <fieldset class="row toggle-demo">
+          <div class="row toggle-demo" role="group">
             <legend class="col-lg-3">View</legend>
-            <div class="switch-toggle well col-lg-9">
+            <div class="switch-toggle alert alert-light col-lg-9">
               <input id="week-d1" name="view-d" type="radio" checked>
               <label for="week-d1" onclick="">Week</label>
 
@@ -91,7 +91,7 @@
 
               <a class="btn btn-primary"></a>
             </div>
-          </fieldset>
+          </div>
 
         </div>
 
@@ -107,12 +107,12 @@
       </div>
 
       <div class="nav-bar hero-actions">
-        <div class="btn-group btn-group-justified">
-          <a href="https://github.com/ghinda/css-toggle-switch/archive/master.zip" class="btn">
+        <div class="row" role="group">
+          <a href="https://github.com/ghinda/css-toggle-switch/archive/master.zip" class="btn col">
             <i class="icon-arrow-down"></i>
             Download
           </a>
-          <a href="https://github.com/ghinda/css-toggle-switch" class="btn">
+          <a href="https://github.com/ghinda/css-toggle-switch" class="btn col">
             <i class="icon-github"></i>
             Github
           </a>
@@ -148,7 +148,7 @@
           Wireless
         </strong>
 
-        <span class="well">
+        <span class="alert alert-light">
           <span>Off</span>
           <span>On</span>
           <a class="btn btn-primary"></a>
@@ -161,7 +161,7 @@
     Wireless
   &lt;/strong&gt;
 
-  &lt;span class=&quot;well&quot;&gt;
+  &lt;span class=&quot;alert alert-light&quot;&gt;
     &lt;span&gt;Off&lt;/span&gt;
     &lt;span&gt;On&lt;/span&gt;
     &lt;a class=&quot;btn btn-primary&quot;&gt;&lt;/a&gt;
@@ -187,7 +187,7 @@
 
       <fieldset class="col-lg-5">
         <legend>View</legend>
-        <div class="switch-toggle well">
+        <div class="switch-toggle alert alert-light">
           <input id="week" name="view" type="radio" checked>
           <label for="week" onclick="">Week</label>
 
@@ -200,7 +200,7 @@
 
 <pre><code class="language-html">&lt;fieldset&gt;
   &lt;legend&gt;View&lt;/legend&gt;
-  &lt;div class=&quot;switch-toggle well&quot;&gt;
+  &lt;div class=&quot;switch-toggle alert alert-light&quot;&gt;
     &lt;input id=&quot;week&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
     &lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
 
@@ -221,7 +221,7 @@
 
       <fieldset>
         <legend>View</legend>
-        <div class="switch-toggle well">
+        <div class="switch-toggle alert alert-light">
           <input id="hour3" name="view3" type="radio" checked>
           <label for="hour3" onclick="">Hour</label>
 
@@ -243,7 +243,7 @@
 
 <pre><code class="language-html">&lt;fieldset&gt;
   &lt;legend&gt;View&lt;/legend&gt;
-  &lt;div class=&quot;switch-toggle well&quot;&gt;
+  &lt;div class=&quot;switch-toggle alert alert-light&quot;&gt;
     &lt;input id=&quot;hour3&quot; name=&quot;view3&quot; type=&quot;radio&quot; checked&gt;
     &lt;label for=&quot;hour3&quot; onclick=&quot;&quot;&gt;Hour&lt;/label&gt;
 
@@ -300,7 +300,7 @@
 
       <div class="row">
         <div class="col-lg-4">
-          <label class="switch-light" onclick="">
+          <label class="switch-light row" onclick="">
             <input type="checkbox">
 
             <strong class="col-sm-8">
@@ -325,10 +325,10 @@
               Bluetooth
             </strong>
 
-            <span class="progress progress-striped active">
+            <span class="progress">
               <span>Off</span>
               <span>On</span>
-              <a class="progress-bar progress-bar-success"></a>
+              <a class="progress-bar progress-bar-striped bg-success progress-bar-animated"></a>
             </span>
           </label>
         </div>
@@ -337,7 +337,7 @@
       <div class="row">
         <fieldset class="col-lg-4">
           <legend>View</legend>
-          <div class="switch-toggle well">
+          <div class="switch-toggle alert alert-light">
             <input id="week41" name="view4" type="radio" checked>
             <label for="week41" onclick="">Week</label>
 

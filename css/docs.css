@@ -97,9 +97,6 @@ a {
   max-width: 50em;
   margin: 0 auto; }
 
-.row .row {
-  width: auto; }
-
 /* Browse Happy prompt
 */
 .browsehappy {
@@ -265,7 +262,8 @@ body pre[class*="language-"] {
     margin-bottom: 1.25em; }
 
 .example .row {
-  margin: 0; }
+  margin-left: 0;
+  margin-right: 0; }
 
 .example-light {
   background: #F3F3F3; }
