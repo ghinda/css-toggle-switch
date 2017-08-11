@@ -29,15 +29,15 @@ title: 'with Bootstrap'
           <h4>Light switch</h4>
           <p>Use the light switch, instead of a checkbox, for simple <em>&ldquo;On/Off&rdquo;</em> options. </p>
 
-          <div class="row toggle-demo">
+          <div class="toggle-demo">
 
-            <label class="switch-light" onclick="">
+            <label class="switch-light row" onclick="">
               <input type="checkbox">
-              <strong class="col-sm-4">
+              <strong class="col col-sm-4">
                 Wireless
               </strong>
 
-              <span class="col-sm-4 well">
+              <span class="alert alert-light col col-sm-4">
                 <span>Off</span>
                 <span>On</span>
                 <a class="btn btn-primary"></a>
@@ -52,9 +52,9 @@ title: 'with Bootstrap'
           <h4>Toggle switch</h4>
           <p>Use the toggle switches, instead of radio buttons, for two or more, specific options. </p>
 
-          <fieldset class="row toggle-demo">
+          <div class="row toggle-demo" role="group">
             <legend class="col-lg-3">View</legend>
-            <div class="switch-toggle well col-lg-9">
+            <div class="switch-toggle alert alert-light col-lg-9">
               <input id="week-d1" name="view-d" type="radio" checked>
               <label for="week-d1" onclick="">Week</label>
 
@@ -66,7 +66,7 @@ title: 'with Bootstrap'
 
               <a class="btn btn-primary"></a>
             </div>
-          </fieldset>
+          </div>
 
         </div>
 
@@ -81,12 +81,12 @@ title: 'with Bootstrap'
       </div>
 
       <div class="nav-bar hero-actions">
-        <div class="btn-group btn-group-justified">
-          <a href="https://github.com/ghinda/css-toggle-switch/archive/master.zip" class="btn">
+        <div class="row" role="group">
+          <a href="https://github.com/ghinda/css-toggle-switch/archive/master.zip" class="btn col">
             <i class="icon-arrow-down"></i>
             Download
           </a>
-          <a href="https://github.com/ghinda/css-toggle-switch" class="btn">
+          <a href="https://github.com/ghinda/css-toggle-switch" class="btn col">
             <i class="icon-github"></i>
             Github
           </a>
@@ -122,7 +122,7 @@ title: 'with Bootstrap'
           Wireless
         </strong>
 
-        <span class="well">
+        <span class="alert alert-light">
           <span>Off</span>
           <span>On</span>
           <a class="btn btn-primary"></a>
@@ -137,7 +137,7 @@ title: 'with Bootstrap'
     Wireless
   </strong>
 
-  <span class="well">
+  <span class="alert alert-light">
     <span>Off</span>
     <span>On</span>
     <a class="btn btn-primary"></a>
@@ -164,7 +164,7 @@ title: 'with Bootstrap'
 
       <fieldset class="col-lg-5">
         <legend>View</legend>
-        <div class="switch-toggle well">
+        <div class="switch-toggle alert alert-light">
           <input id="week" name="view" type="radio" checked>
           <label for="week" onclick="">Week</label>
 
@@ -179,7 +179,7 @@ title: 'with Bootstrap'
 ``` html
 <fieldset>
   <legend>View</legend>
-  <div class="switch-toggle well">
+  <div class="switch-toggle alert alert-light">
     <input id="week" name="view" type="radio" checked>
     <label for="week" onclick="">Week</label>
 
@@ -201,7 +201,7 @@ title: 'with Bootstrap'
 
       <fieldset>
         <legend>View</legend>
-        <div class="switch-toggle well">
+        <div class="switch-toggle alert alert-light">
           <input id="hour3" name="view3" type="radio" checked>
           <label for="hour3" onclick="">Hour</label>
 
@@ -225,7 +225,7 @@ title: 'with Bootstrap'
 ``` html
 <fieldset>
   <legend>View</legend>
-  <div class="switch-toggle well">
+  <div class="switch-toggle alert alert-light">
     <input id="hour3" name="view3" type="radio" checked>
     <label for="hour3" onclick="">Hour</label>
 
@@ -283,7 +283,7 @@ title: 'with Bootstrap'
 
       <div class="row">
         <div class="col-lg-4">
-          <label class="switch-light" onclick="">
+          <label class="switch-light row" onclick="">
             <input type="checkbox">
 
             <strong class="col-sm-8">
@@ -308,10 +308,10 @@ title: 'with Bootstrap'
               Bluetooth
             </strong>
 
-            <span class="progress progress-striped active">
+            <span class="progress">
               <span>Off</span>
               <span>On</span>
-              <a class="progress-bar progress-bar-success"></a>
+              <a class="progress-bar progress-bar-striped bg-success progress-bar-animated"></a>
             </span>
           </label>
         </div>
@@ -320,7 +320,7 @@ title: 'with Bootstrap'
       <div class="row">
         <fieldset class="col-lg-4">
           <legend>View</legend>
-          <div class="switch-toggle well">
+          <div class="switch-toggle alert alert-light">
             <input id="week41" name="view4" type="radio" checked>
             <label for="week41" onclick="">Week</label>
 

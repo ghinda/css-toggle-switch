@@ -72,10 +72,6 @@ a {
   margin: 0 auto;
 }
 
-.row .row {
-  width: auto;
-}
-
 /* Browse Happy prompt
 */
 
@@ -323,7 +319,8 @@ body pre[class*="language-"] {
 }
 
 .example .row {
-  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .example-light {
