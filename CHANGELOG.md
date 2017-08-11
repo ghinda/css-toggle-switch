@@ -1,3 +1,7 @@
+## [4.1.0] - 2017-08-11
+
+- Add support for Bootstrap 4 Beta.
+
 ## [4.0.3] - 2017-08-07
 
 - Remove the `bourbon` dev dependency. Removes most CSS prefixes.
