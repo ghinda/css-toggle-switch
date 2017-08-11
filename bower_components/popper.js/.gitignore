@@ -1,0 +1,23 @@
+# https://git-scm.com/docs/gitignore
+# https://help.github.com/articles/ignoring-files
+# Example .gitignore files: https://github.com/github/gitignore
+node_modules
+.DS_Store
+.tmp
+.chrome
+*.log
+.jekyll-metadata
+dist
+.idea/
+*.log
+package-lock.json
+
+# When you switch branches, things can get messy
+_site
+.sass-cache
+
+# Exclude Nuget .nuspec because we generate it from package.json
+# during the npm publish step, this to avoid duplication
+#===============================================================
+package.nuspec
+*.nupkg

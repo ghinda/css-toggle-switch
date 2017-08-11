@@ -80,7 +80,7 @@
     display: block;
     min-height: 2em;
     /* overwrite 3rd party classes padding
-   * eg. bootstrap .well
+   * eg. bootstrap .alert
    */
     padding: 0;
     text-align: left; }
@@ -101,6 +101,12 @@
     width: 50%;
     height: 100%;
     padding: 0; }
+  /* bootstrap 4 tweaks
+*/
+  .switch-light.row {
+    display: flex; }
+  .switch-light .alert-light {
+    color: #333; }
   /* Radio Switch
  */
   .switch-toggle {

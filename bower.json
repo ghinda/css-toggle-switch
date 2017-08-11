@@ -11,7 +11,7 @@
     "!README.md"
   ],
   "devDependencies": {
-    "bootstrap": "^3.3.5",
+    "bootstrap": "4.0.0-beta",
     "foundation-sites": "^6.2.4",
     "normalize-css": "^7.0.0",
     "prism": "^1.5.0",
