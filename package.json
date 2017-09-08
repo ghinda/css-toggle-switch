@@ -1,6 +1,7 @@
 {
   "name": "css-toggle-switch",
   "version": "4.1.0",
+  "jsdelivr": "dist/toggle-switch.css",
   "repository": {
     "type": "git",
     "url": "https://github.com/ghinda/css-toggle-switch.git"
