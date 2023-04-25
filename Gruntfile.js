@@ -1,5 +1,6 @@
 'use strict';
 var LIVERELOAD_PORT = 35729;
+const sass = require('sass')
 
 module.exports = function (grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -50,6 +51,7 @@ module.exports = function (grunt) {
     },
     sass: {
       options: {
+        implementation: sass,
         sourceMap: true
       },
       server: {
@@ -200,7 +202,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('deploy', [
-    'test',
+    'build',
     'buildcontrol'
   ]);
 
